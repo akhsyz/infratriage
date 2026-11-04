@@ -1,0 +1,2060 @@
+[
+  {
+    "id": "osm-1351062359",
+    "name": "BLPT",
+    "category": "school",
+    "lat": -7.7811119,
+    "lng": 110.3541384
+  },
+  {
+    "id": "osm-1359366165",
+    "name": "SMP 6 Yogyakarta",
+    "category": "school",
+    "lat": -7.7782549,
+    "lng": 110.3669962
+  },
+  {
+    "id": "osm-1360407136",
+    "name": "SDIT Luqman Al-Hakim",
+    "category": "school",
+    "lat": -7.7968209,
+    "lng": 110.3908466
+  },
+  {
+    "id": "osm-2295350796",
+    "name": "Muhammadiyah Jogokariyan Elementary",
+    "category": "school",
+    "lat": -7.8234357,
+    "lng": 110.3662397
+  },
+  {
+    "id": "osm-2295352323",
+    "name": "Muhammadiyah 9 Junior High School",
+    "category": "school",
+    "lat": -7.8240966,
+    "lng": 110.374189
+  },
+  {
+    "id": "osm-2564065096",
+    "name": "TK Pedagogia",
+    "category": "school",
+    "lat": -7.8170713,
+    "lng": 110.3553115
+  },
+  {
+    "id": "osm-2631261031",
+    "name": "Klinik Adhiwarga PKBI DIY",
+    "category": "hospital",
+    "lat": -7.7851411,
+    "lng": 110.3570675
+  },
+  {
+    "id": "osm-2796609791",
+    "name": "Pondok Pesantren Nurul Ummah Kotagede",
+    "category": "school",
+    "lat": -7.8256924,
+    "lng": 110.3958748
+  },
+  {
+    "id": "osm-3229499839",
+    "name": "SD Muhammadiyah 10",
+    "category": "school",
+    "lat": -7.7799717,
+    "lng": 110.3786041
+  },
+  {
+    "id": "osm-3315788117",
+    "name": "SD Muhammadiyah Karangwaru",
+    "category": "school",
+    "lat": -7.7708746,
+    "lng": 110.3621669
+  },
+  {
+    "id": "osm-3585123761",
+    "name": "SD Negeri Suryodiningratan 2",
+    "category": "school",
+    "lat": -7.8161615,
+    "lng": 110.3583363
+  },
+  {
+    "id": "osm-3585153779",
+    "name": "SD Negeri Minggiran",
+    "category": "school",
+    "lat": -7.8192476,
+    "lng": 110.3617452
+  },
+  {
+    "id": "osm-3630343677",
+    "name": "SD Kanisius Kumendaman",
+    "category": "school",
+    "lat": -7.8139952,
+    "lng": 110.3609135
+  },
+  {
+    "id": "osm-3630420098",
+    "name": "SD Kraton (Keputran III)",
+    "category": "school",
+    "lat": -7.8057905,
+    "lng": 110.3598259
+  },
+  {
+    "id": "osm-3630609634",
+    "name": "SD Suryowijayan",
+    "category": "school",
+    "lat": -7.8101272,
+    "lng": 110.3532201
+  },
+  {
+    "id": "osm-4799168221",
+    "name": "TK Buyung",
+    "category": "school",
+    "lat": -7.7921516,
+    "lng": 110.3526404
+  },
+  {
+    "id": "osm-4799168321",
+    "name": "SMP Negeri 7",
+    "category": "school",
+    "lat": -7.7913761,
+    "lng": 110.3506801
+  },
+  {
+    "id": "osm-4799168325",
+    "name": "SMA Bopkri 2",
+    "category": "school",
+    "lat": -7.7827855,
+    "lng": 110.3771737
+  },
+  {
+    "id": "osm-4799168421",
+    "name": "TK-SD Kanisius Wirobrajan",
+    "category": "school",
+    "lat": -7.8004993,
+    "lng": 110.3520864
+  },
+  {
+    "id": "osm-4824441424",
+    "name": "Smp kalam kudus",
+    "category": "school",
+    "lat": -7.7696366,
+    "lng": 110.3548258
+  },
+  {
+    "id": "osm-6284253996",
+    "name": "Milas",
+    "category": "marketplace",
+    "lat": -7.8222383,
+    "lng": 110.3686163
+  },
+  {
+    "id": "osm-7331641864",
+    "name": "Rumah Sakit Siloam Yogyakarta",
+    "category": "hospital",
+    "lat": -7.7833994,
+    "lng": 110.3908845
+  },
+  {
+    "id": "osm-7690360879",
+    "name": "Aviaterra Aviation Training",
+    "category": "school",
+    "lat": -7.7922649,
+    "lng": 110.3797011
+  },
+  {
+    "id": "osm-8422933296",
+    "name": "Pasar Bringharjo",
+    "category": "marketplace",
+    "lat": -7.7987878,
+    "lng": 110.3667794
+  },
+  {
+    "id": "osm-9191255911",
+    "name": "SD Kanisius Kotabaru 1",
+    "category": "school",
+    "lat": -7.789716,
+    "lng": 110.3705311
+  },
+  {
+    "id": "osm-9833403898",
+    "name": "Pasar Senthir",
+    "category": "marketplace",
+    "lat": -7.799382,
+    "lng": 110.3663389
+  },
+  {
+    "id": "osm-10254071409",
+    "name": "SMK Berbudi",
+    "category": "school",
+    "lat": -7.8314581,
+    "lng": 110.3898902
+  },
+  {
+    "id": "osm-11202312637",
+    "name": "Best School Yogyakarta",
+    "category": "school",
+    "lat": -7.8063049,
+    "lng": 110.4001576
+  },
+  {
+    "id": "osm-12383448160",
+    "name": "Pasar Prawirotaman",
+    "category": "marketplace",
+    "lat": -7.8200291,
+    "lng": 110.3682201
+  },
+  {
+    "id": "osm-12846795692",
+    "name": "DKT",
+    "category": "hospital",
+    "lat": -7.7856374,
+    "lng": 110.3769516
+  },
+  {
+    "id": "osm-13018336645",
+    "name": "SD Ngeri Kotagede III",
+    "category": "school",
+    "lat": -7.8208667,
+    "lng": 110.3862857
+  },
+  {
+    "id": "osm-13361882923",
+    "name": "Pasar Senen",
+    "category": "marketplace",
+    "lat": -7.7956623,
+    "lng": 110.3613258
+  },
+  {
+    "id": "osm-13849114497",
+    "name": "Blackbox Gym",
+    "category": "hospital",
+    "lat": -7.7715889,
+    "lng": 110.3595422
+  },
+  {
+    "id": "osm-14088947101",
+    "name": "Pasar Kluwih",
+    "category": "marketplace",
+    "lat": -7.809476,
+    "lng": 110.365487
+  },
+  {
+    "id": "osm-120382810",
+    "name": "Pasar Terban",
+    "category": "marketplace",
+    "lat": -7.7812118,
+    "lng": 110.3721269
+  },
+  {
+    "id": "osm-120394105",
+    "name": "SD N 1 Bener",
+    "category": "school",
+    "lat": -7.7774634,
+    "lng": 110.3535102
+  },
+  {
+    "id": "osm-120419163",
+    "name": "SMA Negeri 4 Yogyakarta",
+    "category": "school",
+    "lat": -7.7721577,
+    "lng": 110.3626791
+  },
+  {
+    "id": "osm-120423691",
+    "name": "SMA 11 Yogyakarta",
+    "category": "school",
+    "lat": -7.7775923,
+    "lng": 110.368547
+  },
+  {
+    "id": "osm-120432359",
+    "name": "SD Pangudi Luhur",
+    "category": "school",
+    "lat": -7.8025274,
+    "lng": 110.3655403
+  },
+  {
+    "id": "osm-120440983",
+    "name": "MAN 1 Yogyakarta",
+    "category": "school",
+    "lat": -7.7763341,
+    "lng": 110.3736009
+  },
+  {
+    "id": "osm-120689427",
+    "name": "SD Muhammadiyah Gendeng",
+    "category": "school",
+    "lat": -7.7924451,
+    "lng": 110.3890745
+  },
+  {
+    "id": "osm-120715818",
+    "name": "SDN Baciro",
+    "category": "school",
+    "lat": -7.7940406,
+    "lng": 110.3842123
+  },
+  {
+    "id": "osm-120716565",
+    "name": "SD Marsudirini",
+    "category": "school",
+    "lat": -7.8023483,
+    "lng": 110.3686637
+  },
+  {
+    "id": "osm-120717725",
+    "name": "TK Mater Dei",
+    "category": "school",
+    "lat": -7.8023266,
+    "lng": 110.3690065
+  },
+  {
+    "id": "osm-120718008",
+    "name": "Rumah Sakit Khusus Puri Nirmala",
+    "category": "hospital",
+    "lat": -7.8008879,
+    "lng": 110.3769107
+  },
+  {
+    "id": "osm-120774929",
+    "name": "RS Jogja",
+    "category": "hospital",
+    "lat": -7.8258561,
+    "lng": 110.3782841
+  },
+  {
+    "id": "osm-121121869",
+    "name": "Pasar Kranggan",
+    "category": "marketplace",
+    "lat": -7.782537,
+    "lng": 110.3657099
+  },
+  {
+    "id": "osm-121173690",
+    "name": "Pasar Demangan",
+    "category": "marketplace",
+    "lat": -7.7810601,
+    "lng": 110.3885507
+  },
+  {
+    "id": "osm-121242055",
+    "name": "Yayasan Sang Timur",
+    "category": "school",
+    "lat": -7.8144304,
+    "lng": 110.3841575
+  },
+  {
+    "id": "osm-121242170",
+    "name": "Gedung Taman Siswa",
+    "category": "school",
+    "lat": -7.8054352,
+    "lng": 110.3783071
+  },
+  {
+    "id": "osm-121244165",
+    "name": "SMA N 7 Yogyakarta",
+    "category": "school",
+    "lat": -7.8143046,
+    "lng": 110.358478
+  },
+  {
+    "id": "osm-121520340",
+    "name": "Pasar Pingit",
+    "category": "marketplace",
+    "lat": -7.7830906,
+    "lng": 110.3587633
+  },
+  {
+    "id": "osm-121642948",
+    "name": "RS PKU Muhammadiyah",
+    "category": "hospital",
+    "lat": -7.8006934,
+    "lng": 110.3624537
+  },
+  {
+    "id": "osm-121674028",
+    "name": "SMA Negeri 6 Yogyakarta",
+    "category": "school",
+    "lat": -7.7812946,
+    "lng": 110.3731921
+  },
+  {
+    "id": "osm-122142620",
+    "name": "MAN 2 Yogyakarta",
+    "category": "school",
+    "lat": -7.8005935,
+    "lng": 110.3570053
+  },
+  {
+    "id": "osm-122143667",
+    "name": "SMP Negeri 12 Yogyakarta",
+    "category": "school",
+    "lat": -7.78541,
+    "lng": 110.3602465
+  },
+  {
+    "id": "osm-122200308",
+    "name": "SMK Negeri 7",
+    "category": "school",
+    "lat": -7.7864539,
+    "lng": 110.3649017
+  },
+  {
+    "id": "osm-122828913",
+    "name": "SMP Negeri 8 Yogyakarta",
+    "category": "school",
+    "lat": -7.7820906,
+    "lng": 110.3737522
+  },
+  {
+    "id": "osm-122832941",
+    "name": "SMK BOPKRI 1 yogyakarta",
+    "category": "school",
+    "lat": -7.7764519,
+    "lng": 110.3757066
+  },
+  {
+    "id": "osm-122833097",
+    "name": "SMP BOPKRI 3",
+    "category": "school",
+    "lat": -7.7764821,
+    "lng": 110.375333
+  },
+  {
+    "id": "osm-122890307",
+    "name": "SMA Muhammadiyah 1",
+    "category": "school",
+    "lat": -7.7740908,
+    "lng": 110.3665673
+  },
+  {
+    "id": "osm-122961256",
+    "name": "SMA Muhammadiyah 7 Yogyakarta",
+    "category": "school",
+    "lat": -7.8013724,
+    "lng": 110.3513978
+  },
+  {
+    "id": "osm-122961344",
+    "name": "SMP Muhamadiyah",
+    "category": "school",
+    "lat": -7.8024905,
+    "lng": 110.3509504
+  },
+  {
+    "id": "osm-122961658",
+    "name": "Pasar Serangan",
+    "category": "marketplace",
+    "lat": -7.8007888,
+    "lng": 110.3541449
+  },
+  {
+    "id": "osm-123675214",
+    "name": "SD Negeri Widoro",
+    "category": "school",
+    "lat": -7.789783,
+    "lng": 110.3723314
+  },
+  {
+    "id": "osm-124782746",
+    "name": "SD MUH. Wirobrajan II",
+    "category": "school",
+    "lat": -7.7969012,
+    "lng": 110.3506443
+  },
+  {
+    "id": "osm-138838461",
+    "name": "SMK Perindustrian Yogyakarta",
+    "category": "school",
+    "lat": -7.7847494,
+    "lng": 110.3847141
+  },
+  {
+    "id": "osm-153837043",
+    "name": "Komplek Perguruan Muhammadiyah Purwodiningratan",
+    "category": "school",
+    "lat": -7.7995102,
+    "lng": 110.3580477
+  },
+  {
+    "id": "osm-170997557",
+    "name": "SMP Negeri 1 Yogyakarta",
+    "category": "school",
+    "lat": -7.7777962,
+    "lng": 110.3752183
+  },
+  {
+    "id": "osm-179905979",
+    "name": "SMK N 2 Yogyakarta",
+    "category": "school",
+    "lat": -7.7768084,
+    "lng": 110.3667372
+  },
+  {
+    "id": "osm-179906175",
+    "name": "SMK 3 Yogyakarta",
+    "category": "school",
+    "lat": -7.7770222,
+    "lng": 110.3658472
+  },
+  {
+    "id": "osm-188171414",
+    "name": "RS THT Dr. Pomo",
+    "category": "hospital",
+    "lat": -7.8082181,
+    "lng": 110.3685714
+  },
+  {
+    "id": "osm-216214439",
+    "name": "Pasar Legi Kotagede",
+    "category": "marketplace",
+    "lat": -7.8283664,
+    "lng": 110.3998602
+  },
+  {
+    "id": "osm-216474199",
+    "name": "SMA Santa Maria",
+    "category": "school",
+    "lat": -7.8069784,
+    "lng": 110.3708835
+  },
+  {
+    "id": "osm-226673817",
+    "name": "SMP Negeri 15 Lempuyangan",
+    "category": "school",
+    "lat": -7.7914399,
+    "lng": 110.3763129
+  },
+  {
+    "id": "osm-237312441",
+    "name": "TK Negeri 2 Yogyakarta",
+    "category": "school",
+    "lat": -7.7984046,
+    "lng": 110.383291
+  },
+  {
+    "id": "osm-241412866",
+    "name": "SMA Negeri 1 Teladan Yogyakarta",
+    "category": "school",
+    "lat": -7.8000411,
+    "lng": 110.3525797
+  },
+  {
+    "id": "osm-249526898",
+    "name": "SMP Budya Wacana Yogyakarta",
+    "category": "school",
+    "lat": -7.7969696,
+    "lng": 110.3787265
+  },
+  {
+    "id": "osm-249654499",
+    "name": "SD Negeri Tukangan",
+    "category": "school",
+    "lat": -7.7976608,
+    "lng": 110.3775763
+  },
+  {
+    "id": "osm-253273884",
+    "name": "Rumah Sakit Bethesda Lempuyangwangi",
+    "category": "hospital",
+    "lat": -7.796421,
+    "lng": 110.3730409
+  },
+  {
+    "id": "osm-253275634",
+    "name": "Sanggar Belajar Martha Putra Bausasran",
+    "category": "school",
+    "lat": -7.7951233,
+    "lng": 110.3758282
+  },
+  {
+    "id": "osm-270040187",
+    "name": "Rumah Sakit Panti Rapih",
+    "category": "hospital",
+    "lat": -7.7771827,
+    "lng": 110.3776252
+  },
+  {
+    "id": "osm-273191763",
+    "name": "Pasar Gading",
+    "category": "marketplace",
+    "lat": -7.8143344,
+    "lng": 110.3630283
+  },
+  {
+    "id": "osm-273660215",
+    "name": "Rumah Sakit Khusus Puri Nirmala",
+    "category": "hospital",
+    "lat": -7.8009235,
+    "lng": 110.3772333
+  },
+  {
+    "id": "osm-274713345",
+    "name": "SMP Muhammadiyah 4 Yogyakarta",
+    "category": "school",
+    "lat": -7.7989351,
+    "lng": 110.3798144
+  },
+  {
+    "id": "osm-277746183",
+    "name": "Pasar Bringharjo",
+    "category": "marketplace",
+    "lat": -7.7985884,
+    "lng": 110.368091
+  },
+  {
+    "id": "osm-277747754",
+    "name": "Madrasah Mu'alimin Muhammadiyah Yogyakarta",
+    "category": "school",
+    "lat": -7.8072659,
+    "lng": 110.351268
+  },
+  {
+    "id": "osm-278541124",
+    "name": "SMP Negeri 2 Yogyakarta",
+    "category": "school",
+    "lat": -7.801965,
+    "lng": 110.3680243
+  },
+  {
+    "id": "osm-279488024",
+    "name": "Pasar Prawirotaman",
+    "category": "marketplace",
+    "lat": -7.8200497,
+    "lng": 110.3684095
+  },
+  {
+    "id": "osm-283886493",
+    "name": "Teras Malioboro 1",
+    "category": "marketplace",
+    "lat": -7.798696,
+    "lng": 110.3643341
+  },
+  {
+    "id": "osm-283909562",
+    "name": "SD Netral C",
+    "category": "school",
+    "lat": -7.7928635,
+    "lng": 110.3621756
+  },
+  {
+    "id": "osm-288034257",
+    "name": "SD Negeri Tegal Panggung",
+    "category": "school",
+    "lat": -7.7949299,
+    "lng": 110.3706532
+  },
+  {
+    "id": "osm-314215802",
+    "name": "Sekolah Menengah Farmasi",
+    "category": "school",
+    "lat": -7.8029686,
+    "lng": 110.3675546
+  },
+  {
+    "id": "osm-315366355",
+    "name": "SMA Negeri 8 Yogyakarta",
+    "category": "school",
+    "lat": -7.7997461,
+    "lng": 110.3956989
+  },
+  {
+    "id": "osm-315366496",
+    "name": "SMK Negeri 5 Yogyakarta",
+    "category": "school",
+    "lat": -7.7994277,
+    "lng": 110.3951505
+  },
+  {
+    "id": "osm-316772103",
+    "name": "SD Negeri Serayu",
+    "category": "school",
+    "lat": -7.7861615,
+    "lng": 110.3752536
+  },
+  {
+    "id": "osm-319248162",
+    "name": "SMA Muhammadiyah 3 Yogyakarta",
+    "category": "school",
+    "lat": -7.8069117,
+    "lng": 110.3502797
+  },
+  {
+    "id": "osm-319259497",
+    "name": "SMP Muhammadiyah 10 Yogyakarta",
+    "category": "school",
+    "lat": -7.7799007,
+    "lng": 110.3785018
+  },
+  {
+    "id": "osm-340859168",
+    "name": "SD Eksperimental Mangunan GO",
+    "category": "school",
+    "lat": -7.7837342,
+    "lng": 110.3641056
+  },
+  {
+    "id": "osm-341598458",
+    "name": "Poltekkes Kemenkes Yogyakarta",
+    "category": "school",
+    "lat": -7.819559,
+    "lng": 110.3634676
+  },
+  {
+    "id": "osm-354282751",
+    "name": "Pasar Legi",
+    "category": "marketplace",
+    "lat": -7.809715,
+    "lng": 110.3496717
+  },
+  {
+    "id": "osm-357092405",
+    "name": "SD Sindurjan",
+    "category": "school",
+    "lat": -7.8108863,
+    "lng": 110.3507867
+  },
+  {
+    "id": "osm-358774236",
+    "name": "SD Timuran",
+    "category": "school",
+    "lat": -7.8186655,
+    "lng": 110.3684865
+  },
+  {
+    "id": "osm-361888050",
+    "name": "Klithikan Pakuncen",
+    "category": "marketplace",
+    "lat": -7.7972676,
+    "lng": 110.3533243
+  },
+  {
+    "id": "osm-362043186",
+    "name": "SMA BUDYA WACANA",
+    "category": "school",
+    "lat": -7.7788647,
+    "lng": 110.3748182
+  },
+  {
+    "id": "osm-362534776",
+    "name": "SD Negeri Bhayangkara",
+    "category": "school",
+    "lat": -7.7853445,
+    "lng": 110.3837895
+  },
+  {
+    "id": "osm-362709078",
+    "name": "Ponpes Al Barokah",
+    "category": "school",
+    "lat": -7.7709778,
+    "lng": 110.3650372
+  },
+  {
+    "id": "osm-362783961",
+    "name": "SD Negeri Petinggen",
+    "category": "school",
+    "lat": -7.7729771,
+    "lng": 110.3677412
+  },
+  {
+    "id": "osm-362876465",
+    "name": "Pasar Karangwaru",
+    "category": "marketplace",
+    "lat": -7.7727012,
+    "lng": 110.3617052
+  },
+  {
+    "id": "osm-362876467",
+    "name": "HI-LAB Laboratorium & Klinik",
+    "category": "hospital",
+    "lat": -7.7742549,
+    "lng": 110.3614028
+  },
+  {
+    "id": "osm-362901327",
+    "name": "SD Negeri Cokrokusuman",
+    "category": "school",
+    "lat": -7.7792486,
+    "lng": 110.3689366
+  },
+  {
+    "id": "osm-377998703",
+    "name": "Rumah Sakit Bethesda",
+    "category": "hospital",
+    "lat": -7.7839564,
+    "lng": 110.3773916
+  },
+  {
+    "id": "osm-384119923",
+    "name": "SMA Negeri 3 Yogyakarta",
+    "category": "school",
+    "lat": -7.7863473,
+    "lng": 110.3732673
+  },
+  {
+    "id": "osm-385407334",
+    "name": "SMA Negeri 9 Yogyakarta",
+    "category": "school",
+    "lat": -7.7813258,
+    "lng": 110.3764712
+  },
+  {
+    "id": "osm-385652776",
+    "name": "SMA Stella Duce 1",
+    "category": "school",
+    "lat": -7.7840078,
+    "lng": 110.3718909
+  },
+  {
+    "id": "osm-385653872",
+    "name": "SMAN 1 Yogyakarta 'TELADAN'",
+    "category": "school",
+    "lat": -7.799934,
+    "lng": 110.3521677
+  },
+  {
+    "id": "osm-393957308",
+    "name": "SLB-C Dharma Rena Ring Putra II",
+    "category": "school",
+    "lat": -7.8012159,
+    "lng": 110.3910203
+  },
+  {
+    "id": "osm-396468395",
+    "name": "Rumah Sakit Pratama",
+    "category": "hospital",
+    "lat": -7.8158504,
+    "lng": 110.3737144
+  },
+  {
+    "id": "osm-414612278",
+    "name": "Pasar Tamansari",
+    "category": "marketplace",
+    "lat": -7.8095776,
+    "lng": 110.3558349
+  },
+  {
+    "id": "osm-417485442",
+    "name": "Pasar Pasty",
+    "category": "marketplace",
+    "lat": -7.8250782,
+    "lng": 110.3550757
+  },
+  {
+    "id": "osm-446640777",
+    "name": "SMK Piri 1 Yogyakarta",
+    "category": "school",
+    "lat": -7.7939501,
+    "lng": 110.3829726
+  },
+  {
+    "id": "osm-463664278",
+    "name": "SMA Muhammadiyah 2 Yogyakarta",
+    "category": "school",
+    "lat": -7.79935,
+    "lng": 110.3829373
+  },
+  {
+    "id": "osm-463664282",
+    "name": "SD Muhammadiyah Sokonandi Unit 1",
+    "category": "school",
+    "lat": -7.7999026,
+    "lng": 110.3827545
+  },
+  {
+    "id": "osm-477334282",
+    "name": "Pasar Condronegaran",
+    "category": "marketplace",
+    "lat": -7.815624,
+    "lng": 110.3549204
+  },
+  {
+    "id": "osm-479423678",
+    "name": "MTS Karangkajen",
+    "category": "school",
+    "lat": -7.8216607,
+    "lng": 110.3740192
+  },
+  {
+    "id": "osm-511889439",
+    "name": "RSKIA Permata Bunda",
+    "category": "hospital",
+    "lat": -7.8206723,
+    "lng": 110.3997245
+  },
+  {
+    "id": "osm-511889458",
+    "name": "RSKIA PKU Muhammadiyah Kotagede",
+    "category": "hospital",
+    "lat": -7.8229229,
+    "lng": 110.4007525
+  },
+  {
+    "id": "osm-516589941",
+    "name": "SMP Muhammadiyah 3 Yogyakarta",
+    "category": "school",
+    "lat": -7.8027255,
+    "lng": 110.3518233
+  },
+  {
+    "id": "osm-518682416",
+    "name": "SD Negeri Surokarsan 2 Yogyakarta",
+    "category": "school",
+    "lat": -7.805756,
+    "lng": 110.3772637
+  },
+  {
+    "id": "osm-520700665",
+    "name": "SD Negeri Ngupasan",
+    "category": "school",
+    "lat": -7.7988596,
+    "lng": 110.3632108
+  },
+  {
+    "id": "osm-529958681",
+    "name": "Padepokan KHA Dahlan",
+    "category": "school",
+    "lat": -7.7827234,
+    "lng": 110.35644
+  },
+  {
+    "id": "osm-530940170",
+    "name": "MTS Ali Maksum",
+    "category": "school",
+    "lat": -7.825808,
+    "lng": 110.3601915
+  },
+  {
+    "id": "osm-530940238",
+    "name": "Bayt Tahfidz An Nafisah",
+    "category": "school",
+    "lat": -7.8252012,
+    "lng": 110.360828
+  },
+  {
+    "id": "osm-536129666",
+    "name": "SMP Ali Maksum",
+    "category": "school",
+    "lat": -7.8250815,
+    "lng": 110.3619346
+  },
+  {
+    "id": "osm-536129712",
+    "name": "Pondok Pesantren Ali Maksum Krapyak",
+    "category": "school",
+    "lat": -7.8260025,
+    "lng": 110.3616147
+  },
+  {
+    "id": "osm-536129713",
+    "name": "SMA Ali Maksum",
+    "category": "school",
+    "lat": -7.8256854,
+    "lng": 110.3611058
+  },
+  {
+    "id": "osm-536155817",
+    "name": "SD Negeri Kotagede 4",
+    "category": "school",
+    "lat": -7.8266462,
+    "lng": 110.404611
+  },
+  {
+    "id": "osm-536437685",
+    "name": "SD Negeri Dalem",
+    "category": "school",
+    "lat": -7.8333392,
+    "lng": 110.3992371
+  },
+  {
+    "id": "osm-536645857",
+    "name": "SDN Karangmulyo",
+    "category": "school",
+    "lat": -7.824201,
+    "lng": 110.3943187
+  },
+  {
+    "id": "osm-536645858",
+    "name": "SDN Karangmulyo",
+    "category": "school",
+    "lat": -7.8242624,
+    "lng": 110.3944729
+  },
+  {
+    "id": "osm-536645859",
+    "name": "Pondok Pesantren Fauzul Muslimin",
+    "category": "school",
+    "lat": -7.822952,
+    "lng": 110.3951088
+  },
+  {
+    "id": "osm-536645860",
+    "name": "Pondok Pesantren Fauzul Muslimin",
+    "category": "school",
+    "lat": -7.8231981,
+    "lng": 110.3950221
+  },
+  {
+    "id": "osm-536645861",
+    "name": "Pondok Pesantren Fauzul Muslimin",
+    "category": "school",
+    "lat": -7.8230561,
+    "lng": 110.395025
+  },
+  {
+    "id": "osm-536645862",
+    "name": "Pondok Pesantren Fauzul Muslimin",
+    "category": "school",
+    "lat": -7.8232202,
+    "lng": 110.39514
+  },
+  {
+    "id": "osm-536645871",
+    "name": "SDN Randusari",
+    "category": "school",
+    "lat": -7.8222623,
+    "lng": 110.3952479
+  },
+  {
+    "id": "osm-536645872",
+    "name": "SDN Randusari",
+    "category": "school",
+    "lat": -7.8221801,
+    "lng": 110.3950355
+  },
+  {
+    "id": "osm-536645873",
+    "name": "SDN Randusari",
+    "category": "school",
+    "lat": -7.8220903,
+    "lng": 110.39513
+  },
+  {
+    "id": "osm-536699299",
+    "name": "SMA Islam Terpadu Abu Bakar",
+    "category": "school",
+    "lat": -7.8108435,
+    "lng": 110.4012928
+  },
+  {
+    "id": "osm-537178177",
+    "name": "SMK Piri 3",
+    "category": "school",
+    "lat": -7.8143341,
+    "lng": 110.3601478
+  },
+  {
+    "id": "osm-542671969",
+    "name": "SMP Stelladuce",
+    "category": "school",
+    "lat": -7.8189205,
+    "lng": 110.3598719
+  },
+  {
+    "id": "osm-543167883",
+    "name": "SMP Stella Duce 1",
+    "category": "school",
+    "lat": -7.7930159,
+    "lng": 110.3633813
+  },
+  {
+    "id": "osm-571586849",
+    "name": "SD Negeri Ngabean Yogyakarta",
+    "category": "school",
+    "lat": -7.8014704,
+    "lng": 110.3594315
+  },
+  {
+    "id": "osm-581843901",
+    "name": "Pasar Bringharjo",
+    "category": "marketplace",
+    "lat": -7.7988318,
+    "lng": 110.3667707
+  },
+  {
+    "id": "osm-590705121",
+    "name": "SDN Demangan",
+    "category": "school",
+    "lat": -7.7862507,
+    "lng": 110.3875381
+  },
+  {
+    "id": "osm-590898633",
+    "name": "SDN Klitren",
+    "category": "school",
+    "lat": -7.7839442,
+    "lng": 110.3837066
+  },
+  {
+    "id": "osm-590906170",
+    "name": "SD Muhammadiyah Sagan",
+    "category": "school",
+    "lat": -7.7798815,
+    "lng": 110.3782127
+  },
+  {
+    "id": "osm-591452123",
+    "name": "SD Negeri 1 Jetis",
+    "category": "school",
+    "lat": -7.7785505,
+    "lng": 110.3678781
+  },
+  {
+    "id": "osm-591469249",
+    "name": "SD Negeri 1 Bangunrejo",
+    "category": "school",
+    "lat": -7.7789019,
+    "lng": 110.3578203
+  },
+  {
+    "id": "osm-591473480",
+    "name": "SMA BOPKRI 1 Yogyakarta",
+    "category": "school",
+    "lat": -7.7866768,
+    "lng": 110.3770034
+  },
+  {
+    "id": "osm-591475169",
+    "name": "Rumah Sakit Dr Soetarto",
+    "category": "hospital",
+    "lat": -7.7856307,
+    "lng": 110.3769937
+  },
+  {
+    "id": "osm-591502996",
+    "name": "SD Kristen Kalam Kudus",
+    "category": "school",
+    "lat": -7.770496,
+    "lng": 110.3573342
+  },
+  {
+    "id": "osm-591507165",
+    "name": "SDN Ungaran",
+    "category": "school",
+    "lat": -7.7867474,
+    "lng": 110.3710719
+  },
+  {
+    "id": "osm-591518423",
+    "name": "SMAN 2 Yogyakarta",
+    "category": "school",
+    "lat": -7.7783315,
+    "lng": 110.35396
+  },
+  {
+    "id": "osm-591929565",
+    "name": "SDN Gedong Tengen",
+    "category": "school",
+    "lat": -7.7924837,
+    "lng": 110.3572786
+  },
+  {
+    "id": "osm-591933049",
+    "name": "MTs. Muhammadiyah Gedong Tengen",
+    "category": "school",
+    "lat": -7.7934341,
+    "lng": 110.3616725
+  },
+  {
+    "id": "osm-591933050",
+    "name": "TK/SD Netral D",
+    "category": "school",
+    "lat": -7.7919682,
+    "lng": 110.3631717
+  },
+  {
+    "id": "osm-591938607",
+    "name": "SMP Negeri 11",
+    "category": "school",
+    "lat": -7.7929243,
+    "lng": 110.3530488
+  },
+  {
+    "id": "osm-591938608",
+    "name": "Rumah Sakit Ludira Husada Tama",
+    "category": "hospital",
+    "lat": -7.7923811,
+    "lng": 110.352903
+  },
+  {
+    "id": "osm-591946284",
+    "name": "SMK Negeri 1",
+    "category": "school",
+    "lat": -7.7942716,
+    "lng": 110.359549
+  },
+  {
+    "id": "osm-591956949",
+    "name": "SMP Negeri 3 Yogyakarta",
+    "category": "school",
+    "lat": -7.7954178,
+    "lng": 110.3645472
+  },
+  {
+    "id": "osm-591958609",
+    "name": "SMA Negeri 10 Yogyakarta",
+    "category": "school",
+    "lat": -7.7979862,
+    "lng": 110.3628343
+  },
+  {
+    "id": "osm-591979827",
+    "name": "SD Muhammadiyah Ngupasan I-II",
+    "category": "school",
+    "lat": -7.800609,
+    "lng": 110.3617837
+  },
+  {
+    "id": "osm-591992408",
+    "name": "SMP Bopkri 1 Yogyakarta",
+    "category": "school",
+    "lat": -7.7937301,
+    "lng": 110.3723014
+  },
+  {
+    "id": "osm-591992409",
+    "name": "SMK Muhammadiyah 2 Yogyakarta",
+    "category": "school",
+    "lat": -7.7931318,
+    "lng": 110.3714371
+  },
+  {
+    "id": "osm-591992410",
+    "name": "SD Negeri 01 Lempuyangan",
+    "category": "school",
+    "lat": -7.7928832,
+    "lng": 110.3720578
+  },
+  {
+    "id": "osm-591992413",
+    "name": "Pasar Lempuyangan",
+    "category": "marketplace",
+    "lat": -7.7921746,
+    "lng": 110.3730047
+  },
+  {
+    "id": "osm-592011908",
+    "name": "SD Negeri Lempuyangwangi",
+    "category": "school",
+    "lat": -7.7958273,
+    "lng": 110.372257
+  },
+  {
+    "id": "osm-592011926",
+    "name": "SMP Negeri 4 Yogyakarta",
+    "category": "school",
+    "lat": -7.7952723,
+    "lng": 110.373027
+  },
+  {
+    "id": "osm-592216378",
+    "name": "SD Kanisius Gayam 1",
+    "category": "school",
+    "lat": -7.7976081,
+    "lng": 110.3780488
+  },
+  {
+    "id": "osm-592223798",
+    "name": "SMA Gajah Mada",
+    "category": "school",
+    "lat": -7.8027417,
+    "lng": 110.3669838
+  },
+  {
+    "id": "osm-592223803",
+    "name": "SLB Negeri 2 Yogyakarta",
+    "category": "school",
+    "lat": -7.8018525,
+    "lng": 110.3705256
+  },
+  {
+    "id": "osm-592223804",
+    "name": "SMP Bopkri 2 Yogyakarta",
+    "category": "school",
+    "lat": -7.8018777,
+    "lng": 110.3721802
+  },
+  {
+    "id": "osm-592230838",
+    "name": "Tk & SD Kanisius Wirobrajan",
+    "category": "school",
+    "lat": -7.8001905,
+    "lng": 110.3522486
+  },
+  {
+    "id": "osm-592289709",
+    "name": "SD Negeri Keputran 2",
+    "category": "school",
+    "lat": -7.8088233,
+    "lng": 110.3583795
+  },
+  {
+    "id": "osm-592289725",
+    "name": "Pasar Ngasem",
+    "category": "marketplace",
+    "lat": -7.8083156,
+    "lng": 110.3599117
+  },
+  {
+    "id": "osm-592298556",
+    "name": "SMP Negeri 16 Yogyakarta",
+    "category": "school",
+    "lat": -7.8113012,
+    "lng": 110.3592803
+  },
+  {
+    "id": "osm-592302562",
+    "name": "SMP Muhammadiyah 5 Yogyakarta",
+    "category": "school",
+    "lat": -7.8119819,
+    "lng": 110.3604848
+  },
+  {
+    "id": "osm-592315252",
+    "name": "SD Negeri Keputran A",
+    "category": "school",
+    "lat": -7.8130875,
+    "lng": 110.3625238
+  },
+  {
+    "id": "osm-593643093",
+    "name": "SD Negeri Kotagede 1",
+    "category": "school",
+    "lat": -7.8236671,
+    "lng": 110.4007168
+  },
+  {
+    "id": "osm-594073286",
+    "name": "SD Negeri Inti Glagah",
+    "category": "school",
+    "lat": -7.8051976,
+    "lng": 110.3906212
+  },
+  {
+    "id": "osm-594073302",
+    "name": "SMA Negeri 5 Puspanegara Yogyakarta",
+    "category": "school",
+    "lat": -7.8220643,
+    "lng": 110.3993047
+  },
+  {
+    "id": "osm-594073304",
+    "name": "SMP Muhammadiyah 7 Yogyakarta",
+    "category": "school",
+    "lat": -7.8305425,
+    "lng": 110.4042493
+  },
+  {
+    "id": "osm-594073317",
+    "name": "SD Muhammadiyah Nitikan 2",
+    "category": "school",
+    "lat": -7.8276165,
+    "lng": 110.3843942
+  },
+  {
+    "id": "osm-594177078",
+    "name": "SMP Negeri 10 Yogyakarta",
+    "category": "school",
+    "lat": -7.8249168,
+    "lng": 110.3759151
+  },
+  {
+    "id": "osm-594177107",
+    "name": "SDN Pujokusuman 1",
+    "category": "school",
+    "lat": -7.8144099,
+    "lng": 110.3698079
+  },
+  {
+    "id": "osm-594177113",
+    "name": "SMK Ibu Pawiyatan Tamansiswa",
+    "category": "school",
+    "lat": -7.8048894,
+    "lng": 110.3801194
+  },
+  {
+    "id": "osm-594422005",
+    "name": "SMA BIAS Bina Anak Sholeh",
+    "category": "school",
+    "lat": -7.8269448,
+    "lng": 110.377573
+  },
+  {
+    "id": "osm-594422042",
+    "name": "SD Negeri Wirosaban",
+    "category": "school",
+    "lat": -7.8290737,
+    "lng": 110.3783676
+  },
+  {
+    "id": "osm-594552882",
+    "name": "SD Negeri Kintelan 1",
+    "category": "school",
+    "lat": -7.8120546,
+    "lng": 110.3691878
+  },
+  {
+    "id": "osm-594552920",
+    "name": "SD Muhammadiyah Kleco 2",
+    "category": "school",
+    "lat": -7.8225779,
+    "lng": 110.39822
+  },
+  {
+    "id": "osm-594553042",
+    "name": "SMP Perintis",
+    "category": "school",
+    "lat": -7.8278082,
+    "lng": 110.376731
+  },
+  {
+    "id": "osm-594553092",
+    "name": "Pondok Pesantren Muhammadiyah Darussalam",
+    "category": "school",
+    "lat": -7.8172832,
+    "lng": 110.3754169
+  },
+  {
+    "id": "osm-594852354",
+    "name": "Rumah Sakit Khusus Bedah Soedirman",
+    "category": "hospital",
+    "lat": -7.8006439,
+    "lng": 110.3975316
+  },
+  {
+    "id": "osm-594852396",
+    "name": "Pasar Sentul",
+    "category": "marketplace",
+    "lat": -7.8020718,
+    "lng": 110.3774771
+  },
+  {
+    "id": "osm-594852399",
+    "name": "SD Negeri 1 Pandeyan",
+    "category": "school",
+    "lat": -7.8130374,
+    "lng": 110.3836915
+  },
+  {
+    "id": "osm-594852413",
+    "name": "Rumah Sakit Bhakti Ibu",
+    "category": "hospital",
+    "lat": -7.81485,
+    "lng": 110.3816394
+  },
+  {
+    "id": "osm-594852427",
+    "name": "SMA Muhammadiyah 4 Yogyakarta",
+    "category": "school",
+    "lat": -7.827198,
+    "lng": 110.3974529
+  },
+  {
+    "id": "osm-594852456",
+    "name": "SMK Perkebunan MM 52 Yogyakarta",
+    "category": "school",
+    "lat": -7.7996481,
+    "lng": 110.3935523
+  },
+  {
+    "id": "osm-594852464",
+    "name": "Pasar Gedong Kuning",
+    "category": "marketplace",
+    "lat": -7.8034352,
+    "lng": 110.3989701
+  },
+  {
+    "id": "osm-594985430",
+    "name": "SMP Piri 2 Yogyakarta",
+    "category": "school",
+    "lat": -7.822794,
+    "lng": 110.3832397
+  },
+  {
+    "id": "osm-594985451",
+    "name": "SD Negeri Rejowinangun 1",
+    "category": "school",
+    "lat": -7.8140201,
+    "lng": 110.3953615
+  },
+  {
+    "id": "osm-594985454",
+    "name": "SD Negeri Balirejo",
+    "category": "school",
+    "lat": -7.79667,
+    "lng": 110.3947667
+  },
+  {
+    "id": "osm-594985534",
+    "name": "SLB Negeri Pembina Yogyakarta",
+    "category": "school",
+    "lat": -7.8334146,
+    "lng": 110.3899101
+  },
+  {
+    "id": "osm-594985595",
+    "name": "Pasar Telo Karangkajen",
+    "category": "marketplace",
+    "lat": -7.8244204,
+    "lng": 110.3732137
+  },
+  {
+    "id": "osm-594985597",
+    "name": "SD Muhammadiyah Karangkajen",
+    "category": "school",
+    "lat": -7.8244338,
+    "lng": 110.3728921
+  },
+  {
+    "id": "osm-595380129",
+    "name": "SMA Taman Madya Ibu Pawiyatan Tamansiswa",
+    "category": "school",
+    "lat": -7.805464,
+    "lng": 110.3802834
+  },
+  {
+    "id": "osm-595380140",
+    "name": "SMK Negeri 4 Yogyakarta",
+    "category": "school",
+    "lat": -7.8214378,
+    "lng": 110.3850353
+  },
+  {
+    "id": "osm-595380149",
+    "name": "SD Negeri Pakel",
+    "category": "school",
+    "lat": -7.8242982,
+    "lng": 110.3759783
+  },
+  {
+    "id": "osm-595380153",
+    "name": "SD Negeri Panembahan",
+    "category": "school",
+    "lat": -7.8089831,
+    "lng": 110.3680768
+  },
+  {
+    "id": "osm-595383423",
+    "name": "SMK SMTI Yogyakarta",
+    "category": "school",
+    "lat": -7.8013238,
+    "lng": 110.3809979
+  },
+  {
+    "id": "osm-597341813",
+    "name": "Pasar Pathuk",
+    "category": "marketplace",
+    "lat": -7.7966827,
+    "lng": 110.3624423
+  },
+  {
+    "id": "osm-610083259",
+    "name": "SD Negeri Suryodiningratan I",
+    "category": "school",
+    "lat": -7.8186365,
+    "lng": 110.3568108
+  },
+  {
+    "id": "osm-610084360",
+    "name": "SMP gotong Royong",
+    "category": "school",
+    "lat": -7.7846506,
+    "lng": 110.3553184
+  },
+  {
+    "id": "osm-610105640",
+    "name": "SD Negeri Gedongkuning",
+    "category": "school",
+    "lat": -7.8029216,
+    "lng": 110.4015731
+  },
+  {
+    "id": "osm-610111890",
+    "name": "SMP Muhammadiyah 6 Yogyakarta",
+    "category": "school",
+    "lat": -7.7952457,
+    "lng": 110.3575915
+  },
+  {
+    "id": "osm-610114203",
+    "name": "SMA Pangudi Luhur Yogyakarta",
+    "category": "school",
+    "lat": -7.8023343,
+    "lng": 110.3663859
+  },
+  {
+    "id": "osm-610123776",
+    "name": "MI Negeri 1 Yogyakarta",
+    "category": "school",
+    "lat": -7.8281466,
+    "lng": 110.3876067
+  },
+  {
+    "id": "osm-610350413",
+    "name": "Pasar Musikanan",
+    "category": "marketplace",
+    "lat": -7.8063221,
+    "lng": 110.3658032
+  },
+  {
+    "id": "osm-610365674",
+    "name": "Pasar Parkir Ngabean",
+    "category": "marketplace",
+    "lat": -7.8036755,
+    "lng": 110.3560585
+  },
+  {
+    "id": "osm-610371884",
+    "name": "RS THT Dr. Pomo",
+    "category": "hospital",
+    "lat": -7.8082065,
+    "lng": 110.3686369
+  },
+  {
+    "id": "osm-610371885",
+    "name": "RS THT Dr. Pomo",
+    "category": "hospital",
+    "lat": -7.8085315,
+    "lng": 110.3685613
+  },
+  {
+    "id": "osm-610371886",
+    "name": "RS THT Dr. Pomo",
+    "category": "hospital",
+    "lat": -7.8084262,
+    "lng": 110.3685245
+  },
+  {
+    "id": "osm-610435366",
+    "name": "Pasar Giwangan",
+    "category": "marketplace",
+    "lat": -7.8317337,
+    "lng": 110.3890706
+  },
+  {
+    "id": "osm-610445226",
+    "name": "SMK Marsudi Luhur 1 Yogyakarta",
+    "category": "school",
+    "lat": -7.8040855,
+    "lng": 110.3730777
+  },
+  {
+    "id": "osm-610464045",
+    "name": "SD Tamansiswa Jetis",
+    "category": "school",
+    "lat": -7.7807141,
+    "lng": 110.3678008
+  },
+  {
+    "id": "osm-610464198",
+    "name": "SMP Taman Dewasa Jetis Yogyakarta",
+    "category": "school",
+    "lat": -7.7801965,
+    "lng": 110.3671516
+  },
+  {
+    "id": "osm-610666540",
+    "name": "RSKIA 45",
+    "category": "hospital",
+    "lat": -7.8075214,
+    "lng": 110.3460733
+  },
+  {
+    "id": "osm-610683063",
+    "name": "Paket Margorejo",
+    "category": "marketplace",
+    "lat": -7.7961871,
+    "lng": 110.3628945
+  },
+  {
+    "id": "osm-610687467",
+    "name": "SD Muhamamdiyah Pringgokusuman",
+    "category": "school",
+    "lat": -7.7906239,
+    "lng": 110.3578542
+  },
+  {
+    "id": "osm-610693914",
+    "name": "SMP Muhammadiyah 8 Yogyakarta",
+    "category": "school",
+    "lat": -7.7981766,
+    "lng": 110.3900619
+  },
+  {
+    "id": "osm-610753751",
+    "name": "Pasar Sanggrahan Baciro",
+    "category": "marketplace",
+    "lat": -7.7939049,
+    "lng": 110.384384
+  },
+  {
+    "id": "osm-610973880",
+    "name": "SD Negeri Tamansari II Yogyakarta",
+    "category": "school",
+    "lat": -7.8063455,
+    "lng": 110.3469354
+  },
+  {
+    "id": "osm-610982775",
+    "name": "SMP Pangudi Luhur 1",
+    "category": "school",
+    "lat": -7.7945383,
+    "lng": 110.3897015
+  },
+  {
+    "id": "osm-610993548",
+    "name": "SMP Bopkri 5 Yogyakarta Sekolah Terpadu Bopkri Wirobrajan",
+    "category": "school",
+    "lat": -7.8066278,
+    "lng": 110.3511127
+  },
+  {
+    "id": "osm-610993613",
+    "name": "Rumah Sakit Ibu dan Anak Fajar",
+    "category": "hospital",
+    "lat": -7.8085976,
+    "lng": 110.3499098
+  },
+  {
+    "id": "osm-611014952",
+    "name": "SMA Santo Thomas",
+    "category": "school",
+    "lat": -7.7891333,
+    "lng": 110.3969354
+  },
+  {
+    "id": "osm-611385675",
+    "name": "SMP Taman Dewasa Kumendaman",
+    "category": "school",
+    "lat": -7.8152769,
+    "lng": 110.3615143
+  },
+  {
+    "id": "osm-611471751",
+    "name": "SD Muhammadiyah Wirobrajan 3",
+    "category": "school",
+    "lat": -7.8025074,
+    "lng": 110.3498443
+  },
+  {
+    "id": "osm-613182595",
+    "name": "Muhammadiyah 9 Junior High School",
+    "category": "school",
+    "lat": -7.8241282,
+    "lng": 110.3740867
+  },
+  {
+    "id": "osm-613425525",
+    "name": "RSKIA Rachmi",
+    "category": "hospital",
+    "lat": -7.8036201,
+    "lng": 110.3565178
+  },
+  {
+    "id": "osm-614636926",
+    "name": "SD Negeri Kotagede III",
+    "category": "school",
+    "lat": -7.820877,
+    "lng": 110.3863894
+  },
+  {
+    "id": "osm-615059586",
+    "name": "PP Al Munawwir Komplek Nurussalam",
+    "category": "school",
+    "lat": -7.8243174,
+    "lng": 110.3607874
+  },
+  {
+    "id": "osm-615664757",
+    "name": "SD Negeri Bumijo",
+    "category": "school",
+    "lat": -7.7856908,
+    "lng": 110.3609499
+  },
+  {
+    "id": "osm-615669077",
+    "name": "SMA UII Yogyakarta",
+    "category": "school",
+    "lat": -7.8144354,
+    "lng": 110.3756441
+  },
+  {
+    "id": "osm-616030019",
+    "name": "SD Pingit",
+    "category": "school",
+    "lat": -7.7842001,
+    "lng": 110.3552016
+  },
+  {
+    "id": "osm-616063605",
+    "name": "Pujokusuman",
+    "category": "marketplace",
+    "lat": -7.8139815,
+    "lng": 110.3692909
+  },
+  {
+    "id": "osm-616072054",
+    "name": "Pasar Talok",
+    "category": "marketplace",
+    "lat": -7.7890999,
+    "lng": 110.390607
+  },
+  {
+    "id": "osm-616082200",
+    "name": "RS Happy Land",
+    "category": "hospital",
+    "lat": -7.7939635,
+    "lng": 110.3921868
+  },
+  {
+    "id": "osm-616208953",
+    "name": "Pasar Ngasem",
+    "category": "marketplace",
+    "lat": -7.8079577,
+    "lng": 110.3602526
+  },
+  {
+    "id": "osm-616211547",
+    "name": "RSI Hidayatullah",
+    "category": "hospital",
+    "lat": -7.8150629,
+    "lng": 110.3877007
+  },
+  {
+    "id": "osm-616211647",
+    "name": "Pasar Sore Malioboro",
+    "category": "marketplace",
+    "lat": -7.7992953,
+    "lng": 110.3651356
+  },
+  {
+    "id": "osm-620576272",
+    "name": "SD Tegal Mulyo",
+    "category": "school",
+    "lat": -7.7953435,
+    "lng": 110.3502929
+  },
+  {
+    "id": "osm-626073018",
+    "name": "SD Negeri Gedongkiwo",
+    "category": "school",
+    "lat": -7.8189969,
+    "lng": 110.3534355
+  },
+  {
+    "id": "osm-632172049",
+    "name": "SMPIT Abu Bakar Yogyakarta",
+    "category": "school",
+    "lat": -7.814592,
+    "lng": 110.3883354
+  },
+  {
+    "id": "osm-778464130",
+    "name": "RS Mata Dr. Yap",
+    "category": "hospital",
+    "lat": -7.7805759,
+    "lng": 110.3744372
+  },
+  {
+    "id": "osm-930054785",
+    "name": "SMP Negeri 14 Yogyakarta",
+    "category": "school",
+    "lat": -7.7861682,
+    "lng": 110.3594156
+  },
+  {
+    "id": "osm-998411846",
+    "name": "Pasar Demangan",
+    "category": "marketplace",
+    "lat": -7.7810617,
+    "lng": 110.388553
+  },
+  {
+    "id": "osm-1050539156",
+    "name": "SMP Muhammadiyah 2 Yogyakarta",
+    "category": "school",
+    "lat": -7.7992855,
+    "lng": 110.3823661
+  },
+  {
+    "id": "osm-1050540821",
+    "name": "SMK Koperasi Yogyakarta",
+    "category": "school",
+    "lat": -7.8002995,
+    "lng": 110.3827534
+  },
+  {
+    "id": "osm-1050545449",
+    "name": "SD Muhammadiyah Sokonandi Unit 2",
+    "category": "school",
+    "lat": -7.8005355,
+    "lng": 110.3795157
+  },
+  {
+    "id": "osm-1060445403",
+    "name": "SMK Negeri 6 Yogyakarta",
+    "category": "school",
+    "lat": -7.7979637,
+    "lng": 110.3826361
+  },
+  {
+    "id": "osm-1084138629",
+    "name": "SMPIT Abu Bakar Fullday School Yogyakarta",
+    "category": "school",
+    "lat": -7.7995858,
+    "lng": 110.3870821
+  },
+  {
+    "id": "osm-1084363423",
+    "name": "SMPIT Masjid Syuhada",
+    "category": "school",
+    "lat": -7.7861148,
+    "lng": 110.3698104
+  },
+  {
+    "id": "osm-1084363431",
+    "name": "SD Masjid Syuhada",
+    "category": "school",
+    "lat": -7.7867555,
+    "lng": 110.3688625
+  },
+  {
+    "id": "osm-1086011408",
+    "name": "SD Muhammadiyah Kauman",
+    "category": "school",
+    "lat": -7.8043437,
+    "lng": 110.3621008
+  },
+  {
+    "id": "osm-1089636735",
+    "name": "SD Negeri Kepturan I",
+    "category": "school",
+    "lat": -7.8054673,
+    "lng": 110.3651837
+  },
+  {
+    "id": "osm-1092365726",
+    "name": "SD Muhammadiyah Sapen",
+    "category": "school",
+    "lat": -7.7860524,
+    "lng": 110.3924356
+  },
+  {
+    "id": "osm-1094489513",
+    "name": "SMPIT Abu Bakar Yogyakarta",
+    "category": "school",
+    "lat": -7.8145733,
+    "lng": 110.388465
+  },
+  {
+    "id": "osm-1150674304",
+    "name": "SMK Muhammadiyah 3 Yogyakarta",
+    "category": "school",
+    "lat": -7.8225582,
+    "lng": 110.3893738
+  },
+  {
+    "id": "osm-1317058910",
+    "name": "SMP Negeri 9 Yogyakarta",
+    "category": "school",
+    "lat": -7.8200447,
+    "lng": 110.3976549
+  },
+  {
+    "id": "osm-1317059405",
+    "name": "SD Negeri Rejowinangun 3",
+    "category": "school",
+    "lat": -7.8176567,
+    "lng": 110.3948888
+  },
+  {
+    "id": "osm-1360866353",
+    "name": "SD Muhammadiyah Bausasran",
+    "category": "school",
+    "lat": -7.7949072,
+    "lng": 110.3763399
+  },
+  {
+    "id": "osm-1388767662",
+    "name": "SLB Negeri 1 Yogyakarta",
+    "category": "school",
+    "lat": -7.8023834,
+    "lng": 110.3731096
+  },
+  {
+    "id": "osm-1388767664",
+    "name": "SMK Marsudi Luhur I Yogyakarta dan SMK Marsudi Luhur IIYogyakarta",
+    "category": "school",
+    "lat": -7.8038879,
+    "lng": 110.3730816
+  },
+  {
+    "id": "osm-1390717368",
+    "name": "Stroke Center RS Bethesda",
+    "category": "hospital",
+    "lat": -7.7835059,
+    "lng": 110.37851
+  },
+  {
+    "id": "osm-1416077805",
+    "name": "Teras Malioboro 2",
+    "category": "marketplace",
+    "lat": -7.791571,
+    "lng": 110.3668076
+  },
+  {
+    "id": "osm-1457204966",
+    "name": "TK & SD BOPKRI Gondolayu",
+    "category": "school",
+    "lat": -7.7835311,
+    "lng": 110.3690166
+  },
+  {
+    "id": "osm-7081189",
+    "name": "SMP Negeri 5 Yogyakarta",
+    "category": "school",
+    "lat": -7.7868506,
+    "lng": 110.3759146
+  },
+  {
+    "id": "osm-8472305",
+    "name": "SMK 3 Yogyakarta",
+    "category": "school",
+    "lat": -7.7770498,
+    "lng": 110.3664839
+  },
+  {
+    "id": "osm-8472407",
+    "name": "SD Negeri Jetisharjo",
+    "category": "school",
+    "lat": -7.7765675,
+    "lng": 110.3682549
+  },
+  {
+    "id": "osm-8477983",
+    "name": "SMK Bopkri 2 Yogyakarta",
+    "category": "school",
+    "lat": -7.8029684,
+    "lng": 110.3736402
+  },
+  {
+    "id": "osm-8518702",
+    "name": "SD Tarakanita Bumijo",
+    "category": "school",
+    "lat": -7.7857471,
+    "lng": 110.3613375
+  },
+  {
+    "id": "osm-14433670",
+    "name": "SMA Stella Duce 2",
+    "category": "school",
+    "lat": -7.7955147,
+    "lng": 110.3786931
+  },
+  {
+    "id": "osm-15649670",
+    "name": "SD Negeri Sosrowijayan",
+    "category": "school",
+    "lat": -7.7918776,
+    "lng": 110.3647215
+  }
+]

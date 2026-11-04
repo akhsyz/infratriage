@@ -1,0 +1,8181 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-11-04T03:03:51Z",
+    "timestamp_areas_base": "2026-11-03T21:23:17Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "node",
+  "id": 1351062359,
+  "lat": -7.7811119,
+  "lon": 110.3541384,
+  "tags": {
+    "amenity": "school",
+    "education": "school",
+    "name": "BLPT"
+  }
+},
+{
+  "type": "node",
+  "id": 1359366165,
+  "lat": -7.7782549,
+  "lon": 110.3669962,
+  "tags": {
+    "amenity": "school",
+    "name": "SMP 6 Yogyakarta"
+  }
+},
+{
+  "type": "node",
+  "id": 1360184919,
+  "lat": -7.7830823,
+  "lon": 110.3589830,
+  "tags": {
+    "amenity": "marketplace"
+  }
+},
+{
+  "type": "node",
+  "id": 1360407136,
+  "lat": -7.7968209,
+  "lon": 110.3908466,
+  "tags": {
+    "amenity": "school",
+    "name": "SDIT Luqman Al-Hakim"
+  }
+},
+{
+  "type": "node",
+  "id": 2295350796,
+  "lat": -7.8234357,
+  "lon": 110.3662397,
+  "tags": {
+    "amenity": "school",
+    "building": "yes",
+    "name": "Muhammadiyah Jogokariyan Elementary"
+  }
+},
+{
+  "type": "node",
+  "id": 2295352323,
+  "lat": -7.8240966,
+  "lon": 110.3741890,
+  "tags": {
+    "amenity": "school",
+    "building": "yes",
+    "name": "Muhammadiyah 9 Junior High School"
+  }
+},
+{
+  "type": "node",
+  "id": 2564065096,
+  "lat": -7.8170713,
+  "lon": 110.3553115,
+  "tags": {
+    "amenity": "school",
+    "name": "TK Pedagogia"
+  }
+},
+{
+  "type": "node",
+  "id": 2631261031,
+  "lat": -7.7851411,
+  "lon": 110.3570675,
+  "tags": {
+    "addr:city": "Yogyakarta",
+    "addr:housenumber": "705",
+    "addr:postcode": "55231",
+    "addr:street": "Jalan Tentara Rakyat Mataram",
+    "amenity": "hospital",
+    "emergency": "no",
+    "healthcare": "hospital",
+    "name": "Klinik Adhiwarga PKBI DIY",
+    "phone": "+62 274 586767",
+    "source": "http://www.pkbi-diy.info",
+    "website": "http://www.pkbi-diy.info"
+  }
+},
+{
+  "type": "node",
+  "id": 2796609791,
+  "lat": -7.8256924,
+  "lon": 110.3958748,
+  "tags": {
+    "addr:city": "Kotagede",
+    "addr:housenumber": "KG II/982",
+    "addr:postcode": "55172",
+    "addr:street": "Jalan Raden Ronggo",
+    "amenity": "school",
+    "name": "Pondok Pesantren Nurul Ummah Kotagede",
+    "phone": "+62 274 374469",
+    "religion": "muslim",
+    "website": "https://nurulummah.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 3229499839,
+  "lat": -7.7799717,
+  "lon": 110.3786041,
+  "tags": {
+    "amenity": "school",
+    "name": "SD Muhammadiyah 10"
+  }
+},
+{
+  "type": "node",
+  "id": 3315788117,
+  "lat": -7.7708746,
+  "lon": 110.3621669,
+  "tags": {
+    "amenity": "school",
+    "name": "SD Muhammadiyah Karangwaru",
+    "opening_hours": "Mo-Sa 07:00-14:00",
+    "operator": "Muhammadiyah",
+    "operator:type": "religious",
+    "operator:wikidata": "Q1951917",
+    "religion": "muslim"
+  }
+},
+{
+  "type": "node",
+  "id": 3585123761,
+  "lat": -7.8161615,
+  "lon": 110.3583363,
+  "tags": {
+    "amenity": "school",
+    "name": "SD Negeri Suryodiningratan 2"
+  }
+},
+{
+  "type": "node",
+  "id": 3585153779,
+  "lat": -7.8192476,
+  "lon": 110.3617452,
+  "tags": {
+    "amenity": "school",
+    "name": "SD Negeri Minggiran"
+  }
+},
+{
+  "type": "node",
+  "id": 3630343677,
+  "lat": -7.8139952,
+  "lon": 110.3609135,
+  "tags": {
+    "amenity": "school",
+    "name": "SD Kanisius Kumendaman"
+  }
+},
+{
+  "type": "node",
+  "id": 3630420098,
+  "lat": -7.8057905,
+  "lon": 110.3598259,
+  "tags": {
+    "amenity": "school",
+    "name": "SD Kraton (Keputran III)"
+  }
+},
+{
+  "type": "node",
+  "id": 3630609634,
+  "lat": -7.8101272,
+  "lon": 110.3532201,
+  "tags": {
+    "amenity": "school",
+    "name": "SD Suryowijayan"
+  }
+},
+{
+  "type": "node",
+  "id": 4697613089,
+  "lat": -7.8052750,
+  "lon": 110.3782507,
+  "tags": {
+    "amenity": "school"
+  }
+},
+{
+  "type": "node",
+  "id": 4799168221,
+  "lat": -7.7921516,
+  "lon": 110.3526404,
+  "tags": {
+    "amenity": "school",
+    "name": "TK Buyung"
+  }
+},
+{
+  "type": "node",
+  "id": 4799168321,
+  "lat": -7.7913761,
+  "lon": 110.3506801,
+  "tags": {
+    "addr:street": "Jalan Wiratama",
+    "amenity": "school",
+    "name": "SMP Negeri 7"
+  }
+},
+{
+  "type": "node",
+  "id": 4799168325,
+  "lat": -7.7827855,
+  "lon": 110.3771737,
+  "tags": {
+    "addr:street": "Jalan Jenderal Sudirman",
+    "amenity": "school",
+    "name": "SMA Bopkri 2",
+    "operator:type": "religious",
+    "school:type_idn": "sma",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4799168421,
+  "lat": -7.8004993,
+  "lon": 110.3520864,
+  "tags": {
+    "amenity": "school",
+    "name": "TK-SD Kanisius Wirobrajan"
+  }
+},
+{
+  "type": "node",
+  "id": 4824441424,
+  "lat": -7.7696366,
+  "lon": 110.3548258,
+  "tags": {
+    "amenity": "school",
+    "name": "Smp kalam kudus"
+  }
+},
+{
+  "type": "node",
+  "id": 6284253996,
+  "lat": -7.8222383,
+  "lon": 110.3686163,
+  "tags": {
+    "amenity": "marketplace",
+    "diet:vegan": "only",
+    "name": "Milas",
+    "opening_hours": "Mo-Su 07:00-12:00"
+  }
+},
+{
+  "type": "node",
+  "id": 7331641864,
+  "lat": -7.7833994,
+  "lon": 110.3908845,
+  "tags": {
+    "addr:city": "yogyakarta",
+    "addr:full": "Jalan Laksda Adisucipto No.32-34, Demangan, Kec. Gondokusuman, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55221",
+    "amenity": "hospital",
+    "healthcare": "hospital",
+    "name": "Rumah Sakit Siloam Yogyakarta",
+    "operator:type": "private",
+    "source": "survey",
+    "website": "https://www.siloamhospitals.com/",
+    "wikidata": "Q19731706",
+    "wikimedia_commons": "Category:Siloam Hospitals",
+    "wikipedia": "id:Rumah Sakit Siloam"
+  }
+},
+{
+  "type": "node",
+  "id": 7690360879,
+  "lat": -7.7922649,
+  "lon": 110.3797011,
+  "tags": {
+    "addr:housenumber": "no. 1",
+    "addr:street": "Jalan Tunjung",
+    "amenity": "school",
+    "email": "info@aviaterratraining.com",
+    "name": "Aviaterra Aviation Training",
+    "website": "https://www.aviaterratraining.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 8422933296,
+  "lat": -7.7987878,
+  "lon": 110.3667794,
+  "tags": {
+    "addr:city": "Yogyakarta",
+    "addr:postcode": "55122",
+    "amenity": "marketplace",
+    "name": "Pasar Bringharjo",
+    "opening_hours": "24/7",
+    "phone": "+62 82298888370",
+    "website": "https://www.instagram.com/beringharjo.co.id/"
+  }
+},
+{
+  "type": "node",
+  "id": 9191255911,
+  "lat": -7.7897160,
+  "lon": 110.3705311,
+  "tags": {
+    "amenity": "school",
+    "name": "SD Kanisius Kotabaru 1",
+    "operator:type": "religious",
+    "school:type_idn": "sd",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 9833403898,
+  "lat": -7.7993820,
+  "lon": 110.3663389,
+  "tags": {
+    "amenity": "marketplace",
+    "name": "Pasar Senthir"
+  }
+},
+{
+  "type": "node",
+  "id": 10254071409,
+  "lat": -7.8314581,
+  "lon": 110.3898902,
+  "tags": {
+    "addr:housenumber": "210",
+    "addr:postcode": "55163",
+    "addr:street": "Jalan Imogiri Timur",
+    "amenity": "school",
+    "name": "SMK Berbudi"
+  }
+},
+{
+  "type": "node",
+  "id": 11202312637,
+  "lat": -7.8063049,
+  "lon": 110.4001576,
+  "tags": {
+    "addr:street": "Jalan Semangu",
+    "amenity": "school",
+    "name": "Best School Yogyakarta",
+    "phone": "+62 822-2596-6922"
+  }
+},
+{
+  "type": "node",
+  "id": 12383448160,
+  "lat": -7.8200291,
+  "lon": 110.3682201,
+  "tags": {
+    "amenity": "marketplace",
+    "name": "Pasar Prawirotaman"
+  }
+},
+{
+  "type": "node",
+  "id": 12846795692,
+  "lat": -7.7856374,
+  "lon": 110.3769516,
+  "tags": {
+    "amenity": "hospital",
+    "healthcare": "hospital",
+    "name": "DKT",
+    "operator": "Gilang",
+    "operator:type": "public"
+  }
+},
+{
+  "type": "node",
+  "id": 13018336645,
+  "lat": -7.8208667,
+  "lon": 110.3862857,
+  "tags": {
+    "amenity": "school",
+    "grades": "1-6",
+    "name": "SD Ngeri Kotagede III",
+    "religion": "muslim"
+  }
+},
+{
+  "type": "node",
+  "id": 13361882923,
+  "lat": -7.7956623,
+  "lon": 110.3613258,
+  "tags": {
+    "amenity": "marketplace",
+    "name": "Pasar Senen"
+  }
+},
+{
+  "type": "node",
+  "id": 13849114497,
+  "lat": -7.7715889,
+  "lon": 110.3595422,
+  "tags": {
+    "addr:city": "Kota Yogyakarta",
+    "addr:district": "Sleman",
+    "addr:province": "Yogyakarta",
+    "addr:street": "Jalan Jambon",
+    "addr:subdistrict": "Mlati",
+    "amenity": "hospital",
+    "healthcare": "hospital",
+    "name": "Blackbox Gym",
+    "operator": "Rafi",
+    "operator:type": "public"
+  }
+},
+{
+  "type": "node",
+  "id": 14088947101,
+  "lat": -7.8094760,
+  "lon": 110.3654870,
+  "tags": {
+    "amenity": "marketplace",
+    "marketplace:authority": "officially_managed",
+    "marketplace:type": "agricultural",
+    "name": "Pasar Kluwih",
+    "opening_hours": "06:00-12:00"
+  }
+},
+{
+  "type": "way",
+  "id": 120382810,
+  "center": {
+    "lat": -7.7812118,
+    "lon": 110.3721269
+  },
+  "nodes": [
+    1349935668,
+    1349935665,
+    1349939446,
+    1349935670,
+    1349935666,
+    1349935667,
+    1349935668
+  ],
+  "tags": {
+    "access:roof": "no",
+    "addr:city": "Yogyakarta",
+    "addr:full": "Jalan Cornelis Simanjuntak No 21",
+    "addr:street": "Jalan Cornelis Simanjuntak",
+    "amenity": "marketplace",
+    "building": "marketplace",
+    "building:condition": "good",
+    "building:floor": "ceramics",
+    "building:levels": "1",
+    "building:material": "brick",
+    "building:roof": "tile",
+    "building:structure": "confined_masonry",
+    "capacity:persons": "100-250",
+    "marketplace:authority": "officially_managed",
+    "marketplace:type": "mixed",
+    "name": "Pasar Terban",
+    "opening_hours": "04:00-10:00",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 120394105,
+  "center": {
+    "lat": -7.7774634,
+    "lon": 110.3535102
+  },
+  "nodes": [
+    1350044042,
+    1350044055,
+    1350044052,
+    1350044046,
+    1350044038,
+    1350044056,
+    1350044054,
+    1350044048,
+    1350044041,
+    1350044059,
+    1350044042
+  ],
+  "tags": {
+    "amenity": "school",
+    "building": "yes",
+    "building:levels": "2",
+    "building:roof": "tile",
+    "building:structure": "reinforced_masonry",
+    "building:use": "education",
+    "building:walls": "brick",
+    "name": "SD N 1 Bener"
+  }
+},
+{
+  "type": "way",
+  "id": 120419163,
+  "center": {
+    "lat": -7.7721577,
+    "lon": 110.3626791
+  },
+  "nodes": [
+    5647271151,
+    5150224833,
+    1350269811,
+    5647271182,
+    5647271183,
+    1350269787,
+    1350269829,
+    1350269803,
+    1350269790,
+    1350269837,
+    1350269781,
+    1350269819,
+    1350269826,
+    1350269806,
+    1350269807,
+    5647271151
+  ],
+  "tags": {
+    "access:roof": "no",
+    "addr:full": "Jalan Magelang, Karangwaru Lor No.7",
+    "amenity": "school",
+    "name": "SMA Negeri 4 Yogyakarta",
+    "operator:type": "government",
+    "school:type_idn": "sma",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 120423691,
+  "center": {
+    "lat": -7.7775923,
+    "lon": 110.3685470
+  },
+  "nodes": [
+    1350310689,
+    13710652580,
+    1350310703,
+    13710652581,
+    1350310705,
+    1350310721,
+    10733936944,
+    1350310704,
+    1350310683,
+    1350310685,
+    1350310725,
+    1350310689
+  ],
+  "tags": {
+    "amenity": "school",
+    "check_date": "2025-07-24",
+    "name": "SMA 11 Yogyakarta"
+  }
+},
+{
+  "type": "way",
+  "id": 120432359,
+  "center": {
+    "lat": -7.8025274,
+    "lon": 110.3655403
+  },
+  "nodes": [
+    5778441105,
+    5778441108,
+    5778441107,
+    5778441106,
+    1350377752,
+    1350377761,
+    1350377765,
+    1350377763,
+    5778441105
+  ],
+  "tags": {
+    "amenity": "school",
+    "building": "yes",
+    "building:levels": "2",
+    "building:roof": "tile",
+    "building:structure": "reinforced_masonry",
+    "building:use": "education",
+    "building:walls": "brick",
+    "name": "SD Pangudi Luhur"
+  }
+},
+{
+  "type": "way",
+  "id": 120440983,
+  "center": {
+    "lat": -7.7763341,
+    "lon": 110.3736009
+  },
+  "nodes": [
+    1350449647,
+    13398102167,
+    13398102150,
+    13398102168,
+    5625922936,
+    13398102151,
+    13398102152,
+    3868678151,
+    12640488114,
+    8314024606,
+    12640488115,
+    12640488174,
+    12640481699,
+    3868678137,
+    13398102163,
+    1350449663,
+    1350449647
+  ],
+  "tags": {
+    "addr:city": "Yogyakarta",
+    "addr:street": "Jalan Cornelis Simanjuntak",
+    "amenity": "school",
+    "name": "MAN 1 Yogyakarta",
+    "operator:type": "government",
+    "religion": "muslim"
+  }
+},
+{
+  "type": "way",
+  "id": 120689427,
+  "center": {
+    "lat": -7.7924451,
+    "lon": 110.3890745
+  },
+  "nodes": [
+    1352606438,
+    1352606439,
+    1352606441,
+    10680042825,
+    10680042824,
+    10680042826,
+    10680042827,
+    10680042828,
+    1352606444,
+    1352606446,
+    1352606445,
+    1352606442,
+    1352606438
+  ],
+  "tags": {
+    "amenity": "school",
+    "building": "yes",
+    "building:levels": "2",
+    "building:name": "SD Muhammadiyah Gendeng",
+    "building:roof": "tile",
+    "building:structure": "reinforced_masonry",
+    "building:use": "education",
+    "building:walls": "brick",
+    "name": "SD Muhammadiyah Gendeng"
+  }
+},
+{
+  "type": "way",
+  "id": 120715818,
+  "center": {
+    "lat": -7.7940406,
+    "lon": 110.3842123
+  },
+  "nodes": [
+    1352791136,
+    1352791140,
+    1352791142,
+    5783746088,
+    5783746090,
+    5783746091,
+    5783746092,
+    5783746094,
+    1352791136
+  ],
+  "tags": {
+    "amenity": "school",
+    "building": "yes",
+    "building:levels": "2",
+    "building:name": "SDN Baciro",
+    "building:roof": "tile",
+    "building:structure": "reinforced_masonry",
+    "building:use": "education",
+    "building:walls": "brick",
+    "height": "20.0",
+    "name": "SDN Baciro"
+  }
+},
+{
+  "type": "way",
+  "id": 120716565,
+  "center": {
+    "lat": -7.8023483,
+    "lon": 110.3686637
+  },
+  "nodes": [
+    1352796989,
+    1352796990,
+    1352796991,
+    1352796992,
+    1352796994,
+    1352796993,
+    1352796989
+  ],
+  "tags": {
+    "amenity": "school",
+    "building": "yes",
+    "building:levels": "2",
+    "building:name": "SD Marsudirini",
+    "building:roof": "tile",
+    "building:structure": "reinforced_masonry",
+    "building:use": "education",
+    "building:walls": "brick",
+    "name": "SD Marsudirini"
+  }
+},
+{
+  "type": "way",
+  "id": 120717725,
+  "center": {
+    "lat": -7.8023266,
+    "lon": 110.3690065
+  },
+  "nodes": [
+    1352809399,
+    1352809401,
+    1352809405,
+    1352809404,
+    1352809403,
+    1352809402,
+    1352809399
+  ],
+  "tags": {
+    "amenity": "school",
+    "building": "yes",
+    "building:levels": "1",
+    "building:name": "TK Mater Dei",
+    "building:roof": "tile",
+    "building:structure": "confined_masonry",
+    "building:use": "education",
+    "building:walls": "brick",
+    "name": "TK Mater Dei"
+  }
+},
+{
+  "type": "way",
+  "id": 120718008,
+  "center": {
+    "lat": -7.8008879,
+    "lon": 110.3769107
+  },
+  "nodes": [
+    1352812353,
+    1352812354,
+    1352812360,
+    1352812359,
+    1352812375,
+    1352812372,
+    1352812377,
+    1352812379,
+    1352812367,
+    1352812366,
+    1352812353
+  ],
+  "tags": {
+    "access:roof": "no",
+    "addr:full": "Jalan Jayaningprangan",
+    "amenity": "hospital",
+    "building": "hospital",
+    "building:condition": "good",
+    "building:floor": "ceramics",
+    "building:levels": "1",
+    "building:material": "brick",
+    "building:roof": "tile",
+    "building:structure": "confined_masonry",
+    "building:use": "medical",
+    "building:walls": "brick",
+    "capacity:persons": "50-100",
+    "name": "Rumah Sakit Khusus Puri Nirmala",
+    "operator:type": "private",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 120774929,
+  "center": {
+    "lat": -7.8258561,
+    "lon": 110.3782841
+  },
+  "nodes": [
+    1353438903,
+    5671318097,
+    1353438901,
+    1353438912,
+    5671318096,
+    5671318091,
+    5671318095,
+    1353438917,
+    5671318093,
+    1353438919,
+    1353438903
+  ],
+  "tags": {
+    "addr:city": "Yogyakarta",
+    "addr:full": "Jalan Wirosaban No.1",
+    "addr:housenumber": "01",
+    "addr:postcode": "55162",
+    "addr:street": "Jalan Pangeran Wirosobo",
+    "amenity": "hospital",
+    "description": "Rumah Sakit Wirosaban",
+    "name": "RS Jogja",
+    "operator:type": "government",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 121121869,
+  "center": {
+    "lat": -7.7825370,
+    "lon": 110.3657099
+  },
+  "nodes": [
+    1356712887,
+    11171736424,
+    13361876906,
+    13361876905,
+    1356712884,
+    13361876904,
+    13361876903,
+    13361876902,
+    11171736422,
+    11171736423,
+    1356712881,
+    13361864200,
+    13361876901,
+    1356712879,
+    13361876922,
+    13361876921,
+    13361876920,
+    13361876919,
+    13361876918,
+    13361876917,
+    13361876916,
+    13361876915,
+    13361876914,
+    13361876913,
+    13361876910,
+    13361876912,
+    13361876911,
+    13361876909,
+    13361876908,
+    13361876907,
+    1356712887
+  ],
+  "tags": {
+    "access:roof": "yes",
+    "addr:full": "Jalan Diponegoro",
+    "amenity": "marketplace",
+    "building": "marketplace",
+    "building:condition": "good",
+    "building:floor": "cement",
+    "building:levels": "2",
+    "building:material": "brick",
+    "building:roof": "tile",
+    "building:structure": "confined_masonry",
+    "building:use": "shop",
+    "building:walls": "brick",
+    "capacity:persons": "100-250",
+    "marketplace:authority": "officially_managed",
+    "marketplace:type": "mixed",
+    "name": "Pasar Kranggan",
+    "name:en": "Kranggan Traditional Market",
+    "opening_hours": "05:00-20:00",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 121173690,
+  "center": {
+    "lat": -7.7810601,
+    "lon": 110.3885507
+  },
+  "nodes": [
+    1357116488,
+    10724891204,
+    1357116482,
+    5824989204,
+    5824989203,
+    1357116486,
+    1357116490,
+    5824989201,
+    5824989202,
+    10724891203,
+    1357116488
+  ],
+  "tags": {
+    "access:roof": "no",
+    "addr:city": "Yogyakarta",
+    "addr:full": "Demangan, Gondokusuman Yogyakarta",
+    "addr:housenumber": "28",
+    "addr:street": "Jalan Affandi",
+    "amenity": "marketplace",
+    "building": "marketplace",
+    "building:condition": "good",
+    "building:floor": "ceramics",
+    "building:levels": "1",
+    "building:material": "brick",
+    "building:roof": "tile",
+    "building:structure": "confined_masonry",
+    "capacity:persons": "100-250",
+    "marketplace:authority": "officially_managed",
+    "marketplace:type": "mixed",
+    "name": "Pasar Demangan",
+    "name:en": "Demangan Market",
+    "opening_hours": "04:00-14:00",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 121242055,
+  "center": {
+    "lat": -7.8144304,
+    "lon": 110.3841575
+  },
+  "nodes": [
+    1357814158,
+    2898607548,
+    1357814159,
+    2898607553,
+    2898607552,
+    2898607551,
+    3662976095,
+    2898607549,
+    2898607550,
+    1357814162,
+    10293573485,
+    1357814158
+  ],
+  "tags": {
+    "amenity": "school",
+    "barrier": "wall",
+    "building:roof": "tile",
+    "building:structure": "reinforced_masonry",
+    "building:use": "education",
+    "building:walls": "brick",
+    "name": "Yayasan Sang Timur"
+  }
+},
+{
+  "type": "way",
+  "id": 121242170,
+  "center": {
+    "lat": -7.8054352,
+    "lon": 110.3783071
+  },
+  "nodes": [
+    1357817661,
+    5665799647,
+    5665799648,
+    5665799646,
+    1357817671,
+    5665799644,
+    5665799645,
+    1357817665,
+    5665799641,
+    5665799642,
+    1357817663,
+    5665799643,
+    1357817661
+  ],
+  "tags": {
+    "access:roof": "no",
+    "addr:full": "jl tamansiswa",
+    "amenity": "school",
+    "building": "school",
+    "building:condition": "good",
+    "building:levels": "1",
+    "building:material": "wood",
+    "building:roof": "tile",
+    "building:structure": "wood_frame",
+    "building:use": "multipurpose",
+    "capacity:persons": "50-100",
+    "name": "Gedung Taman Siswa",
+    "operator:type": "private",
+    "school:type_idn": "smp",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 121244165,
+  "center": {
+    "lat": -7.8143046,
+    "lon": 110.3584780
+  },
+  "nodes": [
+    1357847650,
+    1661701610,
+    1661701609,
+    1661701616,
+    1357847651,
+    1661701618,
+    1661701620,
+    1661701621,
+    1661701622,
+    1357847652,
+    1661701625,
+    5778686613,
+    1357847653,
+    1661701615,
+    1661701612,
+    1661701611,
+    1661701607,
+    1357847650
+  ],
+  "tags": {
+    "addr:street": "Jalan M.T. Haryono",
+    "amenity": "school",
+    "building:roof": "tile",
+    "building:structure": "reinforced_masonry",
+    "building:use": "education",
+    "building:walls": "brick",
+    "name": "SMA N 7 Yogyakarta"
+  }
+},
+{
+  "type": "way",
+  "id": 121520340,
+  "center": {
+    "lat": -7.7830906,
+    "lon": 110.3587633
+  },
+  "nodes": [
+    1360184951,
+    1360185029,
+    1360184975,
+    1360185002,
+    1360185040,
+    5824798548,
+    5824798549,
+    5824798550,
+    1360184951
+  ],
+  "tags": {
+    "access:roof": "no",
+    "addr:city": "Yogyakarta",
+    "addr:full": "Jalan Kyai Mojo, Yogyakarta",
+    "addr:postcode": "55231",
+    "addr:street": "Jalan Kyai Mojo Nomor 9",
+    "amenity": "marketplace",
+    "building": "marketplace",
+    "building:condition": "good",
+    "building:floor": "ceramics",
+    "building:levels": "2",
+    "building:material": "brick",
+    "building:roof": "tile",
+    "building:structure": "confined_masonry",
+    "building:use": "Market",
+    "building:walls": "brick",
+    "capacity:persons": "100-250",
+    "layer": "-1",
+    "location": "surface",
+    "marketplace:authority": "officially_managed",
+    "marketplace:type": "mixed",
+    "name": "Pasar Pingit",
+    "opening_hours": "Mo-Su 06:00-17:00",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 121642948,
+  "center": {
+    "lat": -7.8006934,
+    "lon": 110.3624537
+  },
+  "nodes": [
+    1361079122,
+    1361079121,
+    9999564761,
+    9999564763,
+    1361079117,
+    13431664231,
+    1361079120,
+    13431664234,
+    1361079122
+  ],
+  "tags": {
+    "addr:full": "Jalan K.H. Ahmad Dahlan No. 20",
+    "amenity": "hospital",
+    "healthcare": "hospital",
+    "healthcare:speciality": "general",
+    "name": "RS PKU Muhammadiyah",
+    "website": "https://rspkujogja.com/"
+  }
+},
+{
+  "type": "way",
+  "id": 121674028,
+  "center": {
+    "lat": -7.7812946,
+    "lon": 110.3731921
+  },
+  "nodes": [
+    1361313644,
+    5330340387,
+    5330340390,
+    5330340389,
+    5330340388,
+    1361314521,
+    1361315055,
+    1361313161,
+    1361313644
+  ],
+  "tags": {
+    "addr:full": "Jalan C Simanjuntak No. 2",
+    "amenity": "school",
+    "name": "SMA Negeri 6 Yogyakarta",
+    "operator:type": "government",
+    "school:type_idn": "sma",
+    "source": "survey",
+    "toilets:wheelchair": "no",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "way",
+  "id": 122142620,
+  "center": {
+    "lat": -7.8005935,
+    "lon": 110.3570053
+  },
+  "nodes": [
+    1365580773,
+    1664661860,
+    1365580771,
+    1365580769,
+    10725071224,
+    10725071223,
+    1664661857,
+    1365580770,
+    1365580773
+  ],
+  "tags": {
+    "amenity": "school",
+    "building": "yes",
+    "building:levels": "2",
+    "building:roof": "tile",
+    "building:structure": "reinforced_masonry",
+    "building:use": "education",
+    "building:walls": "brick",
+    "check_date": "2025-07-17",
+    "name": "MAN 2 Yogyakarta"
+  }
+},
+{
+  "type": "way",
+  "id": 122143667,
+  "center": {
+    "lat": -7.7854100,
+    "lon": 110.3602465
+  },
+  "nodes": [
+    1365590505,
+    1365590515,
+    1365590501,
+    3214836040,
+    3214836034,
+    1365590513,
+    1365590503,
+    1365590505
+  ],
+  "tags": {
+    "amenity": "school",
+    "building:levels": "2",
+    "building:roof": "tile",
+    "building:structure": "reinforced_masonry",
+    "building:use": "education",
+    "building:walls": "brick",
+    "name": "SMP Negeri 12 Yogyakarta"
+  }
+},
+{
+  "type": "way",
+  "id": 122200308,
+  "center": {
+    "lat": -7.7864539,
+    "lon": 110.3649017
+  },
+  "nodes": [
+    1366256984,
+    12251702563,
+    3214822111,
+    10731871745,
+    10731871744,
+    10731871743,
+    10731871742,
+    10731871741,
+    1366256986,
+    1366256987,
+    1366256984
+  ],
+  "tags": {
+    "addr:full": "Jalan Gowongan Kidul",
+    "amenity": "school",
+    "name": "SMK Negeri 7",
+    "operator:type": "government",
+    "school:type_idn": "sma",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 122828913,
+  "center": {
+    "lat": -7.7820906,
+    "lon": 110.3737522
+  },
+  "nodes": [
+    1371379832,
+    1371379833,
+    14091018257,
+    14091018260,
+    3889864211,
+    3889864226,
+    1371379830,
+    1371379832
+  ],
+  "tags": {
+    "addr:city": "Yogyakarta",
+    "addr:full": "Jalan Prof. Dr. Kahar Muzakir 2",
+    "addr:street": "Jalan Kahar Muzakir",
+    "amenity": "school",
+    "education": "school",
+    "name": "SMP Negeri 8 Yogyakarta",
+    "operator:type": "government",
+    "school:type_idn": "smp",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 122832941,
+  "center": {
+    "lat": -7.7764519,
+    "lon": 110.3757066
+  },
+  "nodes": [
+    1371403373,
+    1371403370,
+    1371403369,
+    1371402256,
+    1371403367,
+    13398102121,
+    13398102120,
+    13398102119,
+    5650851730,
+    1371403373
+  ],
+  "tags": {
+    "addr:full": "Jalan Terban",
+    "addr:housenumber": "6",
+    "addr:street": "Jalan Terban",
+    "amenity": "school",
+    "education": "school",
+    "name": "SMK BOPKRI 1 yogyakarta",
+    "operator:type": "private",
+    "religion": "christian",
+    "school:type_idn": "sma",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 122833097,
+  "center": {
+    "lat": -7.7764821,
+    "lon": 110.3753330
+  },
+  "nodes": [
+    1371404706,
+    1371404704,
+    1371404703,
+    1371404702,
+    1371404706
+  ],
+  "tags": {
+    "addr:full": "Jalan Terban",
+    "addr:street": "Jalan Terban",
+    "amenity": "school",
+    "education": "school",
+    "name": "SMP BOPKRI 3",
+    "operator:type": "private",
+    "religion": "christian",
+    "school:type_idn": "smp",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 122890307,
+  "center": {
+    "lat": -7.7740908,
+    "lon": 110.3665673
+  },
+  "nodes": [
+    1371783995,
+    1371783996,
+    1371783993,
+    5651226861,
+    1371783994,
+    5651226862,
+    1371783997,
+    1371783998,
+    1371783995
+  ],
+  "tags": {
+    "addr:full": "Jalan Gotong Royong 2",
+    "amenity": "school",
+    "name": "SMA Muhammadiyah 1",
+    "operator": "private"
+  }
+},
+{
+  "type": "way",
+  "id": 122961256,
+  "center": {
+    "lat": -7.8013724,
+    "lon": 110.3513978
+  },
+  "nodes": [
+    1372421760,
+    1372421763,
+    1372421766,
+    1372421761,
+    1372421760
+  ],
+  "tags": {
+    "access:roof": "yes",
+    "addr:full": "Jalan Kapten Piere Tendean No. 41",
+    "amenity": "school",
+    "building": "school",
+    "building:condition": "good",
+    "building:levels": "2",
+    "building:material": "brick",
+    "building:roof": "tile",
+    "building:structure": "confined_masonry",
+    "building:use": "education",
+    "building:walls": "brick",
+    "capacity:persons": "250-500",
+    "name": "SMA Muhammadiyah 7 Yogyakarta",
+    "operator:type": "private",
+    "school:type_idn": "sma",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 122961344,
+  "center": {
+    "lat": -7.8024905,
+    "lon": 110.3509504
+  },
+  "nodes": [
+    1372423131,
+    1372423138,
+    1372423135,
+    1372423133,
+    1372423131
+  ],
+  "tags": {
+    "amenity": "school",
+    "building": "yes",
+    "building:levels": "2",
+    "building:roof": "tile",
+    "building:structure": "reinforced_masonry",
+    "building:use": "education",
+    "building:walls": "brick",
+    "name": "SMP Muhamadiyah"
+  }
+},
+{
+  "type": "way",
+  "id": 122961658,
+  "center": {
+    "lat": -7.8007888,
+    "lon": 110.3541449
+  },
+  "nodes": [
+    1372426555,
+    1372426553,
+    1372426551,
+    1372426533,
+    1372426535,
+    1372426538,
+    1372426542,
+    1372426545,
+    1372426555
+  ],
+  "tags": {
+    "access:roof": "no",
+    "addr:full": "Jalan Prof. dr. Ki Amri Yahya No. 6",
+    "amenity": "marketplace",
+    "building": "marketplace",
+    "building:condition": "good",
+    "building:floor": "ceramics",
+    "building:levels": "1",
+    "building:material": "brick",
+    "building:roof": "tile",
+    "building:structure": "confined_masonry",
+    "capacity:persons": ">500",
+    "marketplace:authority": "officially_managed",
+    "marketplace:type": "mixed",
+    "name": "Pasar Serangan",
+    "opening_hours": "03:00-13:00",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 123675214,
+  "center": {
+    "lat": -7.7897830,
+    "lon": 110.3723314
+  },
+  "nodes": [
+    1378241486,
+    1378241485,
+    1378241487,
+    10765150932,
+    1378241486
+  ],
+  "tags": {
+    "access:roof": "no",
+    "addr:full": "Jalan Tukangan",
+    "amenity": "school",
+    "building": "school",
+    "building:condition": "good",
+    "building:levels": "2",
+    "building:material": "concrete",
+    "building:roof": "tile",
+    "building:structure": "confined_masonry",
+    "capacity:persons": "50-100",
+    "name": "SD Negeri Widoro",
+    "operator:type": "government",
+    "school:type_idn": "sd",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 124782746,
+  "center": {
+    "lat": -7.7969012,
+    "lon": 110.3506443
+  },
+  "nodes": [
+    1387698247,
+    1387698248,
+    1387698250,
+    1387698249,
+    1387698247
+  ],
+  "tags": {
+    "amenity": "school",
+    "building": "yes",
+    "building:levels": "3",
+    "building:roof": "tile",
+    "building:structure": "confined_masonry",
+    "building:use": "education",
+    "building:walls": "brick",
+    "name": "SD MUH. Wirobrajan II"
+  }
+},
+{
+  "type": "way",
+  "id": 138838461,
+  "center": {
+    "lat": -7.7847494,
+    "lon": 110.3847141
+  },
+  "nodes": [
+    1522354996,
+    1522354994,
+    1522355029,
+    1522355028,
+    1522355005,
+    1522355000,
+    1522354996
+  ],
+  "tags": {
+    "addr:housenumber": "26",
+    "addr:street": "Jalan Kalisahak",
+    "amenity": "school",
+    "name": "SMK Perindustrian Yogyakarta",
+    "operator:type": "government",
+    "school:type_idn": "sma"
+  }
+},
+{
+  "type": "way",
+  "id": 153837043,
+  "center": {
+    "lat": -7.7995102,
+    "lon": 110.3580477
+  },
+  "nodes": [
+    1664661823,
+    1664661853,
+    1664661846,
+    1664661854,
+    1664661850,
+    1664661832,
+    1664661831,
+    1664661829,
+    1664661825,
+    1664661819,
+    1664661823
+  ],
+  "tags": {
+    "addr:city": "Yogyakarta",
+    "addr:housenumber": "Ng 2 No 902",
+    "addr:street": "Jalan Purwodingratan",
+    "amenity": "school",
+    "grades": "0-12",
+    "name": "Komplek Perguruan Muhammadiyah Purwodiningratan",
+    "operator": "Muhammadiyah",
+    "operator:type": "religious",
+    "religion": "muslim"
+  }
+},
+{
+  "type": "way",
+  "id": 170997557,
+  "center": {
+    "lat": -7.7777962,
+    "lon": 110.3752183
+  },
+  "nodes": [
+    3889862373,
+    3889862374,
+    3889862372,
+    1821021431,
+    3889862375,
+    3889862376,
+    1821021436,
+    3889862377,
+    10732217202,
+    1821021433,
+    10732253206,
+    10732253205,
+    10732217204,
+    10732217203,
+    3889862373
+  ],
+  "tags": {
+    "addr:city": "Yogyakarta",
+    "addr:housenumber": "29",
+    "addr:postcode": "552977",
+    "addr:street": "Jalan Teuku Cik Ditiro",
+    "amenity": "school",
+    "grades": "7-9",
+    "name": "SMP Negeri 1 Yogyakarta",
+    "operator": "Pemerintah Kota Yogyakarta",
+    "operator:type": "government",
+    "school:type_idn": "smp",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 179905979,
+  "center": {
+    "lat": -7.7768084,
+    "lon": 110.3667372
+  },
+  "nodes": [
+    1903431880,
+    1903431857,
+    1903431886,
+    1903431877,
+    1903431893,
+    1903431864,
+    1903431869,
+    1903431888,
+    1903431862,
+    1903431871,
+    1903431879,
+    1903431875,
+    1903431856,
+    1903431880
+  ],
+  "tags": {
+    "addr:housename": "SMK N 2 Yogyakarta",
+    "amenity": "school",
+    "name": "SMK N 2 Yogyakarta"
+  }
+},
+{
+  "type": "way",
+  "id": 179906175,
+  "center": {
+    "lat": -7.7770222,
+    "lon": 110.3658472
+  },
+  "nodes": [
+    1903433205,
+    1353661660,
+    1903431874,
+    1903431889,
+    1353661681,
+    1353661671,
+    1353661692,
+    1903433204,
+    1903433206,
+    1903433205
+  ],
+  "tags": {
+    "amenity": "school",
+    "name": "SMK 3 Yogyakarta"
+  }
+},
+{
+  "type": "way",
+  "id": 188171414,
+  "center": {
+    "lat": -7.8082181,
+    "lon": 110.3685714
+  },
+  "nodes": [
+    5780739682,
+    5780739700,
+    5780739699,
+    5780739698,
+    5780739681,
+    5780739683,
+    1987962916,
+    5780739685,
+    5780739697,
+    5780739696,
+    5780739694,
+    5780739695,
+    5780739684,
+    1987962928,
+    1987962877,
+    5780739682
+  ],
+  "tags": {
+    "amenity": "hospital",
+    "building": "yes",
+    "name": "RS THT Dr. Pomo"
+  }
+},
+{
+  "type": "way",
+  "id": 216214439,
+  "center": {
+    "lat": -7.8283664,
+    "lon": 110.3998602
+  },
+  "nodes": [
+    2255664166,
+    2255664167,
+    2255664168,
+    2255664169,
+    2255664170,
+    2255664171,
+    2255664172,
+    2255664173,
+    2255664174,
+    2255664175,
+    2255664176,
+    2255664177,
+    2255664178,
+    2255664179,
+    2255664180,
+    5669126355,
+    2255664166
+  ],
+  "tags": {
+    "access:roof": "yes",
+    "addr:full": "Jl. Mentaok Raya, Purbayan, Kotagede, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55173",
+    "alt_name": "Pasar Kotagede",
+    "amenity": "marketplace",
+    "building": "marketplace",
+    "building:condition": "good",
+    "building:levels": "1",
+    "building:material": "brick",
+    "building:roof": "tile",
+    "building:structure": "confined_masonry",
+    "capacity:persons": "250-500",
+    "marketplace:authority": "officially_managed",
+    "marketplace:type": "mixed",
+    "name": "Pasar Legi Kotagede",
+    "name:en": "Kotagede Market",
+    "opening_hours": "24/7",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 216474199,
+  "center": {
+    "lat": -7.8069784,
+    "lon": 110.3708835
+  },
+  "nodes": [
+    2258115916,
+    2258115945,
+    2258115948,
+    2258115905,
+    2258115934,
+    2258115900,
+    2258115936,
+    2258115952,
+    2258115907,
+    2258115939,
+    2258115898,
+    2258115931,
+    2258115932,
+    2258115918,
+    2258115924,
+    2258115912,
+    2258115916
+  ],
+  "tags": {
+    "addr:full": "jl.ireda",
+    "amenity": "school",
+    "name": "SMA Santa Maria",
+    "operator:type": "private",
+    "school:type_idn": "sma",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 226673817,
+  "center": {
+    "lat": -7.7914399,
+    "lon": 110.3763129
+  },
+  "nodes": [
+    2354418425,
+    2354418422,
+    2354418450,
+    2354418402,
+    2354418459,
+    2354418418,
+    2354418425
+  ],
+  "tags": {
+    "amenity": "school",
+    "name": "SMP Negeri 15 Lempuyangan",
+    "operator": "Dinas Pendidikan Kota Yogyakarta",
+    "operator:type": "public",
+    "school:type_idn": "smp",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "way",
+  "id": 237312441,
+  "center": {
+    "lat": -7.7984046,
+    "lon": 110.3832910
+  },
+  "nodes": [
+    2452334666,
+    2452334667,
+    2452334668,
+    8682383548,
+    2452334669,
+    9742951764,
+    2452334666
+  ],
+  "tags": {
+    "amenity": "school",
+    "name": "TK Negeri 2 Yogyakarta"
+  }
+},
+{
+  "type": "way",
+  "id": 241412866,
+  "center": {
+    "lat": -7.8000411,
+    "lon": 110.3525797
+  },
+  "nodes": [
+    2490595088,
+    2490595089,
+    2490595090,
+    2490595091,
+    2490595092,
+    2490595093,
+    2490595088
+  ],
+  "tags": {
+    "addr:city": "Yogyakarta",
+    "addr:full": "Jalan HOS Cokroaminoto No. 10, Yogyakarta",
+    "addr:housenumber": "10",
+    "addr:street": "Jalan HOS Cokroaminoto",
+    "amenity": "school",
+    "name": "SMA Negeri 1 Teladan Yogyakarta",
+    "operator:type": "government",
+    "school:type_idn": "sma",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 249526898,
+  "center": {
+    "lat": -7.7969696,
+    "lon": 110.3787265
+  },
+  "nodes": [
+    2561168439,
+    2561168438,
+    2561168442,
+    2561168443,
+    2561168447,
+    2561168446,
+    2561168439
+  ],
+  "tags": {
+    "amenity": "school",
+    "building": "yes",
+    "description": "bangunan",
+    "height": "15.0",
+    "name": "SMP Budya Wacana Yogyakarta"
+  }
+},
+{
+  "type": "way",
+  "id": 249528311,
+  "center": {
+    "lat": -7.7917812,
+    "lon": 110.3763190
+  },
+  "nodes": [
+    2561182403,
+    2561182405,
+    2561182406,
+    7871749835,
+    7871749823,
+    7871749825,
+    7871749832,
+    2561182404,
+    2561182403
+  ],
+  "tags": {
+    "amenity": "school",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 249654499,
+  "center": {
+    "lat": -7.7976608,
+    "lon": 110.3775763
+  },
+  "nodes": [
+    2562332933,
+    2562332945,
+    2562332942,
+    2562332929,
+    2562332933
+  ],
+  "tags": {
+    "access:roof": "no",
+    "addr:full": "Jalan Suryopranoto No. 59, Gunungketur, Pakualaman, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55111",
+    "amenity": "school",
+    "building": "school",
+    "building:condition": "good",
+    "building:levels": "2",
+    "building:material": "concrete",
+    "building:roof": "tile",
+    "building:structure": "confined_masonry",
+    "capacity:persons": "250-500",
+    "name": "SD Negeri Tukangan",
+    "operator:type": "government",
+    "school:type_idn": "sd",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 249655853,
+  "center": {
+    "lat": -7.7914991,
+    "lon": 110.3767278
+  },
+  "nodes": [
+    2562369263,
+    2562369264,
+    2562369272,
+    2562369273,
+    2562369288,
+    2562369287,
+    2562369293,
+    2562369292,
+    2562369285,
+    2562369286,
+    2562369278,
+    2562369275,
+    2562369263
+  ],
+  "tags": {
+    "amenity": "school",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 249656819,
+  "center": {
+    "lat": -7.7911949,
+    "lon": 110.3761894
+  },
+  "nodes": [
+    2562370402,
+    2562370410,
+    2562370409,
+    2562370401,
+    2562370402
+  ],
+  "tags": {
+    "amenity": "school",
+    "building": "school"
+  }
+},
+{
+  "type": "way",
+  "id": 249656822,
+  "center": {
+    "lat": -7.7912521,
+    "lon": 110.3758675
+  },
+  "nodes": [
+    2562370407,
+    2562370408,
+    2562370412,
+    2562370411,
+    2562370407
+  ],
+  "tags": {
+    "amenity": "school",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 249656823,
+  "center": {
+    "lat": -7.7915734,
+    "lon": 110.3758837
+  },
+  "nodes": [
+    2562370419,
+    2562370420,
+    2562370422,
+    2562370421,
+    2562370419
+  ],
+  "tags": {
+    "amenity": "school",
+    "building": "school"
+  }
+},
+{
+  "type": "way",
+  "id": 253273884,
+  "center": {
+    "lat": -7.7964210,
+    "lon": 110.3730409
+  },
+  "nodes": [
+    2592255104,
+    2592255108,
+    5652751116,
+    5652751322,
+    5652751120,
+    5652751117,
+    5652751118,
+    5652751119,
+    5652751321,
+    2592255105,
+    2592255104
+  ],
+  "tags": {
+    "addr:city": "Yogyakarta",
+    "addr:full": "Jalan Hayam Wuruk No. 6 Yogyakarta",
+    "addr:street": "Jalan Hayam Wuruk",
+    "amenity": "hospital",
+    "check_date": "2025-07-15",
+    "healthcare": "hospital",
+    "name": "Rumah Sakit Bethesda Lempuyangwangi",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 253275634,
+  "center": {
+    "lat": -7.7951233,
+    "lon": 110.3758282
+  },
+  "nodes": [
+    2592279629,
+    2592279632,
+    2592279631,
+    2592279630,
+    2592279629
+  ],
+  "tags": {
+    "amenity": "school",
+    "building": "yes",
+    "name": "Sanggar Belajar Martha Putra Bausasran"
+  }
+},
+{
+  "type": "way",
+  "id": 270040187,
+  "center": {
+    "lat": -7.7771827,
+    "lon": 110.3776252
+  },
+  "nodes": [
+    2751368998,
+    13398264704,
+    13398264703,
+    13398264702,
+    13398264753,
+    13398264752,
+    13398264754,
+    13398264759,
+    2751368999,
+    8647296219,
+    2751369000,
+    5650851612,
+    5650851613,
+    5650851614,
+    5650851616,
+    5650851627,
+    5650851628,
+    5650851629,
+    5650851630,
+    2751369002,
+    5650851631,
+    5650851632,
+    5650851635,
+    4122657422,
+    8647335182,
+    5650851641,
+    2751368998
+  ],
+  "tags": {
+    "access:roof": "yes",
+    "addr:city": "Yogyakarta",
+    "addr:full": "Jalan Cik Di Tiro No 30",
+    "addr:housenumber": "30",
+    "addr:street": "Jalan Cik Di Tiro",
+    "amenity": "hospital",
+    "capacity:persons": ">500",
+    "contact:facebook": "https://www.facebook.com/pantirapihhospital",
+    "contact:instagram": "rspantirapihyogyakarta",
+    "contact:youtube": "https://www.youtube.com/c/RSPantiRapih",
+    "email": "admin@pantirapih.or.id",
+    "emergency": "yes",
+    "fax": "+62274564583",
+    "healthcare": "hospital",
+    "healthcare:speciality": "general",
+    "name": "Rumah Sakit Panti Rapih",
+    "operator:type": "private",
+    "phone": "+62274514014",
+    "source": "survey",
+    "website": "https://pantirapih.or.id/rspr/",
+    "wikidata": "Q7131849",
+    "wikimedia_commons": "Category:Panti Rapih Hospital",
+    "wikipedia": "id:Rumah Sakit Panti Rapih"
+  }
+},
+{
+  "type": "way",
+  "id": 273191763,
+  "center": {
+    "lat": -7.8143344,
+    "lon": 110.3630283
+  },
+  "nodes": [
+    2780666425,
+    2780666426,
+    2780666427,
+    2780666428,
+    2780666429,
+    2780666430,
+    2780666425
+  ],
+  "tags": {
+    "access:roof": "no",
+    "addr:full": "Jalan mayjen d.i pandjaitan no. 01",
+    "amenity": "marketplace",
+    "building": "marketplace",
+    "building:condition": "good",
+    "building:floor": "tekhel",
+    "building:levels": "2",
+    "building:material": "brick",
+    "building:roof": "tile",
+    "building:structure": "confined_masonry",
+    "capacity:persons": "100-250",
+    "marketplace:authority": "officially_managed",
+    "marketplace:type": "agricultural",
+    "name": "Pasar Gading",
+    "opening_hours": "06.00-14.00 wib",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 273660215,
+  "center": {
+    "lat": -7.8009235,
+    "lon": 110.3772333
+  },
+  "nodes": [
+    2784990756,
+    2784990794,
+    2784990797,
+    2784990760,
+    2784990756
+  ],
+  "tags": {
+    "access:roof": "no",
+    "addr:full": "Jalan Jayaningprangan",
+    "amenity": "hospital",
+    "building": "hospital",
+    "building:condition": "good",
+    "building:floor": "ceramics",
+    "building:levels": "1",
+    "building:material": "brick",
+    "building:roof": "tile",
+    "building:structure": "confined_masonry",
+    "building:use": "medical",
+    "building:walls": "brick",
+    "capacity:persons": "50-100",
+    "height": "7.6",
+    "name": "Rumah Sakit Khusus Puri Nirmala",
+    "operator:type": "private",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 274713345,
+  "center": {
+    "lat": -7.7989351,
+    "lon": 110.3798144
+  },
+  "nodes": [
+    2793975685,
+    2793975702,
+    2793975701,
+    2793975712,
+    2793975713,
+    2793975700,
+    2793975699,
+    2793975704,
+    2793975703,
+    2793975686,
+    2793975685
+  ],
+  "tags": {
+    "amenity": "school",
+    "building": "yes",
+    "building:levels": "3",
+    "height": "15",
+    "name": "SMP Muhammadiyah 4 Yogyakarta"
+  }
+},
+{
+  "type": "way",
+  "id": 277746183,
+  "center": {
+    "lat": -7.7985884,
+    "lon": 110.3680910
+  },
+  "nodes": [
+    4865395524,
+    2822069692,
+    2822069694,
+    4865395523,
+    4865395524
+  ],
+  "tags": {
+    "amenity": "marketplace",
+    "building": "yes",
+    "height": "7.5",
+    "name": "Pasar Bringharjo",
+    "roof:height": "3",
+    "roof:orientation": "along",
+    "roof:shape": "hipped"
+  }
+},
+{
+  "type": "way",
+  "id": 277747754,
+  "center": {
+    "lat": -7.8072659,
+    "lon": 110.3512680
+  },
+  "nodes": [
+    2822083663,
+    2822083664,
+    2822083665,
+    2822083666,
+    5785819399,
+    5785819398,
+    2822083663
+  ],
+  "tags": {
+    "addr:street": "Jalan Letjend S. Parman",
+    "amenity": "school",
+    "name": "Madrasah Mu'alimin Muhammadiyah Yogyakarta"
+  }
+},
+{
+  "type": "way",
+  "id": 278541124,
+  "center": {
+    "lat": -7.8019650,
+    "lon": 110.3680243
+  },
+  "nodes": [
+    2829009349,
+    2829009351,
+    2829009352,
+    2829009350,
+    2829009349
+  ],
+  "tags": {
+    "amenity": "school",
+    "building": "yes",
+    "building:levels": "1",
+    "height": "7.9",
+    "name": "SMP Negeri 2 Yogyakarta"
+  }
+},
+{
+  "type": "way",
+  "id": 279488024,
+  "center": {
+    "lat": -7.8200497,
+    "lon": 110.3684095
+  },
+  "nodes": [
+    2837147533,
+    2837147534,
+    5527148739,
+    5527148738,
+    2837147533
+  ],
+  "tags": {
+    "access:roof": "no",
+    "addr:full": "Jl. Parangtritis no 103",
+    "amenity": "marketplace",
+    "building": "marketplace",
+    "building:condition": "good",
+    "building:floor": "ceramics",
+    "building:levels": "1",
+    "building:material": "brick",
+    "building:roof": "tile",
+    "building:structure": "confined_masonry",
+    "capacity:persons": "100-250",
+    "marketplace:authority": "officially_managed",
+    "marketplace:type": "agricultural",
+    "name": "Pasar Prawirotaman",
+    "opening_hours": "Mo-Su 06:00-15:00",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 283721022,
+  "center": {
+    "lat": -7.8005960,
+    "lon": 110.3677872
+  },
+  "nodes": [
+    2875566182,
+    2875566209,
+    3214908530,
+    2875566212,
+    2875566189,
+    2875566182
+  ],
+  "tags": {
+    "amenity": "marketplace",
+    "building": "yes",
+    "height": "25.0",
+    "roof:height": "3",
+    "roof:orientation": "along",
+    "roof:shape": "hipped"
+  }
+},
+{
+  "type": "way",
+  "id": 283886493,
+  "center": {
+    "lat": -7.7986960,
+    "lon": 110.3643341
+  },
+  "nodes": [
+    2877013310,
+    2877013319,
+    2877013321,
+    2877013315,
+    2877013310
+  ],
+  "tags": {
+    "amenity": "marketplace",
+    "building": "yes",
+    "height": "17.0",
+    "name": "Teras Malioboro 1",
+    "roof:height": "3",
+    "roof:orientation": "along",
+    "roof:shape": "hipped"
+  }
+},
+{
+  "type": "way",
+  "id": 283909562,
+  "center": {
+    "lat": -7.7928635,
+    "lon": 110.3621756
+  },
+  "nodes": [
+    2877243485,
+    2877243492,
+    2877243493,
+    2877243487,
+    2877243485
+  ],
+  "tags": {
+    "access:roof": "no",
+    "addr:full": "Jalan Dagen No. 219 Sosromenduran, Gedong Tengen, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55271",
+    "amenity": "school",
+    "building": "school",
+    "building:condition": "good",
+    "building:levels": "1",
+    "building:material": "brick",
+    "building:roof": "tile",
+    "building:structure": "steel_frame",
+    "capacity:persons": "250-500",
+    "name": "SD Netral C",
+    "operator:type": "government",
+    "school:type_idn": "sd",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 288034257,
+  "center": {
+    "lat": -7.7949299,
+    "lon": 110.3706532
+  },
+  "nodes": [
+    2915813029,
+    2915813031,
+    2915813030,
+    2915813027,
+    2915813029
+  ],
+  "tags": {
+    "access:roof": "yes",
+    "addr:full": "Jalan Tegal Panggung",
+    "amenity": "school",
+    "building": "school",
+    "building:condition": "good",
+    "building:levels": "2",
+    "building:material": "concrete",
+    "building:roof": "tile",
+    "building:structure": "confined_masonry",
+    "capacity:persons": "250-500",
+    "name": "SD Negeri Tegal Panggung",
+    "operator:type": "government",
+    "school:type_idn": "sd",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 314215802,
+  "center": {
+    "lat": -7.8029686,
+    "lon": 110.3675546
+  },
+  "nodes": [
+    3202643911,
+    5652808972,
+    5652808971,
+    3202643912,
+    3202643916,
+    3202643915,
+    3202643911
+  ],
+  "tags": {
+    "addr:full": "Jalan Ibu Ruswo No. 35",
+    "amenity": "school",
+    "name": "Sekolah Menengah Farmasi",
+    "operator:type": "private",
+    "school:type_idn": "sma",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 315366355,
+  "center": {
+    "lat": -7.7997461,
+    "lon": 110.3956989
+  },
+  "nodes": [
+    5549356882,
+    5549356883,
+    5374477752,
+    3214769847,
+    5669125566,
+    5669125565,
+    5669125567,
+    5549356882
+  ],
+  "tags": {
+    "addr:city": "Yogyakarta",
+    "addr:full": "Jl. Sidobali No. 1 Muja Muju Telp. 0274-513493 Yogyakarta 55165",
+    "amenity": "school",
+    "name": "SMA Negeri 8 Yogyakarta",
+    "operator:type": "government",
+    "school:type_idn": "sma",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 315366496,
+  "center": {
+    "lat": -7.7994277,
+    "lon": 110.3951505
+  },
+  "nodes": [
+    3214771992,
+    4895707214,
+    4895707215,
+    5669125571,
+    4895707218,
+    5669125570,
+    5669125569,
+    5669125568,
+    3214771993,
+    3214771994,
+    3214771995,
+    3214771992
+  ],
+  "tags": {
+    "addr:city": "Yogyakarta",
+    "addr:full": "Jl. Kenari No. 71 Muja Muju Umbulharjo Telp. 0274-513463 Fax. 0274-523203 Yogyakarta 55165",
+    "amenity": "school",
+    "name": "SMK Negeri 5 Yogyakarta",
+    "operator:type": "government",
+    "school:type_idn": "sma",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 316772103,
+  "center": {
+    "lat": -7.7861615,
+    "lon": 110.3752536
+  },
+  "nodes": [
+    3229518075,
+    3229518076,
+    3229518079,
+    3664067300,
+    3229518075
+  ],
+  "tags": {
+    "access:roof": "yes",
+    "addr:full": "Jalan Juadi No. 2",
+    "amenity": "school",
+    "building": "school",
+    "building:condition": "good",
+    "building:levels": "1",
+    "building:material": "concrete",
+    "building:roof": "tile",
+    "building:structure": "confined_masonry",
+    "capacity:persons": "100-250",
+    "name": "SD Negeri Serayu",
+    "operator:type": "government",
+    "school:type_idn": "sd",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 319248162,
+  "center": {
+    "lat": -7.8069117,
+    "lon": 110.3502797
+  },
+  "nodes": [
+    5651002966,
+    3256602114,
+    3256602111,
+    3256602104,
+    5651002966
+  ],
+  "tags": {
+    "access:roof": "yes",
+    "addr:full": "Jalan Kapten Piere Tendean No. 58",
+    "amenity": "school",
+    "building": "school",
+    "building:condition": "good",
+    "building:levels": "3",
+    "building:material": "brick",
+    "building:roof": "tile",
+    "building:structure": "confined_masonry",
+    "building:use": "education",
+    "building:walls": "brick",
+    "capacity:persons": "250-500",
+    "name": "SMA Muhammadiyah 3 Yogyakarta",
+    "operator:type": "private",
+    "school:type_idn": "sma",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 319259497,
+  "center": {
+    "lat": -7.7799007,
+    "lon": 110.3785018
+  },
+  "nodes": [
+    5640926499,
+    5640926497,
+    5640926496,
+    3256709729,
+    3256709744,
+    5640926498,
+    5640926499
+  ],
+  "tags": {
+    "addr:housenumber": "20",
+    "addr:street": "Jalan Sagan",
+    "amenity": "school",
+    "building": "school",
+    "check_date": "2025-07-24",
+    "name": "SMP Muhammadiyah 10 Yogyakarta"
+  }
+},
+{
+  "type": "way",
+  "id": 340859168,
+  "center": {
+    "lat": -7.7837342,
+    "lon": 110.3641056
+  },
+  "nodes": [
+    3480982658,
+    3480982659,
+    3480982667,
+    3480982666,
+    3480982664,
+    3480982665,
+    3480982661,
+    3480982660,
+    3480982658
+  ],
+  "tags": {
+    "alt_name": "SD Eksperimental Mangunan Gowongan",
+    "amenity": "school",
+    "building": "yes",
+    "name": "SD Eksperimental Mangunan GO",
+    "operator": "Yayasan Dinamika Edukasi Dasar"
+  }
+},
+{
+  "type": "way",
+  "id": 341598458,
+  "center": {
+    "lat": -7.8195590,
+    "lon": 110.3634676
+  },
+  "nodes": [
+    3487442228,
+    10722831008,
+    10722831007,
+    3487442216,
+    3487442217,
+    3487442221,
+    3487442218,
+    3487442224,
+    3487442225,
+    3487442220,
+    3487442222,
+    3487442226,
+    3487442227,
+    3487442219,
+    3487442223,
+    10722831006,
+    10722831005,
+    3487442236,
+    3487442232,
+    3487442235,
+    3487442234,
+    3487442233,
+    3487442231,
+    3487442229,
+    3487442230,
+    3487442228
+  ],
+  "tags": {
+    "amenity": "school",
+    "building": "yes",
+    "name": "Poltekkes Kemenkes Yogyakarta"
+  }
+},
+{
+  "type": "way",
+  "id": 354282751,
+  "center": {
+    "lat": -7.8097150,
+    "lon": 110.3496717
+  },
+  "nodes": [
+    3600247120,
+    3600247121,
+    3600247122,
+    3600247123,
+    3600247120
+  ],
+  "tags": {
+    "access:roof": "no",
+    "addr:full": "Jalan Bugisan",
+    "amenity": "marketplace",
+    "building": "marketplace",
+    "building:condition": "good",
+    "building:floor": "ceramics",
+    "building:levels": "1",
+    "building:material": "brick",
+    "building:roof": "tile",
+    "building:structure": "confined_masonry",
+    "capacity:persons": ">500",
+    "marketplace:authority": "officially_managed",
+    "marketplace:type": "mixed",
+    "name": "Pasar Legi",
+    "opening_hours": "05:00-11:00",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 357092405,
+  "center": {
+    "lat": -7.8108863,
+    "lon": 110.3507867
+  },
+  "nodes": [
+    3624631398,
+    3624631399,
+    3624631400,
+    3624631401,
+    3624631398
+  ],
+  "tags": {
+    "amenity": "school",
+    "name": "SD Sindurjan"
+  }
+},
+{
+  "type": "way",
+  "id": 358774236,
+  "center": {
+    "lat": -7.8186655,
+    "lon": 110.3684865
+  },
+  "nodes": [
+    3636373130,
+    3636373131,
+    3636373132,
+    3636373133,
+    3636373130
+  ],
+  "tags": {
+    "amenity": "school",
+    "name": "SD Timuran"
+  }
+},
+{
+  "type": "way",
+  "id": 361888050,
+  "center": {
+    "lat": -7.7972676,
+    "lon": 110.3533243
+  },
+  "nodes": [
+    3662975904,
+    3662975908,
+    3662975913,
+    3662975910,
+    3662975907,
+    3662975904
+  ],
+  "tags": {
+    "access:roof": "no",
+    "addr:full": "Jalan HOS Cokroaminoto, Yogyakarta",
+    "amenity": "marketplace",
+    "building": "marketplace",
+    "building:condition": "good",
+    "building:floor": "ceramics",
+    "building:levels": "2",
+    "building:material": "brick",
+    "building:roof": "tile",
+    "building:structure": "confined_masonry",
+    "capacity:persons": ">500",
+    "marketplace:type": "retail",
+    "name": "Klithikan Pakuncen",
+    "opening_hours": "12:00-24:00",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 362043186,
+  "center": {
+    "lat": -7.7788647,
+    "lon": 110.3748182
+  },
+  "nodes": [
+    3664279427,
+    3664279412,
+    3664279422,
+    3664279591,
+    3664279540,
+    3664279427
+  ],
+  "tags": {
+    "access:roof": "no",
+    "addr:full": "Jalan Cik Di Tiro Gk V",
+    "amenity": "school",
+    "building": "school",
+    "building:condition": "good",
+    "building:levels": "1",
+    "building:material": "concrete",
+    "building:roof": "tin",
+    "building:structure": "confined_masonry",
+    "capacity:persons": "250-500",
+    "name": "SMA BUDYA WACANA",
+    "operator:type": "private",
+    "school:type_idn": "sma",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 362534776,
+  "center": {
+    "lat": -7.7853445,
+    "lon": 110.3837895
+  },
+  "nodes": [
+    3668186827,
+    3668186723,
+    5640866511,
+    5640866512,
+    5640866514,
+    5640866513,
+    3668187273,
+    3668187276,
+    3668186827
+  ],
+  "tags": {
+    "access:roof": "yes",
+    "addr:full": "Jalan Kemakmuran No. 5",
+    "amenity": "school",
+    "building": "school",
+    "building:condition": "good",
+    "building:levels": "2",
+    "building:material": "concrete",
+    "building:roof": "tile",
+    "building:structure": "confined_masonry",
+    "capacity:persons": ">500",
+    "name": "SD Negeri Bhayangkara",
+    "operator:type": "government",
+    "school:type_idn": "sd",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 362709078,
+  "center": {
+    "lat": -7.7709778,
+    "lon": 110.3650372
+  },
+  "nodes": [
+    3669737552,
+    3669737105,
+    3669737530,
+    3669737565,
+    3669737552
+  ],
+  "tags": {
+    "amenity": "school",
+    "building": "yes",
+    "name": "Ponpes Al Barokah"
+  }
+},
+{
+  "type": "way",
+  "id": 362783961,
+  "center": {
+    "lat": -7.7729771,
+    "lon": 110.3677412
+  },
+  "nodes": [
+    3670405037,
+    3670405038,
+    3670405059,
+    3670405073,
+    3670405122,
+    3670405118,
+    3670405097,
+    3670405089,
+    3670405037
+  ],
+  "tags": {
+    "amenity": "school",
+    "building": "yes",
+    "name": "SD Negeri Petinggen"
+  }
+},
+{
+  "type": "way",
+  "id": 362876465,
+  "center": {
+    "lat": -7.7727012,
+    "lon": 110.3617052
+  },
+  "nodes": [
+    3671184394,
+    3671184370,
+    3671184375,
+    3671184396,
+    3671184394
+  ],
+  "tags": {
+    "access:roof": "yes",
+    "addr:full": "Karangwaru Kidul",
+    "amenity": "marketplace",
+    "building": "marketplace",
+    "building:condition": "good",
+    "building:floor": "ceramics",
+    "building:levels": "2",
+    "building:material": "brick",
+    "building:roof": "asbestos",
+    "building:structure": "confined_masonry",
+    "capacity:persons": "100-250",
+    "marketplace:authority": "officially_managed",
+    "marketplace:type": "mixed",
+    "name": "Pasar Karangwaru",
+    "opening_hours": "05:00-20:00",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 362876467,
+  "center": {
+    "lat": -7.7742549,
+    "lon": 110.3614028
+  },
+  "nodes": [
+    3671185298,
+    3671185292,
+    3671185293,
+    3671185300,
+    3671185298
+  ],
+  "tags": {
+    "addr:city": "Kota Yogyakarta",
+    "addr:district": "Tegalrejo",
+    "addr:housename": "HI-LAB Laboratorium & Klinik",
+    "addr:housenumber": "156a-160",
+    "addr:postcode": "55242",
+    "addr:province": "Daerah Istimewa Yogyakarta",
+    "addr:street": "Jalan Magelang",
+    "addr:subdistrict": "Karangwaru",
+    "amenity": "hospital",
+    "healthcare": "laboratory;clinic;dentist",
+    "healthcare:speciality": "general;orthodontics;radiology;internal;vaccination;diagnostic_radiology;fertility;haematology",
+    "name": "HI-LAB Laboratorium & Klinik",
+    "official_name": "HI-LAB",
+    "opening_hours": "Mo-Su 06:00-21:00",
+    "operator": "PT. HI-LAB Internasional",
+    "operator:type": "private",
+    "phone": "+62 815 6605 658; +62 274 557722",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 362901327,
+  "center": {
+    "lat": -7.7792486,
+    "lon": 110.3689366
+  },
+  "nodes": [
+    3671391911,
+    3671391950,
+    3671391990,
+    10732094004,
+    10732094003,
+    3671391969,
+    3671391911
+  ],
+  "tags": {
+    "access:roof": "no",
+    "addr:full": "Jalan Cokrokusuman",
+    "amenity": "school",
+    "building": "school",
+    "building:condition": "good",
+    "building:levels": "1",
+    "building:material": "concrete",
+    "building:roof": "tile",
+    "building:structure": "confined_masonry",
+    "capacity:persons": "100-250",
+    "name": "SD Negeri Cokrokusuman",
+    "operator:type": "government",
+    "school:type_idn": "sd",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 377998703,
+  "center": {
+    "lat": -7.7839564,
+    "lon": 110.3773916
+  },
+  "nodes": [
+    3814136818,
+    3877594468,
+    13356220737,
+    3814136819,
+    3814136821,
+    3814136823,
+    12191913055,
+    3814136824,
+    5640983435,
+    5640983433,
+    5640983432,
+    5640983434,
+    5640983431,
+    5640983430,
+    5640983429,
+    5640983428,
+    10724798501,
+    10724798500,
+    5640983427,
+    5640983425,
+    8503238993,
+    5636853732,
+    13346804237,
+    3814136826,
+    13346804239,
+    13346804238,
+    3877594467,
+    13356199676,
+    13356199677,
+    7907587999,
+    13356199681,
+    13356199685,
+    10281130355,
+    13356220704,
+    13356220711,
+    10281130353,
+    3814136818
+  ],
+  "tags": {
+    "addr:city": "Kota Yogyakarta",
+    "addr:full": "Jalan Jendral Sudirman No 70 Kotabaru",
+    "addr:housenumber": "70",
+    "addr:street": "Jalan Jenderal Sudirman",
+    "amenity": "hospital",
+    "healthcare": "hospital",
+    "name": "Rumah Sakit Bethesda",
+    "operator:type": "private",
+    "phone": "+62 274 586688",
+    "source": "survey",
+    "website": "https://bethesda.or.id/"
+  }
+},
+{
+  "type": "way",
+  "id": 384119923,
+  "center": {
+    "lat": -7.7863473,
+    "lon": 110.3732673
+  },
+  "nodes": [
+    3874104164,
+    3874104172,
+    3874104173,
+    3874104175,
+    3874104174,
+    3874104165,
+    13251250143,
+    3874104177,
+    3874104166,
+    3874104178,
+    3874104167,
+    3874104184,
+    3874104182,
+    3874104183,
+    3874104168,
+    3874104169,
+    3874104181,
+    3874104180,
+    13427910512,
+    3874104179,
+    13427910513,
+    3874104170,
+    3874104171,
+    13251250141,
+    13251250142,
+    3874104176,
+    3874104164
+  ],
+  "tags": {
+    "addr:city": "Yogyakarta",
+    "addr:housenumber": "7",
+    "addr:postcode": "55224",
+    "addr:street": "Jalan Yos Sudarso",
+    "amenity": "school",
+    "education": "school",
+    "email": "cmssekolahku@gmail.com",
+    "level": "3",
+    "name": "SMA Negeri 3 Yogyakarta",
+    "operator:type": "government",
+    "phone": "+62 274 512856",
+    "school:type_idn": "sma",
+    "website": "https://www.sman3-yog.sch.id/",
+    "wikidata": "Q19748156",
+    "wikipedia": "id:SMA Negeri 3 Yogyakarta"
+  }
+},
+{
+  "type": "way",
+  "id": 385407334,
+  "center": {
+    "lat": -7.7813258,
+    "lon": 110.3764712
+  },
+  "nodes": [
+    3887543125,
+    3887543126,
+    3887543127,
+    3887543128,
+    3887543125
+  ],
+  "tags": {
+    "addr:city": "Kota Yogyakarta",
+    "addr:full": "Jalan Sagan No. 1",
+    "addr:housenumber": "1",
+    "addr:street": "Jalan Sagan",
+    "amenity": "school",
+    "check_date": "2025-07-17",
+    "name": "SMA Negeri 9 Yogyakarta",
+    "operator:type": "government",
+    "school:type_idn": "sma",
+    "source": "survey;local knowledge"
+  }
+},
+{
+  "type": "way",
+  "id": 385652776,
+  "center": {
+    "lat": -7.7840078,
+    "lon": 110.3718909
+  },
+  "nodes": [
+    3889873463,
+    3889873464,
+    3889873469,
+    3889873465,
+    3889873466,
+    3889873470,
+    3889873471,
+    3889873473,
+    3889873467,
+    3664153443,
+    3889873468,
+    1352606425,
+    1352606424,
+    1352606427,
+    3889873463
+  ],
+  "tags": {
+    "addr:city": "Yogyakarta",
+    "addr:housenumber": "1",
+    "addr:street": "Jalan Sabirin",
+    "amenity": "school",
+    "name": "SMA Stella Duce 1",
+    "operator:type": "private",
+    "religion": "christian",
+    "school:type_idn": "sma",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 385653872,
+  "center": {
+    "lat": -7.7999340,
+    "lon": 110.3521677
+  },
+  "nodes": [
+    10689845535,
+    10689845534,
+    10689845533,
+    10689845532,
+    10689845535
+  ],
+  "tags": {
+    "access:roof": "yes",
+    "addr:full": "Jl. HOS Cokroaminoto 10, Yogyakarta",
+    "amenity": "school",
+    "building": "school",
+    "building:condition": "good",
+    "building:levels": "3",
+    "building:material": "brick",
+    "building:roof": "tile",
+    "building:structure": "confined_masonry",
+    "capacity:persons": ">500",
+    "name": "SMAN 1 Yogyakarta 'TELADAN'",
+    "operator:type": "government",
+    "school:type_idn": "sma",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 393957308,
+  "center": {
+    "lat": -7.8012159,
+    "lon": 110.3910203
+  },
+  "nodes": [
+    3970073922,
+    10718191577,
+    10718191575,
+    10718191574,
+    10718191576,
+    3970073928,
+    3970073936,
+    10718191572,
+    10718191571,
+    10718191570,
+    10718191573,
+    3970073934,
+    3970073922
+  ],
+  "tags": {
+    "addr:full": "Jl. Kusuma Negara No. 105 Telp.0275-564869 Yogyakarta 55165",
+    "amenity": "school",
+    "building": "school",
+    "building:condition": "good",
+    "building:levels": "1",
+    "building:material": "brick",
+    "building:roof": "tile",
+    "building:structure": "confined_masonry",
+    "capacity:persons": "50-100",
+    "name": "SLB-C Dharma Rena Ring Putra II",
+    "operator:type": "community",
+    "school:type_idn": "sd",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 396468395,
+  "center": {
+    "lat": -7.8158504,
+    "lon": 110.3737144
+  },
+  "nodes": [
+    10720631470,
+    3992791157,
+    5321442321,
+    5319831381,
+    5321626201,
+    5358639435,
+    10720631467,
+    10679928549,
+    5321442326,
+    3992790757,
+    5319831382,
+    3992790857,
+    3992791057,
+    10720631469,
+    10713637326,
+    10713637327,
+    10720631470
+  ],
+  "tags": {
+    "access:roof": "yes",
+    "addr:full": "Jalan Kolonel Sugiono No 98 Yogyakarta",
+    "alt_name": "RS Pratama",
+    "amenity": "hospital",
+    "building": "hospital",
+    "building:colour": "white",
+    "building:condition": "good",
+    "building:floor": "ceramics",
+    "building:levels": "5",
+    "building:levels:underground": "1",
+    "building:material": "concrete",
+    "building:roof": "tile",
+    "building:structure": "confined_masonry",
+    "capacity:persons": ">500",
+    "healthcare": "hospital",
+    "height": "20",
+    "max_level": "5",
+    "name": "Rumah Sakit Pratama",
+    "name:en": "Pratama Hospital",
+    "operator:type": "private",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 414612278,
+  "center": {
+    "lat": -7.8095776,
+    "lon": 110.3558349
+  },
+  "nodes": [
+    4157313723,
+    4157313724,
+    4157313725,
+    4157313726,
+    4157313723
+  ],
+  "tags": {
+    "access:roof": "no",
+    "addr:full": "Suryowijayan",
+    "amenity": "marketplace",
+    "building": "marketplace",
+    "building:condition": "poor",
+    "building:floor": "cement",
+    "building:levels": "1",
+    "building:material": "wood",
+    "building:roof": "tin",
+    "building:structure": "wood_frame",
+    "capacity:persons": "50-100",
+    "marketplace:authority": "officially_managed",
+    "marketplace:type": "agricultural",
+    "name": "Pasar Tamansari",
+    "opening_hours": "06:00-14:00",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 417485442,
+  "center": {
+    "lat": -7.8250782,
+    "lon": 110.3550757
+  },
+  "nodes": [
+    2898619872,
+    2898619873,
+    2898619874,
+    2898619875,
+    2898619876,
+    3655346235,
+    3655346233,
+    3585204022,
+    2898619868,
+    2898619869,
+    2898619870,
+    2898619871,
+    2898619872
+  ],
+  "tags": {
+    "access:roof": "no",
+    "addr:full": "Jalan Bantul",
+    "amenity": "marketplace",
+    "building:condition": "good",
+    "building:floor": "tekhel",
+    "building:levels": "1",
+    "building:material": "brick",
+    "building:roof": "asbestos",
+    "building:structure": "confined_masonry",
+    "capacity:persons": "250-500",
+    "marketplace:authority": "officially_managed",
+    "name": "Pasar Pasty",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 418522151,
+  "center": {
+    "lat": -7.7988123,
+    "lon": 110.3483154
+  },
+  "nodes": [
+    4189171975,
+    4189172097,
+    4189172121,
+    4189172107,
+    13333004705,
+    13333004706,
+    13333004707,
+    13333004708,
+    4189171975
+  ],
+  "tags": {
+    "amenity": "school",
+    "building": "school",
+    "building:levels": "1",
+    "building:roof": "tile",
+    "building:walls": "concrete",
+    "education": "school"
+  }
+},
+{
+  "type": "way",
+  "id": 446640777,
+  "center": {
+    "lat": -7.7939501,
+    "lon": 110.3829726
+  },
+  "nodes": [
+    4438825719,
+    13475644829,
+    13475644828,
+    4438825720,
+    13475644827,
+    13475644826,
+    4438825721,
+    13475644830,
+    4438825722,
+    4438825719
+  ],
+  "tags": {
+    "amenity": "school",
+    "name": "SMK Piri 1 Yogyakarta"
+  }
+},
+{
+  "type": "way",
+  "id": 463664278,
+  "center": {
+    "lat": -7.7993500,
+    "lon": 110.3829373
+  },
+  "nodes": [
+    2838788494,
+    2838789321,
+    2838788608,
+    2838788611,
+    2838789329,
+    2838789336,
+    2838789340,
+    4589148416,
+    2748919719,
+    2838788602,
+    2838789322,
+    2838788497,
+    2838788495,
+    2838789317,
+    2838788494
+  ],
+  "tags": {
+    "addr:city": "Yogyakarta",
+    "addr:housenumber": "7",
+    "addr:postcode": "55166",
+    "addr:street": "Jalan Kapas",
+    "amenity": "school",
+    "grades": "10-12",
+    "name": "SMA Muhammadiyah 2 Yogyakarta",
+    "operator": "Muhammadiyah",
+    "operator:type": "religious",
+    "operator:wikidata": "Q1951917",
+    "religion": "muslim",
+    "website": "https://smamuhammadiyah2yk.sch.id/",
+    "wikidata": "Q122899718"
+  }
+},
+{
+  "type": "way",
+  "id": 463664282,
+  "center": {
+    "lat": -7.7999026,
+    "lon": 110.3827545
+  },
+  "nodes": [
+    4589148431,
+    2841496574,
+    2841496575,
+    2841496578,
+    2841496585,
+    4589148432,
+    4589148433,
+    4589148434,
+    2841502703,
+    10689898641,
+    4589148431
+  ],
+  "tags": {
+    "addr:city": "Yogyakarta",
+    "addr:housenumber": "5A",
+    "addr:street": "Jalan Kapas II",
+    "amenity": "school",
+    "grades": "1-3",
+    "name": "SD Muhammadiyah Sokonandi Unit 1",
+    "operator": "Muhammadiyah",
+    "operator:type": "religious",
+    "operator:wikidata": "Q1951917",
+    "religion": "muslim",
+    "website": "https://sdmuhsokonandi.sch.id/"
+  }
+},
+{
+  "type": "way",
+  "id": 477334282,
+  "center": {
+    "lat": -7.8156240,
+    "lon": 110.3549204
+  },
+  "nodes": [
+    4707067560,
+    4707067561,
+    4707067562,
+    4707067563,
+    4707067564,
+    4707067560
+  ],
+  "tags": {
+    "access:roof": "no",
+    "addr:full": "jln.Gedongkiwo",
+    "addr:street": "Jalan Gedongkiwo",
+    "amenity": "marketplace",
+    "building": "marketplace",
+    "building:condition": "good",
+    "building:levels": "1",
+    "building:material": "concrete",
+    "building:roof": "tin",
+    "building:structure": "confined_masonry",
+    "capacity:persons": "100-250",
+    "name": "Pasar Condronegaran",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 479423678,
+  "center": {
+    "lat": -7.8216607,
+    "lon": 110.3740192
+  },
+  "nodes": [
+    4725289625,
+    4725289626,
+    4725289627,
+    4725289628,
+    4725289625
+  ],
+  "tags": {
+    "amenity": "school",
+    "name": "MTS Karangkajen"
+  }
+},
+{
+  "type": "way",
+  "id": 511889439,
+  "center": {
+    "lat": -7.8206723,
+    "lon": 110.3997245
+  },
+  "nodes": [
+    5006303677,
+    5006303678,
+    5006303679,
+    5006303680,
+    5006303677
+  ],
+  "tags": {
+    "amenity": "hospital",
+    "healthcare": "hospital",
+    "healthcare:speciality": "paediatrics;gynaecology",
+    "name": "RSKIA Permata Bunda"
+  }
+},
+{
+  "type": "way",
+  "id": 511889458,
+  "center": {
+    "lat": -7.8229229,
+    "lon": 110.4007525
+  },
+  "nodes": [
+    5006303920,
+    5006304121,
+    5006304122,
+    5006304123,
+    5006303920
+  ],
+  "tags": {
+    "access:roof": "no",
+    "addr:full": "Jl. Kemasan No.30, Purbayan, Kotagede, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55173",
+    "amenity": "hospital",
+    "building": "hospital",
+    "building:condition": "good",
+    "building:levels": "2",
+    "building:material": "concrete",
+    "building:roof": "tile",
+    "building:structure": "confined_masonry",
+    "capacity:persons": ">500",
+    "healthcare": "hospital",
+    "healthcare:speciality": "paediatrics;gynaecology;general",
+    "name": "RSKIA PKU Muhammadiyah Kotagede"
+  }
+},
+{
+  "type": "way",
+  "id": 516589941,
+  "center": {
+    "lat": -7.8027255,
+    "lon": 110.3518233
+  },
+  "nodes": [
+    5042691508,
+    5042691509,
+    5042691510,
+    5042691511,
+    5042691514,
+    5042691515,
+    5042691508
+  ],
+  "tags": {
+    "access:roof": "yes",
+    "addr:full": "Jalan Kapten Piere Tendean No. 19",
+    "amenity": "school",
+    "building": "school",
+    "building:condition": "good",
+    "building:levels": "4",
+    "building:material": "brick",
+    "building:roof": "concrete",
+    "building:structure": "confined_masonry",
+    "capacity:persons": ">500",
+    "name": "SMP Muhammadiyah 3 Yogyakarta",
+    "operator:type": "private",
+    "school:type_idn": "smp",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 518682416,
+  "center": {
+    "lat": -7.8057560,
+    "lon": 110.3772637
+  },
+  "nodes": [
+    5059185386,
+    5059185385,
+    5059185384,
+    5059185383,
+    5059185386
+  ],
+  "tags": {
+    "amenity": "school",
+    "building": "yes",
+    "name": "SD Negeri Surokarsan 2 Yogyakarta"
+  }
+},
+{
+  "type": "way",
+  "id": 520700665,
+  "center": {
+    "lat": -7.7988596,
+    "lon": 110.3632108
+  },
+  "nodes": [
+    5074629052,
+    5074629053,
+    5074629056,
+    5074629057,
+    5074629052
+  ],
+  "tags": {
+    "addr:full": "Jalan Reksobayan No. 6, Yogyakarta",
+    "amenity": "school",
+    "name": "SD Negeri Ngupasan",
+    "operator:type": "government",
+    "school:type_idn": "sd",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 529958681,
+  "center": {
+    "lat": -7.7827234,
+    "lon": 110.3564400
+  },
+  "nodes": [
+    5147314846,
+    5147314845,
+    5147314844,
+    5147314843,
+    5147314846
+  ],
+  "tags": {
+    "amenity": "school",
+    "building": "yes",
+    "name": "Padepokan KHA Dahlan"
+  }
+},
+{
+  "type": "way",
+  "id": 530940170,
+  "center": {
+    "lat": -7.8258080,
+    "lon": 110.3601915
+  },
+  "nodes": [
+    5154588838,
+    5154588835,
+    5154588836,
+    5154588837,
+    5154588838
+  ],
+  "tags": {
+    "address": "Jalan Dongkelan nomor 325, Panggungharjo, Sewon, Bantul",
+    "amenity": "school",
+    "building": "yes",
+    "name": "MTS Ali Maksum"
+  }
+},
+{
+  "type": "way",
+  "id": 530940238,
+  "center": {
+    "lat": -7.8252012,
+    "lon": 110.3608280
+  },
+  "nodes": [
+    5154589110,
+    5154589107,
+    5154589108,
+    5154589109,
+    5154589110
+  ],
+  "tags": {
+    "amenity": "school",
+    "building": "yes",
+    "name": "Bayt Tahfidz An Nafisah"
+  }
+},
+{
+  "type": "way",
+  "id": 536129666,
+  "center": {
+    "lat": -7.8250815,
+    "lon": 110.3619346
+  },
+  "nodes": [
+    5194422765,
+    5194422764,
+    5194422763,
+    5194422762,
+    5194422765
+  ],
+  "tags": {
+    "address": "Jalan Cuwiri no 230 Mantrirejon",
+    "amenity": "school",
+    "building": "yes",
+    "name": "SMP Ali Maksum"
+  }
+},
+{
+  "type": "way",
+  "id": 536129712,
+  "center": {
+    "lat": -7.8260025,
+    "lon": 110.3616147
+  },
+  "nodes": [
+    5194422927,
+    5194422926,
+    5194422925,
+    5194422924,
+    5194422927
+  ],
+  "tags": {
+    "address": "Jalan K.H Ali Maksum Krapya, Krapyak Kulon, Sewon, Bantul",
+    "amenity": "school",
+    "building": "yes",
+    "name": "Pondok Pesantren Ali Maksum Krapyak"
+  }
+},
+{
+  "type": "way",
+  "id": 536129713,
+  "center": {
+    "lat": -7.8256854,
+    "lon": 110.3611058
+  },
+  "nodes": [
+    5194422931,
+    5194422930,
+    5194422929,
+    5194422928,
+    5194422931
+  ],
+  "tags": {
+    "address": "Jalan K.H Ali Maksum Mantrirejonl, Sewon, Bantul",
+    "amenity": "school",
+    "building": "yes",
+    "name": "SMA Ali Maksum"
+  }
+},
+{
+  "type": "way",
+  "id": 536155817,
+  "center": {
+    "lat": -7.8266462,
+    "lon": 110.4046110
+  },
+  "nodes": [
+    5194626242,
+    5194626241,
+    5194626240,
+    5194626239,
+    5194626242
+  ],
+  "tags": {
+    "access:roof": "yes",
+    "addr:full": "bumen purbayan kotagede yogyakarta 55173",
+    "amenity": "school",
+    "building": "school",
+    "building:condition": "good",
+    "building:levels": "2",
+    "building:material": "brick",
+    "building:roof": "tile",
+    "building:structure": "confined_masonry",
+    "capacity:persons": "100-250",
+    "name": "SD Negeri Kotagede 4",
+    "operator:type": "government",
+    "school:type_idn": "sd",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 536437685,
+  "center": {
+    "lat": -7.8333392,
+    "lon": 110.3992371
+  },
+  "nodes": [
+    5196579208,
+    5196579207,
+    5196579206,
+    5196579205,
+    10679762459,
+    10679762456,
+    10679762454,
+    10679762455,
+    10679762457,
+    10679762458,
+    5196579208
+  ],
+  "tags": {
+    "access:roof": "no",
+    "addr:full": "jl rm. danang sutowijaya purbayan kotagede yogyakarta 55173",
+    "amenity": "school",
+    "building": "school",
+    "building:condition": "good",
+    "building:levels": "1",
+    "building:material": "brick",
+    "building:roof": "tile",
+    "building:structure": "confined_masonry",
+    "capacity:persons": "100-250",
+    "name": "SD Negeri Dalem",
+    "operator:type": "government",
+    "school:type_idn": "sd",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 536645857,
+  "center": {
+    "lat": -7.8242010,
+    "lon": 110.3943187
+  },
+  "nodes": [
+    5198072900,
+    5198072897,
+    5198072898,
+    5198072899,
+    5198072900
+  ],
+  "tags": {
+    "address": "Jl. Nyi Pembayun Blok KG II No.531, Prenggan, Kotagede,",
+    "amenity": "school",
+    "building": "yes",
+    "name": "SDN Karangmulyo"
+  }
+},
+{
+  "type": "way",
+  "id": 536645858,
+  "center": {
+    "lat": -7.8242624,
+    "lon": 110.3944729
+  },
+  "nodes": [
+    5198072904,
+    5198072903,
+    5198072902,
+    5198072901,
+    5198072904
+  ],
+  "tags": {
+    "address": "Jl. Nyi Pembayun Blok KG II No.531, Prenggan, Kotagede,",
+    "amenity": "school",
+    "building": "yes",
+    "name": "SDN Karangmulyo"
+  }
+},
+{
+  "type": "way",
+  "id": 536645859,
+  "center": {
+    "lat": -7.8229520,
+    "lon": 110.3951088
+  },
+  "nodes": [
+    5198072923,
+    5198072922,
+    5198072921,
+    5198072920,
+    5198072923
+  ],
+  "tags": {
+    "address": "Jl. Nyi Pembayun no 21, Prenggan, Kotagede",
+    "amenity": "school",
+    "building": "yes",
+    "name": "Pondok Pesantren Fauzul Muslimin"
+  }
+},
+{
+  "type": "way",
+  "id": 536645860,
+  "center": {
+    "lat": -7.8231981,
+    "lon": 110.3950221
+  },
+  "nodes": [
+    5198072913,
+    5198072912,
+    5198072906,
+    5198072905,
+    5198072913
+  ],
+  "tags": {
+    "address": "Jl. Nyi Pembayun no 21, Prenggan, Kotagede",
+    "amenity": "school",
+    "building": "yes",
+    "name": "Pondok Pesantren Fauzul Muslimin"
+  }
+},
+{
+  "type": "way",
+  "id": 536645861,
+  "center": {
+    "lat": -7.8230561,
+    "lon": 110.3950250
+  },
+  "nodes": [
+    5198072920,
+    5198072909,
+    5198072908,
+    5198072907,
+    5198072920
+  ],
+  "tags": {
+    "address": "Jl. Nyi Pembayun no 21, Prenggan, Kotagede",
+    "amenity": "school",
+    "building": "yes",
+    "name": "Pondok Pesantren Fauzul Muslimin"
+  }
+},
+{
+  "type": "way",
+  "id": 536645862,
+  "center": {
+    "lat": -7.8232202,
+    "lon": 110.3951400
+  },
+  "nodes": [
+    5198072913,
+    5198072910,
+    5198072911,
+    5198072912,
+    5198072913
+  ],
+  "tags": {
+    "address": "Jl. Nyi Pembayun no 21, Prenggan, Kotagede",
+    "amenity": "school",
+    "building": "yes",
+    "name": "Pondok Pesantren Fauzul Muslimin"
+  }
+},
+{
+  "type": "way",
+  "id": 536645871,
+  "center": {
+    "lat": -7.8222623,
+    "lon": 110.3952479
+  },
+  "nodes": [
+    5198072943,
+    10720635845,
+    10720635846,
+    5198072942,
+    5198072943
+  ],
+  "tags": {
+    "address": "Jl. Nyi Pembayun Blok KG II No.512, Prenggan, Kotagede",
+    "amenity": "school",
+    "building": "yes",
+    "check_date": "2025-10-18",
+    "name": "SDN Randusari"
+  }
+},
+{
+  "type": "way",
+  "id": 536645872,
+  "center": {
+    "lat": -7.8221801,
+    "lon": 110.3950355
+  },
+  "nodes": [
+    5198072947,
+    5198072946,
+    10689721905,
+    5198072945,
+    5198072944,
+    5198072947
+  ],
+  "tags": {
+    "address": "Jl. Nyi Pembayun Blok KG II No.512, Prenggan, Kotagede",
+    "amenity": "school",
+    "building": "yes",
+    "name": "SDN Randusari"
+  }
+},
+{
+  "type": "way",
+  "id": 536645873,
+  "center": {
+    "lat": -7.8220903,
+    "lon": 110.3951300
+  },
+  "nodes": [
+    5198072951,
+    5198072950,
+    5198072941,
+    5198072948,
+    5198072951
+  ],
+  "tags": {
+    "address": "Jl. Nyi Pembayun Blok KG II No.512, Prenggan, Kotagede",
+    "amenity": "school",
+    "building": "yes",
+    "name": "SDN Randusari"
+  }
+},
+{
+  "type": "way",
+  "id": 536699299,
+  "center": {
+    "lat": -7.8108435,
+    "lon": 110.4012928
+  },
+  "nodes": [
+    5198452837,
+    5198452836,
+    5198452835,
+    5198452834,
+    5198452837
+  ],
+  "tags": {
+    "access:roof": "no",
+    "addr:full": "jl rejowinangun 28e yogyakarta 55171",
+    "amenity": "school",
+    "building": "school",
+    "building:condition": "good",
+    "building:levels": "3",
+    "building:material": "brick",
+    "building:roof": "tile",
+    "building:structure": "confined_masonry",
+    "capacity:persons": ">500",
+    "name": "SMA Islam Terpadu Abu Bakar",
+    "operator:type": "private",
+    "school:type_idn": "sma",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 537178177,
+  "center": {
+    "lat": -7.8143341,
+    "lon": 110.3601478
+  },
+  "nodes": [
+    5202385156,
+    5201484144,
+    5202385157,
+    5202385158,
+    5202385156
+  ],
+  "tags": {
+    "addr:city": "Yogyakarta",
+    "addr:housenumber": "23",
+    "addr:street": "Jalan M.T. Haryono",
+    "amenity": "school",
+    "name": "SMK Piri 3"
+  }
+},
+{
+  "type": "way",
+  "id": 542671969,
+  "center": {
+    "lat": -7.8189205,
+    "lon": 110.3598719
+  },
+  "nodes": [
+    5579549615,
+    4146167267,
+    4146167268,
+    4146167269,
+    5246481080,
+    4146167270,
+    5246481082,
+    5826689821,
+    5246481083,
+    5246481084,
+    5246481085,
+    1660354304,
+    5579549618,
+    5246481081,
+    5579549617,
+    5579549615
+  ],
+  "tags": {
+    "amenity": "school",
+    "name": "SMP Stelladuce"
+  }
+},
+{
+  "type": "way",
+  "id": 543167883,
+  "center": {
+    "lat": -7.7930159,
+    "lon": 110.3633813
+  },
+  "nodes": [
+    5250888333,
+    5250888334,
+    5250888337,
+    5250888338,
+    5250888339,
+    5250888340,
+    5250888343,
+    5250888344,
+    5250888346,
+    5250888347,
+    5250888333
+  ],
+  "tags": {
+    "addr:full": "Jalan Dagen No. 32, Sosromenduran,Gedong Tengen Yogyakarta 55271",
+    "amenity": "school",
+    "name": "SMP Stella Duce 1",
+    "operator:type": "private",
+    "school:type_idn": "smp",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 571586849,
+  "center": {
+    "lat": -7.8014704,
+    "lon": 110.3594315
+  },
+  "nodes": [
+    5493076172,
+    5493076173,
+    5493076174,
+    5493076175,
+    5493076172
+  ],
+  "tags": {
+    "amenity": "school",
+    "building": "yes",
+    "name": "SD Negeri Ngabean Yogyakarta"
+  }
+},
+{
+  "type": "way",
+  "id": 581843901,
+  "center": {
+    "lat": -7.7988318,
+    "lon": 110.3667707
+  },
+  "nodes": [
+    5566194360,
+    5566194356,
+    5778439143,
+    5566194359,
+    5566194357,
+    5566194355,
+    5778439167,
+    5566194358,
+    5778439142,
+    5566194360
+  ],
+  "tags": {
+    "access:roof": "yes",
+    "addr:city": "Yogyakarta",
+    "addr:full": "Jalan Margo Mulyo",
+    "addr:street": "Jalan Margo Mulyo",
+    "amenity": "marketplace",
+    "marketplace:authority": "officially_managed",
+    "marketplace:type": "mixed",
+    "name": "Pasar Bringharjo",
+    "opening_hours": "05:00-20:00",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 590705121,
+  "center": {
+    "lat": -7.7862507,
+    "lon": 110.3875381
+  },
+  "nodes": [
+    5639198654,
+    5639198653,
+    5639198652,
+    5639198651,
+    5639198654
+  ],
+  "tags": {
+    "addr:full": "Jalan Munggur No. 38",
+    "amenity": "school",
+    "name": "SDN Demangan",
+    "operator:type": "government",
+    "school:type_idn": "sd",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 590898633,
+  "center": {
+    "lat": -7.7839442,
+    "lon": 110.3837066
+  },
+  "nodes": [
+    5640866518,
+    5640866517,
+    5640866516,
+    5640866515,
+    5640866518
+  ],
+  "tags": {
+    "access:roof": "yes",
+    "addr:full": "Jalan Kemakmuran No. 11",
+    "amenity": "school",
+    "building": "school",
+    "building:condition": "good",
+    "building:levels": "2",
+    "building:material": "concrete",
+    "building:roof": "tile",
+    "building:structure": "confined_masonry",
+    "capacity:persons": ">500",
+    "name": "SDN Klitren",
+    "operator:type": "government",
+    "school:type_idn": "sd",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 590906170,
+  "center": {
+    "lat": -7.7798815,
+    "lon": 110.3782127
+  },
+  "nodes": [
+    5640926495,
+    5640926490,
+    5640926491,
+    5640926492,
+    5640926493,
+    5640926494,
+    5640926495
+  ],
+  "tags": {
+    "access:roof": "yes",
+    "addr:full": "Jalan Sagan Baru IV",
+    "amenity": "school",
+    "building": "school",
+    "building:condition": "good",
+    "building:levels": "3",
+    "building:material": "concrete",
+    "building:roof": "concrete",
+    "building:structure": "confined_masonry",
+    "capacity:persons": "100-250",
+    "name": "SD Muhammadiyah Sagan",
+    "operator:type": "private",
+    "school:type_idn": "sd",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 591452123,
+  "center": {
+    "lat": -7.7785505,
+    "lon": 110.3678781
+  },
+  "nodes": [
+    5646696149,
+    5646696148,
+    5646696147,
+    5646696146,
+    5646696149
+  ],
+  "tags": {
+    "addr:full": "Jalan Pasiraman No. 2",
+    "amenity": "school",
+    "name": "SD Negeri 1 Jetis",
+    "operator:type": "government",
+    "school:type_idn": "sd",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 591469249,
+  "center": {
+    "lat": -7.7789019,
+    "lon": 110.3578203
+  },
+  "nodes": [
+    5646828221,
+    5646825920,
+    5646825919,
+    5646825918,
+    5646825917,
+    5646828221
+  ],
+  "tags": {
+    "addr:full": "Bangunrejo",
+    "amenity": "school",
+    "name": "SD Negeri 1 Bangunrejo",
+    "operator:type": "government",
+    "school:type_idn": "sd",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 591473480,
+  "center": {
+    "lat": -7.7866768,
+    "lon": 110.3770034
+  },
+  "nodes": [
+    5646867497,
+    5646867496,
+    5646867495,
+    5646867493,
+    5646867492,
+    5646867491,
+    5646867490,
+    5646867494,
+    5646867497
+  ],
+  "tags": {
+    "addr:city": "Yogyakarta",
+    "addr:street": "Jalan Wardani No. 2",
+    "amenity": "school",
+    "name": "SMA BOPKRI 1 Yogyakarta",
+    "operator:type": "private",
+    "religion": "christian",
+    "school:type_idn": "sma"
+  }
+},
+{
+  "type": "way",
+  "id": 591475169,
+  "center": {
+    "lat": -7.7856307,
+    "lon": 110.3769937
+  },
+  "nodes": [
+    5646879349,
+    5646879348,
+    5646879347,
+    5646879346,
+    7333855627,
+    5646879344,
+    7321137056,
+    5646879343,
+    7333855628,
+    5646879341,
+    12873255183,
+    5646879349
+  ],
+  "tags": {
+    "addr:full": "Jalan Juadi No 19",
+    "amenity": "hospital",
+    "healthcare": "hospital",
+    "name": "Rumah Sakit Dr Soetarto",
+    "operator:type": "government"
+  }
+},
+{
+  "type": "way",
+  "id": 591502996,
+  "center": {
+    "lat": -7.7704960,
+    "lon": 110.3573342
+  },
+  "nodes": [
+    5647065410,
+    5647065409,
+    5647065408,
+    5647065407,
+    5647065406,
+    5647065405,
+    5647065404,
+    5647065410
+  ],
+  "tags": {
+    "addr:full": "Jalan Jambon No.41",
+    "amenity": "school",
+    "name": "SD Kristen Kalam Kudus",
+    "operator:type": "private",
+    "school:type_idn": "sd",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 591507165,
+  "center": {
+    "lat": -7.7867474,
+    "lon": 110.3710719
+  },
+  "nodes": [
+    5647098323,
+    5647098322,
+    7846239504,
+    5647098321,
+    7846239506,
+    5647098220,
+    5647098323
+  ],
+  "tags": {
+    "addr:full": "Jalan Pattimura",
+    "amenity": "school",
+    "name": "SDN Ungaran",
+    "operator:type": "government",
+    "school:type_idn": "sd",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 591518423,
+  "center": {
+    "lat": -7.7783315,
+    "lon": 110.3539600
+  },
+  "nodes": [
+    5647173126,
+    5647173125,
+    5647173124,
+    5647173123,
+    5647173126
+  ],
+  "tags": {
+    "addr:full": "Jalan Bener",
+    "amenity": "school",
+    "name": "SMAN 2 Yogyakarta",
+    "operator:type": "government",
+    "school:type_idn": "sma",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 591519019,
+  "center": {
+    "lat": -7.7866213,
+    "lon": 110.3647960
+  },
+  "nodes": [
+    5647176145,
+    5647176142,
+    5647176143,
+    5647176144,
+    5647176145
+  ],
+  "tags": {
+    "addr:full": "jln. gowongan kidol jt 3/416 Yogyakarta",
+    "amenity": "school",
+    "operator:type": "government",
+    "school:type_idn": "sma",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 591929565,
+  "center": {
+    "lat": -7.7924837,
+    "lon": 110.3572786
+  },
+  "nodes": [
+    5650666873,
+    5650666872,
+    5650666871,
+    5650666856,
+    5650666857,
+    5650666870,
+    5650666873
+  ],
+  "tags": {
+    "addr:full": "Jalan Letjen Suprapto No.84, Pringgokusuman, Gedong Tengen, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55272",
+    "amenity": "school",
+    "name": "SDN Gedong Tengen",
+    "operator:type": "government",
+    "school:type_idn": "sd",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 591933049,
+  "center": {
+    "lat": -7.7934341,
+    "lon": 110.3616725
+  },
+  "nodes": [
+    5650697923,
+    5650697922,
+    5650697921,
+    5650697717,
+    5650697718,
+    5650697719,
+    5650697716,
+    5650697720,
+    5650697923
+  ],
+  "tags": {
+    "access:roof": "no",
+    "addr:full": "Jalan Dagen No. 82, Sosromenduran, Gedong Tengen, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55271",
+    "amenity": "school",
+    "building": "school",
+    "building:condition": "good",
+    "building:levels": "3",
+    "building:material": "brick",
+    "building:roof": "tile",
+    "building:structure": "confined_masonry",
+    "capacity:persons": "50-100",
+    "name": "MTs. Muhammadiyah Gedong Tengen",
+    "operator:type": "private",
+    "school:type_idn": "smp",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 591933050,
+  "center": {
+    "lat": -7.7919682,
+    "lon": 110.3631717
+  },
+  "nodes": [
+    5650697927,
+    5650697926,
+    5650697925,
+    5650697924,
+    5650697927
+  ],
+  "tags": {
+    "addr:full": "Jalan Sosrowijayan No. 43, Sosromenduran, Gedong Tengen, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55271",
+    "amenity": "school",
+    "name": "TK/SD Netral D",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 591938607,
+  "center": {
+    "lat": -7.7929243,
+    "lon": 110.3530488
+  },
+  "nodes": [
+    5650734324,
+    5650734323,
+    5650734322,
+    5650734321,
+    5650734120,
+    5650734119,
+    5650734118,
+    5650734117,
+    5650734324
+  ],
+  "tags": {
+    "addr:full": "Jalan HOS Cokroaminoto No. 127",
+    "amenity": "school",
+    "name": "SMP Negeri 11",
+    "operator:type": "government",
+    "school:type_idn": "smp",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 591938608,
+  "center": {
+    "lat": -7.7923811,
+    "lon": 110.3529030
+  },
+  "nodes": [
+    5650734328,
+    5650734327,
+    5650734326,
+    5650734325,
+    5650734328
+  ],
+  "tags": {
+    "access:roof": "no",
+    "addr:full": "Jalan Wiratama No. 4",
+    "amenity": "hospital",
+    "building": "hospital",
+    "building:condition": "good",
+    "building:floor": "ceramics",
+    "building:levels": "3",
+    "building:material": "brick",
+    "building:roof": "tile",
+    "building:structure": "confined_masonry",
+    "capacity:persons": "250-500",
+    "name": "Rumah Sakit Ludira Husada Tama",
+    "operator:type": "private",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 591946284,
+  "center": {
+    "lat": -7.7942716,
+    "lon": 110.3595490
+  },
+  "nodes": [
+    5650778522,
+    5650778521,
+    5650778420,
+    5650778419,
+    5650778418,
+    5650778417,
+    5650778522
+  ],
+  "tags": {
+    "access:roof": "no",
+    "addr:full": "Jalan Kemetiran Kidul No. 35, Pringgokusuman, Gedong Tengen, Pringgokusuman, Gedong Tengen, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55272",
+    "amenity": "school",
+    "building": "school",
+    "building:condition": "good",
+    "building:levels": "2",
+    "building:material": "brick",
+    "building:roof": "tile",
+    "building:structure": "confined_masonry",
+    "capacity:persons": ">500",
+    "name": "SMK Negeri 1",
+    "operator:type": "government",
+    "school:type_idn": "sma",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 591956949,
+  "center": {
+    "lat": -7.7954178,
+    "lon": 110.3645472
+  },
+  "nodes": [
+    5650839892,
+    5650839891,
+    5650839890,
+    5650839889,
+    5650839892
+  ],
+  "tags": {
+    "addr:full": "Jalan Pajeksan No. 18, Sosromenduran, Gedong Tengen, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55271",
+    "amenity": "school",
+    "name": "SMP Negeri 3 Yogyakarta",
+    "operator:type": "government",
+    "school:type_idn": "smp",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 591958609,
+  "center": {
+    "lat": -7.7979862,
+    "lon": 110.3628343
+  },
+  "nodes": [
+    5650854747,
+    5650854746,
+    5650854745,
+    10724786209,
+    10724786208,
+    5650854744,
+    8679124551,
+    5650854747
+  ],
+  "tags": {
+    "addr:full": "Jalan Gadean No. 5, Ngupasan, Gondomanan, Yogyakarta",
+    "amenity": "school",
+    "name": "SMA Negeri 10 Yogyakarta",
+    "operator:type": "government",
+    "school:type_idn": "sma",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 591979827,
+  "center": {
+    "lat": -7.8006090,
+    "lon": 110.3617837
+  },
+  "nodes": [
+    5650973730,
+    5650973729,
+    5650973728,
+    5650973727,
+    5650973730
+  ],
+  "tags": {
+    "access:roof": "yes",
+    "addr:full": "Jalan K.H. Ahmad Dahlan No. 38",
+    "amenity": "school",
+    "building": "school",
+    "building:condition": "good",
+    "building:levels": "2",
+    "building:material": "concrete",
+    "building:roof": "tile",
+    "building:structure": "confined_masonry",
+    "capacity:persons": "250-500",
+    "name": "SD Muhammadiyah Ngupasan I-II",
+    "operator:type": "government",
+    "religion": "muslim",
+    "school:type_idn": "sd",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 591992408,
+  "center": {
+    "lat": -7.7937301,
+    "lon": 110.3723014
+  },
+  "nodes": [
+    5651058809,
+    5651058808,
+    5651058807,
+    5651058806,
+    5651058809
+  ],
+  "tags": {
+    "addr:full": "Jalan Mas Suharto Jambu No. 48",
+    "amenity": "school",
+    "name": "SMP Bopkri 1 Yogyakarta",
+    "operator:type": "private",
+    "school:type_idn": "smp",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 591992409,
+  "center": {
+    "lat": -7.7931318,
+    "lon": 110.3714371
+  },
+  "nodes": [
+    5651058813,
+    5651058812,
+    5651058811,
+    5651058810,
+    5822097253,
+    5651058813
+  ],
+  "tags": {
+    "addr:full": "Jalan Tukangan No. 1",
+    "amenity": "school",
+    "grades": "10-12",
+    "name": "SMK Muhammadiyah 2 Yogyakarta",
+    "operator": "Muhammadiyah",
+    "operator:type": "religious",
+    "operator:wikidata": "Q1951917",
+    "religion": "muslim",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 591992410,
+  "center": {
+    "lat": -7.7928832,
+    "lon": 110.3720578
+  },
+  "nodes": [
+    5651061021,
+    5651058820,
+    5651058819,
+    5651058818,
+    5651058817,
+    5651058816,
+    5651061021
+  ],
+  "tags": {
+    "amenity": "school",
+    "name": "SD Negeri 01 Lempuyangan",
+    "operator:type": "government",
+    "school:type_idn": "sd",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 591992413,
+  "center": {
+    "lat": -7.7921746,
+    "lon": 110.3730047
+  },
+  "nodes": [
+    5651061039,
+    5651061038,
+    5651061037,
+    5651061036,
+    5651061035,
+    5651061034,
+    5651061030,
+    5651061033,
+    5651061031,
+    5651061032,
+    5651061039
+  ],
+  "tags": {
+    "access:roof": "no",
+    "addr:full": "Jalan Hayam Wuruk",
+    "amenity": "marketplace",
+    "building": "marketplace",
+    "building:condition": "good",
+    "building:floor": "ceramics",
+    "building:levels": "2",
+    "building:material": "brick",
+    "building:roof": "asbestos",
+    "building:structure": "confined_masonry",
+    "capacity:persons": ">500",
+    "marketplace:authority": "officially_managed",
+    "marketplace:type": "agricultural",
+    "name": "Pasar Lempuyangan",
+    "opening_hours": "07:00 - 13:00",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 592011908,
+  "center": {
+    "lat": -7.7958273,
+    "lon": 110.3722570
+  },
+  "nodes": [
+    5651170734,
+    5651170733,
+    5651170732,
+    5651170731,
+    5651170730,
+    5651170729,
+    5651170734
+  ],
+  "tags": {
+    "addr:city": "Yogyakarta",
+    "addr:full": "Jalan Hayam Wuruk No. 9 Yogyakarta 55211",
+    "addr:street": "Jalan Hayam Wuruk",
+    "amenity": "school",
+    "name": "SD Negeri Lempuyangwangi",
+    "operator:type": "government",
+    "school:type_idn": "sd",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 592011926,
+  "center": {
+    "lat": -7.7952723,
+    "lon": 110.3730270
+  },
+  "nodes": [
+    5651170796,
+    5651170795,
+    5651170794,
+    5651170793,
+    5651170796
+  ],
+  "tags": {
+    "addr:city": "Yogyakarta",
+    "addr:full": "Jalan Hayam Wuruk No. 18 Yogyakarta 55211",
+    "addr:street": "Jalan Hayam Wuruk",
+    "amenity": "school",
+    "name": "SMP Negeri 4 Yogyakarta",
+    "operator:type": "government",
+    "school:type_idn": "smp",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 592216378,
+  "center": {
+    "lat": -7.7976081,
+    "lon": 110.3780488
+  },
+  "nodes": [
+    5652751071,
+    5652751070,
+    5652751069,
+    5668408421,
+    5652751068,
+    5668408020,
+    5652751067,
+    5652751066,
+    5652751065,
+    5652751071
+  ],
+  "tags": {
+    "addr:full": "Jalan Ki Mangunsarkoro No. 80, Baciro, Gondokusuman, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55225",
+    "amenity": "school",
+    "name": "SD Kanisius Gayam 1",
+    "operator:type": "private",
+    "school:type_idn": "sd"
+  }
+},
+{
+  "type": "way",
+  "id": 592223798,
+  "center": {
+    "lat": -7.8027417,
+    "lon": 110.3669838
+  },
+  "nodes": [
+    5652808958,
+    5652808955,
+    5652808956,
+    5652808952,
+    5652808953,
+    5652808954,
+    5652808951,
+    5652808957,
+    5652808958
+  ],
+  "tags": {
+    "access:roof": "no",
+    "addr:full": "Jalan Ibu Ruswo No. 208",
+    "amenity": "school",
+    "building": "school",
+    "building:condition": "good",
+    "building:levels": "2",
+    "building:material": "brick",
+    "building:roof": "tile",
+    "building:structure": "confined_masonry",
+    "capacity:persons": "50-100",
+    "name": "SMA Gajah Mada",
+    "operator:type": "private",
+    "school:type_idn": "sma",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 592223803,
+  "center": {
+    "lat": -7.8018525,
+    "lon": 110.3705256
+  },
+  "nodes": [
+    5652808984,
+    5652808981,
+    5652808982,
+    5652808983,
+    5652808984
+  ],
+  "tags": {
+    "addr:full": "Jalan P Senopati No. 46, Prawirodirjan, Pakualaman, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55121",
+    "amenity": "school",
+    "capacity:persons": "50-100",
+    "name": "SLB Negeri 2 Yogyakarta",
+    "operator:type": "government",
+    "school:type_idn": "sd",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 592223804,
+  "center": {
+    "lat": -7.8018777,
+    "lon": 110.3721802
+  },
+  "nodes": [
+    5652808990,
+    5652808989,
+    5652808988,
+    5652808987,
+    5652808986,
+    5652808985,
+    5652808990
+  ],
+  "tags": {
+    "addr:full": "Jalan Sultan Agung No. 4, Wirogunan, Mergangsan, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55151",
+    "amenity": "school",
+    "check_date": "2025-07-13",
+    "name": "SMP Bopkri 2 Yogyakarta",
+    "operator:type": "private",
+    "religion": "christian",
+    "school:type_idn": "smp",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 592230838,
+  "center": {
+    "lat": -7.8001905,
+    "lon": 110.3522486
+  },
+  "nodes": [
+    5652868936,
+    5652868935,
+    5652868934,
+    5652868933,
+    5652868936
+  ],
+  "tags": {
+    "addr:full": "Jalan HOS Cokroaminoto No. 8, Yogyakarta",
+    "amenity": "school",
+    "name": "Tk & SD Kanisius Wirobrajan",
+    "operator:type": "private",
+    "school:type_idn": "sd",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 592289709,
+  "center": {
+    "lat": -7.8088233,
+    "lon": 110.3583795
+  },
+  "nodes": [
+    5653241542,
+    5653241541,
+    5653241540,
+    5653241539,
+    5653241538,
+    5653241542
+  ],
+  "tags": {
+    "addr:full": "Jalan Kadipaten Kidul No. 17",
+    "amenity": "school",
+    "name": "SD Negeri Keputran 2",
+    "operator:type": "government",
+    "school:type_idn": "sd",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 592289725,
+  "center": {
+    "lat": -7.8083156,
+    "lon": 110.3599117
+  },
+  "nodes": [
+    5653241596,
+    6068846001,
+    6070719528,
+    5653241594,
+    5653241593,
+    3214895620,
+    3214895617,
+    6070719524,
+    5653241596
+  ],
+  "tags": {
+    "addr:full": "Jalan Polowijan No. 11",
+    "amenity": "marketplace",
+    "name": "Pasar Ngasem",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 592298556,
+  "center": {
+    "lat": -7.8113012,
+    "lon": 110.3592803
+  },
+  "nodes": [
+    5653300389,
+    5653300375,
+    5653300388,
+    5653300387,
+    5653300386,
+    5653300385,
+    5653300384,
+    5653300383,
+    5653300382,
+    5653300381,
+    5653300380,
+    5653300379,
+    5653300378,
+    5653300377,
+    5653300376,
+    5653300374,
+    5653300389
+  ],
+  "tags": {
+    "addr:full": "Jalan Nagan Lor No. 8",
+    "amenity": "school",
+    "name": "SMP Negeri 16 Yogyakarta",
+    "operator:type": "government",
+    "school:type_idn": "smp",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 592302562,
+  "center": {
+    "lat": -7.8119819,
+    "lon": 110.3604848
+  },
+  "nodes": [
+    5653333635,
+    5653333632,
+    5653333633,
+    5653333634,
+    5653333635
+  ],
+  "tags": {
+    "access:roof": "no",
+    "addr:full": "Jalan Patehan Lor No. 25",
+    "amenity": "school",
+    "building": "school",
+    "building:condition": "good",
+    "building:levels": "2",
+    "building:material": "concrete",
+    "building:roof": "tile",
+    "building:structure": "confined_masonry",
+    "capacity:persons": "100-250",
+    "name": "SMP Muhammadiyah 5 Yogyakarta",
+    "operator:type": "private",
+    "school:type_idn": "smp",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 592315252,
+  "center": {
+    "lat": -7.8130875,
+    "lon": 110.3625238
+  },
+  "nodes": [
+    5653406195,
+    5653406194,
+    5653406193,
+    5653406192,
+    5653406191,
+    5653406190,
+    5653406195
+  ],
+  "tags": {
+    "addr:full": "Jalan Patehan Kidul No. 8",
+    "amenity": "school",
+    "name": "SD Negeri Keputran A",
+    "operator:type": "government",
+    "school:type_idn": "sd",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 593643093,
+  "center": {
+    "lat": -7.8236671,
+    "lon": 110.4007168
+  },
+  "nodes": [
+    5662910993,
+    5662910992,
+    5662910989,
+    5662910988,
+    5662910993
+  ],
+  "tags": {
+    "addr:full": "jln kemasan no.45 kota gede yogyakarta",
+    "amenity": "school",
+    "name": "SD Negeri Kotagede 1",
+    "operator:type": "government",
+    "school:type_idn": "sd",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 594073286,
+  "center": {
+    "lat": -7.8051976,
+    "lon": 110.3906212
+  },
+  "nodes": [
+    5665798068,
+    5665799533,
+    10689750236,
+    10689750237,
+    5665799529,
+    5665799527,
+    5665798100,
+    5665798096,
+    5665799523,
+    5665798067,
+    5665798068
+  ],
+  "tags": {
+    "access:roof": "no",
+    "addr:full": "Jalan Prof. Dr. Soepomo SH",
+    "amenity": "school",
+    "building": "school",
+    "building:condition": "good",
+    "building:levels": "2",
+    "building:material": "brick",
+    "building:roof": "tile",
+    "building:structure": "confined_masonry",
+    "capacity:persons": "250-500",
+    "name": "SD Negeri Inti Glagah",
+    "operator:type": "government",
+    "school:type_idn": "sd",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 594073302,
+  "center": {
+    "lat": -7.8220643,
+    "lon": 110.3993047
+  },
+  "nodes": [
+    5665799564,
+    5665799552,
+    5665799562,
+    5665799561,
+    5665799560,
+    8787849495,
+    8787849496,
+    5665799559,
+    8787849498,
+    8787849497,
+    5665799558,
+    5665799551,
+    5665799556,
+    5665799555,
+    5665799554,
+    5665799553,
+    8787849508,
+    5665799564
+  ],
+  "tags": {
+    "addr:city": "Kota Yogyakarta",
+    "addr:full": "jln nyai pembayun no.39 kota gede yogyakarta",
+    "addr:street": "Jalan Nyi Pembayun",
+    "amenity": "school",
+    "grades": "10-12",
+    "name": "SMA Negeri 5 Puspanegara Yogyakarta",
+    "operator:type": "government",
+    "school:type_idn": "sma",
+    "source": "survey;local knowledge"
+  }
+},
+{
+  "type": "way",
+  "id": 594073304,
+  "center": {
+    "lat": -7.8305425,
+    "lon": 110.4042493
+  },
+  "nodes": [
+    5665799570,
+    5665799569,
+    5665799565,
+    5665799567,
+    5665799566,
+    5665799570
+  ],
+  "tags": {
+    "addr:full": "Jl. Purbayan, RT.53/RW.13, Purbayan, Kotagede, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55173",
+    "amenity": "school",
+    "name": "SMP Muhammadiyah 7 Yogyakarta",
+    "operator:type": "private",
+    "school:type_idn": "smp",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 594073317,
+  "center": {
+    "lat": -7.8276165,
+    "lon": 110.3843942
+  },
+  "nodes": [
+    5665799610,
+    5665799613,
+    5665799612,
+    5665799611,
+    5665799610
+  ],
+  "tags": {
+    "addr:full": "jalan nitikan no 3",
+    "amenity": "school",
+    "name": "SD Muhammadiyah Nitikan 2",
+    "operator:type": "government",
+    "school:type_idn": "sd",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 594177078,
+  "center": {
+    "lat": -7.8249168,
+    "lon": 110.3759151
+  },
+  "nodes": [
+    5666391501,
+    5666391500,
+    5666391499,
+    5666391498,
+    5666391497,
+    5666391496,
+    5666391495,
+    5666391494,
+    5666391501
+  ],
+  "tags": {
+    "addr:full": "jalan tritunggal no 2",
+    "amenity": "school",
+    "name": "SMP Negeri 10 Yogyakarta",
+    "operator:type": "government",
+    "school:type_idn": "smp",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 594177107,
+  "center": {
+    "lat": -7.8144099,
+    "lon": 110.3698079
+  },
+  "nodes": [
+    5666393324,
+    5666393323,
+    5666393322,
+    5666393321,
+    5666393320,
+    5666393319,
+    5666393318,
+    5666393317,
+    5666393324
+  ],
+  "tags": {
+    "addr:full": "jl.mayjen sutoyo",
+    "amenity": "school",
+    "name": "SDN Pujokusuman 1",
+    "operator:type": "government",
+    "school:type_idn": "sd",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 594177113,
+  "center": {
+    "lat": -7.8048894,
+    "lon": 110.3801194
+  },
+  "nodes": [
+    5666393354,
+    5666393353,
+    5666393352,
+    5666393351,
+    5666393350,
+    5666393349,
+    5666393354
+  ],
+  "tags": {
+    "addr:full": "jl tamansiswa no 25 Gg Roro Mendut",
+    "amenity": "school",
+    "name": "SMK Ibu Pawiyatan Tamansiswa",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 594422005,
+  "center": {
+    "lat": -7.8269448,
+    "lon": 110.3775730
+  },
+  "nodes": [
+    5668408465,
+    5668408464,
+    5668408463,
+    5668408462,
+    5668408465
+  ],
+  "tags": {
+    "addr:full": "jalan pangeran wirosobo no 17",
+    "amenity": "school",
+    "name": "SMA BIAS Bina Anak Sholeh",
+    "operator:type": "private",
+    "school:type_idn": "sma",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 594422042,
+  "center": {
+    "lat": -7.8290737,
+    "lon": 110.3783676
+  },
+  "nodes": [
+    5668408740,
+    5668408739,
+    5668408738,
+    5668408737,
+    5668408740
+  ],
+  "tags": {
+    "addr:full": "jalan pangeran wirosobo uh 6 no 609",
+    "addr:postcode": "55162",
+    "amenity": "school",
+    "name": "SD Negeri Wirosaban",
+    "operator:type": "government",
+    "school:type_idn": "sd",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 594552882,
+  "center": {
+    "lat": -7.8120546,
+    "lon": 110.3691878
+  },
+  "nodes": [
+    5669121779,
+    5669121778,
+    5669121777,
+    5669121776,
+    5669121779
+  ],
+  "tags": {
+    "addr:full": "jl brigjen katamso 163",
+    "amenity": "school",
+    "name": "SD Negeri Kintelan 1",
+    "operator:type": "government",
+    "school:type_idn": "sd",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 594552920,
+  "center": {
+    "lat": -7.8225779,
+    "lon": 110.3982200
+  },
+  "nodes": [
+    5669121813,
+    5669121812,
+    5669121811,
+    5669121810,
+    5669121809,
+    5669121808,
+    5669121813
+  ],
+  "tags": {
+    "addr:full": "kampung kitren jln nyaipembayun karang kota gede yogyakarta",
+    "amenity": "school",
+    "check_date": "2025-10-18",
+    "name": "SD Muhammadiyah Kleco 2",
+    "operator:type": "private",
+    "school:type_idn": "sd",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 594553042,
+  "center": {
+    "lat": -7.8278082,
+    "lon": 110.3767310
+  },
+  "nodes": [
+    5669126168,
+    5669126167,
+    5669126166,
+    5669126165,
+    5669126168
+  ],
+  "tags": {
+    "addr:full": "jalan pangeran wirosobo no 30",
+    "amenity": "school",
+    "building": "school",
+    "building:condition": "good",
+    "building:levels": "1",
+    "building:material": "brick",
+    "building:roof": "tile",
+    "building:structure": "confined_masonry",
+    "capacity:persons": "250-500",
+    "name": "SMP Perintis",
+    "operator:type": "private",
+    "school:type_idn": "smp",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 594553092,
+  "center": {
+    "lat": -7.8172832,
+    "lon": 110.3754169
+  },
+  "nodes": [
+    5669126377,
+    5669126376,
+    5669126375,
+    5669126374,
+    5669126373,
+    5669126372,
+    5669126371,
+    5669126370,
+    5669126369,
+    5669126368,
+    5669126377
+  ],
+  "tags": {
+    "addr:full": "jalan lowanu mg 3/ 1361",
+    "amenity": "school",
+    "name": "Pondok Pesantren Muhammadiyah Darussalam",
+    "operator:type": "private",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 594852354,
+  "center": {
+    "lat": -7.8006439,
+    "lon": 110.3975316
+  },
+  "nodes": [
+    5671317988,
+    5671317987,
+    5671317986,
+    10724904965,
+    10724904966,
+    9375143747,
+    9375143750,
+    9375143751,
+    5671317988
+  ],
+  "tags": {
+    "addr:full": "Jl. Sidobali Muja Muju UH II/402 Telp. 0274-589090 Yogyakarta 55165",
+    "amenity": "hospital",
+    "building": "yes",
+    "building:condition": "good",
+    "building:levels": "1",
+    "building:material": "brick",
+    "building:roof": "tile",
+    "building:structure": "confined_masonry",
+    "capacity:persons": "<50",
+    "name": "Rumah Sakit Khusus Bedah Soedirman",
+    "name:etymology:wikidata": "Q2367329",
+    "name:etymology:wikipedia": "id:Soedirman",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 594852396,
+  "center": {
+    "lat": -7.8020718,
+    "lon": 110.3774771
+  },
+  "nodes": [
+    5671318165,
+    5671318164,
+    5671318163,
+    5671318162,
+    5671318165
+  ],
+  "tags": {
+    "access:roof": "no",
+    "addr:full": "Jalan Sultan Agung No. 52",
+    "amenity": "marketplace",
+    "building": "marketplace",
+    "building:condition": "good",
+    "building:floor": "ceramics",
+    "building:levels": "1",
+    "building:material": "concrete",
+    "building:roof": "asbestos",
+    "building:structure": "confined_masonry",
+    "capacity:persons": "250-500",
+    "marketplace:authority": "officially_managed",
+    "marketplace:type": "mixed",
+    "name": "Pasar Sentul",
+    "opening_hours": "04:00-16:00",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 594852399,
+  "center": {
+    "lat": -7.8130374,
+    "lon": 110.3836915
+  },
+  "nodes": [
+    5671318170,
+    5671318169,
+    5671318167,
+    5671318168,
+    5671318170
+  ],
+  "tags": {
+    "addr:full": "jalan batikan no 3",
+    "amenity": "school",
+    "name": "SD Negeri 1 Pandeyan",
+    "operator:type": "government",
+    "school:type_idn": "sd",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 594852413,
+  "center": {
+    "lat": -7.8148500,
+    "lon": 110.3816394
+  },
+  "nodes": [
+    5671318234,
+    5671318233,
+    5671318232,
+    5671318231,
+    5671318234
+  ],
+  "tags": {
+    "addr:full": "jalan golo no 33",
+    "amenity": "hospital",
+    "building": "hospital",
+    "building:condition": "good",
+    "building:levels": "1",
+    "building:material": "brick",
+    "building:roof": "tile",
+    "building:structure": "confined_masonry",
+    "capacity:persons": "100-250",
+    "name": "Rumah Sakit Bhakti Ibu",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 594852427,
+  "center": {
+    "lat": -7.8271980,
+    "lon": 110.3974529
+  },
+  "nodes": [
+    5671318299,
+    5671318298,
+    5671318297,
+    5671318293,
+    5671318294,
+    5671318299
+  ],
+  "tags": {
+    "addr:full": "jln mondorakan no.51 kota gede yogyakarta",
+    "amenity": "school",
+    "name": "SMA Muhammadiyah 4 Yogyakarta",
+    "operator:type": "private",
+    "school:type_idn": "sma"
+  }
+},
+{
+  "type": "way",
+  "id": 594852456,
+  "center": {
+    "lat": -7.7996481,
+    "lon": 110.3935523
+  },
+  "nodes": [
+    5671318374,
+    5671318373,
+    10687883578,
+    10687883579,
+    5671318372,
+    5671318368,
+    5671318371,
+    5671318370,
+    5671318369,
+    5671318374
+  ],
+  "tags": {
+    "addr:full": "Jl. Kenari No. 65 muja Muju Umbulharjo Telp. 0274-582114 Yogyakarta 55165",
+    "amenity": "school",
+    "name": "SMK Perkebunan MM 52 Yogyakarta",
+    "operator:type": "private",
+    "school:type_idn": "sma",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 594852464,
+  "center": {
+    "lat": -7.8034352,
+    "lon": 110.3989701
+  },
+  "nodes": [
+    5671318406,
+    5671318405,
+    5671318404,
+    5671318403,
+    5671318406
+  ],
+  "tags": {
+    "access:roof": "no",
+    "addr:full": "Jalan Kebun Raya, Yogyakarta 55171",
+    "amenity": "marketplace",
+    "building": "marketplace",
+    "building:condition": "good",
+    "building:floor": "tekhel",
+    "building:levels": "1",
+    "building:material": "brick",
+    "building:roof": "tile",
+    "building:structure": "confined_masonry",
+    "capacity:persons": ">500",
+    "marketplace:authority": "officially_managed",
+    "marketplace:type": "mixed",
+    "name": "Pasar Gedong Kuning",
+    "opening_hours": "05:00-14:00",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 594985430,
+  "center": {
+    "lat": -7.8227940,
+    "lon": 110.3832397
+  },
+  "nodes": [
+    5672032924,
+    5672032927,
+    5672032925,
+    5672032926,
+    5672032923,
+    5672032929,
+    5672032928,
+    5672032930,
+    5672032924
+  ],
+  "tags": {
+    "addr:full": "jalan nalen no 1",
+    "amenity": "school",
+    "building": "school",
+    "building:condition": "good",
+    "building:levels": "1",
+    "building:material": "brick",
+    "building:roof": "tile",
+    "building:structure": "confined_masonry",
+    "capacity:persons": "100-250",
+    "name": "SMP Piri 2 Yogyakarta",
+    "operator:type": "private",
+    "school:type_idn": "smp",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 594985451,
+  "center": {
+    "lat": -7.8140201,
+    "lon": 110.3953615
+  },
+  "nodes": [
+    5672032967,
+    5672032964,
+    5672032965,
+    5672032966,
+    12404330891,
+    12404330892,
+    5672032967
+  ],
+  "tags": {
+    "addr:full": "jln ki penjawi rejowinangun kotagede yogyakarta 55171",
+    "amenity": "school",
+    "name": "SD Negeri Rejowinangun 1",
+    "operator:type": "government",
+    "school:type_idn": "sd",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 594985454,
+  "center": {
+    "lat": -7.7966700,
+    "lon": 110.3947667
+  },
+  "nodes": [
+    5672032970,
+    5672032974,
+    5672032971,
+    5672032972,
+    5672032968,
+    5672032976,
+    5672032975,
+    5672032978,
+    5672032970
+  ],
+  "tags": {
+    "access:roof": "no",
+    "addr:full": "Jl. Balirejo No. 28 Telp. 0274-552911 Yogyakarta 55165",
+    "amenity": "school",
+    "building": "school",
+    "building:condition": "good",
+    "building:levels": "2",
+    "building:material": "brick",
+    "building:roof": "tile",
+    "building:structure": "confined_masonry",
+    "capacity:persons": "100-250",
+    "name": "SD Negeri Balirejo",
+    "operator:type": "government",
+    "school:type_idn": "sd",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 594985534,
+  "center": {
+    "lat": -7.8334146,
+    "lon": 110.3899101
+  },
+  "nodes": [
+    5672033279,
+    5672033282,
+    5672033278,
+    5672033277,
+    5672033266,
+    5672033259,
+    5672033281,
+    5672033280,
+    5672033279
+  ],
+  "tags": {
+    "addr:full": "jalan pramuka giwangan yogyakarta",
+    "amenity": "school",
+    "name": "SLB Negeri Pembina Yogyakarta",
+    "operator:type": "government",
+    "school:type_idn": "sd"
+  }
+},
+{
+  "type": "way",
+  "id": 594985595,
+  "center": {
+    "lat": -7.8244204,
+    "lon": 110.3732137
+  },
+  "nodes": [
+    5672033450,
+    5672033449,
+    5672033448,
+    5672033447,
+    5672033450
+  ],
+  "tags": {
+    "amenity": "marketplace",
+    "name": "Pasar Telo Karangkajen"
+  }
+},
+{
+  "type": "way",
+  "id": 594985597,
+  "center": {
+    "lat": -7.8244338,
+    "lon": 110.3728921
+  },
+  "nodes": [
+    5672033454,
+    5672033453,
+    5672033452,
+    5672033451,
+    5672033454
+  ],
+  "tags": {
+    "addr:full": "jln menukan no 2 Yogyakarta",
+    "amenity": "school",
+    "name": "SD Muhammadiyah Karangkajen",
+    "operator:type": "private",
+    "school:type_idn": "sd",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 595380129,
+  "center": {
+    "lat": -7.8054640,
+    "lon": 110.3802834
+  },
+  "nodes": [
+    5674571820,
+    5674571819,
+    5674571814,
+    5674571817,
+    8446590351,
+    5674571816,
+    5674571815,
+    5674571820
+  ],
+  "tags": {
+    "addr:full": "jl tamansiswa no 25 Gg Roro Mendut",
+    "amenity": "school",
+    "name": "SMA Taman Madya Ibu Pawiyatan Tamansiswa",
+    "operator:type": "private",
+    "school:type_idn": "sma",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 595380140,
+  "center": {
+    "lat": -7.8214378,
+    "lon": 110.3850353
+  },
+  "nodes": [
+    5674572181,
+    5674572179,
+    5674572178,
+    5674572177,
+    5674572176,
+    5674572175,
+    5674572174,
+    5674572173,
+    5674572172,
+    5674572171,
+    5674572181
+  ],
+  "tags": {
+    "addr:full": "jalan sidikan no 60",
+    "amenity": "school",
+    "name": "SMK Negeri 4 Yogyakarta",
+    "operator:type": "government",
+    "school:type_idn": "sma",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 595380149,
+  "center": {
+    "lat": -7.8242982,
+    "lon": 110.3759783
+  },
+  "nodes": [
+    5674572227,
+    5674572226,
+    5674572225,
+    5674572224,
+    5674572223,
+    5674572222,
+    5674572227
+  ],
+  "tags": {
+    "addr:full": "jalan tritunggal no 27",
+    "amenity": "school",
+    "name": "SD Negeri Pakel",
+    "operator:type": "government",
+    "school:type_idn": "sd",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 595380153,
+  "center": {
+    "lat": -7.8089831,
+    "lon": 110.3680768
+  },
+  "nodes": [
+    5674572247,
+    5674572243,
+    5674572245,
+    5674572244,
+    5674572247
+  ],
+  "tags": {
+    "amenity": "school",
+    "name": "SD Negeri Panembahan",
+    "operator:type": "government",
+    "school:type_idn": "sd",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 595383423,
+  "center": {
+    "lat": -7.8013238,
+    "lon": 110.3809979
+  },
+  "nodes": [
+    5674594660,
+    5674594659,
+    5674594658,
+    5674594657,
+    5674594656,
+    5674594655,
+    5674594654,
+    5674594653,
+    5674594652,
+    5674594660
+  ],
+  "tags": {
+    "addr:full": "jalan kusumanegara",
+    "amenity": "school",
+    "name": "SMK SMTI Yogyakarta",
+    "operator:type": "private",
+    "school:type_idn": "sma",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 597341813,
+  "center": {
+    "lat": -7.7966827,
+    "lon": 110.3624423
+  },
+  "nodes": [
+    5687809421,
+    5687809427,
+    10724787340,
+    10724787339,
+    5687809428,
+    10724787338,
+    5687809424,
+    5687809423,
+    5687809422,
+    5687809421
+  ],
+  "tags": {
+    "amenity": "marketplace",
+    "building:levels": "1",
+    "building:roof": "tile",
+    "building:structure": "reinforced_masonry",
+    "building:use": "commercial",
+    "building:walls": "brick",
+    "height": "8",
+    "name": "Pasar Pathuk",
+    "roof:height": "2.5",
+    "roof:shape": "flat"
+  }
+},
+{
+  "type": "way",
+  "id": 610083259,
+  "center": {
+    "lat": -7.8186365,
+    "lon": 110.3568108
+  },
+  "nodes": [
+    5778246356,
+    5778246358,
+    5778246357,
+    5778246088,
+    5778246354,
+    5778246355,
+    5778246356
+  ],
+  "tags": {
+    "amenity": "school",
+    "building": "yes",
+    "name": "SD Negeri Suryodiningratan I"
+  }
+},
+{
+  "type": "way",
+  "id": 610084360,
+  "center": {
+    "lat": -7.7846506,
+    "lon": 110.3553184
+  },
+  "nodes": [
+    5778253271,
+    5778253249,
+    5778253293,
+    5778253317,
+    5778253271
+  ],
+  "tags": {
+    "amenity": "school",
+    "building": "yes",
+    "name": "SMP gotong Royong"
+  }
+},
+{
+  "type": "way",
+  "id": 610105640,
+  "center": {
+    "lat": -7.8029216,
+    "lon": 110.4015731
+  },
+  "nodes": [
+    5778379469,
+    5778379472,
+    5778379471,
+    5778379470,
+    5778379467,
+    5778379468,
+    5778379469
+  ],
+  "tags": {
+    "amenity": "school",
+    "building": "yes",
+    "name": "SD Negeri Gedongkuning"
+  }
+},
+{
+  "type": "way",
+  "id": 610111890,
+  "center": {
+    "lat": -7.7952457,
+    "lon": 110.3575915
+  },
+  "nodes": [
+    5778424900,
+    5778424897,
+    5778424898,
+    5778424899,
+    5778424900
+  ],
+  "tags": {
+    "amenity": "school",
+    "building": "yes",
+    "name": "SMP Muhammadiyah 6 Yogyakarta"
+  }
+},
+{
+  "type": "way",
+  "id": 610114203,
+  "center": {
+    "lat": -7.8023343,
+    "lon": 110.3663859
+  },
+  "nodes": [
+    5778440952,
+    5778440946,
+    5778440948,
+    5778440949,
+    5778440950,
+    5778440947,
+    5778440951,
+    5778440952
+  ],
+  "tags": {
+    "amenity": "school",
+    "building": "yes",
+    "name": "SMA Pangudi Luhur Yogyakarta"
+  }
+},
+{
+  "type": "way",
+  "id": 610123776,
+  "center": {
+    "lat": -7.8281466,
+    "lon": 110.3876067
+  },
+  "nodes": [
+    5778514014,
+    5778514026,
+    12444545323,
+    12444545324,
+    5778514028,
+    5778514014
+  ],
+  "tags": {
+    "addr:city": "Yogyakarta",
+    "addr:province": "Daerah Istimewa Yogyakarta",
+    "addr:street": "Jalan Mendung Warih",
+    "addr:subdistrict": "Umbulharjo",
+    "amenity": "school",
+    "building": "yes",
+    "building:levels": "2",
+    "name": "MI Negeri 1 Yogyakarta"
+  }
+},
+{
+  "type": "way",
+  "id": 610350413,
+  "center": {
+    "lat": -7.8063221,
+    "lon": 110.3658032
+  },
+  "nodes": [
+    5780610662,
+    5780610661,
+    5780610660,
+    5780610659,
+    5780610662
+  ],
+  "tags": {
+    "access:roof": "no",
+    "addr:full": "Jalan Kemitbumen",
+    "amenity": "marketplace",
+    "building": "marketplace",
+    "building:condition": "poor",
+    "building:floor": "cement",
+    "building:levels": "1",
+    "building:material": "wood",
+    "building:roof": "tin",
+    "building:structure": "wood_frame",
+    "capacity:persons": "<50",
+    "marketplace:authority": "officially_managed",
+    "marketplace:type": "agricultural",
+    "name": "Pasar Musikanan",
+    "opening_hours": "06:00-15:00",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 610365674,
+  "center": {
+    "lat": -7.8036755,
+    "lon": 110.3560585
+  },
+  "nodes": [
+    5780690795,
+    5780690792,
+    13969047096,
+    5780690793,
+    5780690794,
+    13969047095,
+    5780690795
+  ],
+  "tags": {
+    "access:roof": "no",
+    "amenity": "marketplace",
+    "building": "marketplace",
+    "building:condition": "good",
+    "building:floor": "ceramics",
+    "building:levels": "1",
+    "building:material": "brick",
+    "building:roof": "tile",
+    "building:structure": "confined_masonry",
+    "capacity:persons": ">500",
+    "marketplace:authority": "officially_managed",
+    "marketplace:type": "retail",
+    "name": "Pasar Parkir Ngabean",
+    "opening_hours": "04:00-18:00",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 610371884,
+  "center": {
+    "lat": -7.8082065,
+    "lon": 110.3686369
+  },
+  "nodes": [
+    5780739680,
+    5780739677,
+    5780739678,
+    5780739679,
+    5780739680
+  ],
+  "tags": {
+    "amenity": "hospital",
+    "building": "yes",
+    "name": "RS THT Dr. Pomo"
+  }
+},
+{
+  "type": "way",
+  "id": 610371885,
+  "center": {
+    "lat": -7.8085315,
+    "lon": 110.3685613
+  },
+  "nodes": [
+    5780739689,
+    5780739688,
+    5780739687,
+    5780739686,
+    5780739689
+  ],
+  "tags": {
+    "amenity": "hospital",
+    "building": "yes",
+    "name": "RS THT Dr. Pomo"
+  }
+},
+{
+  "type": "way",
+  "id": 610371886,
+  "center": {
+    "lat": -7.8084262,
+    "lon": 110.3685245
+  },
+  "nodes": [
+    5780739693,
+    5780739692,
+    5780739691,
+    5780739690,
+    5780739693
+  ],
+  "tags": {
+    "amenity": "hospital",
+    "building": "yes",
+    "name": "RS THT Dr. Pomo"
+  }
+},
+{
+  "type": "way",
+  "id": 610435366,
+  "center": {
+    "lat": -7.8317337,
+    "lon": 110.3890706
+  },
+  "nodes": [
+    5781127369,
+    5781127366,
+    5781127367,
+    5781127368,
+    5781127369
+  ],
+  "tags": {
+    "access:roof": "no",
+    "addr:full": "jl imogiri timur giwangan",
+    "amenity": "marketplace",
+    "building": "marketplace",
+    "building:condition": "good",
+    "building:floor": "tekhel",
+    "building:levels": "1",
+    "building:material": "brick",
+    "building:roof": "tile",
+    "building:structure": "confined_masonry",
+    "capacity:persons": ">500",
+    "marketplace:authority": "officially_managed",
+    "marketplace:type": "agricultural",
+    "name": "Pasar Giwangan",
+    "opening_hours": "24/7",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 610445226,
+  "center": {
+    "lat": -7.8040855,
+    "lon": 110.3730777
+  },
+  "nodes": [
+    5781189216,
+    5781189219,
+    5781189218,
+    5781189217,
+    5781189222,
+    5781189221,
+    5781189220,
+    5781189223,
+    5781189216
+  ],
+  "tags": {
+    "amenity": "school",
+    "building": "yes",
+    "name": "SMK Marsudi Luhur 1 Yogyakarta"
+  }
+},
+{
+  "type": "way",
+  "id": 610464045,
+  "center": {
+    "lat": -7.7807141,
+    "lon": 110.3678008
+  },
+  "nodes": [
+    5781297284,
+    5781297281,
+    5781297282,
+    5781297283,
+    5781297284
+  ],
+  "tags": {
+    "amenity": "school",
+    "building": "yes",
+    "name": "SD Tamansiswa Jetis"
+  }
+},
+{
+  "type": "way",
+  "id": 610464198,
+  "center": {
+    "lat": -7.7801965,
+    "lon": 110.3671516
+  },
+  "nodes": [
+    5781297987,
+    5781297984,
+    5781297985,
+    5781297986,
+    5781297987
+  ],
+  "tags": {
+    "amenity": "school",
+    "building": "yes",
+    "name": "SMP Taman Dewasa Jetis Yogyakarta"
+  }
+},
+{
+  "type": "way",
+  "id": 610666540,
+  "center": {
+    "lat": -7.8075214,
+    "lon": 110.3460733
+  },
+  "nodes": [
+    5783203252,
+    5783203367,
+    5783203429,
+    5783203421,
+    5783203252
+  ],
+  "tags": {
+    "access:roof": "no",
+    "addr:full": "jl patangpuluhan no.35",
+    "amenity": "hospital",
+    "building": "hospital",
+    "building:condition": "good",
+    "building:floor": "ceramics",
+    "building:levels": "2",
+    "building:material": "brick",
+    "building:roof": "tile",
+    "building:structure": "confined_masonry",
+    "capacity:persons": ">500",
+    "name": "RSKIA 45",
+    "operator:type": "private",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 610683063,
+  "center": {
+    "lat": -7.7961871,
+    "lon": 110.3628945
+  },
+  "nodes": [
+    5783315340,
+    5783315339,
+    5783315338,
+    5783315337,
+    5783315340
+  ],
+  "tags": {
+    "access:roof": "no",
+    "addr:full": "Jalan Beskalan",
+    "amenity": "marketplace",
+    "building": "marketplace",
+    "building:condition": "good",
+    "building:floor": "ceramics",
+    "building:levels": "1",
+    "building:material": "concrete",
+    "building:roof": "tin",
+    "building:structure": "confined_masonry",
+    "capacity:persons": "100-250",
+    "height": "5",
+    "marketplace:authority": "officially_managed",
+    "marketplace:type": "mixed",
+    "name": "Paket Margorejo",
+    "opening_hours": "04:00-16:00",
+    "roof:height": "2.5",
+    "roof:shape": "hipped",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 610687467,
+  "center": {
+    "lat": -7.7906239,
+    "lon": 110.3578542
+  },
+  "nodes": [
+    5783339065,
+    10250515010,
+    10250496558,
+    10250496559,
+    10250515011,
+    10250514808,
+    5783339064,
+    10250515009,
+    10250515012,
+    10250515013,
+    10035627088,
+    10250514807,
+    10250515016,
+    5783339062,
+    10250515014,
+    5783339065
+  ],
+  "tags": {
+    "amenity": "school",
+    "building": "yes",
+    "layer": "1",
+    "name": "SD Muhamamdiyah Pringgokusuman"
+  }
+},
+{
+  "type": "way",
+  "id": 610693914,
+  "center": {
+    "lat": -7.7981766,
+    "lon": 110.3900619
+  },
+  "nodes": [
+    5783391458,
+    5783391460,
+    5783391459,
+    5783391463,
+    5783391464,
+    5783391461,
+    5783391458
+  ],
+  "tags": {
+    "amenity": "school",
+    "building": "yes",
+    "name": "SMP Muhammadiyah 8 Yogyakarta"
+  }
+},
+{
+  "type": "way",
+  "id": 610753751,
+  "center": {
+    "lat": -7.7939049,
+    "lon": 110.3843840
+  },
+  "nodes": [
+    5783776719,
+    5783776718,
+    5783776717,
+    5783776716,
+    5783776719
+  ],
+  "tags": {
+    "access:roof": "no",
+    "addr:full": "Jalan Mawar yogyakarta",
+    "amenity": "marketplace",
+    "building": "marketplace",
+    "building:condition": "good",
+    "building:floor": "tekhel",
+    "building:levels": "1",
+    "building:material": "wood",
+    "building:roof": "tin",
+    "building:structure": "bamboo_frame",
+    "capacity:persons": "50-100",
+    "fixme": "Survey opening and closing time, was \"12\".",
+    "marketplace:authority": "officially_managed",
+    "marketplace:type": "agricultural",
+    "name": "Pasar Sanggrahan Baciro",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 610973880,
+  "center": {
+    "lat": -7.8063455,
+    "lon": 110.3469354
+  },
+  "nodes": [
+    5785706320,
+    5785706319,
+    5785706318,
+    5785706317,
+    5785706320
+  ],
+  "tags": {
+    "amenity": "school",
+    "building": "yes",
+    "name": "SD Negeri Tamansari II Yogyakarta"
+  }
+},
+{
+  "type": "way",
+  "id": 610982775,
+  "center": {
+    "lat": -7.7945383,
+    "lon": 110.3897015
+  },
+  "nodes": [
+    1352325397,
+    5785748755,
+    5785748652,
+    1352325420,
+    1352325418,
+    1352325416,
+    1352325414,
+    1352325412,
+    1352325413,
+    5785748651,
+    5785748754,
+    5785748753,
+    1352325397
+  ],
+  "tags": {
+    "amenity": "school",
+    "building": "yes",
+    "building:levels": "2",
+    "building:name": "SMP Pangudi Luhur 1",
+    "building:roof": "tile",
+    "building:structure": "reinforced_masonry",
+    "building:use": "education",
+    "building:walls": "brick",
+    "name": "SMP Pangudi Luhur 1"
+  }
+},
+{
+  "type": "way",
+  "id": 610993548,
+  "center": {
+    "lat": -7.8066278,
+    "lon": 110.3511127
+  },
+  "nodes": [
+    5785817323,
+    5785817322,
+    5785817321,
+    5785817320,
+    5785817323
+  ],
+  "tags": {
+    "amenity": "school",
+    "building": "yes",
+    "name": "SMP Bopkri 5 Yogyakarta Sekolah Terpadu Bopkri Wirobrajan"
+  }
+},
+{
+  "type": "way",
+  "id": 610993613,
+  "center": {
+    "lat": -7.8085976,
+    "lon": 110.3499098
+  },
+  "nodes": [
+    5785817529,
+    5785817834,
+    5785817835,
+    5785817532,
+    5785817528,
+    5785817799,
+    5785817798,
+    5785817797,
+    5785817801,
+    5785817529
+  ],
+  "tags": {
+    "amenity": "hospital",
+    "healthcare": "hospital",
+    "name": "Rumah Sakit Ibu dan Anak Fajar"
+  }
+},
+{
+  "type": "way",
+  "id": 611014952,
+  "center": {
+    "lat": -7.7891333,
+    "lon": 110.3969354
+  },
+  "nodes": [
+    5785959097,
+    5785959096,
+    5785959095,
+    5785959094,
+    5785959093,
+    5785959092,
+    5785959091,
+    5785959097
+  ],
+  "tags": {
+    "addr:city": "Kota Yogyakarta",
+    "addr:full": "Balirejo, Mujamuju, Umbulharjo",
+    "amenity": "school",
+    "name": "SMA Santo Thomas",
+    "operator:type": "private",
+    "school:type_idn": "sma"
+  }
+},
+{
+  "type": "way",
+  "id": 611385675,
+  "center": {
+    "lat": -7.8152769,
+    "lon": 110.3615143
+  },
+  "nodes": [
+    5788568692,
+    5788568689,
+    5788568690,
+    5788568691,
+    5788568692
+  ],
+  "tags": {
+    "amenity": "school",
+    "building": "yes",
+    "name": "SMP Taman Dewasa Kumendaman"
+  }
+},
+{
+  "type": "way",
+  "id": 611471751,
+  "center": {
+    "lat": -7.8025074,
+    "lon": 110.3498443
+  },
+  "nodes": [
+    10720450050,
+    10720450051,
+    5789155538,
+    5789155539,
+    13051337465,
+    13051337467,
+    13051337468,
+    13051337466,
+    10720450050
+  ],
+  "tags": {
+    "amenity": "school",
+    "building": "yes",
+    "name": "SD Muhammadiyah Wirobrajan 3"
+  }
+},
+{
+  "type": "way",
+  "id": 613182595,
+  "center": {
+    "lat": -7.8241282,
+    "lon": 110.3740867
+  },
+  "nodes": [
+    5802671795,
+    5802671791,
+    5802671784,
+    5802671786,
+    5802671793,
+    5802671794,
+    5802671795
+  ],
+  "tags": {
+    "amenity": "school",
+    "building": "yes",
+    "name": "Muhammadiyah 9 Junior High School"
+  }
+},
+{
+  "type": "way",
+  "id": 613425525,
+  "center": {
+    "lat": -7.8036201,
+    "lon": 110.3565178
+  },
+  "nodes": [
+    5804209565,
+    5804209562,
+    5804209563,
+    5804209564,
+    5804209565
+  ],
+  "tags": {
+    "amenity": "hospital",
+    "building": "yes",
+    "healthcare": "hospital",
+    "name": "RSKIA Rachmi"
+  }
+},
+{
+  "type": "way",
+  "id": 614636926,
+  "center": {
+    "lat": -7.8208770,
+    "lon": 110.3863894
+  },
+  "nodes": [
+    5813794225,
+    5813794222,
+    5813794227,
+    5813794228,
+    10679888362,
+    5813794224,
+    10679888364,
+    10679888363,
+    5813794225
+  ],
+  "tags": {
+    "addr:street": "Jalan Pramuka",
+    "amenity": "school",
+    "building": "school",
+    "building:levels": "1",
+    "name": "SD Negeri Kotagede III"
+  }
+},
+{
+  "type": "way",
+  "id": 615059586,
+  "center": {
+    "lat": -7.8243174,
+    "lon": 110.3607874
+  },
+  "nodes": [
+    5816887258,
+    5816887261,
+    5816887260,
+    5816887259,
+    5816887258
+  ],
+  "tags": {
+    "amenity": "school",
+    "building": "yes",
+    "name": "PP Al Munawwir Komplek Nurussalam"
+  }
+},
+{
+  "type": "way",
+  "id": 615664757,
+  "center": {
+    "lat": -7.7856908,
+    "lon": 110.3609499
+  },
+  "nodes": [
+    5821731302,
+    5821731297,
+    5821731296,
+    5821731295,
+    5821731302
+  ],
+  "tags": {
+    "addr:city": "Yogyakarta",
+    "addr:postcode": "55231",
+    "addr:street": "Jalan Bumijo Lor",
+    "amenity": "school",
+    "name": "SD Negeri Bumijo"
+  }
+},
+{
+  "type": "way",
+  "id": 615669077,
+  "center": {
+    "lat": -7.8144354,
+    "lon": 110.3756441
+  },
+  "nodes": [
+    5821762476,
+    5821762475,
+    5821762474,
+    5821762473,
+    13543416919,
+    13543416920,
+    13543416921,
+    13543416922,
+    13543416923,
+    13543416924,
+    13543416925,
+    5821762469,
+    13543416926,
+    5821762468,
+    5821762476
+  ],
+  "tags": {
+    "addr:city": "Yogyakarta",
+    "addr:district": "Mergangsan",
+    "addr:housenumber": "158",
+    "addr:postcode": "55151",
+    "addr:province": "Daerah Istimewa Yogyakarta",
+    "addr:street": "Jalan Taman Siswa",
+    "addr:subdistrict": "Wirogunan",
+    "amenity": "school",
+    "name": "SMA UII Yogyakarta",
+    "religion": "muslim",
+    "school:type_idn": "sma",
+    "website": "https://smauiiyk.sch.id/"
+  }
+},
+{
+  "type": "way",
+  "id": 616030019,
+  "center": {
+    "lat": -7.7842001,
+    "lon": 110.3552016
+  },
+  "nodes": [
+    5824621819,
+    5824621818,
+    5824621817,
+    5824621816,
+    5824621815,
+    5824621814,
+    5824621819
+  ],
+  "tags": {
+    "amenity": "school",
+    "name": "SD Pingit"
+  }
+},
+{
+  "type": "way",
+  "id": 616063605,
+  "center": {
+    "lat": -7.8139815,
+    "lon": 110.3692909
+  },
+  "nodes": [
+    5824922648,
+    5824922647,
+    5824922646,
+    5824922645,
+    5824922648
+  ],
+  "tags": {
+    "access:roof": "no",
+    "addr:full": "Jalan Kolonel Sugiyono Nomor 9, Keparakan, Mergangsan, Kota Yogyakarta",
+    "amenity": "marketplace",
+    "building": "marketplace",
+    "building:condition": "good",
+    "building:floor": "ceramics",
+    "building:levels": "1",
+    "building:material": "brick",
+    "building:roof": "tile",
+    "building:structure": "confined_masonry",
+    "capacity:persons": "50-100",
+    "marketplace:authority": "officially_managed",
+    "marketplace:type": "mixed",
+    "name": "Pujokusuman",
+    "opening_hours": "Everyday 05.00 s. d. 12.00 WIB",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 616072054,
+  "center": {
+    "lat": -7.7890999,
+    "lon": 110.3906070
+  },
+  "nodes": [
+    5824989197,
+    5824989196,
+    5824989195,
+    5824989194,
+    5824989197
+  ],
+  "tags": {
+    "access:roof": "no",
+    "addr:full": "Jalan Tridarma Baciro",
+    "amenity": "marketplace",
+    "building": "marketplace",
+    "building:condition": "good",
+    "building:floor": "ceramics",
+    "building:levels": "1",
+    "building:material": "brick",
+    "building:roof": "tin",
+    "building:structure": "confined_masonry",
+    "capacity:persons": "100-250",
+    "marketplace:authority": "officially_managed",
+    "marketplace:type": "mixed",
+    "name": "Pasar Talok",
+    "opening_hours": "04:00-14:00",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 616082200,
+  "center": {
+    "lat": -7.7939635,
+    "lon": 110.3921868
+  },
+  "nodes": [
+    5825065641,
+    5825065640,
+    5825065639,
+    5825065638,
+    5825065636,
+    5825065635,
+    5825065641
+  ],
+  "tags": {
+    "access:roof": "yes",
+    "addr:full": "Jalan Ipda Tut harsono No 53 jl Melati wetan",
+    "amenity": "hospital",
+    "healthcare": "hospital",
+    "name": "RS Happy Land",
+    "operator:type": "government",
+    "source": "survey",
+    "website": "https://rshappyland.com/"
+  }
+},
+{
+  "type": "way",
+  "id": 616208953,
+  "center": {
+    "lat": -7.8079577,
+    "lon": 110.3602526
+  },
+  "nodes": [
+    5826235427,
+    5826235426,
+    5826235425,
+    5826235424,
+    5826235427
+  ],
+  "tags": {
+    "access:roof": "no",
+    "addr:full": "Jalan Polowijo No.11",
+    "amenity": "marketplace",
+    "building": "marketplace",
+    "building:condition": "good",
+    "building:floor": "ceramics",
+    "building:levels": "1",
+    "building:material": "wood",
+    "building:roof": "tile",
+    "building:structure": "wood_frame",
+    "capacity:persons": "100-250",
+    "marketplace:authority": "officially_managed",
+    "marketplace:type": "mixed",
+    "name": "Pasar Ngasem",
+    "opening_hours": "05:00-13:00",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 616211547,
+  "center": {
+    "lat": -7.8150629,
+    "lon": 110.3877007
+  },
+  "nodes": [
+    5826264011,
+    5826264010,
+    5826264009,
+    10024279338,
+    10024279339,
+    5826264008,
+    5826264011
+  ],
+  "tags": {
+    "addr:full": "Jl.Veteran No.184, Pandeyan, Umbulharjo",
+    "amenity": "hospital",
+    "healthcare": "hospital",
+    "name": "RSI Hidayatullah",
+    "operator:type": "government",
+    "source": "survey",
+    "toilets:wheelchair": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 616211647,
+  "center": {
+    "lat": -7.7992953,
+    "lon": 110.3651356
+  },
+  "nodes": [
+    5826264863,
+    5826264862,
+    5826264861,
+    5826264860,
+    5826264863
+  ],
+  "tags": {
+    "access:roof": "no",
+    "addr:full": "Jalan Margo Mulyo",
+    "amenity": "marketplace",
+    "building": "yes",
+    "building:condition": "poor",
+    "building:floor": "cement",
+    "building:levels": "1",
+    "building:material": "wood",
+    "building:roof": "tin",
+    "building:structure": "wood_frame",
+    "capacity:persons": "50-100",
+    "marketplace:authority": "spontaneous",
+    "marketplace:type": "retail",
+    "name": "Pasar Sore Malioboro",
+    "opening_hours": "15:00-22:00"
+  }
+},
+{
+  "type": "way",
+  "id": 620576272,
+  "center": {
+    "lat": -7.7953435,
+    "lon": 110.3502929
+  },
+  "nodes": [
+    5863077575,
+    5863077574,
+    5863077573,
+    5863077572,
+    5863077575
+  ],
+  "tags": {
+    "amenity": "school",
+    "name": "SD Tegal Mulyo"
+  }
+},
+{
+  "type": "way",
+  "id": 626073018,
+  "center": {
+    "lat": -7.8189969,
+    "lon": 110.3534355
+  },
+  "nodes": [
+    5910796051,
+    5910796050,
+    5910796049,
+    5910796048,
+    5910796051
+  ],
+  "tags": {
+    "addr:full": "Jalan Bantul, Gang Tawangsari",
+    "amenity": "school",
+    "capacity:persons": "100-250",
+    "name": "SD Negeri Gedongkiwo",
+    "operator:type": "government",
+    "school:type_idn": "sd",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 632172049,
+  "center": {
+    "lat": -7.8145920,
+    "lon": 110.3883354
+  },
+  "nodes": [
+    5969076158,
+    5969076155,
+    5969076156,
+    9432640498,
+    9432640497,
+    9432640496,
+    9432640499,
+    5969076157,
+    5969076158
+  ],
+  "tags": {
+    "amenity": "school",
+    "building": "yes",
+    "name": "SMPIT Abu Bakar Yogyakarta"
+  }
+},
+{
+  "type": "way",
+  "id": 778464130,
+  "center": {
+    "lat": -7.7805759,
+    "lon": 110.3744372
+  },
+  "nodes": [
+    7265447210,
+    7265447211,
+    7265447212,
+    7265447213,
+    7265447210
+  ],
+  "tags": {
+    "addr:city": "Yogyakarta",
+    "addr:district": "Gondokusuman",
+    "addr:province": "DI Yogyakarta",
+    "addr:street": "Jalan Cik Di Tiro",
+    "amenity": "hospital",
+    "healthcare": "hospital",
+    "healthcare:speciality": "ophthalmology",
+    "name": "RS Mata Dr. Yap"
+  }
+},
+{
+  "type": "way",
+  "id": 930054785,
+  "center": {
+    "lat": -7.7861682,
+    "lon": 110.3594156
+  },
+  "nodes": [
+    8624486541,
+    8624486542,
+    8624486543,
+    8624486544,
+    8624486541
+  ],
+  "tags": {
+    "amenity": "school",
+    "building": "yes",
+    "name": "SMP Negeri 14 Yogyakarta"
+  }
+},
+{
+  "type": "way",
+  "id": 998411846,
+  "center": {
+    "lat": -7.7810617,
+    "lon": 110.3885530
+  },
+  "nodes": [
+    13423892980,
+    9218564389,
+    9218564390,
+    13423892981,
+    13423892980
+  ],
+  "tags": {
+    "amenity": "marketplace",
+    "name": "Pasar Demangan"
+  }
+},
+{
+  "type": "way",
+  "id": 1050539156,
+  "center": {
+    "lat": -7.7992855,
+    "lon": 110.3823661
+  },
+  "nodes": [
+    2838787231,
+    2838787254,
+    2838787255,
+    9653927925,
+    4589148416,
+    2838789340,
+    2838789336,
+    2838789329,
+    2838788611,
+    2838788608,
+    2838789321,
+    2838788494,
+    2838788492,
+    2838788607,
+    2838787232,
+    2838787231
+  ],
+  "tags": {
+    "addr:city": "Yogyakarta",
+    "addr:housenumber": "7A",
+    "addr:postcode": "5516",
+    "addr:street": "Jalan Kapas II",
+    "amenity": "school",
+    "grades": "7-9",
+    "name": "SMP Muhammadiyah 2 Yogyakarta",
+    "operator": "Muhammadiyah",
+    "operator:type": "religious",
+    "operator:wikidata": "Q1951917",
+    "religion": "muslim",
+    "website": "https://smpmuh2yk.sch.id/"
+  }
+},
+{
+  "type": "way",
+  "id": 1050540821,
+  "center": {
+    "lat": -7.8002995,
+    "lon": 110.3827534
+  },
+  "nodes": [
+    2841496574,
+    9653952181,
+    9653952182,
+    4589148432,
+    2841496585,
+    2841496578,
+    2841496575,
+    2841496574
+  ],
+  "tags": {
+    "amenity": "school",
+    "name": "SMK Koperasi Yogyakarta",
+    "website": "http://smk-koperasi.sch.id/"
+  }
+},
+{
+  "type": "way",
+  "id": 1050545449,
+  "center": {
+    "lat": -7.8005355,
+    "lon": 110.3795157
+  },
+  "nodes": [
+    9653997821,
+    9653997822,
+    12556241310,
+    12556241309,
+    9653997821
+  ],
+  "tags": {
+    "addr:city": "Yogyakarta",
+    "addr:district": "Pakualaman",
+    "addr:postcode": "55111",
+    "addr:province": "Daerah Istimewa Yogyakarta",
+    "addr:street": "Jalan Notowinatan",
+    "addr:subdistrict": "Gunungketur",
+    "amenity": "school",
+    "grades": "4-6",
+    "name": "SD Muhammadiyah Sokonandi Unit 2",
+    "operator": "Muhammadiyah",
+    "operator:type": "religious",
+    "operator:wikidata": "Q1951917",
+    "religion": "muslim",
+    "website": "http://sdmuhsokonandi.sch/id/"
+  }
+},
+{
+  "type": "way",
+  "id": 1060445403,
+  "center": {
+    "lat": -7.7979637,
+    "lon": 110.3826361
+  },
+  "nodes": [
+    9742951789,
+    9742951790,
+    9742951787,
+    10696023427,
+    10689848216,
+    9742951788,
+    2838779019,
+    8682383544,
+    2838779017,
+    10689848218,
+    10689848217,
+    9742951791,
+    9742951789
+  ],
+  "tags": {
+    "amenity": "school",
+    "name": "SMK Negeri 6 Yogyakarta"
+  }
+},
+{
+  "type": "way",
+  "id": 1084138629,
+  "center": {
+    "lat": -7.7995858,
+    "lon": 110.3870821
+  },
+  "nodes": [
+    9934733661,
+    9934733662,
+    9934733663,
+    9934733664,
+    9934733665,
+    9934733666,
+    9934733661
+  ],
+  "tags": {
+    "amenity": "school",
+    "name": "SMPIT Abu Bakar Fullday School Yogyakarta"
+  }
+},
+{
+  "type": "way",
+  "id": 1084363423,
+  "center": {
+    "lat": -7.7861148,
+    "lon": 110.3698104
+  },
+  "nodes": [
+    13470908428,
+    9936654305,
+    13470908429,
+    13470908419,
+    13470908428
+  ],
+  "tags": {
+    "amenity": "school",
+    "name": "SMPIT Masjid Syuhada"
+  }
+},
+{
+  "type": "way",
+  "id": 1084363431,
+  "center": {
+    "lat": -7.7867555,
+    "lon": 110.3688625
+  },
+  "nodes": [
+    1657117191,
+    5826276092,
+    5826276091,
+    9936665365,
+    5826276088,
+    5826276096,
+    7648150695,
+    1657117192,
+    7648150694,
+    1657117191
+  ],
+  "tags": {
+    "amenity": "school",
+    "name": "SD Masjid Syuhada"
+  }
+},
+{
+  "type": "way",
+  "id": 1086011408,
+  "center": {
+    "lat": -7.8043437,
+    "lon": 110.3621008
+  },
+  "nodes": [
+    9950991286,
+    9950991287,
+    5788553629,
+    9950991288,
+    5788553600,
+    9950991289,
+    5788553591,
+    9950991290,
+    9950991291,
+    9950991286
+  ],
+  "tags": {
+    "amenity": "school",
+    "name": "SD Muhammadiyah Kauman"
+  }
+},
+{
+  "type": "way",
+  "id": 1089636735,
+  "center": {
+    "lat": -7.8054673,
+    "lon": 110.3651837
+  },
+  "nodes": [
+    9981313258,
+    9981313259,
+    9981313260,
+    9981313261,
+    9981313262,
+    9981313263,
+    9981313258
+  ],
+  "tags": {
+    "amenity": "school",
+    "grades": "1-6",
+    "name": "SD Negeri Kepturan I"
+  }
+},
+{
+  "type": "way",
+  "id": 1092365726,
+  "center": {
+    "lat": -7.7860524,
+    "lon": 110.3924356
+  },
+  "nodes": [
+    10004319192,
+    10722871436,
+    2751557921,
+    2751557908,
+    10004319199,
+    5639262033,
+    10004319200,
+    10004319195,
+    10004319194,
+    10004319193,
+    10004319192
+  ],
+  "tags": {
+    "amenity": "school",
+    "name": "SD Muhammadiyah Sapen"
+  }
+},
+{
+  "type": "way",
+  "id": 1094489513,
+  "center": {
+    "lat": -7.8145733,
+    "lon": 110.3884650
+  },
+  "nodes": [
+    10024279336,
+    10024279337,
+    8460010134,
+    8460010137,
+    9156786103,
+    10024279338,
+    10024279339,
+    10024279340,
+    10024279341,
+    10024279342,
+    10024279343,
+    5652854450,
+    10024279335,
+    5652854454,
+    7675951499,
+    7675951498,
+    7675951497,
+    10024279344,
+    10024279345,
+    10024279346,
+    10024279347,
+    10024279348,
+    10024279349,
+    10024279353,
+    10024279350,
+    10024279351,
+    10024279352,
+    10024279336
+  ],
+  "tags": {
+    "amenity": "school",
+    "name": "SMPIT Abu Bakar Yogyakarta"
+  }
+},
+{
+  "type": "way",
+  "id": 1150674304,
+  "center": {
+    "lat": -7.8225582,
+    "lon": 110.3893738
+  },
+  "nodes": [
+    10704137824,
+    10704137823,
+    10704137822,
+    10704137821,
+    10704137820,
+    10704137819,
+    10704137818,
+    10704137817,
+    10704137824
+  ],
+  "tags": {
+    "access:roof": "no",
+    "address": "Jalan Pramuka No.62, Giwangan, Umbulharjo, Giwangan",
+    "amenity": "school",
+    "building": "school",
+    "building:condition": "good",
+    "building:levels": "3",
+    "building:material": "concrete",
+    "building:roof": "tile",
+    "building:structure": "confined_masonry",
+    "capacity:persons": ">500",
+    "name": "SMK Muhammadiyah 3 Yogyakarta",
+    "operator:type": "private",
+    "school:type_idn": "sma",
+    "source": "survey"
+  }
+},
+{
+  "type": "way",
+  "id": 1317058910,
+  "center": {
+    "lat": -7.8200447,
+    "lon": 110.3976549
+  },
+  "nodes": [
+    5781411920,
+    5781411918,
+    5781411916,
+    5781411907,
+    5781411908,
+    5781411904,
+    5781411905,
+    5781411906,
+    5781411914,
+    5781411919,
+    5781411920
+  ],
+  "tags": {
+    "amenity": "school",
+    "name": "SMP Negeri 9 Yogyakarta"
+  }
+},
+{
+  "type": "way",
+  "id": 1317059405,
+  "center": {
+    "lat": -7.8176567,
+    "lon": 110.3948888
+  },
+  "nodes": [
+    9387646947,
+    9387646949,
+    9387646950,
+    9387646956,
+    9387646962,
+    9387646963,
+    12189401851,
+    12189401852,
+    12189401853,
+    12189401854,
+    12189401855,
+    9387646945,
+    9387646947
+  ],
+  "tags": {
+    "amenity": "school",
+    "name": "SD Negeri Rejowinangun 3"
+  }
+},
+{
+  "type": "way",
+  "id": 1360866353,
+  "center": {
+    "lat": -7.7949072,
+    "lon": 110.3763399
+  },
+  "nodes": [
+    12598025736,
+    12598025737,
+    12598025738,
+    12598025739,
+    12598025736
+  ],
+  "tags": {
+    "amenity": "school",
+    "grades": "1-6",
+    "name": "SD Muhammadiyah Bausasran",
+    "operator": "Muhammadiyah",
+    "operator:type": "religious",
+    "operator:wikidata": "Q1951917"
+  }
+},
+{
+  "type": "way",
+  "id": 1388767662,
+  "center": {
+    "lat": -7.8023834,
+    "lon": 110.3731096
+  },
+  "nodes": [
+    12855306770,
+    12855306771,
+    12855306772,
+    12855306773,
+    12855306774,
+    12855306770
+  ],
+  "tags": {
+    "amenity": "school",
+    "name": "SLB Negeri 1 Yogyakarta"
+  }
+},
+{
+  "type": "way",
+  "id": 1388767664,
+  "center": {
+    "lat": -7.8038879,
+    "lon": 110.3730816
+  },
+  "nodes": [
+    12855306779,
+    12855306780,
+    12855306781,
+    12855306782,
+    12855306783,
+    12855306784,
+    12855306785,
+    12855306779
+  ],
+  "tags": {
+    "amenity": "school",
+    "name": "SMK Marsudi Luhur I Yogyakarta dan SMK Marsudi Luhur IIYogyakarta",
+    "name:en": "Marsudi Luhur I Vocational High School Yogyakarta"
+  }
+},
+{
+  "type": "way",
+  "id": 1390717368,
+  "center": {
+    "lat": -7.7835059,
+    "lon": 110.3785100
+  },
+  "nodes": [
+    12873255188,
+    12873255189,
+    12873255190,
+    12873255191,
+    10718118929,
+    12873255188
+  ],
+  "tags": {
+    "alt_name": "Bethesda Gym and Aerobic",
+    "amenity": "hospital",
+    "healthcare": "hospital",
+    "healthcare:speciality": "systemic",
+    "name": "Stroke Center RS Bethesda",
+    "operator": "Yuni",
+    "operator:type": "public"
+  }
+},
+{
+  "type": "way",
+  "id": 1416077805,
+  "center": {
+    "lat": -7.7915710,
+    "lon": 110.3668076
+  },
+  "nodes": [
+    9860058047,
+    13013438481,
+    13013438482,
+    13013438483,
+    13013438484,
+    13013438485,
+    13013438486,
+    13013438487,
+    13013438488,
+    13013438489,
+    13013438490,
+    13013438491,
+    13013438492,
+    13013438493,
+    13013438494,
+    13013438495,
+    13013438496,
+    13013438497,
+    9860058047
+  ],
+  "tags": {
+    "amenity": "marketplace",
+    "building": "retail",
+    "name": "Teras Malioboro 2"
+  }
+},
+{
+  "type": "way",
+  "id": 1457204966,
+  "center": {
+    "lat": -7.7835311,
+    "lon": 110.3690166
+  },
+  "nodes": [
+    13364242532,
+    13364242533,
+    13364242534,
+    13364242535,
+    13364242536,
+    13364242532
+  ],
+  "tags": {
+    "amenity": "school",
+    "education": "school",
+    "grades": "0-6",
+    "name": "TK & SD BOPKRI Gondolayu"
+  }
+},
+{
+  "type": "relation",
+  "id": 7081189,
+  "center": {
+    "lat": -7.7868506,
+    "lon": 110.3759146
+  },
+  "members": [
+    {
+      "type": "way",
+      "ref": 480929821,
+      "role": "outer"
+    },
+    {
+      "type": "way",
+      "ref": 362012301,
+      "role": "inner"
+    },
+    {
+      "type": "way",
+      "ref": 362012383,
+      "role": "inner"
+    },
+    {
+      "type": "way",
+      "ref": 362012319,
+      "role": "inner"
+    },
+    {
+      "type": "way",
+      "ref": 362012349,
+      "role": "inner"
+    },
+    {
+      "type": "way",
+      "ref": 362012341,
+      "role": "inner"
+    },
+    {
+      "type": "way",
+      "ref": 362012490,
+      "role": "inner"
+    },
+    {
+      "type": "way",
+      "ref": 362012260,
+      "role": "inner"
+    },
+    {
+      "type": "way",
+      "ref": 362012529,
+      "role": "inner"
+    },
+    {
+      "type": "way",
+      "ref": 362012210,
+      "role": "inner"
+    },
+    {
+      "type": "way",
+      "ref": 362012337,
+      "role": "inner"
+    },
+    {
+      "type": "way",
+      "ref": 362012231,
+      "role": "inner"
+    },
+    {
+      "type": "way",
+      "ref": 362012359,
+      "role": "inner"
+    },
+    {
+      "type": "way",
+      "ref": 362012433,
+      "role": "inner"
+    },
+    {
+      "type": "way",
+      "ref": 362012513,
+      "role": "inner"
+    },
+    {
+      "type": "way",
+      "ref": 362012245,
+      "role": "inner"
+    },
+    {
+      "type": "way",
+      "ref": 362012285,
+      "role": "inner"
+    },
+    {
+      "type": "way",
+      "ref": 362012315,
+      "role": "inner"
+    },
+    {
+      "type": "way",
+      "ref": 362012218,
+      "role": "inner"
+    },
+    {
+      "type": "way",
+      "ref": 362012459,
+      "role": "inner"
+    },
+    {
+      "type": "way",
+      "ref": 362012345,
+      "role": "inner"
+    },
+    {
+      "type": "way",
+      "ref": 362012542,
+      "role": "inner"
+    },
+    {
+      "type": "way",
+      "ref": 362012355,
+      "role": "inner"
+    },
+    {
+      "type": "way",
+      "ref": 481061474,
+      "role": "inner"
+    },
+    {
+      "type": "way",
+      "ref": 362012523,
+      "role": "inner"
+    },
+    {
+      "type": "way",
+      "ref": 1461446687,
+      "role": "inner"
+    },
+    {
+      "type": "way",
+      "ref": 362012296,
+      "role": "inner"
+    },
+    {
+      "type": "way",
+      "ref": 362012370,
+      "role": "inner"
+    },
+    {
+      "type": "way",
+      "ref": 778464132,
+      "role": "inner"
+    },
+    {
+      "type": "way",
+      "ref": 362012412,
+      "role": "inner"
+    },
+    {
+      "type": "way",
+      "ref": 1461446686,
+      "role": "inner"
+    }
+  ],
+  "tags": {
+    "addr:city": "Yogyakarta",
+    "addr:district": "Gondokusuman",
+    "addr:housenumber": "1",
+    "addr:postcode": "55224",
+    "addr:province": "Daerah Istimewa Yogyakarta",
+    "addr:street": "Jalan Wardani",
+    "addr:subdistrict": "Kotabaru",
+    "amenity": "school",
+    "education": "school",
+    "email": "smpn5yogya@yahoo.com",
+    "fax": "+62 274 512169",
+    "grades": "7-9",
+    "level": "2",
+    "name": "SMP Negeri 5 Yogyakarta",
+    "operator": "Dinas Pendidikan Kota Yogyakarta",
+    "operator:type": "government",
+    "phone": "+62 274 512169",
+    "school:type_idn": "smp",
+    "type": "multipolygon",
+    "website": "https://smpn5yogyakarta.sch.id/"
+  }
+},
+{
+  "type": "relation",
+  "id": 8472305,
+  "center": {
+    "lat": -7.7770498,
+    "lon": 110.3664839
+  },
+  "members": [
+    {
+      "type": "way",
+      "ref": 610417168,
+      "role": "inner"
+    },
+    {
+      "type": "way",
+      "ref": 610417169,
+      "role": "inner"
+    },
+    {
+      "type": "way",
+      "ref": 610417177,
+      "role": "inner"
+    },
+    {
+      "type": "way",
+      "ref": 610417178,
+      "role": "inner"
+    },
+    {
+      "type": "way",
+      "ref": 610417181,
+      "role": "inner"
+    },
+    {
+      "type": "way",
+      "ref": 610417179,
+      "role": "inner"
+    },
+    {
+      "type": "way",
+      "ref": 610417180,
+      "role": "inner"
+    },
+    {
+      "type": "way",
+      "ref": 610417170,
+      "role": "outer"
+    }
+  ],
+  "tags": {
+    "amenity": "school",
+    "building": "yes",
+    "building:levels": "1",
+    "building:roof": "tile",
+    "building:structure": "reinforced_masonry",
+    "building:use": "education",
+    "building:walls": "brick",
+    "name": "SMK 3 Yogyakarta",
+    "type": "multipolygon"
+  }
+},
+{
+  "type": "relation",
+  "id": 8472407,
+  "center": {
+    "lat": -7.7765675,
+    "lon": 110.3682549
+  },
+  "members": [
+    {
+      "type": "way",
+      "ref": 610434913,
+      "role": "inner"
+    },
+    {
+      "type": "way",
+      "ref": 610434911,
+      "role": "inner"
+    },
+    {
+      "type": "way",
+      "ref": 610434910,
+      "role": "outer"
+    }
+  ],
+  "tags": {
+    "amenity": "school",
+    "building": "yes",
+    "name": "SD Negeri Jetisharjo",
+    "type": "multipolygon"
+  }
+},
+{
+  "type": "relation",
+  "id": 8477983,
+  "center": {
+    "lat": -7.8029684,
+    "lon": 110.3736402
+  },
+  "members": [
+    {
+      "type": "way",
+      "ref": 611044097,
+      "role": "outer"
+    },
+    {
+      "type": "way",
+      "ref": 611044093,
+      "role": "inner"
+    }
+  ],
+  "tags": {
+    "amenity": "school",
+    "building": "yes",
+    "name": "SMK Bopkri 2 Yogyakarta",
+    "type": "multipolygon"
+  }
+},
+{
+  "type": "relation",
+  "id": 8518702,
+  "center": {
+    "lat": -7.7857471,
+    "lon": 110.3613375
+  },
+  "members": [
+    {
+      "type": "way",
+      "ref": 390359099,
+      "role": "outer"
+    },
+    {
+      "type": "way",
+      "ref": 615664758,
+      "role": "inner"
+    }
+  ],
+  "tags": {
+    "addr:city": "Yogyakarta",
+    "addr:postcode": "55231",
+    "addr:street": "Jalan Bumijo Lor",
+    "amenity": "school",
+    "building": "school",
+    "name": "SD Tarakanita Bumijo",
+    "religion": "christian",
+    "type": "multipolygon"
+  }
+},
+{
+  "type": "relation",
+  "id": 14433670,
+  "center": {
+    "lat": -7.7955147,
+    "lon": 110.3786931
+  },
+  "members": [
+    {
+      "type": "way",
+      "ref": 120689430,
+      "role": "outer"
+    },
+    {
+      "type": "way",
+      "ref": 1084363416,
+      "role": "inner"
+    },
+    {
+      "type": "way",
+      "ref": 1084363415,
+      "role": "inner"
+    },
+    {
+      "type": "way",
+      "ref": 1084363414,
+      "role": "inner"
+    }
+  ],
+  "tags": {
+    "amenity": "school",
+    "building": "yes",
+    "building:levels": "1",
+    "building:name": "SMA Stella Duce 2",
+    "building:roof": "tile",
+    "building:structure": "reinforced_masonry",
+    "building:use": "education",
+    "building:walls": "brick",
+    "height": "15.0",
+    "name": "SMA Stella Duce 2",
+    "type": "multipolygon"
+  }
+},
+{
+  "type": "relation",
+  "id": 15649670,
+  "center": {
+    "lat": -7.7918776,
+    "lon": 110.3647215
+  },
+  "members": [
+    {
+      "type": "way",
+      "ref": 591935675,
+      "role": "outer"
+    },
+    {
+      "type": "way",
+      "ref": 283887777,
+      "role": "inner"
+    },
+    {
+      "type": "way",
+      "ref": 283910374,
+      "role": "inner"
+    },
+    {
+      "type": "way",
+      "ref": 591935676,
+      "role": "inner"
+    }
+  ],
+  "tags": {
+    "addr:full": "Jalan Sosrowijayan No. 43, Sosromenduran, Gedong Tengen, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55271",
+    "amenity": "school",
+    "name": "SD Negeri Sosrowijayan",
+    "operator:type": "government",
+    "school:type_idn": "sd",
+    "source": "survey",
+    "type": "multipolygon"
+  }
+}
+
+  ]
+}
