@@ -14,11 +14,11 @@ export const LEVEL_COLOR: Record<
   },
   tinggi: {
     marker: "#F28C28",
-    text: "#18191C",
+    text: "#1F2933",
   },
   sedang: {
     marker: "#F4C430",
-    text: "#18191C",
+    text: "#1F2933",
   },
 } as const;
 
@@ -69,7 +69,7 @@ export const VITAL_SHAPE: Record<VitalType, "square" | "circle" | "diamond"> = {
 /**
  * Aksen tunggal aplikasi (Teal Slate).
  */
-export const ACCENT = "#0D7377";
+export const ACCENT = "#0F766E";
 
 /**
  * Aturan tampilan marker berdasarkan status klaster.
@@ -94,4 +94,3 @@ export const MAP_TILE = {
   attribution:
     '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
 } as const;
-

@@ -6,18 +6,25 @@
   --color-bg: var(--bg);
   --color-surface: var(--surface);
   --color-border: var(--border);
+  --color-border-input: var(--border-input);
 
   --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
   --color-muted: var(--muted);
-  --color-subtle: var(--subtle);
+  --color-track: var(--track);
+
+  --color-tint: var(--tint);
+  --color-tint-2: var(--tint-2);
 
   --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
   --color-accent-soft: var(--accent-soft);
   --color-accent-ink: var(--accent-ink);
 
   --color-header-bg: var(--header-bg);
   --color-header-ink: var(--header-ink);
   --color-header-muted: var(--header-muted);
+  --color-header-icon: var(--header-icon);
 
   --color-footer-bg: var(--footer-bg);
   --color-footer-ink: var(--footer-ink);
@@ -46,49 +53,57 @@
 
 :root {
   /* ── Ground & Surface (docs/DESIGN.md) ── */
-  --bg: #f7f8fa;
-  --surface: #ffffff;
-  --border: #e4e6ea;
+  --bg: #F5F6F4;
+  --surface: #FFFFFF;
+  --border: #E4E7E3;
+  --border-input: #D2D7D2;
 
   /* ── Tipografi & Ink ── */
-  --ink: #18191c;
-  --muted: #6b7280;
-  --subtle: #9ca3af;
+  --ink: #1A2321;
+  --ink-2: #3D4A47;
+  --muted: #5F6D69;
+  --track: #E6EAE7;
 
-  /* ── Aksen Tunggal (Teal Slate) ── */
-  --accent: #0d7377;
-  --accent-soft: #e6f4f4;
-  --accent-ink: #ffffff;
+  /* ── Tint ── */
+  --tint: #F8FAF8;
+  --tint-2: #F0F3F0;
+
+  /* ── Aksen (Teal) ── */
+  --accent: #0F766E;
+  --accent-hover: #115E59;
+  --accent-soft: #E6F4F1;
+  --accent-ink: #FFFFFF;
 
   /* ── Header & Footer (Arang) ── */
-  --header-bg: #1a1d23;
-  --header-ink: #f1f5f9;
-  --header-muted: #94a3b8;
-  --footer-bg: #111318;
-  --footer-ink: #94a3b8;
+  --header-bg: #1F2933;
+  --header-ink: #FFFFFF;
+  --header-muted: #C5CEC9;
+  --header-icon: #5EEAD4;
+  --footer-bg: #161D24;
+  --footer-ink: #C5CEC9;
 
   /* ── Warna Prioritas Fungsional (docs/DESIGN.md) ── */
-  --kritis: #d92d3a;
-  --kritis-tint: #fde8ea;
-  --kritis-ink: #a4121f;
+  --kritis: #D92D3A;
+  --kritis-tint: #FDE8EA;
+  --kritis-ink: #A4121F;
 
-  --tinggi: #f28c28;
-  --tinggi-tint: #ffefd9;
-  --tinggi-ink: #9a4a00;
+  --tinggi: #F28C28;
+  --tinggi-tint: #FFEFD9;
+  --tinggi-ink: #9A4A00;
 
-  --sedang: #f4c430;
-  --sedang-tint: #fff6cc;
-  --sedang-ink: #7a5b00;
+  --sedang: #F4C430;
+  --sedang-tint: #FFF6CC;
+  --sedang-ink: #7A5B00;
 
   /* ── Fasilitas Vital ── */
-  --vital-hospital: #2563eb;
+  --vital-hospital: #2563EB;
   --vital-school: #334155;
-  --vital-market: #8b5e34;
+  --vital-market: #8B5E34;
 
   /* ── Data Simulasi Disclaimer Badge ── */
-  --disclaimer-border: #f4c430;
-  --disclaimer-bg: #fff6cc;
-  --disclaimer-ink: #7a5b00;
+  --disclaimer-border: #F4C430;
+  --disclaimer-bg: #FFF6CC;
+  --disclaimer-ink: #7A5B00;
 
   /* ── Radius Konsisten (docs/DESIGN.md) ── */
   --radius-card: 12px;
@@ -103,6 +118,7 @@
   --t-press: 140ms;
   --t-hover: 180ms;
   --t-ui: 240ms;
+  --t-score-ring: 350ms;
 }
 
 body {
