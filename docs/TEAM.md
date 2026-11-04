@@ -15,7 +15,7 @@ Penyebab konflik git hampir selalu sama: dua orang mengubah **file yang sama**. 
 
 **Bersama (satu per satu, bukan paralel):** T11 (poles dan responsif), T12 (README, QA akhir).
 
-**Dilarang disentuh siapa pun:** `lib/infratriage/` (mesin yang sudah dites).
+**Dilarang disentuh siapa pun:** `lib/infratriage/` (mesin yang sudah dites; nama folder ini sengaja tidak diganti walau produknya bernama **TEPAT**).
 
 ## Urutan kerja supaya tidak saling menunggu
 
