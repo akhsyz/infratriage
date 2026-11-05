@@ -6,6 +6,7 @@ import type { Category, LatLng, PriorityLevel } from "../../lib/infratriage";
 import { LEVEL_COLOR, VITAL_COLOR } from "../../lib/theme";
 import { Building2, Check, Layers, Plus, X } from "lucide-react";
 import AddReportForm from "../AddReportForm";
+import DemoControls from "./DemoControls";
 import type { ReportFormData } from "./reportDraft";
 
 interface MapOverlaysProps {
@@ -200,8 +201,8 @@ export function MapOverlays({
         </div>
       )}
 
-      {/* ── Baris Bawah: Legenda di Kiri Bawah ── */}
-      <div className="flex items-end justify-between">
+      {/* ── Baris Bawah: Legenda di Kiri Bawah & Skenario Demo di Kanan Bawah ── */}
+      <div className="flex items-end justify-between gap-3">
         <div className="pointer-events-auto rounded-[12px] border border-border bg-surface p-2.5 shadow-sm text-ink max-w-[220px]">
           <div className="flex items-center gap-1.5 mb-1.5">
             <Layers className="h-3.5 w-3.5 text-muted" />
@@ -260,6 +261,11 @@ export function MapOverlays({
               </div>
             )}
           </div>
+        </div>
+
+        {/* Kanan Bawah: Skenario Demo */}
+        <div className="pointer-events-auto">
+          <DemoControls />
         </div>
       </div>
     </div>
