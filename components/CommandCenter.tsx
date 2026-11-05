@@ -1,26 +1,20 @@
 "use client";
 
-import React, { useMemo, useState } from "react";
+import React, { useState } from "react";
 import dynamic from "next/dynamic";
-import { useApp } from "../lib/store";
-import {
-  computeScore,
-  priorityLevel,
-  SEED_DISCLAIMER,
-  type ScoreContext,
-} from "../lib/infratriage";
-import { vitals } from "../lib/vitals";
+import { SEED_DISCLAIMER } from "../lib/infratriage";
 import Toast from "./Toast";
+import Sidebar, { type TabKey } from "./Sidebar";
+import KpiCards from "./KpiCards";
 import RankingTab from "./panel/RankingTab";
 import InspectorTab from "./panel/InspectorTab";
 import BudgetTab from "./panel/BudgetTab";
 import WeightsTab from "./panel/WeightsTab";
-import { AlertTriangle, FileText, Layers } from "lucide-react";
 
 const MapDashboard = dynamic(() => import("./MapDashboard"), {
   ssr: false,
   loading: () => (
-    <div className="h-full w-full bg-bg border border-border animate-pulse flex items-center justify-center">
+    <div className="h-full w-full bg-surface border border-border animate-pulse flex items-center justify-center rounded-[16px]">
       <span className="text-muted text-sm font-medium">
         Memuat modul geospasial...
       </span>
@@ -28,205 +22,67 @@ const MapDashboard = dynamic(() => import("./MapDashboard"), {
   ),
 });
 
-type TabKey = "ranking" | "inspector" | "budget" | "weights";
-
 export default function CommandCenter() {
-  const { state } = useApp();
   const [activeTab, setActiveTab] = useState<TabKey>("ranking");
 
-  // KPI Utama (Global)
-  const totalReports = state.reports.length;
-  const activeClusters = useMemo(
-    () => state.clusters.filter((c) => c.status !== "resolved"),
-    [state.clusters]
-  );
-  const totalActiveClusters = activeClusters.length;
-
-  const criticalCount = useMemo(() => {
-    const ctx: ScoreContext = {
-      vitals,
-      weights: state.weights,
-      now: state.now,
-    };
-    return activeClusters.filter(
-      (c) => priorityLevel(computeScore(c, ctx).urgency) === "kritis"
-    ).length;
-  }, [activeClusters, state.weights, state.now]);
-
   return (
-    <div className="flex h-screen w-full flex-col overflow-hidden bg-bg text-ink font-sans">
-      {/* ── Header Utama ── */}
-      <header className="flex flex-shrink-0 flex-wrap items-center justify-between border-b border-border bg-header-bg px-4 py-2.5 sm:px-6 text-header-ink shadow-sm z-10">
-        {/* Identitas Produk */}
-        <div className="flex items-center gap-3">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent text-white font-bold text-sm tracking-tight shadow-sm">
-            T
-          </div>
+    <div className="flex h-auto min-h-screen md:h-screen w-full overflow-y-auto md:overflow-hidden bg-bg text-ink font-sans pb-16 md:pb-0">
+      {/* ── Sidebar Kiri (Desktop / Tablet & Navigasi Bawah Mobile) ── */}
+      <Sidebar activeTab={activeTab} onSelectTab={setActiveTab} />
+
+      {/* ── Area Konten Utama ── */}
+      <div className="flex flex-1 flex-col p-3 sm:p-4 gap-3 min-w-0 h-auto md:h-screen md:overflow-hidden">
+        {/* ── Bilah Atas (Top Bar) ── */}
+        <header className="flex flex-wrap items-center justify-between gap-2 flex-shrink-0">
           <div>
-            <div className="flex items-center gap-2">
-              <span className="text-base font-bold tracking-tight text-white">
-                TEPAT
-              </span>
-              <span className="rounded-[6px] border border-[var(--disclaimer-border)] bg-transparent px-2 py-0.5 text-[11px] font-semibold text-[var(--disclaimer-border)]">
+            <div className="flex items-center gap-2.5">
+              <h1 className="text-[20px] sm:text-[22px] font-bold text-ink leading-tight tracking-tight">
+                Prioritas perbaikan infrastruktur
+              </h1>
+              <span
+                title={SEED_DISCLAIMER}
+                className="cursor-help rounded-[8px] border border-[var(--disclaimer-border)] bg-[var(--disclaimer-bg)]/40 px-2 py-0.5 text-[11px] font-semibold text-[var(--disclaimer-ink)] whitespace-nowrap"
+              >
                 Data simulasi
               </span>
             </div>
-            <p className="text-[12px] text-header-muted leading-tight font-medium">
-              Prioritas perbaikan infrastruktur · Yogyakarta
+            <p className="text-[12px] font-medium text-muted mt-0.5">
+              Kota Yogyakarta
             </p>
           </div>
-        </div>
+        </header>
 
-        {/* 3 KPI Utama */}
-        <div className="flex flex-wrap items-center gap-3 sm:gap-6 mt-2 sm:mt-0">
-          <div className="flex items-center gap-2">
-            <div className="flex h-7 w-7 items-center justify-center rounded-md bg-white/5 border border-white/10">
-              <FileText className="h-3.5 w-3.5 text-header-icon" />
+        {/* ── Baris 3 Kartu KPI ── */}
+        <KpiCards />
+
+        {/* ── Ruang Kerja: Kartu Peta & Kartu Panel Kanan ── */}
+        <main className="flex flex-1 flex-col md:flex-row gap-3 min-h-0 md:overflow-hidden w-full max-w-full">
+          {/* Kartu Peta */}
+          <section
+            aria-label="Peta Klaster Infrastruktur"
+            className="relative flex-1 min-w-0 h-[420px] md:h-full min-h-[420px] rounded-[16px] border border-border bg-surface shadow-card overflow-hidden"
+          >
+            <MapDashboard />
+          </section>
+
+          {/* Kartu Panel Kanan */}
+          <aside
+            aria-label="Panel Analisis dan Kontrol"
+            className="flex w-full md:w-[clamp(380px,26vw,460px)] md:flex-shrink-0 flex-col rounded-[16px] border border-border bg-surface shadow-card overflow-hidden h-[480px] md:h-full z-10"
+          >
+            {/* Konten Tab Aktif (Internal Scroll) */}
+            <div className="flex-1 overflow-y-auto bg-surface p-4">
+              {activeTab === "ranking" && <RankingTab />}
+              {activeTab === "inspector" && <InspectorTab />}
+              {activeTab === "budget" && <BudgetTab />}
+              {activeTab === "weights" && <WeightsTab />}
             </div>
-            <div>
-              <span className="block text-[11px] font-medium text-header-muted leading-tight">
-                Laporan masuk
-              </span>
-              <span className="text-sm font-semibold text-white tabular-nums">
-                {totalReports}
-              </span>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-2">
-            <div className="flex h-7 w-7 items-center justify-center rounded-md bg-white/5 border border-white/10">
-              <Layers className="h-3.5 w-3.5 text-header-icon" />
-            </div>
-            <div>
-              <span className="block text-[11px] font-medium text-header-muted leading-tight">
-                Klaster aktif
-              </span>
-              <span className="text-sm font-semibold text-white tabular-nums">
-                {totalActiveClusters}
-              </span>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-2">
-            <div className="flex h-7 w-7 items-center justify-center rounded-md bg-white/5 border border-white/10">
-              <AlertTriangle className="h-3.5 w-3.5 text-kritis" />
-            </div>
-            <div>
-              <span className="block text-[11px] font-medium text-header-muted leading-tight">
-                Prioritas kritis
-              </span>
-              <span className="text-sm font-semibold text-kritis tabular-nums">
-                {criticalCount}
-              </span>
-            </div>
-          </div>
-        </div>
-      </header>
-
-      {/* ── Area Kerja Utama: Peta & Panel Kanan ── */}
-      <main className="flex flex-1 flex-col md:flex-row overflow-hidden w-full max-w-full">
-        {/* Area Peta */}
-        <section
-          aria-label="Peta Klaster Infrastruktur"
-          className="relative flex-1 min-w-0 h-[45vh] md:h-full overflow-hidden bg-bg"
-        >
-          <MapDashboard />
-        </section>
-
-        {/* Panel Kanan */}
-        <aside
-          aria-label="Panel Analisis dan Kontrol"
-          className="flex w-full md:w-[clamp(440px,28vw,480px)] md:flex-shrink-0 flex-col border-t md:border-t-0 md:border-l border-border bg-surface h-[55vh] md:h-full z-10 shadow-sm"
-        >
-          {/* Segmented Control / Tab Bar */}
-          <div className="flex border-b border-border bg-tint p-2 gap-1.5 flex-shrink-0">
-            <button
-              type="button"
-              onClick={() => setActiveTab("ranking")}
-              className={`flex-1 rounded-[8px] py-1.5 text-[12px] font-medium transition-all ${
-                activeTab === "ranking"
-                  ? "bg-accent text-white shadow-sm"
-                  : "text-muted hover:text-ink hover:bg-surface/50"
-              }`}
-            >
-              Peringkat
-            </button>
-            <button
-              type="button"
-              onClick={() => setActiveTab("inspector")}
-              className={`flex-1 rounded-[8px] py-1.5 text-[12px] font-medium transition-all ${
-                activeTab === "inspector"
-                  ? "bg-accent text-white shadow-sm"
-                  : "text-muted hover:text-ink hover:bg-surface/50"
-              }`}
-            >
-              Detail
-            </button>
-            <button
-              type="button"
-              onClick={() => setActiveTab("budget")}
-              className={`flex-1 rounded-[8px] py-1.5 text-[12px] font-medium transition-all ${
-                activeTab === "budget"
-                  ? "bg-accent text-white shadow-sm"
-                  : "text-muted hover:text-ink hover:bg-surface/50"
-              }`}
-            >
-              Anggaran
-            </button>
-            <button
-              type="button"
-              onClick={() => setActiveTab("weights")}
-              className={`flex-1 rounded-[8px] py-1.5 text-[12px] font-medium transition-all ${
-                activeTab === "weights"
-                  ? "bg-accent text-white shadow-sm"
-                  : "text-muted hover:text-ink hover:bg-surface/50"
-              }`}
-            >
-              Bobot
-            </button>
-          </div>
-
-          {/* Konten Tab Aktif */}
-          <div className="flex-1 overflow-y-auto bg-surface p-4">
-            {activeTab === "ranking" && <RankingTab />}
-            {activeTab === "inspector" && <InspectorTab />}
-            {activeTab === "budget" && <BudgetTab />}
-            {activeTab === "weights" && <WeightsTab />}
-          </div>
-        </aside>
-      </main>
-
-      {/* ── Footer Atribusi & Kejujuran (PRD & TASKS.md) ── */}
-      <footer className="flex flex-shrink-0 flex-col sm:flex-row items-center justify-between border-t border-border bg-footer-bg px-4 py-2.5 text-[11px] sm:text-[12px] text-footer-ink gap-2">
-        <div className="flex flex-wrap items-center justify-center sm:justify-start gap-x-3 gap-y-1 text-center sm:text-left">
-          <span>
-            ©{" "}
-            <a
-              href="https://www.openstreetmap.org/copyright"
-              target="_blank"
-              rel="noreferrer"
-              className="underline hover:text-white"
-            >
-              OpenStreetMap contributors
-            </a>
-          </span>
-          <span>·</span>
-          <span>© CARTO</span>
-          <span>·</span>
-          <span>Asumsi ilustrasi</span>
-          <span>·</span>
-          <span className="text-[var(--disclaimer-border)] font-medium">
-            {SEED_DISCLAIMER}
-          </span>
-        </div>
-        <div className="text-[11px] text-footer-ink/80 text-center sm:text-right shrink-0">
-          Prototipe pendukung keputusan, bukan pengganti kanal resmi
-        </div>
-      </footer>
+          </aside>
+        </main>
+      </div>
 
       {/* ── Toast Mandiri ── */}
       <Toast />
     </div>
   );
 }
-

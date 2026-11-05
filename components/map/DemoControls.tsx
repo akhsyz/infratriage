@@ -52,11 +52,15 @@ export default function DemoControls() {
     };
   }, [demoCluster, ctx]);
 
+  // Informasi lokasi fasilitas vital untuk demo
+  const demoSiteInfo = useMemo(() => {
+    return pickDemoSite(vitals, state.clusters);
+  }, [state.clusters]);
+
   // Siapkan laporan demo deterministik untuk 10 pelapor
   const demoReports = useMemo(() => {
-    const site = pickDemoSite(vitals, state.clusters);
-    return buildDemoReports(10, state.now, site.site);
-  }, [state.clusters, state.now]);
+    return buildDemoReports(10, state.now, demoSiteInfo.site);
+  }, [state.now, demoSiteInfo.site]);
 
   // Hentikan timer saat komponen unmount atau saat demo selesai
   const stopTimer = useCallback(() => {
@@ -87,9 +91,7 @@ export default function DemoControls() {
     // 1. Ingest laporan demo pertama
     dispatch({ type: "INGEST", payload: demoReports[0] });
 
-    // Dapatkan ID klaster demo yang baru saja dibuat/digabung
-    // Laporan 1 berjarak >= 100m dari seed clusters sehingga membentuk klaster baru
-    // Dispatch DEMO_START
+    // 2. Dispatch DEMO_START
     dispatch({
       type: "DEMO_START",
     });
@@ -118,14 +120,13 @@ export default function DemoControls() {
     if (!isRunning) return;
 
     timerRef.current = setInterval(() => {
-      // Ambil step berikutnya
       const currentStep = state.demo.step;
       if (currentStep >= 10) {
         stopTimer();
         return;
       }
 
-      const nextIndex = currentStep; // 0-based index untuk demoReports
+      const nextIndex = currentStep;
       if (nextIndex < demoReports.length) {
         dispatch({
           type: "DEMO_ADD_REPORTER",
@@ -149,7 +150,7 @@ export default function DemoControls() {
   };
 
   // Kalkulasi cincin skor SVG
-  const ringSize = 88;
+  const ringSize = 84;
   const strokeWidth = 6;
   const center = ringSize / 2;
   const radius = center - strokeWidth;
@@ -167,19 +168,25 @@ export default function DemoControls() {
     <div
       role="region"
       aria-label="Panel Skenario Demo"
-      className="pointer-events-auto rounded-[12px] border border-border bg-surface p-3.5 shadow-lg text-ink font-sans w-[290px] sm:w-[310px] animate-in fade-in slide-in-from-bottom-2"
+      className="pointer-events-auto rounded-[16px] border border-border bg-surface/95 backdrop-blur-xs p-3.5 shadow-card text-ink font-sans w-[290px] sm:w-[315px] animate-in fade-in slide-in-from-bottom-2"
     >
       {/* Header Panel */}
-      <div className="flex items-center justify-between border-b border-border pb-2.5 mb-3">
-        <div className="flex items-center gap-1.5">
-          <Sparkles className="h-4 w-4 text-accent" />
-          <h3 className="text-xs font-bold text-ink leading-tight">
-            Skenario demo
-          </h3>
+      <div className="flex flex-col border-b border-border pb-2.5 mb-3 gap-0.5">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-1.5">
+            <Sparkles className="h-4 w-4 text-accent" />
+            <h3 className="text-xs font-bold text-ink leading-tight">
+              Skenario demo
+            </h3>
+          </div>
+          <span className="text-[11px] font-semibold text-accent">
+            63 (Tinggi) → 81 (Kritis)
+          </span>
         </div>
-        <span className="text-[11px] font-medium text-muted">
-          63 (Tinggi) → 81 (Kritis)
-        </span>
+        {/* Nama dan Jarak Fasilitas Vital Nyata */}
+        <p className="text-[11px] text-muted leading-tight truncate">
+          Dekat {demoSiteInfo.vital.name} · {Math.round(demoSiteInfo.distanceToVital)} m
+        </p>
       </div>
 
       {/* Tampilan Cincin Skor & Informasi Level */}
@@ -218,7 +225,7 @@ export default function DemoControls() {
 
           {/* Angka Skor Besar 34px Tabular di Tengah Cincin */}
           <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-            <span className="text-[34px] font-bold tabular-nums text-ink leading-none">
+            <span className="text-[32px] font-bold tabular-nums text-ink leading-none">
               {score !== null ? score : "—"}
             </span>
           </div>
@@ -229,7 +236,7 @@ export default function DemoControls() {
           <div className="flex items-center gap-2">
             {badgeInfo && level ? (
               <span
-                className="rounded-[6px] px-2 py-0.5 text-[11px] font-bold uppercase tracking-wide"
+                className="rounded-[8px] px-2 py-0.5 text-[11px] font-bold uppercase tracking-wide"
                 style={{
                   backgroundColor: badgeInfo.bg,
                   color: badgeInfo.ink,
@@ -238,7 +245,7 @@ export default function DemoControls() {
                 {level === "kritis" ? "Kritis" : "Tinggi"}
               </span>
             ) : (
-              <span className="rounded-[6px] bg-tint px-2 py-0.5 text-[11px] font-medium text-muted">
+              <span className="rounded-[8px] bg-tint px-2 py-0.5 text-[11px] font-medium text-muted">
                 Belum dimulai
               </span>
             )}
@@ -265,7 +272,7 @@ export default function DemoControls() {
           <button
             type="button"
             onClick={handleStartScenario}
-            className="flex-1 flex items-center justify-center gap-1.5 rounded-[10px] bg-accent text-white px-2.5 py-2 text-[12px] font-semibold hover:bg-accent-hover transition-all shadow-xs min-h-[40px] cursor-pointer"
+            className="flex-1 flex items-center justify-center gap-1.5 rounded-[12px] bg-accent text-white px-2.5 py-2 text-[12px] font-semibold hover:bg-accent-hover transition-all shadow-xs min-h-[40px] cursor-pointer"
           >
             <Play className="h-3.5 w-3.5 fill-current" />
             <span>Mulai</span>
@@ -276,7 +283,7 @@ export default function DemoControls() {
             type="button"
             onClick={handleToggleAutoStep}
             disabled={!state.demo.active || state.demo.step >= 10}
-            className={`flex-1 flex items-center justify-center gap-1.5 rounded-[10px] border px-2.5 py-2 text-[12px] font-semibold transition-all shadow-xs min-h-[40px] ${
+            className={`flex-1 flex items-center justify-center gap-1.5 rounded-[12px] border px-2.5 py-2 text-[12px] font-semibold transition-all shadow-xs min-h-[40px] ${
               !state.demo.active || state.demo.step >= 10
                 ? "border-border bg-tint text-muted cursor-not-allowed opacity-60"
                 : isRunning

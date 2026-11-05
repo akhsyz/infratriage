@@ -19,6 +19,7 @@
   --color-accent: var(--accent);
   --color-accent-hover: var(--accent-hover);
   --color-accent-soft: var(--accent-soft);
+  --color-accent-soft-2: var(--accent-soft-2);
   --color-accent-ink: var(--accent-ink);
 
   --color-header-bg: var(--header-bg);
@@ -49,32 +50,35 @@
   --radius-btn: var(--radius-btn);
   --radius-chip: var(--radius-chip);
   --radius-badge: var(--radius-badge);
+
+  --shadow-card: var(--shadow-card);
 }
 
 :root {
-  /* ── Ground & Surface (docs/DESIGN.md) ── */
-  --bg: #F5F6F4;
+  /* ── Ground & Surface (docs/DESIGN.md v3) ── */
+  --bg: #F4F7F9;
   --surface: #FFFFFF;
-  --border: #E4E7E3;
-  --border-input: #D2D7D2;
+  --border: #E2E8F0;
+  --border-input: #CBD5E1;
 
   /* ── Tipografi & Ink ── */
-  --ink: #1A2321;
-  --ink-2: #3D4A47;
-  --muted: #5F6D69;
-  --track: #E6EAE7;
+  --ink: #0F172A;
+  --ink-2: #334155;
+  --muted: #5B6B80;
+  --track: #E2E8F0;
 
   /* ── Tint ── */
-  --tint: #F8FAF8;
-  --tint-2: #F0F3F0;
+  --tint: #F8FAFC;
+  --tint-2: #F1F5F9;
 
-  /* ── Aksen (Teal) ── */
-  --accent: #0F766E;
-  --accent-hover: #115E59;
-  --accent-soft: #E6F4F1;
+  /* ── Aksen (Teal DESIGN.md v3) ── */
+  --accent: #0B7A6D;
+  --accent-hover: #095F55;
+  --accent-soft: #E6F4F2;
+  --accent-soft-2: #D1ECE8;
   --accent-ink: #FFFFFF;
 
-  /* ── Header & Footer (Arang) ── */
+  /* ── Header & Footer (Untuk Toast Arang) ── */
   --header-bg: #1F2933;
   --header-ink: #FFFFFF;
   --header-muted: #C5CEC9;
@@ -105,11 +109,14 @@
   --disclaimer-bg: #FFF6CC;
   --disclaimer-ink: #7A5B00;
 
-  /* ── Radius Konsisten (docs/DESIGN.md) ── */
-  --radius-card: 12px;
-  --radius-btn: 10px;
-  --radius-chip: 8px;
-  --radius-badge: 6px;
+  /* ── Radius Konsisten (docs/DESIGN.md v3) ── */
+  --radius-card: 16px;
+  --radius-btn: 12px;
+  --radius-chip: 10px;
+  --radius-badge: 8px;
+
+  /* ── Bayangan Kartu (docs/DESIGN.md v3) ── */
+  --shadow-card: 0 1px 2px rgba(15, 23, 42, 0.04), 0 8px 24px -12px rgba(15, 23, 42, 0.10);
 
   /* ── Gerak, Easing & Durasi ── */
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);

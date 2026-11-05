@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { MapContainer, Marker, TileLayer, useMapEvents } from "react-leaflet";
+import { MapContainer, Marker, ScaleControl, TileLayer, useMap, useMapEvents } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { useApp } from "../lib/store";
 import { MAP_TILE } from "../lib/theme";
@@ -31,6 +31,29 @@ function MapClickHandler({
       }
     },
   });
+  return null;
+}
+
+/**
+ * Pengamat ukuran container peta (ResizeObserver).
+ * Memanggil map.invalidateSize() otomatis saat sidebar menyusut/membesar
+ * atau layout jendela diubah.
+ */
+function MapResizeWatcher() {
+  const map = useMap();
+
+  useEffect(() => {
+    const container = map.getContainer();
+    if (!container || typeof ResizeObserver === "undefined") return;
+
+    const ro = new ResizeObserver(() => {
+      map.invalidateSize();
+    });
+
+    ro.observe(container);
+    return () => ro.disconnect();
+  }, [map]);
+
   return null;
 }
 
@@ -126,6 +149,12 @@ export default function MapDashboard() {
           attribution={MAP_TILE.attribution}
           maxZoom={19}
         />
+
+        {/* Kontrol Skala Peta Leaflet */}
+        <ScaleControl position="bottomleft" imperial={false} />
+
+        {/* Pengamat Perubahan Ukuran Layar / Sidebar */}
+        <MapResizeWatcher />
 
         <MapController
           selectedCluster={selectedCluster}
