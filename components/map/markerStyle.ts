@@ -94,7 +94,7 @@ export function getVitalStyle(type: VitalType): {
   shape: "square" | "circle" | "diamond";
 } {
   return {
-    color: VITAL_COLOR[type] ?? "#334155",
+    color: VITAL_COLOR[type] ?? VITAL_COLOR.sekolah,
     shape: VITAL_SHAPE[type] ?? "circle",
   };
 }

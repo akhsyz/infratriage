@@ -12,6 +12,7 @@ import { LEVEL_BADGE } from "../../lib/theme";
 
 interface ClusterMarkersProps {
   lastClickedIdRef: React.MutableRefObject<string | null>;
+  onPointClick?: (point: { lat: number; lng: number }) => void;
 }
 
 interface ClusterMarkerItem {
@@ -29,7 +30,10 @@ const CATEGORY_LABEL: Record<string, string> = {
   trotoar: "Trotoar",
 };
 
-export function ClusterMarkers({ lastClickedIdRef }: ClusterMarkersProps) {
+export function ClusterMarkers({
+  lastClickedIdRef,
+  onPointClick,
+}: ClusterMarkersProps) {
   const { state, dispatch } = useApp();
   const rankedClusters = useRanked();
   const highlightIds = useHighlightIds();
@@ -107,6 +111,10 @@ export function ClusterMarkers({ lastClickedIdRef }: ClusterMarkersProps) {
             icon={icon}
             eventHandlers={{
               click: () => {
+                if (state.addMode) {
+                  onPointClick?.({ lat: cluster.lat, lng: cluster.lng });
+                  return;
+                }
                 lastClickedIdRef.current = cluster.id;
                 dispatch({ type: "SELECT", payload: cluster.id });
               },
