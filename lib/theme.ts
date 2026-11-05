@@ -87,10 +87,22 @@ export const CLUSTER_STATUS_STYLE = {
 } as const;
 
 /**
- * Tile peta CartoDB Positron (abu netral, terang) dan atribusi.
+ * Tile peta dan atribusi.
+ * Bila process.env.NEXT_PUBLIC_CARTO_KEY disetel, gunakan CartoDB Positron berotentikasi.
+ * Jika tidak ada key, secara otomatis jatuh ke OpenStreetMap (OSM) standar agar aplikasi
+ * tetap berfungsi tanpa key.
  */
-export const MAP_TILE = {
-  url: "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
-  attribution:
-    '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
-} as const;
+const cartoKey =
+  typeof process !== "undefined" && process.env?.NEXT_PUBLIC_CARTO_KEY
+    ? process.env.NEXT_PUBLIC_CARTO_KEY
+    : "";
+
+export const MAP_TILE = cartoKey
+  ? {
+      url: `https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png?key=${cartoKey}`,
+      attribution: "&copy; OpenStreetMap contributors, &copy; CARTO",
+    }
+  : {
+      url: "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+      attribution: "&copy; OpenStreetMap contributors",
+    };
