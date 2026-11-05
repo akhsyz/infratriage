@@ -155,7 +155,7 @@ export default function CommandCenter() {
                   : "text-muted hover:text-ink hover:bg-surface/50"
               }`}
             >
-              Inspektor
+              Detail
             </button>
             <button
               type="button"

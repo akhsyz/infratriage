@@ -67,7 +67,7 @@ export type AppAction =
   | { type: "SET_ADD_MODE"; payload: boolean }
   | { type: "DEMO_START"; payload?: { targetClusterId?: string } }
   | { type: "DEMO_ADD_REPORTER"; payload: Report }
-  | { type: "DISMISS_TOAST"; payload: { id: number } | number }
+  | { type: "DISMISS_TOAST"; payload: { id: number } }
   | { type: "RESET" };
 
 export const ALL_CATEGORIES: Category[] = [
@@ -368,11 +368,8 @@ export function appReducer(state: AppState, action: AppAction): AppState {
     }
 
     case "DISMISS_TOAST": {
-      const targetId =
-        typeof action.payload === "number" ? action.payload : action.payload.id;
-
       // Hanya kosongkan bila id cocok
-      if (state.toast?.id === targetId) {
+      if (state.toast?.id === action.payload.id) {
         return {
           ...state,
           toast: null,

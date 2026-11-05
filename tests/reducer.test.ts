@@ -151,7 +151,7 @@ describe("appReducer (lib/reducer.ts)", () => {
     // Dispatch id yang cocok (42)
     const afterMatchingDismiss = appReducer(state, {
       type: "DISMISS_TOAST",
-      payload: 42,
+      payload: { id: 42 },
     });
     expect(afterMatchingDismiss.toast).toBeNull();
   });

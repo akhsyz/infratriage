@@ -12,7 +12,7 @@ export default function Toast() {
     if (!toast) return;
     const toastId = toast.id;
     const timer = setTimeout(() => {
-      dispatch({ type: "DISMISS_TOAST", payload: toastId });
+      dispatch({ type: "DISMISS_TOAST", payload: { id: toastId } });
     }, 3000);
 
     return () => clearTimeout(timer);
@@ -46,7 +46,7 @@ export default function Toast() {
 
       <button
         type="button"
-        onClick={() => dispatch({ type: "DISMISS_TOAST", payload: toast.id })}
+        onClick={() => dispatch({ type: "DISMISS_TOAST", payload: { id: toast.id } })}
         className="ml-auto text-header-muted hover:text-white transition-colors p-1 -mr-1"
         aria-label="Tutup notifikasi"
       >
