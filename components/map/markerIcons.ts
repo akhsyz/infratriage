@@ -113,3 +113,40 @@ export function getVitalDivIcon(type: VitalType): L.DivIcon {
   vitalIconCache.set(type, icon);
   return icon;
 }
+
+/**
+ * Leaflet DivIcon untuk titik laporan sementara yang sedang ditaruh pengguna.
+ * Bergaya jelas berbeda dari klaster (warna ACCENT, target circle dengan center dot).
+ */
+export function getTempReportDivIcon(): L.DivIcon {
+  const size = 32;
+  const html = `
+    <div style="
+      width: ${size}px;
+      height: ${size}px;
+      border: 2.5px dashed ${ACCENT};
+      background-color: rgba(15, 118, 110, 0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.9), 0 2px 8px rgba(0, 0, 0, 0.35);
+      cursor: crosshair;
+    ">
+      <div style="
+        width: 10px;
+        height: 10px;
+        background-color: ${ACCENT};
+        border: 2px solid #FFFFFF;
+        border-radius: 50%;
+      "></div>
+    </div>
+  `;
+
+  return L.divIcon({
+    html,
+    className: "!bg-transparent !border-none outline-none",
+    iconSize: [size, size],
+    iconAnchor: [size / 2, size / 2],
+  });
+}
