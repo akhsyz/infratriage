@@ -62,7 +62,7 @@ export default function CommandCenter() {
               <span className="text-base font-bold tracking-tight text-white">
                 TEPAT
               </span>
-              <span className="rounded-[6px] border border-disclaimer-border bg-disclaimer-bg px-2 py-0.5 text-[11px] font-semibold text-disclaimer-ink">
+              <span className="rounded-[6px] border border-[var(--disclaimer-border)] bg-transparent px-2 py-0.5 text-[11px] font-semibold text-[var(--disclaimer-border)]">
                 Data simulasi
               </span>
             </div>
@@ -119,11 +119,11 @@ export default function CommandCenter() {
       </header>
 
       {/* ── Area Kerja Utama: Peta & Panel Kanan ── */}
-      <main className="flex flex-1 flex-col md:flex-row overflow-hidden">
+      <main className="flex flex-1 flex-col md:flex-row overflow-hidden w-full max-w-full">
         {/* Area Peta */}
         <section
           aria-label="Peta Klaster Infrastruktur"
-          className="relative flex-1 h-[45vh] md:h-full overflow-hidden bg-bg"
+          className="relative flex-1 min-w-0 h-[45vh] md:h-full overflow-hidden bg-bg"
         >
           <MapDashboard />
         </section>
@@ -131,7 +131,7 @@ export default function CommandCenter() {
         {/* Panel Kanan */}
         <aside
           aria-label="Panel Analisis dan Kontrol"
-          className="flex w-full md:w-[440px] lg:w-[480px] flex-col border-t md:border-t-0 md:border-l border-border bg-surface h-[55vh] md:h-full z-10 shadow-sm"
+          className="flex w-full md:w-[clamp(440px,28vw,480px)] md:flex-shrink-0 flex-col border-t md:border-t-0 md:border-l border-border bg-surface h-[55vh] md:h-full z-10 shadow-sm"
         >
           {/* Segmented Control / Tab Bar */}
           <div className="flex border-b border-border bg-tint p-2 gap-1.5 flex-shrink-0">
