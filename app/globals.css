@@ -19,7 +19,6 @@
   --color-accent: var(--accent);
   --color-accent-hover: var(--accent-hover);
   --color-accent-soft: var(--accent-soft);
-  --color-accent-soft-2: var(--accent-soft-2);
   --color-accent-ink: var(--accent-ink);
 
   --color-header-bg: var(--header-bg);
@@ -75,7 +74,6 @@
   --accent: #0B7A6D;
   --accent-hover: #095F55;
   --accent-soft: #E6F4F2;
-  --accent-soft-2: #D1ECE8;
   --accent-ink: #FFFFFF;
 
   /* ── Header & Footer (Untuk Toast Arang) ── */

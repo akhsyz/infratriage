@@ -2,8 +2,6 @@
 
 import React from "react";
 import { ListOrdered, FileText, Calculator, Sliders } from "lucide-react";
-import { SEED_DISCLAIMER } from "../lib/infratriage/seed";
-import { MAP_TILE } from "../lib/theme";
 
 export type TabKey = "ranking" | "inspector" | "budget" | "weights";
 
@@ -26,8 +24,6 @@ const NAV_ITEMS: NavItem[] = [
 ];
 
 export default function Sidebar({ activeTab, onSelectTab }: SidebarProps) {
-  const hasCarto = MAP_TILE.attribution.includes("CARTO");
-
   return (
     <>
       {/* ── Sidebar Desktop / Tablet (md ke atas: 72px pada 1024-1439px, 232px pada >=1440px) ── */}
@@ -84,54 +80,9 @@ export default function Sidebar({ activeTab, onSelectTab }: SidebarProps) {
           </nav>
         </div>
 
-        {/* Kartu "Tentang data" di bagian bawah sidebar (hanya di >= 1440px) */}
-        <div className="hidden min-[1440px]:flex flex-col gap-2 rounded-[16px] border border-border bg-gradient-to-b from-accent-soft to-accent-soft-2 p-3.5 text-[11px] text-ink-2 shadow-xs">
-          {/* Ilustrasi garis sederhana siluet Yogyakarta (Tugu & Kraton) */}
-          <svg
-            viewBox="0 0 200 48"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-full h-9 text-accent/40"
-            aria-hidden="true"
-          >
-            <path
-              d="M0 46h200 M8 46v-5h12v5 M28 46v-12l10-6 10 6v12 M62 46v-9h16v9 M92 46v-18l3-2 2-15 3-4 3 4 2 15 3 2v18 M122 46v-13l11-7 11 7v13 M160 46v-8h16v8 M184 46v-5h10v5"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-
-          <div className="font-semibold text-ink text-[12px] flex items-center justify-between">
-            <span>Tentang data</span>
-            <span className="rounded-[6px] border border-[var(--disclaimer-border)] bg-[var(--disclaimer-bg)]/40 px-1.5 py-0.5 text-[10px] font-semibold text-[var(--disclaimer-ink)]">
-              Simulasi
-            </span>
-          </div>
-
-          <p className="text-muted leading-relaxed">
-            {SEED_DISCLAIMER}
-          </p>
-
-          <div className="border-t border-accent/15 pt-2 flex flex-col gap-1 text-[10px] text-muted leading-tight">
-            <div>· Asumsi ilustratif</div>
-            <div>
-              · Prototipe pendukung keputusan, bukan pengganti kanal laporan resmi
-            </div>
-            <div className="pt-0.5">
-              · Peta:{" "}
-              <a
-                href="https://www.openstreetmap.org/copyright"
-                target="_blank"
-                rel="noreferrer"
-                className="underline hover:text-ink"
-              >
-                © OpenStreetMap contributors
-              </a>
-              {hasCarto && <span>, © CARTO</span>}
-            </div>
-          </div>
+        {/* Nomor versi kecil di bagian bawah sidebar */}
+        <div className="px-2 py-1 text-[11px] text-muted font-medium select-none text-center min-[1440px]:text-left">
+          v1.0.0
         </div>
       </aside>
 
