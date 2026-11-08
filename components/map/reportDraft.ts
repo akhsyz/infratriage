@@ -28,11 +28,70 @@ export const SEVERITY_LABEL: Record<Severity, string> = {
   3: "Berat",
 };
 
+export const SEVERITY_DESCRIPTION: Record<Severity, string> = {
+  1: "Masih aman dilewati",
+  2: "Mengganggu dan perlu dihindari pengendara",
+  3: "Berbahaya dan bisa menyebabkan jatuh atau kecelakaan",
+};
+
 export const ROAD_CLASS_LABEL: Record<RoadClass, string> = {
   arteri: "Jalan arteri",
   kolektor: "Jalan kolektor",
   lokal: "Jalan lokal",
 };
+
+export type RoadTypeChoice = "arteri" | "kolektor" | "lokal" | "tidak_yakin";
+
+export interface RoadTypeOption {
+  key: RoadTypeChoice;
+  title: string;
+  example: string;
+  mappedClass: RoadClass;
+}
+
+export const ROAD_TYPE_OPTIONS: readonly RoadTypeOption[] = [
+  {
+    key: "arteri",
+    title: "Jalan besar / jalur utama",
+    example: "Banyak kendaraan, jalan protokol",
+    mappedClass: "arteri",
+  },
+  {
+    key: "kolektor",
+    title: "Jalan penghubung antar kawasan",
+    example: "Lebar sedang",
+    mappedClass: "kolektor",
+  },
+  {
+    key: "lokal",
+    title: "Jalan lingkungan atau gang",
+    example: "Pemukiman, akses warga",
+    mappedClass: "lokal",
+  },
+  {
+    key: "tidak_yakin",
+    title: "Tidak yakin",
+    example: "Dianggap jalan lingkungan (nilai konservatif)",
+    mappedClass: "lokal",
+  },
+] as const;
+
+/**
+ * Memetakan pilihan UI jenis jalan ke nilai RoadClass yang sah ('arteri' | 'kolektor' | 'lokal').
+ * Pilihan 'tidak_yakin' dipetakan ke 'lokal' (nilai konservatif).
+ */
+export function mapRoadTypeToClass(choice: RoadTypeChoice): RoadClass {
+  switch (choice) {
+    case "arteri":
+      return "arteri";
+    case "kolektor":
+      return "kolektor";
+    case "lokal":
+    case "tidak_yakin":
+    default:
+      return "lokal";
+  }
+}
 
 /**
  * Menghitung ID laporan baru berawalan "ui-<n>".
@@ -54,6 +113,29 @@ export function getNextUiReportId(existingReports: { id: string }[]): string {
   }
 
   return `ui-${maxId + 1}`;
+}
+
+/**
+ * Menghitung ID pelapor baru berawalan "pelapor-ui-<n>".
+ * Mengambil angka tertinggi pada reporterId yang sudah ada yang berawalan "pelapor-ui-", lalu +1.
+ * Jika belum ada atau setelah RESET, dimulai dari "pelapor-ui-1".
+ */
+export function getNextUiReporterId(existingReports: { reporterId?: string }[]): string {
+  let maxId = 0;
+  const regex = /^pelapor-ui-(\d+)$/;
+
+  for (const r of existingReports) {
+    if (!r.reporterId) continue;
+    const match = r.reporterId.match(regex);
+    if (match) {
+      const num = parseInt(match[1], 10);
+      if (!Number.isNaN(num) && num > maxId) {
+        maxId = num;
+      }
+    }
+  }
+
+  return `pelapor-ui-${maxId + 1}`;
 }
 
 /**
