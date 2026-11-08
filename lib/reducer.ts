@@ -14,6 +14,7 @@ import {
   type Weights,
 } from "./infratriage";
 import { vitals } from "./vitals";
+import { setWeight } from "./weights";
 
 export interface AppToast {
   id: number;
@@ -79,37 +80,6 @@ export const ALL_CATEGORIES: Category[] = [
 
 export const ALL_LEVELS: PriorityLevel[] = ["kritis", "tinggi", "sedang"];
 
-/**
- * TODO: Ganti dengan setWeight(state.weights, key, value) dari lib/weights.ts
- * saat Orang B telah menyelesaikan task T1b.
- */
-function tempSetWeight(
-  weights: Weights,
-  key: keyof Weights,
-  rawValue: number
-): Weights {
-  const val = Math.max(0, Math.min(1, rawValue));
-  const otherKeys = (Object.keys(weights) as (keyof Weights)[]).filter(
-    (k) => k !== key
-  );
-  const otherSum = otherKeys.reduce((sum, k) => sum + weights[k], 0);
-  const remaining = 1 - val;
-
-  const next = { ...weights, [key]: val };
-
-  if (otherSum > 0) {
-    for (const k of otherKeys) {
-      next[k] = (weights[k] / otherSum) * remaining;
-    }
-  } else {
-    const split = remaining / otherKeys.length;
-    for (const k of otherKeys) {
-      next[k] = split;
-    }
-  }
-
-  return next;
-}
 
 export function createInitialState(customNow?: Date): AppState {
   const now = customNow ?? new Date("2026-11-05T00:00:00.000Z");
@@ -224,7 +194,7 @@ export function appReducer(state: AppState, action: AppAction): AppState {
     }
 
     case "SET_WEIGHT": {
-      const nextWeights = tempSetWeight(
+      const nextWeights = setWeight(
         state.weights,
         action.payload.key,
         action.payload.value
