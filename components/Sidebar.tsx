@@ -37,11 +37,11 @@ export default function Sidebar({ activeTab, onSelectTab }: SidebarProps) {
             <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[10px] bg-accent text-white font-bold text-base shadow-xs">
               T
             </div>
-            <div className="hidden min-[1440px]:block overflow-hidden">
+            <div className="hidden min-[1440px]:block min-w-0">
               <div className="text-base font-bold tracking-tight text-ink leading-tight">
                 TEPAT
               </div>
-              <p className="text-[11px] text-muted font-medium leading-tight truncate">
+              <p className="text-[11px] text-muted font-medium leading-tight">
                 Prioritas perbaikan infrastruktur
               </p>
             </div>

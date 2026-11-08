@@ -269,6 +269,11 @@ export default function WeightsTab() {
           tetap merupakan asumsi prototipe yang belum divalidasi dinas resmi.
         </p>
       </div>
+
+      {/* Catatan integritas kanal resmi */}
+      <p className="text-[12px] text-muted text-center">
+        Prototipe pendukung keputusan, bukan pengganti kanal laporan resmi.
+      </p>
     </div>
   );
 }

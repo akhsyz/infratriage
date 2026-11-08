@@ -361,6 +361,11 @@ export default function BudgetTab() {
           optimasi matematis internal, bukan penurunan risiko nyata di lapangan.
         </p>
       </div>
+
+      {/* Catatan integritas kanal resmi */}
+      <p className="text-[12px] text-muted text-center">
+        Prototipe pendukung keputusan, bukan pengganti kanal laporan resmi.
+      </p>
     </div>
   );
 }
