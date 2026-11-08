@@ -51,10 +51,11 @@ export interface AppState {
 
 export type AppAction =
   | {
-      type: "INIT_SEED";
-      payload?: { now?: Date; reports?: Report[]; clusters?: Cluster[] };
-    }
+    type: "INIT_SEED";
+    payload?: { now?: Date; reports?: Report[]; clusters?: Cluster[] };
+  }
   | { type: "INGEST"; payload: Report }
+  | { type: "HYDRATE_REPORTS"; payload: { reports: Report[] } }
   | { type: "SET_STATUS"; payload: { clusterId: string; status: ClusterStatus } }
   | { type: "SET_WEIGHT"; payload: { key: keyof Weights; value: number } }
   | { type: "RESET_WEIGHTS" }
@@ -180,6 +181,29 @@ export function appReducer(state: AppState, action: AppAction): AppState {
           message,
           variant: "success",
         },
+      };
+    }
+
+    case "HYDRATE_REPORTS": {
+      let currentClusters = state.clusters;
+      let currentReports = state.reports;
+
+      for (const report of action.payload.reports) {
+        if (currentReports.some((r) => r.id === report.id)) {
+          continue;
+        }
+
+        const res = ingestReport(currentClusters, report, ctx);
+        if (res.action !== "ignored") {
+          currentClusters = res.clusters;
+          currentReports = [...currentReports, report];
+        }
+      }
+
+      return {
+        ...state,
+        clusters: currentClusters,
+        reports: currentReports,
       };
     }
 

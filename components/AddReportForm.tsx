@@ -2,7 +2,10 @@
 
 import React, { useState } from "react";
 import type { Category, LatLng, RoadClass, Severity } from "../lib/infratriage";
+import { saveReport } from "../lib/persistence";
+import { useApp } from "../lib/store";
 import {
+  buildUiReport,
   CATEGORY_LABEL,
   ROAD_CLASS_LABEL,
   SEVERITY_LABEL,
@@ -28,6 +31,7 @@ export default function AddReportForm({
   onCancel,
   isSubmitting = false,
 }: AddReportFormProps) {
+  const { state } = useApp();
   const [category, setCategory] = useState<Category>("lubang");
   const [severity, setSeverity] = useState<Severity>(2);
   const [roadClass, setRoadClass] = useState<RoadClass>("arteri");
@@ -54,7 +58,9 @@ export default function AddReportForm({
     if (!isValid || disabled) return;
 
     setLocalSubmitting(true);
+    const report = buildUiReport(currentForm, point, state.now, state.reports);
     onSubmit(currentForm);
+    saveReport(report);
   };
 
   return (
