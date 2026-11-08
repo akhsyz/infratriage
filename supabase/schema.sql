@@ -46,3 +46,6 @@ CREATE INDEX IF NOT EXISTS idx_reports_visitor_id ON public.reports (visitor_id)
 -- Seluruh akses data hanya melalui server Route Handler menggunakan SUPABASE_SECRET_KEY
 ALTER TABLE public.reports ENABLE ROW LEVEL SECURITY;
 
+-- Izin hanya untuk server (kunci rahasia). Pengunjung/anon tidak diberi akses langsung.
+GRANT USAGE ON SCHEMA public TO service_role;
+GRANT ALL ON TABLE public.reports TO service_role;
