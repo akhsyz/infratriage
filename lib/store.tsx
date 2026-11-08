@@ -21,6 +21,7 @@ import {
   type ScoreContext,
 } from "./infratriage";
 import { vitals } from "./vitals";
+import { loadReports } from "./persistence";
 
 interface AppContextValue {
   state: AppState;
@@ -35,6 +36,13 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   // Inisialisasi seed hanya di sisi klien setelah mount untuk menghindari hydration mismatch
   useEffect(() => {
     dispatch({ type: "INIT_SEED" });
+    loadReports()
+      .then((reports) => {
+        if (reports && reports.length > 0) {
+          dispatch({ type: "HYDRATE_REPORTS", payload: { reports } });
+        }
+      })
+      .catch(() => {});
   }, []);
 
   const value = useMemo(() => ({ state, dispatch }), [state]);

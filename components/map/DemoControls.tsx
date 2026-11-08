@@ -6,6 +6,7 @@ import { computeScore, priorityLevel, type ScoreContext } from "../../lib/infrat
 import { vitals } from "../../lib/vitals";
 import { LEVEL_BADGE, LEVEL_COLOR } from "../../lib/theme";
 import { buildDemoReports, pickDemoSite } from "../../lib/demo";
+import { clearReports } from "../../lib/persistence";
 import { FastForward, Pause, Play, RotateCcw, Sparkles } from "lucide-react";
 
 export default function DemoControls() {
@@ -147,6 +148,7 @@ export default function DemoControls() {
   const handleResetDemo = () => {
     stopTimer();
     dispatch({ type: "RESET" });
+    clearReports();
   };
 
   // Kalkulasi cincin skor SVG

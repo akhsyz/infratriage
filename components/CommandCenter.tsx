@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import dynamic from "next/dynamic";
 import { SEED_DISCLAIMER } from "../lib/infratriage";
+import { useLocalModeStatus } from "../lib/persistence";
 import Toast from "./Toast";
 import Sidebar, { type TabKey } from "./Sidebar";
 import KpiCards from "./KpiCards";
@@ -24,6 +25,7 @@ const MapDashboard = dynamic(() => import("./MapDashboard"), {
 
 export default function CommandCenter() {
   const [activeTab, setActiveTab] = useState<TabKey>("ranking");
+  const isLocalMode = useLocalModeStatus();
 
   return (
     <div className="flex h-auto min-h-screen md:h-screen w-full overflow-y-auto md:overflow-hidden bg-bg text-ink font-sans pb-16 md:pb-0">
@@ -45,6 +47,11 @@ export default function CommandCenter() {
               >
                 Data simulasi
               </span>
+              {isLocalMode && (
+                <span className="text-[11px] font-medium text-muted whitespace-nowrap">
+                  Mode lokal: laporan tidak tersimpan
+                </span>
+              )}
             </div>
             <p className="text-[12px] font-medium text-muted mt-0.5">
               Kota Yogyakarta
