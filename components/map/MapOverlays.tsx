@@ -1,9 +1,10 @@
 "use client";
 
-import React from "react";
+import React, { useMemo } from "react";
 import type { AppAction, AppState } from "../../lib/reducer";
-import type { Category, LatLng, PriorityLevel } from "../../lib/infratriage";
+import { computeScore, priorityLevel, type Category, type LatLng, type PriorityLevel, type ScoreContext } from "../../lib/infratriage";
 import { LEVEL_COLOR, VITAL_COLOR } from "../../lib/theme";
+import { vitals } from "../../lib/vitals";
 import { Building2, Check, Layers, Plus, X } from "lucide-react";
 import AddReportForm from "../AddReportForm";
 import DemoControls from "./DemoControls";
@@ -27,10 +28,10 @@ const CATEGORIES: { key: Category; label: string }[] = [
   { key: "trotoar", label: "Trotoar" },
 ];
 
-const LEVELS: { key: PriorityLevel; label: string; scoreLabel: string }[] = [
-  { key: "kritis", label: "Kritis", scoreLabel: "≥ 80" },
-  { key: "tinggi", label: "Tinggi", scoreLabel: "50–79" },
-  { key: "sedang", label: "Sedang", scoreLabel: "< 50" },
+const LEVELS: { key: PriorityLevel; label: string }[] = [
+  { key: "kritis", label: "Kritis" },
+  { key: "tinggi", label: "Tinggi" },
+  { key: "sedang", label: "Sedang" },
 ];
 
 export function MapOverlays({
@@ -43,6 +44,26 @@ export function MapOverlays({
   onFormCancel,
   isSubmitting = false,
 }: MapOverlaysProps) {
+  // Hitung jumlah klaster aktual per level dari data mesin
+  const clusterCounts = useMemo(() => {
+    const ctx: ScoreContext = {
+      vitals,
+      weights: state.weights,
+      now: state.now,
+    };
+    const counts: Record<PriorityLevel, number> = {
+      kritis: 0,
+      tinggi: 0,
+      sedang: 0,
+    };
+    for (const cluster of state.clusters) {
+      if (cluster.status === "resolved") continue;
+      const level = priorityLevel(computeScore(cluster, ctx).urgency);
+      counts[level] = (counts[level] || 0) + 1;
+    }
+    return counts;
+  }, [state.clusters, state.weights, state.now]);
+
   const toggleCategory = (cat: Category) => {
     const current = state.filters.categories;
     const next = current.includes(cat)
@@ -67,7 +88,7 @@ export function MapOverlays({
     <div className="pointer-events-none absolute inset-0 z-[500] p-3 flex flex-col justify-between overflow-hidden">
       {/* ── Petunjuk Mode Tambah Laporan (Banner Tengah Atas) ── */}
       {state.addMode && !tempPoint && (
-        <div className="pointer-events-auto absolute top-3 left-1/2 -translate-x-1/2 rounded-[10px] border border-accent bg-surface px-3.5 py-2 shadow-md flex items-center gap-2 text-[12px] text-ink animate-in fade-in slide-in-from-top-2 z-20">
+        <div className="pointer-events-auto absolute top-3 left-1/2 -translate-x-1/2 rounded-[12px] border border-accent bg-surface/95 backdrop-blur-xs px-3.5 py-2 shadow-card flex items-center gap-2 text-[12px] text-ink animate-in fade-in slide-in-from-top-2 z-20">
           <span className="flex h-2 w-2 rounded-full bg-accent animate-pulse shrink-0" />
           <span className="font-semibold text-ink">Klik peta untuk menaruh titik laporan</span>
           <button
@@ -80,16 +101,16 @@ export function MapOverlays({
         </div>
       )}
 
-      {/* ── Baris Atas ── */}
+      {/* ── Baris Atas: Filter & Tombol Aksi ── */}
       <div className="flex items-start justify-between gap-3">
-        {/* Kiri Atas: Filter Kategori & Level */}
-        <div className="pointer-events-auto rounded-[12px] border border-border bg-surface p-2.5 shadow-sm text-ink max-w-sm flex flex-col gap-2">
+        {/* Kiri Atas: Filter Kategori & Level (Kartu Radius 16, Putih 95% + Blur) */}
+        <div className="pointer-events-auto rounded-[16px] border border-border bg-surface/95 backdrop-blur-xs p-3 shadow-card text-ink max-w-sm flex flex-col gap-2.5">
           {/* Filter Kategori */}
           <div>
             <span className="block text-[11px] font-medium text-muted leading-tight mb-1.5">
               Kategori infrastruktur
             </span>
-            <div className="flex flex-wrap gap-1">
+            <div className="flex flex-wrap gap-1.5">
               {CATEGORIES.map(({ key, label }) => {
                 const isActive = state.filters.categories.includes(key);
                 return (
@@ -97,10 +118,10 @@ export function MapOverlays({
                     key={key}
                     type="button"
                     onClick={() => toggleCategory(key)}
-                    className={`rounded-[8px] px-2 py-1 text-[12px] font-medium transition-all ${
+                    className={`rounded-[10px] px-2.5 py-1 text-[12px] transition-all cursor-pointer ${
                       isActive
-                        ? "bg-accent text-white shadow-xs font-semibold"
-                        : "bg-tint text-muted hover:text-ink hover:bg-tint-2"
+                        ? "bg-accent-soft text-accent border border-accent font-semibold"
+                        : "bg-surface border border-border-input text-muted hover:text-ink hover:bg-tint font-medium"
                     }`}
                   >
                     {label}
@@ -115,7 +136,7 @@ export function MapOverlays({
             <span className="block text-[11px] font-medium text-muted leading-tight mb-1.5">
               Tingkat prioritas
             </span>
-            <div className="flex flex-wrap gap-1">
+            <div className="flex flex-wrap gap-1.5">
               {LEVELS.map(({ key, label }) => {
                 const isActive = state.filters.levels.includes(key);
                 const color = LEVEL_COLOR[key].marker;
@@ -124,10 +145,10 @@ export function MapOverlays({
                     key={key}
                     type="button"
                     onClick={() => toggleLevel(key)}
-                    className={`flex items-center gap-1.5 rounded-[8px] px-2 py-1 text-[12px] font-medium transition-all ${
+                    className={`flex items-center gap-1.5 rounded-[10px] px-2.5 py-1 text-[12px] transition-all cursor-pointer ${
                       isActive
-                        ? "bg-accent text-white shadow-xs font-semibold"
-                        : "bg-tint text-muted hover:text-ink hover:bg-tint-2"
+                        ? "bg-accent-soft text-accent border border-accent font-semibold"
+                        : "bg-surface border border-border-input text-muted hover:text-ink hover:bg-tint font-medium"
                     }`}
                   >
                     <span
@@ -144,14 +165,14 @@ export function MapOverlays({
 
         {/* Kanan Atas: Tombol Tambah Laporan & Toggle Fasilitas Vital */}
         <div className="pointer-events-auto flex items-center gap-2">
-          {/* Tombol Tambah Laporan */}
+          {/* Tombol Simulasikan Laporan Warga */}
           <button
             type="button"
             onClick={onToggleAddMode}
-            className={`flex items-center gap-1.5 rounded-[12px] border px-3 py-2 text-[12px] font-semibold shadow-sm transition-all cursor-pointer min-h-[44px] ${
+            className={`flex items-center gap-1.5 rounded-[12px] border px-3 py-2 text-[12px] font-semibold shadow-card transition-all cursor-pointer min-h-[42px] ${
               state.addMode
-                ? "border-accent bg-accent text-white shadow-xs"
-                : "border-border bg-surface text-ink hover:bg-tint"
+                ? "border-accent bg-accent text-white"
+                : "border-border bg-surface/95 backdrop-blur-xs text-ink hover:bg-tint"
             }`}
             aria-pressed={state.addMode}
           >
@@ -160,17 +181,17 @@ export function MapOverlays({
             ) : (
               <Plus className="h-4 w-4 shrink-0 text-accent" />
             )}
-            <span>{state.addMode ? "Batal" : "Tambah laporan"}</span>
+            <span>{state.addMode ? "Batal" : "Simulasikan laporan warga"}</span>
           </button>
 
           {/* Toggle Fasilitas Vital */}
           <button
             type="button"
             onClick={() => dispatch({ type: "TOGGLE_VITALS" })}
-            className={`flex items-center gap-2 rounded-[12px] border px-3 py-2 text-[12px] font-medium shadow-sm transition-all min-h-[44px] cursor-pointer ${
+            className={`flex items-center gap-2 rounded-[12px] border px-3 py-2 text-[12px] font-medium shadow-card transition-all min-h-[42px] cursor-pointer ${
               state.showVitals
                 ? "border-accent bg-accent-soft text-accent"
-                : "border-border bg-surface text-ink hover:bg-tint"
+                : "border-border bg-surface/95 backdrop-blur-xs text-ink hover:bg-tint"
             }`}
             aria-pressed={state.showVitals}
           >
@@ -202,9 +223,10 @@ export function MapOverlays({
       )}
 
       {/* ── Baris Bawah: Legenda di Kiri Bawah & Skenario Demo di Kanan Bawah ── */}
-      <div className="flex items-end justify-between gap-3">
-        <div className="pointer-events-auto rounded-[12px] border border-border bg-surface p-2.5 shadow-sm text-ink max-w-[220px]">
-          <div className="flex items-center gap-1.5 mb-1.5">
+      <div className="flex items-end justify-between gap-3 mb-5">
+        {/* Legenda Prioritas (Menampilkan hitungan klaster nyata per level) */}
+        <div className="pointer-events-auto rounded-[16px] border border-border bg-surface/95 backdrop-blur-xs p-3 shadow-card text-ink w-[180px] sm:w-[200px]">
+          <div className="flex items-center gap-1.5 mb-2">
             <Layers className="h-3.5 w-3.5 text-muted" />
             <span className="text-[11px] font-medium text-muted">
               Legenda prioritas
@@ -212,7 +234,7 @@ export function MapOverlays({
           </div>
 
           <div className="flex flex-col gap-1.5 text-[12px]">
-            {LEVELS.map(({ key, label, scoreLabel }) => (
+            {LEVELS.map(({ key, label }) => (
               <div key={key} className="flex items-center justify-between gap-2">
                 <div className="flex items-center gap-2">
                   <span
@@ -221,13 +243,13 @@ export function MapOverlays({
                   />
                   <span className="font-medium text-ink">{label}</span>
                 </div>
-                <span className="text-muted text-[11px] tabular-nums font-medium">
-                  {scoreLabel}
+                <span className="font-bold text-ink tabular-nums text-[12px]">
+                  {clusterCounts[key]}
                 </span>
               </div>
             ))}
 
-            <div className="text-[11px] text-muted leading-tight pt-1 border-t border-border">
+            <div className="text-[11px] text-muted leading-tight pt-1.5 border-t border-border">
               Ukuran lingkaran: jumlah pelapor
             </div>
 
@@ -263,7 +285,7 @@ export function MapOverlays({
           </div>
         </div>
 
-        {/* Kanan Bawah: Skenario Demo */}
+        {/* Kanan Bawah: Skenario Demo (dengan jarak aman dari atribusi peta pojok kanan) */}
         <div className="pointer-events-auto">
           <DemoControls />
         </div>

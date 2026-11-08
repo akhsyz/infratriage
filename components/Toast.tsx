@@ -26,7 +26,7 @@ export default function Toast() {
     <div
       role="status"
       aria-live="polite"
-      className="fixed bottom-6 right-6 z-[9999] flex items-center gap-3 px-4 py-3 rounded-[10px] bg-header-bg text-header-ink border border-white/10 shadow-2xl max-w-sm sm:max-w-md transition-all duration-200 animate-in fade-in slide-in-from-bottom-2"
+      className="fixed bottom-6 right-6 z-[9999] flex items-center gap-3 px-4 py-3 rounded-[12px] bg-header-bg text-header-ink border border-white/10 shadow-card max-w-sm sm:max-w-md transition-all duration-200 animate-in fade-in slide-in-from-bottom-2"
     >
       {isSuccess ? (
         <CheckCircle2

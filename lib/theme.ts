@@ -67,9 +67,9 @@ export const VITAL_SHAPE: Record<VitalType, "square" | "circle" | "diamond"> = {
 } as const;
 
 /**
- * Aksen tunggal aplikasi (Teal Slate).
+ * Aksen tunggal aplikasi (Teal DESIGN.md v3).
  */
-export const ACCENT = "#0F766E";
+export const ACCENT = "#0B7A6D";
 
 /**
  * Aturan tampilan marker berdasarkan status klaster.

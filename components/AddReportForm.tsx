@@ -9,7 +9,7 @@ import {
   isReportFormValid,
   type ReportFormData,
 } from "./map/reportDraft";
-import { AlertCircle, MapPin, X } from "lucide-react";
+import { MapPin, X } from "lucide-react";
 
 interface AddReportFormProps {
   point: LatLng;
@@ -61,7 +61,7 @@ export default function AddReportForm({
     <div
       role="dialog"
       aria-labelledby="add-report-title"
-      className="pointer-events-auto w-full max-w-[340px] sm:max-w-[360px] rounded-[12px] border border-border bg-surface p-4 shadow-xl text-ink font-sans transition-all duration-200"
+      className="pointer-events-auto w-full max-w-[340px] sm:max-w-[360px] rounded-[16px] border border-border bg-surface/95 backdrop-blur-xs p-4 shadow-card text-ink font-sans transition-all duration-200"
     >
       {/* ── Header Form ── */}
       <div className="flex items-center justify-between border-b border-border pb-3 mb-3">
@@ -84,7 +84,7 @@ export default function AddReportForm({
         <button
           type="button"
           onClick={onCancel}
-          className="rounded-[8px] p-1.5 text-muted hover:text-ink hover:bg-tint transition-colors min-h-[36px] min-w-[36px] flex items-center justify-center"
+          className="rounded-[10px] p-1.5 text-muted hover:text-ink hover:bg-tint transition-colors min-h-[36px] min-w-[36px] flex items-center justify-center cursor-pointer"
           aria-label="Tutup form laporan"
           disabled={disabled}
         >
@@ -111,10 +111,10 @@ export default function AddReportForm({
                   type="button"
                   onClick={() => setCategory(cat)}
                   disabled={disabled}
-                  className={`rounded-[8px] px-2.5 py-2 text-[12px] font-medium transition-all text-left flex items-center justify-between min-h-[44px] ${
+                  className={`rounded-[10px] px-2.5 py-2 text-[12px] transition-all text-left flex items-center justify-between min-h-[42px] cursor-pointer ${
                     active
-                      ? "bg-accent text-white shadow-xs font-semibold"
-                      : "bg-tint text-ink hover:bg-tint-2"
+                      ? "bg-accent-soft text-accent border border-accent font-semibold"
+                      : "bg-surface border border-border-input text-muted hover:text-ink hover:bg-tint font-medium"
                   }`}
                 >
                   <span>{CATEGORY_LABEL[cat]}</span>
@@ -129,7 +129,7 @@ export default function AddReportForm({
           <label className="block text-[12px] font-medium text-muted leading-tight mb-1.5">
             Tingkat keparahan
           </label>
-          <div className="flex rounded-[8px] bg-tint p-1 gap-1">
+          <div className="flex rounded-[10px] bg-tint p-1 gap-1 border border-border">
             {SEVERITIES.map((sev) => {
               const active = severity === sev;
               return (
@@ -138,10 +138,10 @@ export default function AddReportForm({
                   type="button"
                   onClick={() => setSeverity(sev)}
                   disabled={disabled}
-                  className={`flex-1 rounded-[6px] py-1.5 text-[12px] font-medium transition-all text-center min-h-[40px] sm:min-h-[36px] ${
+                  className={`flex-1 rounded-[8px] py-1.5 text-[12px] transition-all text-center min-h-[36px] cursor-pointer ${
                     active
-                      ? "bg-accent text-white shadow-xs font-semibold"
-                      : "text-muted hover:text-ink"
+                      ? "bg-accent-soft text-accent border border-accent font-semibold"
+                      : "text-muted hover:text-ink font-medium"
                   }`}
                 >
                   {sev} · {SEVERITY_LABEL[sev]}
@@ -156,7 +156,7 @@ export default function AddReportForm({
           <label className="block text-[12px] font-medium text-muted leading-tight mb-1.5">
             Kelas jalan
           </label>
-          <div className="flex rounded-[8px] bg-tint p-1 gap-1">
+          <div className="flex rounded-[10px] bg-tint p-1 gap-1 border border-border">
             {ROAD_CLASSES.map((rc) => {
               const active = roadClass === rc;
               return (
@@ -165,10 +165,10 @@ export default function AddReportForm({
                   type="button"
                   onClick={() => setRoadClass(rc)}
                   disabled={disabled}
-                  className={`flex-1 rounded-[6px] py-1.5 text-[12px] font-medium transition-all text-center capitalize min-h-[40px] sm:min-h-[36px] ${
+                  className={`flex-1 rounded-[8px] py-1.5 text-[12px] transition-all text-center capitalize min-h-[36px] cursor-pointer ${
                     active
-                      ? "bg-accent text-white shadow-xs font-semibold"
-                      : "text-muted hover:text-ink"
+                      ? "bg-accent-soft text-accent border border-accent font-semibold"
+                      : "text-muted hover:text-ink font-medium"
                   }`}
                 >
                   {ROAD_CLASS_LABEL[rc].replace("Jalan ", "")}
@@ -211,7 +211,7 @@ export default function AddReportForm({
             onChange={(e) => setReporterId(e.target.value)}
             disabled={disabled}
             placeholder="pelapor-ui-1"
-            className="w-full rounded-[8px] border border-border-input bg-surface px-3 py-2 text-[12px] text-ink placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-accent min-h-[44px]"
+            className="w-full rounded-[10px] border border-border-input bg-surface px-3 py-2 text-[12px] text-ink placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-accent min-h-[42px]"
           />
           <p className="mt-1 text-[11px] text-muted leading-tight">
             Ubah ID untuk mensimulasikan pelapor baru atau warga berulang
@@ -224,14 +224,14 @@ export default function AddReportForm({
             type="button"
             onClick={onCancel}
             disabled={disabled}
-            className="flex-1 rounded-[10px] border border-border bg-surface px-3 py-2.5 text-[12px] font-medium text-ink hover:bg-tint transition-all min-h-[44px]"
+            className="flex-1 rounded-[12px] border border-border bg-surface px-3 py-2.5 text-[12px] font-medium text-ink hover:bg-tint transition-all min-h-[42px] cursor-pointer"
           >
             Batal
           </button>
           <button
             type="submit"
             disabled={!isValid || disabled}
-            className={`flex-1 rounded-[10px] px-3 py-2.5 text-[12px] font-semibold text-white shadow-sm transition-all min-h-[44px] flex items-center justify-center gap-1.5 ${
+            className={`flex-1 rounded-[12px] px-3 py-2.5 text-[12px] font-semibold text-white shadow-xs transition-all min-h-[42px] flex items-center justify-center gap-1.5 ${
               !isValid || disabled
                 ? "bg-muted cursor-not-allowed opacity-60"
                 : "bg-accent hover:bg-accent-hover cursor-pointer"
