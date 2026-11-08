@@ -3,7 +3,12 @@
 import React, { useMemo, useState } from "react";
 import dynamic from "next/dynamic";
 import { useApp } from "../lib/store";
-import { computeScore, priorityLevel, type ScoreContext } from "../lib/infratriage";
+import {
+  computeScore,
+  priorityLevel,
+  SEED_DISCLAIMER,
+  type ScoreContext,
+} from "../lib/infratriage";
 import { vitals } from "../lib/vitals";
 import Toast from "./Toast";
 import RankingTab from "./panel/RankingTab";
@@ -73,7 +78,7 @@ export default function CommandCenter() {
         </div>
 
         {/* 3 KPI Utama */}
-        <div className="flex items-center gap-4 sm:gap-6 mt-2 sm:mt-0">
+        <div className="flex flex-wrap items-center gap-3 sm:gap-6 mt-2 sm:mt-0">
           <div className="flex items-center gap-2">
             <div className="flex h-7 w-7 items-center justify-center rounded-md bg-white/5 border border-white/10">
               <FileText className="h-3.5 w-3.5 text-header-icon" />
@@ -191,9 +196,9 @@ export default function CommandCenter() {
         </aside>
       </main>
 
-      {/* ── Footer Atribusi ── */}
-      <footer className="flex flex-shrink-0 items-center justify-between border-t border-border bg-footer-bg px-4 py-2 text-[12px] text-footer-ink">
-        <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+      {/* ── Footer Atribusi & Kejujuran (PRD & TASKS.md) ── */}
+      <footer className="flex flex-shrink-0 flex-col sm:flex-row items-center justify-between border-t border-border bg-footer-bg px-4 py-2.5 text-[11px] sm:text-[12px] text-footer-ink gap-2">
+        <div className="flex flex-wrap items-center justify-center sm:justify-start gap-x-3 gap-y-1 text-center sm:text-left">
           <span>
             ©{" "}
             <a
@@ -209,8 +214,12 @@ export default function CommandCenter() {
           <span>© CARTO</span>
           <span>·</span>
           <span>Asumsi ilustrasi</span>
+          <span>·</span>
+          <span className="text-[var(--disclaimer-border)] font-medium">
+            {SEED_DISCLAIMER}
+          </span>
         </div>
-        <div className="hidden sm:block text-[11px] text-footer-ink/80">
+        <div className="text-[11px] text-footer-ink/80 text-center sm:text-right shrink-0">
           Prototipe pendukung keputusan, bukan pengganti kanal resmi
         </div>
       </footer>
