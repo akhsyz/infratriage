@@ -1,12 +1,14 @@
 import { describe, expect, it } from "vitest";
 import {
   buildUiReport,
+  getNextUiReporterId,
   getNextUiReportId,
   isReportFormValid,
+  mapRoadTypeToClass,
   type ReportFormData,
 } from "../components/map/reportDraft";
 import { appReducer, createInitialState } from "../lib/reducer";
-import { computeScore, type ScoreContext } from "../lib/infratriage";
+import { computeScore, uniqueReporters, type ScoreContext } from "../lib/infratriage";
 import { vitals } from "../lib/vitals";
 
 describe("reportDraft (components/map/reportDraft.ts)", () => {
@@ -199,6 +201,200 @@ describe("reportDraft (components/map/reportDraft.ts)", () => {
       expect(state2.toast?.message).toContain("Laporan ini sudah tercatat, diabaikan");
       expect(state2.clusters.length).toBe(clustersLen);
       expect(state2.reports.length).toBe(reportsLen);
+    });
+
+    it("pelapor yang sama tidak menambah jumlah pelapor unik klaster", () => {
+      let state = createInitialState(baseNow);
+      state = appReducer(state, { type: "INIT_SEED" });
+
+      const point = { lat: -7.785, lng: 110.365 };
+
+      // Laporan 1 oleh pelapor-ui-1
+      const rep1 = buildUiReport(
+        {
+          category: "lubang",
+          severity: 2,
+          roadClass: "lokal",
+          incident: false,
+          reporterId: "pelapor-ui-1",
+        },
+        point,
+        baseNow,
+        state.reports
+      );
+      state = appReducer(state, { type: "INGEST", payload: rep1 });
+      const cluster1 = state.clusters.find((c) =>
+        c.reports.some((r) => r.id === rep1.id)
+      )!;
+      expect(uniqueReporters(cluster1)).toBe(1);
+
+      // Laporan 2 di titik berdekatan (~5m) oleh pelapor yang SAMA (pelapor-ui-1)
+      const rep2 = buildUiReport(
+        {
+          category: "lubang",
+          severity: 2,
+          roadClass: "lokal",
+          incident: false,
+          reporterId: "pelapor-ui-1",
+        },
+        { lat: point.lat + 0.00004, lng: point.lng + 0.00004 },
+        baseNow,
+        state.reports
+      );
+      state = appReducer(state, { type: "INGEST", payload: rep2 });
+      const cluster2 = state.clusters.find((c) =>
+        c.reports.some((r) => r.id === rep2.id)
+      )!;
+      expect(cluster2.id).toBe(cluster1.id);
+      expect(cluster2.reports.length).toBe(2);
+      // Jumlah pelapor unik TIDAK bertambah (tetap 1)
+      expect(uniqueReporters(cluster2)).toBe(1);
+
+      // Laporan 3 di titik berdekatan oleh pelapor BARU (pelapor-ui-2)
+      const rep3 = buildUiReport(
+        {
+          category: "lubang",
+          severity: 2,
+          roadClass: "lokal",
+          incident: false,
+          reporterId: "pelapor-ui-2",
+        },
+        { lat: point.lat + 0.00005, lng: point.lng + 0.00005 },
+        baseNow,
+        state.reports
+      );
+      state = appReducer(state, { type: "INGEST", payload: rep3 });
+      const cluster3 = state.clusters.find((c) =>
+        c.reports.some((r) => r.id === rep3.id)
+      )!;
+      expect(cluster3.id).toBe(cluster1.id);
+      expect(cluster3.reports.length).toBe(3);
+      // Jumlah pelapor unik kini bertambah menjadi 2
+      expect(uniqueReporters(cluster3)).toBe(2);
+    });
+
+    it("tiga kiriman berturut-turut dari formulir menaikkan jumlah pelapor unik klaster 1, 2, 3", () => {
+      let state = createInitialState(baseNow);
+      state = appReducer(state, { type: "INIT_SEED" });
+
+      const point = { lat: -7.785, lng: 110.365 };
+
+      // Kiriman 1: pelapor pertama
+      const rep1 = buildUiReport(
+        {
+          category: "lubang",
+          severity: 2,
+          roadClass: mapRoadTypeToClass("arteri"),
+          incident: false,
+          reporterId: getNextUiReporterId(state.reports),
+        },
+        point,
+        baseNow,
+        state.reports
+      );
+      expect(rep1.reporterId).toBe("pelapor-ui-1");
+      state = appReducer(state, { type: "INGEST", payload: rep1 });
+      const c1 = state.clusters.find((c) => c.reports.some((r) => r.id === rep1.id))!;
+      expect(uniqueReporters(c1)).toBe(1);
+
+      // Kiriman 2: pelapor kedua (otomatis pelapor-ui-2)
+      const rep2 = buildUiReport(
+        {
+          category: "lubang",
+          severity: 2,
+          roadClass: mapRoadTypeToClass("arteri"),
+          incident: false,
+          reporterId: getNextUiReporterId(state.reports),
+        },
+        { lat: point.lat + 0.00004, lng: point.lng + 0.00004 },
+        baseNow,
+        state.reports
+      );
+      expect(rep2.reporterId).toBe("pelapor-ui-2");
+      state = appReducer(state, { type: "INGEST", payload: rep2 });
+      const c2 = state.clusters.find((c) => c.reports.some((r) => r.id === rep2.id))!;
+      expect(c2.id).toBe(c1.id);
+      expect(uniqueReporters(c2)).toBe(2);
+
+      // Kiriman 3: pelapor ketiga (otomatis pelapor-ui-3)
+      const rep3 = buildUiReport(
+        {
+          category: "lubang",
+          severity: 2,
+          roadClass: mapRoadTypeToClass("arteri"),
+          incident: false,
+          reporterId: getNextUiReporterId(state.reports),
+        },
+        { lat: point.lat + 0.00005, lng: point.lng + 0.00005 },
+        baseNow,
+        state.reports
+      );
+      expect(rep3.reporterId).toBe("pelapor-ui-3");
+      state = appReducer(state, { type: "INGEST", payload: rep3 });
+      const c3 = state.clusters.find((c) => c.reports.some((r) => r.id === rep3.id))!;
+      expect(c3.id).toBe(c1.id);
+      expect(uniqueReporters(c3)).toBe(3);
+    });
+  });
+
+  describe("getNextUiReporterId", () => {
+    it("menghasilkan 'pelapor-ui-1' jika belum ada laporan berawalan 'pelapor-ui-'", () => {
+      expect(getNextUiReporterId([])).toBe("pelapor-ui-1");
+      expect(
+        getNextUiReporterId([
+          { reporterId: "user-1" },
+          { reporterId: "warga-jogja" },
+          { reporterId: "demo-1" },
+        ])
+      ).toBe("pelapor-ui-1");
+    });
+
+    it("menghasilkan id pelapor otomatis unik dan berurutan (mis. pelapor-ui-1 dan pelapor-ui-3 -> pelapor-ui-4)", () => {
+      const reports = [
+        { reporterId: "user-seed-1" },
+        { reporterId: "pelapor-ui-1" },
+        { reporterId: "pelapor-ui-3" },
+      ];
+      expect(getNextUiReporterId(reports)).toBe("pelapor-ui-4");
+    });
+
+    it("tetap benar dan kembali ke 'pelapor-ui-1' setelah aksi RESET di reducer", () => {
+      let state = createInitialState(baseNow);
+      state = appReducer(state, { type: "INIT_SEED" });
+
+      // Tambah laporan dengan reporter pelapor-ui-1 dan pelapor-ui-2
+      const repA = buildUiReport(
+        sampleFormData,
+        { lat: -7.78, lng: 110.36 },
+        baseNow,
+        state.reports
+      );
+      repA.reporterId = "pelapor-ui-1";
+      state = appReducer(state, { type: "INGEST", payload: repA });
+
+      const repB = buildUiReport(
+        sampleFormData,
+        { lat: -7.78, lng: 110.36 },
+        baseNow,
+        state.reports
+      );
+      repB.reporterId = "pelapor-ui-2";
+      state = appReducer(state, { type: "INGEST", payload: repB });
+
+      expect(getNextUiReporterId(state.reports)).toBe("pelapor-ui-3");
+
+      // Jalankan aksi RESET
+      const resetState = appReducer(state, { type: "RESET" });
+      expect(getNextUiReporterId(resetState.reports)).toBe("pelapor-ui-1");
+    });
+  });
+
+  describe("mapRoadTypeToClass", () => {
+    it("memetakan empat pilihan jenis jalan UI ke tiga nilai RoadClass yang sah", () => {
+      expect(mapRoadTypeToClass("arteri")).toBe("arteri");
+      expect(mapRoadTypeToClass("kolektor")).toBe("kolektor");
+      expect(mapRoadTypeToClass("lokal")).toBe("lokal");
+      expect(mapRoadTypeToClass("tidak_yakin")).toBe("lokal");
     });
   });
 });

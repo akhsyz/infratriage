@@ -1,18 +1,22 @@
 "use client";
 
 import React, { useState } from "react";
-import type { Category, LatLng, RoadClass, Severity } from "../lib/infratriage";
+import type { Category, LatLng, Severity } from "../lib/infratriage";
 import { saveReport } from "../lib/persistence";
 import { useApp } from "../lib/store";
 import {
   buildUiReport,
   CATEGORY_LABEL,
-  ROAD_CLASS_LABEL,
-  SEVERITY_LABEL,
+  getNextUiReporterId,
   isReportFormValid,
+  mapRoadTypeToClass,
+  ROAD_TYPE_OPTIONS,
+  RoadTypeChoice,
+  SEVERITY_DESCRIPTION,
+  SEVERITY_LABEL,
   type ReportFormData,
 } from "./map/reportDraft";
-import { MapPin, X } from "lucide-react";
+import { ChevronDown, MapPin, X } from "lucide-react";
 
 interface AddReportFormProps {
   point: LatLng;
@@ -23,7 +27,6 @@ interface AddReportFormProps {
 
 const CATEGORIES: Category[] = ["lubang", "drainase", "lampu_jalan", "trotoar"];
 const SEVERITIES: Severity[] = [1, 2, 3];
-const ROAD_CLASSES: RoadClass[] = ["arteri", "kolektor", "lokal"];
 
 export default function AddReportForm({
   point,
@@ -32,22 +35,28 @@ export default function AddReportForm({
   isSubmitting = false,
 }: AddReportFormProps) {
   const { state } = useApp();
+
   const [category, setCategory] = useState<Category>("lubang");
   const [severity, setSeverity] = useState<Severity>(2);
-  const [roadClass, setRoadClass] = useState<RoadClass>("arteri");
+  const [roadType, setRoadType] = useState<RoadTypeChoice>("arteri");
   const [incident, setIncident] = useState<boolean>(false);
-  const [reporterId, setReporterId] = useState<string>("pelapor-ui-1");
+  const [reporterId, setReporterId] = useState<string>(() =>
+    getNextUiReporterId(state.reports)
+  );
+  const [showSimOptions, setShowSimOptions] = useState<boolean>(false);
   const [note, setNote] = useState<string>("");
   const [localSubmitting, setLocalSubmitting] = useState<boolean>(false);
 
   const disabled = isSubmitting || localSubmitting;
+
+  const roadClass = mapRoadTypeToClass(roadType);
 
   const currentForm: ReportFormData = {
     category,
     severity,
     roadClass,
     incident,
-    reporterId,
+    reporterId: reporterId.trim(),
     note,
   };
 
@@ -61,13 +70,14 @@ export default function AddReportForm({
     const report = buildUiReport(currentForm, point, state.now, state.reports);
     onSubmit(currentForm);
     saveReport(report);
+    setReporterId(getNextUiReporterId([...state.reports, report]));
   };
 
   return (
     <div
       role="dialog"
       aria-labelledby="add-report-title"
-      className="pointer-events-auto w-full max-w-[340px] sm:max-w-[360px] rounded-[16px] border border-border bg-surface/95 backdrop-blur-xs p-4 shadow-card text-ink font-sans transition-all duration-200"
+      className="pointer-events-auto w-full max-w-[340px] sm:max-w-[360px] rounded-[16px] border border-border bg-surface/95 backdrop-blur-xs p-4 shadow-card text-ink font-sans transition-all duration-200 motion-reduce:transition-none"
     >
       {/* ── Header Form ── */}
       <div className="flex items-center justify-between border-b border-border pb-3 mb-3">
@@ -90,7 +100,7 @@ export default function AddReportForm({
         <button
           type="button"
           onClick={onCancel}
-          className="rounded-[10px] p-1.5 text-muted hover:text-ink hover:bg-tint transition-colors min-h-[36px] min-w-[36px] flex items-center justify-center cursor-pointer"
+          className="rounded-[10px] p-1.5 text-muted hover:text-ink hover:bg-tint transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center cursor-pointer"
           aria-label="Tutup form laporan"
           disabled={disabled}
         >
@@ -99,7 +109,7 @@ export default function AddReportForm({
       </div>
 
       <p className="text-[10px] text-muted bg-tint rounded-[6px] p-2 border border-border/60 leading-tight mb-3">
-        <strong>Mode Simulator Pengujian:</strong> Di sistem produksi publik, kelas jalan & ID pelapor divalidasi otomatis oleh sistem via GIS spasial dan akun terdaftar.
+        <strong>Mode simulator pengujian:</strong> Di sistem produksi publik, kelas jalan & ID pelapor divalidasi otomatis oleh sistem via GIS spasial dan akun terdaftar.
       </p>
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-3">
@@ -117,7 +127,7 @@ export default function AddReportForm({
                   type="button"
                   onClick={() => setCategory(cat)}
                   disabled={disabled}
-                  className={`rounded-[10px] px-2.5 py-2 text-[12px] transition-all text-left flex items-center justify-between min-h-[42px] cursor-pointer ${
+                  className={`rounded-[10px] px-2.5 py-2 text-[12px] transition-all duration-200 motion-reduce:transition-none text-left flex items-center justify-between min-h-[44px] cursor-pointer ${
                     active
                       ? "bg-accent-soft text-accent border border-accent font-semibold"
                       : "bg-surface border border-border-input text-muted hover:text-ink hover:bg-tint font-medium"
@@ -144,7 +154,7 @@ export default function AddReportForm({
                   type="button"
                   onClick={() => setSeverity(sev)}
                   disabled={disabled}
-                  className={`flex-1 rounded-[8px] py-1.5 text-[12px] transition-all text-center min-h-[36px] cursor-pointer ${
+                  className={`flex-1 rounded-[8px] py-1.5 text-[12px] transition-all duration-200 motion-reduce:transition-none text-center min-h-[44px] cursor-pointer flex items-center justify-center ${
                     active
                       ? "bg-accent-soft text-accent border border-accent font-semibold"
                       : "text-muted hover:text-ink font-medium"
@@ -155,29 +165,49 @@ export default function AddReportForm({
               );
             })}
           </div>
+          {/* Penjelas Bahasa Awam */}
+          <div className="mt-1.5 rounded-[8px] bg-tint border border-border/60 p-2 text-[11px] text-ink-2 font-medium leading-tight">
+            {SEVERITY_DESCRIPTION[severity]}
+          </div>
+          {/* Catatan Kejujuran Metrik */}
+          <p className="text-[10.5px] text-muted leading-tight mt-1">
+            Ini penilaian Anda. Skor akhir juga ditentukan faktor lain dan jumlah pelapor unik.
+          </p>
         </div>
 
-        {/* ── Kelas Jalan ── */}
+        {/* ── Jenis Jalan di Lokasi (Kelas Jalan) ── */}
         <div>
           <label className="block text-[12px] font-medium text-muted leading-tight mb-1.5">
-            Kelas jalan
+            Jenis jalan di lokasi
           </label>
-          <div className="flex rounded-[10px] bg-tint p-1 gap-1 border border-border">
-            {ROAD_CLASSES.map((rc) => {
-              const active = roadClass === rc;
+          <div className="flex flex-col gap-1.5">
+            {ROAD_TYPE_OPTIONS.map((opt) => {
+              const active = roadType === opt.key;
               return (
                 <button
-                  key={rc}
+                  key={opt.key}
                   type="button"
-                  onClick={() => setRoadClass(rc)}
+                  onClick={() => setRoadType(opt.key)}
                   disabled={disabled}
-                  className={`flex-1 rounded-[8px] py-1.5 text-[12px] transition-all text-center capitalize min-h-[36px] cursor-pointer ${
+                  className={`rounded-[10px] px-3 py-2 text-left transition-all duration-200 motion-reduce:transition-none min-h-[44px] cursor-pointer flex flex-col justify-center ${
                     active
                       ? "bg-accent-soft text-accent border border-accent font-semibold"
-                      : "text-muted hover:text-ink font-medium"
+                      : "bg-surface border border-border-input text-muted hover:text-ink hover:bg-tint font-medium"
                   }`}
                 >
-                  {ROAD_CLASS_LABEL[rc].replace("Jalan ", "")}
+                  <span className="text-[12px] leading-tight text-ink font-medium">
+                    {opt.title}{" "}
+                    {opt.key !== "tidak_yakin" && (
+                      <span className="text-muted font-normal">
+                        ({opt.example})
+                      </span>
+                    )}
+                  </span>
+                  {opt.key === "tidak_yakin" && (
+                    <span className="text-[10.5px] text-muted font-normal mt-0.5">
+                      Dianggap jalan lingkungan (nilai konservatif)
+                    </span>
+                  )}
                 </button>
               );
             })}
@@ -185,43 +215,63 @@ export default function AddReportForm({
         </div>
 
         {/* ── Insiden / Kejadian ── */}
-        <div className="flex items-start gap-2.5 pt-1">
+        <div className="flex items-start gap-2.5 pt-1 min-h-[44px]">
           <input
             id="report-incident"
             type="checkbox"
             checked={incident}
             onChange={(e) => setIncident(e.target.checked)}
             disabled={disabled}
-            className="mt-0.5 h-4 w-4 rounded border-border-input text-accent accent-accent focus:ring-accent"
+            className="mt-1 h-4 w-4 rounded border-border-input text-accent accent-accent focus:ring-accent"
           />
           <label
             htmlFor="report-incident"
-            className="text-[12px] text-ink font-medium leading-tight cursor-pointer select-none"
+            className="text-[12px] text-ink font-medium leading-tight cursor-pointer select-none py-1"
           >
             Pernah menimbulkan insiden / kecelakaan
           </label>
         </div>
 
-        {/* ── ID Pelapor ── */}
-        <div>
-          <label
-            htmlFor="report-reporterId"
-            className="block text-[12px] font-medium text-muted leading-tight mb-1.5"
+        {/* ── Bagian Lipat: Opsi Simulasi (Tertutup Bawaan) ── */}
+        <div className="border-t border-border/80 pt-1">
+          <button
+            type="button"
+            onClick={() => setShowSimOptions((prev) => !prev)}
+            className="flex items-center justify-between w-full text-left py-2 px-1 text-[12px] font-semibold text-muted hover:text-ink transition-colors min-h-[44px] cursor-pointer"
+            aria-expanded={showSimOptions}
           >
-            ID pelapor
-          </label>
-          <input
-            id="report-reporterId"
-            type="text"
-            value={reporterId}
-            onChange={(e) => setReporterId(e.target.value)}
-            disabled={disabled}
-            placeholder="pelapor-ui-1"
-            className="w-full rounded-[10px] border border-border-input bg-surface px-3 py-2 text-[12px] text-ink placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-accent min-h-[42px]"
-          />
-          <p className="mt-1 text-[11px] text-muted leading-tight">
-            Ubah ID untuk mensimulasikan pelapor baru atau warga berulang
-          </p>
+            <span>Opsi simulasi</span>
+            <ChevronDown
+              className={`h-4 w-4 text-muted transition-transform duration-200 motion-reduce:transition-none ${
+                showSimOptions ? "rotate-180" : ""
+              }`}
+            />
+          </button>
+
+          {showSimOptions && (
+            <div className="flex flex-col gap-2 pt-1 pb-1">
+              <div>
+                <label
+                  htmlFor="report-reporterId"
+                  className="block text-[12px] font-medium text-muted leading-tight mb-1"
+                >
+                  ID pelapor
+                </label>
+                <input
+                  id="report-reporterId"
+                  type="text"
+                  value={reporterId}
+                  onChange={(e) => setReporterId(e.target.value)}
+                  disabled={disabled}
+                  placeholder="pelapor-ui-1"
+                  className="w-full rounded-[10px] border border-border-input bg-surface px-3 py-2 text-[12px] text-ink placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-accent min-h-[44px]"
+                />
+                <p className="mt-1.5 text-[11px] text-muted leading-tight">
+                  Isi ID yang sama untuk mensimulasikan pelapor yang sama; laporan berulang dari pelapor yang sama tidak menaikkan jumlah pelapor unik.
+                </p>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* ── Tombol Aksi ── */}
@@ -230,14 +280,14 @@ export default function AddReportForm({
             type="button"
             onClick={onCancel}
             disabled={disabled}
-            className="flex-1 rounded-[12px] border border-border bg-surface px-3 py-2.5 text-[12px] font-medium text-ink hover:bg-tint transition-all min-h-[42px] cursor-pointer"
+            className="flex-1 rounded-[12px] border border-border bg-surface px-3 py-2.5 text-[12px] font-medium text-ink hover:bg-tint transition-all duration-200 motion-reduce:transition-none min-h-[44px] cursor-pointer"
           >
             Batal
           </button>
           <button
             type="submit"
             disabled={!isValid || disabled}
-            className={`flex-1 rounded-[12px] px-3 py-2.5 text-[12px] font-semibold text-white shadow-xs transition-all min-h-[42px] flex items-center justify-center gap-1.5 ${
+            className={`flex-1 rounded-[12px] px-3 py-2.5 text-[12px] font-semibold text-white shadow-xs transition-all duration-200 motion-reduce:transition-none min-h-[44px] flex items-center justify-center gap-1.5 ${
               !isValid || disabled
                 ? "bg-muted cursor-not-allowed opacity-60"
                 : "bg-accent hover:bg-accent-hover cursor-pointer"
