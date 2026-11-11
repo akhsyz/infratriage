@@ -68,3 +68,26 @@ Glow, bayangan tebal, emoji sebagai ikon, dekorasi di luar yang diizinkan di ata
 
 ## Catatan
 Versi sebelumnya (v2, header arang + panel tab) digantikan oleh dokumen ini. Kanvas desain lama dan mockup AI hanya referensi tata letak.
+
+## Versi 3.1 — Pita Atas Hero Gelap (Pembaruan UI Header)
+Pita atas dashboard (judul, subjudul, badge data simulasi, dan 3 kartu KPI) diperbarui dengan gaya visual hero gelap bernuansa navy-teal dan kartu kaca (glassmorphic), sementara ruang kerja (peta, panel samping, dan sidebar) tetap mempertahankan gaya terang v3.
+
+### Token Hero Gelap (`app/globals.css` & `lib/theme.ts`)
+| Token | Nilai | Peruntukan | Rasio Kontras |
+|---|---|---|---|
+| `--hero-from` | `#0B1F2A` | Awal gradien latar pita atas | Latar dasar |
+| `--hero-to` | `#0F3A3A` | Akhir gradien latar pita atas | Latar dasar |
+| `--hero-accent` | `#2DD4BF` | Aksen kata "infrastruktur" di judul & ikon chip mint | 6,69:1 di hero-to (Pass AA/AAA besar) |
+| `--hero-text` | `#FFFFFF` | Teks judul utama & nilai angka KPI (Laporan, Klaster) | 12,45:1 – 16,89:1 di gradien (Pass AAA) |
+| `--hero-muted` | `#CBD5E1` | Subjudul "Kota Yogyakarta" & label kartu KPI | 6,79:1 di kartu kaca; 8,39:1 di hero-to (Pass AA) |
+| `--hero-border` | `rgba(255,255,255,0.12)` | Border kontainer pita atas | Garis 1 px |
+| `--hero-card-bg` | `rgba(255,255,255,0.07)` | Latar kaca kartu KPI (±7% putih) | Efek glassmorphic |
+| `--hero-card-border` | `rgba(255,255,255,0.12)` | Border kartu KPI kaca (±12% putih) | Garis 1 px |
+| `--hero-chip-bg` | `rgba(45,212,191,0.14)` | Latar chip ikon mint pada kartu KPI | Tint mint |
+| `--hero-badge-bg` | `rgba(251,191,36,0.12)` | Latar pill badge "Data simulasi" | Amber halus |
+| `--hero-badge-border` | `rgba(251,191,36,0.40)` | Border pill badge "Data simulasi" | Amber outline |
+| `--hero-badge-text` | `#FBBF24` | Teks pill badge "Data simulasi" | 7,46:1 – 10,12:1 (Pass AAA) |
+| `--kritis-on-dark` | `#FF7875` | Angka "Prioritas kritis" khusus di latar gelap | 3,94:1 di kartu kaca; 4,84:1 di latar gelap (Pass teks besar >= 3:1) |
+| `--kritis-chip-dark` | `rgba(255,120,117,0.16)` | Latar chip ikon kritis pada kartu KPI | Tint merah halus |
+
+Pola grid latar di pita atas diimplementasikan secara murni dengan CSS (`repeating linear-gradient` 32x32 px) tanpa aset gambar eksternal. Ketinggian vertikal pita atas dikendalikan agar kenaikannya <= 16 px dari tata letak sebelumnya untuk memastikan peta dan panel tetap tampak penuh pada resolusi 1366x768.

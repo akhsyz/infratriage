@@ -34,33 +34,45 @@ export default function CommandCenter() {
 
       {/* ── Area Konten Utama ── */}
       <div className="flex flex-1 flex-col p-3 sm:p-4 gap-3 min-w-0 h-auto md:h-screen md:overflow-hidden">
-        {/* ── Bilah Atas (Top Bar) ── */}
-        <header className="flex flex-wrap items-center justify-between gap-2 flex-shrink-0">
-          <div>
-            <div className="flex items-center gap-2.5">
-              <h1 className="text-[20px] sm:text-[22px] font-bold text-ink leading-tight tracking-tight">
-                Prioritas perbaikan infrastruktur
-              </h1>
-              <span
-                title={SEED_DISCLAIMER}
-                className="cursor-help rounded-[8px] border border-[var(--disclaimer-border)] bg-[var(--disclaimer-bg)]/40 px-2 py-0.5 text-[11px] font-semibold text-[var(--disclaimer-ink)] whitespace-nowrap"
-              >
-                Data simulasi
-              </span>
-              {isLocalMode && (
-                <span className="text-[11px] font-medium text-muted whitespace-nowrap">
-                  Mode lokal: laporan tidak tersimpan
+        {/* ── Pita Atas Hero Gelap (Judul + Subjudul + Badge + Baris KPI) ── */}
+        <header className="relative flex flex-col gap-2.5 sm:gap-3 rounded-[16px] border border-hero-border bg-hero-gradient p-3 sm:p-3.5 shadow-card overflow-hidden flex-shrink-0">
+          {/* Pola grid tipis CSS tanpa gambar eksternal */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 hero-grid"
+          />
+
+          {/* Baris Judul, Badge, dan Subjudul */}
+          <div className="relative z-10 flex flex-wrap items-center justify-between gap-2">
+            <div>
+              <div className="flex flex-wrap items-center gap-2 sm:gap-2.5">
+                <h1 className="text-[19px] sm:text-[21px] font-bold text-hero-text leading-tight tracking-tight">
+                  Prioritas perbaikan{" "}
+                  <span className="text-hero-accent">infrastruktur</span>
+                </h1>
+                <span
+                  title={SEED_DISCLAIMER}
+                  className="cursor-help rounded-full border border-hero-badge-border bg-hero-badge-bg px-2.5 py-0.5 text-[11px] font-semibold text-hero-badge-text whitespace-nowrap shadow-xs"
+                >
+                  Data simulasi
                 </span>
-              )}
+                {isLocalMode && (
+                  <span className="text-[11px] font-medium text-hero-muted whitespace-nowrap">
+                    Mode lokal: laporan tidak tersimpan
+                  </span>
+                )}
+              </div>
+              <p className="text-[12px] font-medium text-hero-muted mt-0.5">
+                Kota Yogyakarta
+              </p>
             </div>
-            <p className="text-[12px] font-medium text-muted mt-0.5">
-              Kota Yogyakarta
-            </p>
+          </div>
+
+          {/* Baris 3 Kartu KPI di dalam Pita Atas */}
+          <div className="relative z-10 w-full">
+            <KpiCards />
           </div>
         </header>
-
-        {/* ── Baris 3 Kartu KPI ── */}
-        <KpiCards />
 
         {/* ── Ruang Kerja: Kartu Peta & Kartu Panel Kanan ── */}
         <main className="flex flex-1 flex-col md:flex-row gap-3 min-h-0 md:overflow-hidden w-full max-w-full">

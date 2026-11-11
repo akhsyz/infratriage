@@ -31,48 +31,48 @@ export default function KpiCards() {
   return (
     <section
       aria-label="Ringkasan Indikator Kinerja Utama"
-      className="grid grid-cols-1 sm:grid-cols-3 gap-3 w-full flex-shrink-0"
+      className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3 w-full"
     >
       {/* ── Kartu 1: Laporan Masuk ── */}
-      <div className="flex items-center gap-3.5 rounded-[16px] border border-border bg-surface p-3.5 shadow-card">
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[12px] bg-accent-soft text-accent">
-          <FileText className="h-5 w-5" />
+      <div className="flex items-center gap-3 rounded-[12px] sm:rounded-[14px] border border-hero-card-border bg-hero-card-bg px-3.5 py-2.5 backdrop-blur-xs shadow-xs">
+        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[10px] bg-hero-chip-bg text-hero-accent">
+          <FileText className="h-4.5 w-4.5" />
         </div>
         <div>
-          <span className="block text-[12px] font-medium text-muted leading-tight">
+          <span className="block text-[11px] sm:text-[12px] font-medium text-hero-muted leading-tight">
             Laporan masuk
           </span>
-          <span className="text-[28px] font-bold text-ink tabular-nums leading-none tracking-tight">
+          <span className="text-[24px] sm:text-[26px] font-bold text-hero-text tabular-nums leading-none tracking-tight">
             {totalReports}
           </span>
         </div>
       </div>
 
       {/* ── Kartu 2: Klaster Aktif ── */}
-      <div className="flex items-center gap-3.5 rounded-[16px] border border-border bg-surface p-3.5 shadow-card">
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[12px] bg-accent-soft text-accent">
-          <Layers className="h-5 w-5" />
+      <div className="flex items-center gap-3 rounded-[12px] sm:rounded-[14px] border border-hero-card-border bg-hero-card-bg px-3.5 py-2.5 backdrop-blur-xs shadow-xs">
+        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[10px] bg-hero-chip-bg text-hero-accent">
+          <Layers className="h-4.5 w-4.5" />
         </div>
         <div>
-          <span className="block text-[12px] font-medium text-muted leading-tight">
+          <span className="block text-[11px] sm:text-[12px] font-medium text-hero-muted leading-tight">
             Klaster aktif
           </span>
-          <span className="text-[28px] font-bold text-ink tabular-nums leading-none tracking-tight">
+          <span className="text-[24px] sm:text-[26px] font-bold text-hero-text tabular-nums leading-none tracking-tight">
             {totalActiveClusters}
           </span>
         </div>
       </div>
 
       {/* ── Kartu 3: Prioritas Kritis ── */}
-      <div className="flex items-center gap-3.5 rounded-[16px] border border-border bg-surface p-3.5 shadow-card">
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[12px] bg-kritis-tint text-kritis">
-          <AlertTriangle className="h-5 w-5" />
+      <div className="flex items-center gap-3 rounded-[12px] sm:rounded-[14px] border border-hero-card-border bg-hero-card-bg px-3.5 py-2.5 backdrop-blur-xs shadow-xs">
+        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[10px] bg-kritis-chip-dark text-kritis-on-dark">
+          <AlertTriangle className="h-4.5 w-4.5" />
         </div>
         <div>
-          <span className="block text-[12px] font-medium text-muted leading-tight">
+          <span className="block text-[11px] sm:text-[12px] font-medium text-hero-muted leading-tight">
             Prioritas kritis
           </span>
-          <span className="text-[28px] font-bold text-kritis tabular-nums leading-none tracking-tight">
+          <span className="text-[24px] sm:text-[26px] font-bold text-kritis-on-dark tabular-nums leading-none tracking-tight">
             {criticalCount}
           </span>
         </div>

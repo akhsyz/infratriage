@@ -26,6 +26,21 @@
   --color-header-muted: var(--header-muted);
   --color-header-icon: var(--header-icon);
 
+  --color-hero-from: var(--hero-from);
+  --color-hero-to: var(--hero-to);
+  --color-hero-accent: var(--hero-accent);
+  --color-hero-text: var(--hero-text);
+  --color-hero-muted: var(--hero-muted);
+  --color-hero-border: var(--hero-border);
+  --color-hero-card-bg: var(--hero-card-bg);
+  --color-hero-card-border: var(--hero-card-border);
+  --color-hero-chip-bg: var(--hero-chip-bg);
+  --color-hero-badge-bg: var(--hero-badge-bg);
+  --color-hero-badge-border: var(--hero-badge-border);
+  --color-hero-badge-text: var(--hero-badge-text);
+  --color-kritis-on-dark: var(--kritis-on-dark);
+  --color-kritis-chip-dark: var(--kritis-chip-dark);
+
   --color-footer-bg: var(--footer-bg);
   --color-footer-ink: var(--footer-ink);
 
@@ -84,6 +99,22 @@
   --footer-bg: #161D24;
   --footer-ink: #C5CEC9;
 
+  /* ── Hero Gelap Pita Atas (docs/DESIGN.md v3.1) ── */
+  --hero-from: #0B1F2A;
+  --hero-to: #0F3A3A;
+  --hero-accent: #2DD4BF;
+  --hero-text: #FFFFFF;
+  --hero-muted: #CBD5E1;
+  --hero-border: rgba(255, 255, 255, 0.12);
+  --hero-card-bg: rgba(255, 255, 255, 0.07);
+  --hero-card-border: rgba(255, 255, 255, 0.12);
+  --hero-chip-bg: rgba(45, 212, 191, 0.14);
+  --hero-badge-bg: rgba(251, 191, 36, 0.12);
+  --hero-badge-border: rgba(251, 191, 36, 0.40);
+  --hero-badge-text: #FBBF24;
+  --kritis-on-dark: #FF7875;
+  --kritis-chip-dark: rgba(255, 120, 117, 0.16);
+
   /* ── Warna Prioritas Fungsional (docs/DESIGN.md) ── */
   --kritis: #D92D3A;
   --kritis-tint: #FDE8EA;
@@ -130,4 +161,16 @@ body {
   background-color: var(--bg);
   color: var(--ink);
   font-family: var(--font-sans);
+}
+
+/* ── Hero Gelap Helper (docs/DESIGN.md v3.1) ── */
+.bg-hero-gradient {
+  background: linear-gradient(135deg, var(--hero-from) 0%, var(--hero-to) 100%);
+}
+
+.hero-grid {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
 }
