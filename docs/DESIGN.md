@@ -75,22 +75,19 @@ Pita atas dashboard (judul, subjudul, badge data simulasi, dan 3 kartu KPI) dipe
 ### Token Hero Gelap (`app/globals.css` & `lib/theme.ts`)
 | Token | Nilai | Peruntukan | Rasio Kontras |
 |---|---|---|---|
-| `--hero-from` | `#0B1F2A` | Awal gradien latar pita atas | Latar dasar |
-| `--hero-to` | `#0F3A3A` | Akhir gradien latar pita atas | Latar dasar |
-| `--hero-accent` | `#2DD4BF` | Aksen kata "infrastruktur" di judul & ikon chip mint | 6,69:1 di hero-to (Pass AA/AAA besar) |
-| `--hero-text` | `#FFFFFF` | Teks judul utama & nilai angka KPI (Laporan, Klaster) | 12,45:1 – 16,89:1 di gradien (Pass AAA) |
-| `--hero-muted` | `#CBD5E1` | Subjudul "Kota Yogyakarta" & label kartu KPI | 6,79:1 di kartu kaca; 8,39:1 di hero-to (Pass AA) |
-| `--hero-border` | `rgba(255,255,255,0.12)` | Border kontainer pita atas | Garis 1 px |
-| `--hero-card-bg` | `rgba(255,255,255,0.07)` | Latar kaca kartu KPI (±7% putih) | Efek glassmorphic |
-| `--hero-card-border` | `rgba(255,255,255,0.12)` | Border kartu KPI kaca (±12% putih) | Garis 1 px |
+| `--hero-bg` | `#0B2231` | Latar solid warna datar (flat) header | Latar dasar |
+| `--hero-accent` | `#2DD4BF` | Aksen garis bawah menu aktif & ikon chip mint | 8,77:1 di hero-bg (Pass AAA) |
+| `--hero-text` | `#FFFFFF` | Teks judul/merek & nilai angka KPI (Laporan, Klaster) | 16,35:1 di hero-bg (Pass AAA) |
+| `--hero-muted` | `#CBD5E1` | Nama panjang akronim & label kartu KPI | 6,80:1 di kartu kaca; 11,00:1 di hero-bg (Pass AAA) |
+| `--hero-border` | `rgba(255,255,255,0.12)` | Border kontainer bar navigasi atas | Garis 1 px |
+| `--hero-card-bg` | `rgba(255,255,255,0.08)` | Latar kaca kartu KPI (±8% putih) | Efek glassmorphic halus |
+| `--hero-card-border` | `rgba(255,255,255,0.14)` | Border kartu KPI kaca (±14% putih) | Garis 1 px |
 | `--hero-chip-bg` | `rgba(45,212,191,0.14)` | Latar chip ikon mint pada kartu KPI | Tint mint |
-| `--hero-badge-bg` | `rgba(251,191,36,0.12)` | Latar pill badge "Data simulasi" | Amber halus |
-| `--hero-badge-border` | `rgba(251,191,36,0.40)` | Border pill badge "Data simulasi" | Amber outline |
-| `--hero-badge-text` | `#FBBF24` | Teks pill badge "Data simulasi" | 7,46:1 – 10,12:1 (Pass AAA) |
-| `--kritis-on-dark` | `#FF7875` | Angka "Prioritas kritis" khusus di latar gelap | 3,94:1 di kartu kaca; 4,84:1 di latar gelap (Pass teks besar >= 3:1) |
+| `--hero-badge-bg` | `rgba(251,191,36,0.12)` | Latar pill badge | Amber halus |
+| `--hero-badge-border` | `rgba(251,191,36,0.40)` | Border pill badge | Amber outline |
+| `--hero-badge-text` | `#FBBF24` | Teks pill badge | 7,46:1 – 10,12:1 (Pass AAA) |
+| `--kritis-on-dark` | `#FF7875` | Angka "Prioritas kritis" khusus di latar gelap | 3,90:1 di kartu kaca; 6,38:1 di hero-bg (Pass teks besar >= 3:1) |
 | `--kritis-chip-dark` | `rgba(255,120,117,0.16)` | Latar chip ikon kritis pada kartu KPI | Tint merah halus |
-
-Pola grid latar di pita atas diimplementasikan secara murni dengan CSS (`repeating linear-gradient` 32x32 px) tanpa aset gambar eksternal. Ketinggian vertikal pita atas dikendalikan agar kenaikannya <= 16 px dari tata letak sebelumnya untuk memastikan peta dan panel tetap tampak penuh pada resolusi 1366x768.
 
 ## Versi 3.3 — Header Kompak Satu Baris & Efisiensi Ruang Peta (Revisi UI Header)
 Pembaruan header gelap menjadi **satu baris ramping** (tinggi <= 72 px pada lebar >= 1280 px) untuk membebaskan ruang vertikal secara maksimal bagi peta dan panel triase. Jarak luar disederhanakan dengan padding halaman 12 px (`p-3`) dan jarak antar blok 12 px (`gap-3`), sehingga area konten peta/panel di layar 1366x768 mencapai >= 520 px (terhitung ~522 px pada viewport browser 650 px).
@@ -112,14 +109,14 @@ Pembaruan header gelap menjadi **satu baris ramping** (tinggi <= 72 px pada leba
 ### Tabel Rasio Kontras Teks (WCAG AA / AAA)
 | Elemen / Token | Nilai Hex / RGBA | Latar Ukur | Rasio Kontras | Status WCAG |
 |---|---|---|---|---|
-| **Item menu aktif** (`--hero-nav-active`) | `#FFFFFF` | Hero Gradient (`#0B1F2A` – `#0F3A3A`) | **12,53:1 – 16,94:1** | Pass AAA (>= 7:1) |
-| **Garis bawah aktif** (`--hero-nav-active-line`) | `#2DD4BF` | Hero Gradient | Garis aksen mint 2 px | Pass Visual |
-| **Item menu tidak aktif** (`--hero-nav-inactive`) | `#CBD5E1` | Hero Gradient | **8,43:1 – 11,40:1** | Pass AAA (>= 4,5:1) |
-| **Teks "TEPAT"** (`--hero-text`) | `#FFFFFF` | Hero Gradient | **12,53:1 – 16,94:1** | Pass AAA (>= 4,5:1) |
-| **Nama panjang akronim** (`--hero-muted`) | `#CBD5E1` | Hero Gradient | **8,43:1 – 11,40:1** | Pass AAA (>= 4,5:1) |
-| **Angka chip KPI (Laporan & Klaster)** (`--hero-text`) | `#FFFFFF` | Chip Kaca (`rgba(255,255,255,0.07)`) | **10,29:1** | Pass AAA (>= 4,5:1) |
-| **Angka "Prioritas kritis"** (`--kritis-on-dark`) | `#FF7875` | Chip Kaca (`rgba(255,255,255,0.07)`) | **4,02:1** | Pass AA Teks Besar (>= 3:1) |
-| **Label kecil chip KPI** (`--hero-muted`) | `#CBD5E1` | Chip Kaca | **6,93:1** | Pass AA (>= 4,5:1) |
+| **Item menu aktif** (`--hero-nav-active`) | `#FFFFFF` | Flat Hero Bg (`#0B2231`) | **16,35:1** | Pass AAA (>= 7:1) |
+| **Garis bawah aktif** (`--hero-nav-active-line`) | `#2DD4BF` | Flat Hero Bg (`#0B2231`) | Garis aksen mint 2 px | Pass Visual (8,77:1) |
+| **Item menu tidak aktif** (`--hero-nav-inactive`) | `#CBD5E1` | Flat Hero Bg (`#0B2231`) | **11,00:1** | Pass AAA (>= 4,5:1) |
+| **Teks "TEPAT"** (`--hero-text`) | `#FFFFFF` | Flat Hero Bg (`#0B2231`) | **16,35:1** | Pass AAA (>= 4,5:1) |
+| **Nama panjang akronim** (`--hero-muted`) | `#CBD5E1` | Flat Hero Bg (`#0B2231`) | **11,00:1** | Pass AAA (>= 4,5:1) |
+| **Angka chip KPI (Laporan & Klaster)** (`--hero-text`) | `#FFFFFF` | Chip Kaca (`rgba(255,255,255,0.08)`) | **10,10:1** | Pass AAA (>= 4,5:1) |
+| **Angka "Prioritas kritis"** (`--kritis-on-dark`) | `#FF7875` | Chip Kaca (`rgba(255,255,255,0.08)`) | **3,90:1** | Pass AA Teks Besar (>= 3:1) |
+| **Label kecil chip KPI** (`--hero-muted`) | `#CBD5E1` | Chip Kaca | **6,80:1** | Pass AA (>= 4,5:1) |
 
 ### Perhitungan Ketinggian Layar & Ruang Peta
 - **1920x1080**: Chrome total 128 px (Padding 24 px + Header 56 px + Gaps 24 px + Footer 24 px). Tinggi peta/panel mengisi sisa layar = **952 px** (tanpa scroll halaman).

@@ -111,14 +111,13 @@ export const MAP_TILE = cartoKey
  * Token warna Hero Gelap (Pita Atas Dashboard) sesuai docs/DESIGN.md v3.1.
  */
 export const HERO_THEME = {
-  from: "#0B1F2A",
-  to: "#0F3A3A",
+  bg: "#0B2231",
   accent: "#2DD4BF",
   text: "#FFFFFF",
   muted: "#CBD5E1",
   border: "rgba(255, 255, 255, 0.12)",
-  cardBg: "rgba(255, 255, 255, 0.07)",
-  cardBorder: "rgba(255, 255, 255, 0.12)",
+  cardBg: "rgba(255, 255, 255, 0.08)",
+  cardBorder: "rgba(255, 255, 255, 0.14)",
   chipBg: "rgba(45, 212, 191, 0.14)",
   badgeBg: "rgba(251, 191, 36, 0.12)",
   badgeBorder: "rgba(251, 191, 36, 0.40)",
