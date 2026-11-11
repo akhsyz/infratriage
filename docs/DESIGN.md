@@ -97,13 +97,13 @@ Pembaruan header gelap menjadi **satu baris ramping** (tinggi <= 72 px pada leba
 
 ### Arsitektur Header Satu Baris (`components/TopNav.tsx`)
 1. **Lebar >= 1280 px (Satu Baris Sejajar, Tinggi ~56-58 px)**:
-   - Sisi Kiri: Nama "TEPAT" putih tebal, subjudul "Prioritas perbaikan infrastruktur", badge amber "Data simulasi" (`title={SEED_DISCLAIMER}`), serta teks kecil "Kota Yogyakarta". Judul besar baris kedua dan chip logo "T" dihapus demi kesederhanaan dan efisiensi ruang horizontal.
+   - Sisi Kiri: Nama "TEPAT" putih tebal (dengan tooltip `title="Triase Evaluasi Perbaikan dan Anggaran Terukur"`). Pada lebar >= 1440 px, nama panjang akronim *"Triase Evaluasi Perbaikan dan Anggaran Terukur"* ditampilkan penuh di sampingnya. Pada lebar < 1440 px, nama panjang disembunyikan secara visual namun tetap terbaca oleh pembaca layar (`sr-only`) dan via tooltip. Badge "Data simulasi" dan teks "Kota Yogyakarta" dihapus dari header untuk menghemat ruang.
    - Sisi Tengah: Menu navigasi utama (`<nav aria-label="Navigasi utama">`) dengan 4 item lengkap (Peringkat, Detail, Anggaran, Bobot). Item aktif: teks putih tebal + garis bawah mint 2 px (`#2DD4BF`).
    - Sisi Kanan: Tiga chip KPI kompak kaca (`KpiCards`, tinggi <= 44 px, ~36-38 px): Laporan masuk, Klaster aktif, Prioritas kritis (angka teks merah terang `--kritis-on-dark`).
 2. **Lebar 1024 - 1279 px (Satu Baris Kompak)**:
-   - Tetap satu baris. Subjudul disembunyikan dan label chip KPI diringkas ("Laporan", "Klaster", "Kritis") sehingga seluruh elemen pas dalam satu baris tanpa wrap.
+   - Tetap satu baris. Nama panjang akronim berstatus `sr-only` dan label chip KPI diringkas ("Laporan", "Klaster", "Kritis") sehingga seluruh elemen pas dalam satu baris tanpa wrap.
 3. **Lebar < 1024 px & Mobile < 640 px (Dua Baris Tipis)**:
-   - Baris 1: Merek, badge simulasi, dan menu navigasi strip horizontal (`overflow-x-auto scrollbar-none`) yang dapat digeser mulus tanpa memicu scroll horizontal pada halaman.
+   - Baris 1: Merek "TEPAT" (dengan tooltip nama panjang) dan menu navigasi strip horizontal (`overflow-x-auto scrollbar-none`) yang dapat digeser mulus tanpa memicu scroll horizontal pada halaman.
    - Baris 2: Tiga chip KPI kompak berjejer sebaris (`grid grid-cols-3` pada mobile).
    - Tinggi total header di bawah 640 px terhitung **~100 px**, jauh di bawah batas maksimal **120 px**.
 4. **Footer Tipis (Tinggi <= 28 px)**:
@@ -115,11 +115,11 @@ Pembaruan header gelap menjadi **satu baris ramping** (tinggi <= 72 px pada leba
 | **Item menu aktif** (`--hero-nav-active`) | `#FFFFFF` | Hero Gradient (`#0B1F2A` – `#0F3A3A`) | **12,53:1 – 16,94:1** | Pass AAA (>= 7:1) |
 | **Garis bawah aktif** (`--hero-nav-active-line`) | `#2DD4BF` | Hero Gradient | Garis aksen mint 2 px | Pass Visual |
 | **Item menu tidak aktif** (`--hero-nav-inactive`) | `#CBD5E1` | Hero Gradient | **8,43:1 – 11,40:1** | Pass AAA (>= 4,5:1) |
+| **Teks "TEPAT"** (`--hero-text`) | `#FFFFFF` | Hero Gradient | **12,53:1 – 16,94:1** | Pass AAA (>= 4,5:1) |
+| **Nama panjang akronim** (`--hero-muted`) | `#CBD5E1` | Hero Gradient | **8,43:1 – 11,40:1** | Pass AAA (>= 4,5:1) |
 | **Angka chip KPI (Laporan & Klaster)** (`--hero-text`) | `#FFFFFF` | Chip Kaca (`rgba(255,255,255,0.07)`) | **10,29:1** | Pass AAA (>= 4,5:1) |
 | **Angka "Prioritas kritis"** (`--kritis-on-dark`) | `#FF7875` | Chip Kaca (`rgba(255,255,255,0.07)`) | **4,02:1** | Pass AA Teks Besar (>= 3:1) |
 | **Label kecil chip KPI** (`--hero-muted`) | `#CBD5E1` | Chip Kaca | **6,93:1** | Pass AA (>= 4,5:1) |
-| **Badge "Data simulasi"** (`--hero-badge-text`) | `#FBBF24` | Badge Pill Bg | **6,81:1 – 7,46:1** | Pass AA (>= 4,5:1) |
-| **Teks "Kota Yogyakarta"** (`--hero-muted`) | `#CBD5E1` | Hero Gradient | **8,43:1 – 11,40:1** | Pass AAA (>= 4,5:1) |
 
 ### Perhitungan Ketinggian Layar & Ruang Peta
 - **1920x1080**: Chrome total 128 px (Padding 24 px + Header 56 px + Gaps 24 px + Footer 24 px). Tinggi peta/panel mengisi sisa layar = **952 px** (tanpa scroll halaman).

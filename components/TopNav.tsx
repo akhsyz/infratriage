@@ -2,7 +2,6 @@
 
 import React from "react";
 import { ListOrdered, FileText, Calculator, Sliders } from "lucide-react";
-import { SEED_DISCLAIMER } from "../lib/infratriage";
 import { useLocalModeStatus } from "../lib/persistence";
 import KpiCards from "./KpiCards";
 
@@ -26,6 +25,8 @@ const NAV_ITEMS: NavItem[] = [
   { id: "weights", label: "Bobot", icon: Sliders },
 ];
 
+const APP_FULL_NAME = "Triase Evaluasi Perbaikan dan Anggaran Terukur";
+
 export default function TopNav({ activeTab, onSelectTab }: TopNavProps) {
   const isLocalMode = useLocalModeStatus();
 
@@ -39,22 +40,17 @@ export default function TopNav({ activeTab, onSelectTab }: TopNavProps) {
 
       {/* ── Baris 1: Brand & Navigasi (pada >= 1024px: Brand saja di kiri) ── */}
       <div className="relative z-10 flex items-center justify-between gap-2 sm:gap-3 w-full lg:w-auto min-w-0">
-        {/* Kiri: Merek, Subjudul, Badge & Kota Yogyakarta */}
+        {/* Kiri: Merek TEPAT & Nama Panjang Akronim */}
         <div className="flex items-center gap-2 sm:gap-2.5 shrink-0 min-w-0">
-          <span className="text-[15px] sm:text-base font-bold tracking-tight text-hero-text leading-tight select-none">
+          <span
+            title={APP_FULL_NAME}
+            className="text-[15px] sm:text-base font-bold tracking-tight text-hero-text leading-tight select-none cursor-help"
+          >
             TEPAT
           </span>
-          <span className="hidden min-[1024px]:inline-block text-[11.5px] font-medium text-hero-muted truncate select-none border-l border-hero-border/80 pl-2">
-            Prioritas perbaikan infrastruktur
-          </span>
-          <span
-            title={SEED_DISCLAIMER}
-            className="cursor-help rounded-full border border-hero-badge-border bg-hero-badge-bg px-2 py-0.5 text-[10px] sm:text-[10.5px] font-semibold text-hero-badge-text whitespace-nowrap shadow-xs"
-          >
-            Data simulasi
-          </span>
-          <span className="text-[11px] font-medium text-hero-muted whitespace-nowrap hidden sm:inline">
-            Kota Yogyakarta
+          {/* Tampil penuh hanya pada >= 1440px; pada < 1440px tersedia via sr-only dan tooltip title */}
+          <span className="sr-only min-[1440px]:not-sr-only min-[1440px]:inline-block text-[11.5px] font-medium text-hero-muted truncate select-none border-l border-hero-border/80 pl-2.5">
+            {APP_FULL_NAME}
           </span>
           {isLocalMode && (
             <span className="text-[10px] font-medium text-hero-muted/80 whitespace-nowrap hidden 2xl:inline">
