@@ -31,19 +31,19 @@ export default function TopNav({ activeTab, onSelectTab }: TopNavProps) {
   const isLocalMode = useLocalModeStatus();
 
   return (
-    <header className="relative z-20 w-full border-b border-hero-border bg-hero-bg px-4 py-2 sm:py-2.5 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-1.5 sm:gap-2 lg:gap-3 shrink-0">
+    <header className="relative z-20 w-full border-b border-hero-border bg-hero-bg px-4 py-1.5 sm:py-2 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-1.5 sm:gap-2 lg:gap-4 shrink-0">
       {/* ── Baris 1: Brand & Navigasi (pada >= 1024px: Brand saja di kiri) ── */}
       <div className="relative z-10 flex items-center justify-between gap-2 sm:gap-3 w-full lg:w-auto min-w-0">
-        {/* Kiri: Merek TEPAT & Nama Panjang Akronim */}
-        <div className="flex items-center gap-2 sm:gap-2.5 shrink-0 min-w-0">
+        {/* Kiri: Merek TEPAT & Nama Panjang Akronim (Baseline-aligned) */}
+        <div className="flex items-baseline gap-2.5 sm:gap-3 shrink-0 min-w-0">
           <span
             title={APP_FULL_NAME}
-            className="text-[15px] sm:text-base font-bold tracking-tight text-hero-text leading-tight select-none cursor-help"
+            className="text-[24px] sm:text-[28px] font-bold tracking-tight text-hero-text leading-none select-none cursor-help"
           >
             TEPAT
           </span>
-          {/* Tampil penuh hanya pada >= 1440px; pada < 1440px tersedia via sr-only dan tooltip title */}
-          <span className="sr-only min-[1440px]:not-sr-only min-[1440px]:inline-block text-[11.5px] font-medium text-hero-muted truncate select-none border-l border-hero-border/80 pl-2.5">
+          {/* Tampil penuh hanya pada >= 1536px; pada < 1536px tersedia via sr-only dan tooltip title */}
+          <span className="sr-only min-[1536px]:not-sr-only min-[1536px]:inline-block text-[16px] font-medium text-hero-muted truncate select-none border-l border-hero-border/80 pl-3 leading-none">
             {APP_FULL_NAME}
           </span>
           {isLocalMode && (
