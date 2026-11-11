@@ -31,7 +31,7 @@ export default function TopNav({ activeTab, onSelectTab }: TopNavProps) {
   const isLocalMode = useLocalModeStatus();
 
   return (
-    <header className="relative flex flex-col lg:flex-row lg:items-center lg:justify-between gap-1.5 sm:gap-2 lg:gap-3 rounded-[12px] sm:rounded-[14px] border border-hero-border bg-hero-bg px-2.5 py-2 sm:px-3.5 sm:py-2.5 shadow-card overflow-hidden shrink-0">
+    <header className="relative z-20 w-full border-b border-hero-border bg-hero-bg px-4 py-2 sm:py-2.5 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-1.5 sm:gap-2 lg:gap-3 shrink-0">
       {/* ── Baris 1: Brand & Navigasi (pada >= 1024px: Brand saja di kiri) ── */}
       <div className="relative z-10 flex items-center justify-between gap-2 sm:gap-3 w-full lg:w-auto min-w-0">
         {/* Kiri: Merek TEPAT & Nama Panjang Akronim */}

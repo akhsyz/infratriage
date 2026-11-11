@@ -25,11 +25,11 @@ export default function CommandCenter() {
 
   return (
     <div className="min-h-screen md:h-screen w-full overflow-y-auto md:overflow-hidden bg-bg text-ink font-sans flex flex-col">
-      {/* ── Kontainer Utama: Padding Halaman 12px, Jarak Blok 12px ── */}
-      <div className="flex flex-1 flex-col p-3 gap-3 w-full min-w-0 h-auto md:h-screen md:overflow-hidden">
-        {/* ── Blok Header Gelap Satu Baris (Tinggi <= 72px pada >= 1280px) ── */}
-        <TopNav activeTab={activeTab} onSelectTab={setActiveTab} />
+      {/* ── Header Full-Bleed (Membentang penuh dari tepi ke tepi viewport) ── */}
+      <TopNav activeTab={activeTab} onSelectTab={setActiveTab} />
 
+      {/* ── Area Konten di Bawah Header: Gutter 16px (px-4), Jarak dari Header 12px (pt-3 pb-2.5) ── */}
+      <div className="flex flex-1 flex-col px-4 pt-3 pb-2.5 gap-3 w-full min-w-0 h-auto md:flex-1 md:overflow-hidden">
         {/* ── Ruang Kerja: Kartu Peta & Kartu Panel Kanan (Melebar sampai tepi padding) ── */}
         <main className="flex flex-1 flex-col md:flex-row gap-3 min-h-0 md:overflow-hidden w-full max-w-full">
           {/* Kartu Peta (Memanfaatkan ruang maksimal layar) */}

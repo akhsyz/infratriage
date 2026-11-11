@@ -89,20 +89,20 @@ Pita atas dashboard (judul, subjudul, badge data simulasi, dan 3 kartu KPI) dipe
 | `--kritis-on-dark` | `#FF7875` | Angka "Prioritas kritis" khusus di latar gelap | 3,90:1 di kartu kaca; 6,38:1 di hero-bg (Pass teks besar >= 3:1) |
 | `--kritis-chip-dark` | `rgba(255,120,117,0.16)` | Latar chip ikon kritis pada kartu KPI | Tint merah halus |
 
-## Versi 3.3 — Header Kompak Satu Baris & Efisiensi Ruang Peta (Revisi UI Header)
-Pembaruan header gelap menjadi **satu baris ramping** (tinggi <= 72 px pada lebar >= 1280 px) untuk membebaskan ruang vertikal secara maksimal bagi peta dan panel triase. Jarak luar disederhanakan dengan padding halaman 12 px (`p-3`) dan jarak antar blok 12 px (`gap-3`), sehingga area konten peta/panel di layar 1366x768 mencapai >= 520 px (terhitung ~522 px pada viewport browser 650 px).
+## Versi 3.3 — Header Full-Bleed Satu Baris & Efisiensi Ruang Peta (Revisi UI Header)
+Pembaruan header gelap menjadi **navbar full-bleed satu baris** (tinggi <= 72 px pada lebar >= 1280 px). Header membentang penuh dari tepi kiri ke kanan viewport dan menempel di batas atas (tanpa margin luar, tanpa border-radius, dan tanpa bayangan mengambang), dengan garis batas bawah 1 px (`border-b border-hero-border`). Isi header (merek, menu, KPI) menggunakan padding horizontal 16 px (`px-4`) yang persis sejajar dengan batas kiri peta dan batas kanan panel samping. Area konten di bawah header memiliki jarak vertikal 12 px (`pt-3 pb-2.5`).
 
-### Arsitektur Header Satu Baris (`components/TopNav.tsx`)
-1. **Lebar >= 1280 px (Satu Baris Sejajar, Tinggi ~56-58 px)**:
-   - Sisi Kiri: Nama "TEPAT" putih tebal (dengan tooltip `title="Triase Evaluasi Perbaikan dan Anggaran Terukur"`). Pada lebar >= 1440 px, nama panjang akronim *"Triase Evaluasi Perbaikan dan Anggaran Terukur"* ditampilkan penuh di sampingnya. Pada lebar < 1440 px, nama panjang disembunyikan secara visual namun tetap terbaca oleh pembaca layar (`sr-only`) dan via tooltip. Badge "Data simulasi" dan teks "Kota Yogyakarta" dihapus dari header untuk menghemat ruang.
+### Arsitektur Header Full-Bleed (`components/TopNav.tsx`)
+1. **Lebar >= 1280 px (Satu Baris Sejajar, Tinggi ~58 px)**:
+   - Sisi Kiri: Nama "TEPAT" putih tebal (dengan tooltip `title="Triase Evaluasi Perbaikan dan Anggaran Terukur"`). Pada lebar >= 1440 px, nama panjang akronim *"Triase Evaluasi Perbaikan dan Anggaran Terukur"* ditampilkan penuh di sampingnya. Pada lebar < 1440 px, nama panjang disembunyikan secara visual namun tetap terbaca oleh pembaca layar (`sr-only`) dan via tooltip.
    - Sisi Tengah: Menu navigasi utama (`<nav aria-label="Navigasi utama">`) dengan 4 item lengkap (Peringkat, Detail, Anggaran, Bobot). Item aktif: teks putih tebal + garis bawah mint 2 px (`#2DD4BF`).
    - Sisi Kanan: Tiga chip KPI kompak kaca (`KpiCards`, tinggi <= 44 px, ~36-38 px): Laporan masuk, Klaster aktif, Prioritas kritis (angka teks merah terang `--kritis-on-dark`).
 2. **Lebar 1024 - 1279 px (Satu Baris Kompak)**:
-   - Tetap satu baris. Nama panjang akronim berstatus `sr-only` dan label chip KPI diringkas ("Laporan", "Klaster", "Kritis") sehingga seluruh elemen pas dalam satu baris tanpa wrap.
-3. **Lebar < 1024 px & Mobile < 640 px (Dua Baris Tipis)**:
+   - Tetap satu baris full-bleed. Nama panjang akronim berstatus `sr-only` dan label chip KPI diringkas ("Laporan", "Klaster", "Kritis") sehingga seluruh elemen pas dalam satu baris tanpa wrap.
+3. **Lebar < 1024 px & Mobile < 640 px (Dua Baris Tipis Full-Bleed)**:
    - Baris 1: Merek "TEPAT" (dengan tooltip nama panjang) dan menu navigasi strip horizontal (`overflow-x-auto scrollbar-none`) yang dapat digeser mulus tanpa memicu scroll horizontal pada halaman.
    - Baris 2: Tiga chip KPI kompak berjejer sebaris (`grid grid-cols-3` pada mobile).
-   - Tinggi total header di bawah 640 px terhitung **~100 px**, jauh di bawah batas maksimal **120 px**.
+   - Tinggi total header di bawah 640 px terhitung **~98 px**, jauh di bawah batas maksimal **120 px**.
 4. **Footer Tipis (Tinggi <= 28 px)**:
    - Footer satu baris (`h-6 sm:h-7`) memuat penafian permanen: *"Prototipe pendukung keputusan, bukan pengganti kanal laporan resmi. Data simulasi."*, atribusi *"© OpenStreetMap contributors"*, dan nomor versi *"v1.0.0"*.
 
@@ -119,8 +119,8 @@ Pembaruan header gelap menjadi **satu baris ramping** (tinggi <= 72 px pada leba
 | **Label kecil chip KPI** (`--hero-muted`) | `#CBD5E1` | Chip Kaca | **6,80:1** | Pass AA (>= 4,5:1) |
 
 ### Perhitungan Ketinggian Layar & Ruang Peta
-- **1920x1080**: Chrome total 128 px (Padding 24 px + Header 56 px + Gaps 24 px + Footer 24 px). Tinggi peta/panel mengisi sisa layar = **952 px** (tanpa scroll halaman).
-- **1366x768 (Viewport browser ~650 px)**: Chrome total 128 px. Tinggi peta/panel = **522 px** (memenuhi batas `>= 520 px`).
-- **1024x768**: Header satu baris 56 px. Tinggi peta/panel = **522 px** (pada browser 650 px).
-- **768x1024 (Tablet)**: Header dua baris 94 px. Sisa ruang vertikal peta/panel = **858 px**.
-- **375x667 (Mobile)**: Header dua baris 100 px (<= 120 px). Peta `h-[380px]`, panel di bawahnya dengan scroll vertikal alami tanpa scroll horizontal.
+- **1920x1080**: Chrome non-peta total 116 px (Header 58 px + Jarak pt 12 px + Gap 12 px + Footer 24 px + pb 10 px). Tinggi peta/panel = **964 px** (layar penuh) / **864 px** (viewport ~980 px), tanpa scroll halaman.
+- **1366x768 (Viewport browser ~650 px)**: Chrome non-peta total 116 px. Tinggi peta/panel = **534 px** (memenuhi batas `>= 520 px`).
+- **1024x768**: Header satu baris 58 px. Tinggi peta/panel = **534 px** (pada browser 650 px).
+- **768x1024 (Tablet)**: Header dua baris 96 px. Sisa ruang vertikal peta/panel = **870 px**.
+- **375x667 (Mobile)**: Header dua baris 98 px (<= 120 px). Peta `h-[420px]`, panel di bawahnya dengan scroll vertikal alami tanpa scroll horizontal.
