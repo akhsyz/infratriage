@@ -38,12 +38,12 @@ export default function TopNav({ activeTab, onSelectTab }: TopNavProps) {
         <div className="flex items-baseline gap-2.5 sm:gap-3 shrink-0 min-w-0">
           <span
             title={APP_FULL_NAME}
-            className="text-[24px] sm:text-[28px] font-bold tracking-tight text-hero-text leading-none select-none cursor-help"
+            className="text-[20px] sm:text-[22px] font-bold tracking-tight text-hero-text leading-none select-none cursor-help"
           >
             TEPAT
           </span>
-          {/* Tampil penuh hanya pada >= 1536px; pada < 1536px tersedia via sr-only dan tooltip title */}
-          <span className="sr-only min-[1536px]:not-sr-only min-[1536px]:inline-block text-[16px] font-medium text-hero-muted truncate select-none border-l border-hero-border/80 pl-3 leading-none">
+          {/* Tampil penuh hanya pada >= 1440px; pada < 1440px tersedia via sr-only dan tooltip title */}
+          <span className="sr-only min-[1440px]:not-sr-only min-[1440px]:inline-block text-[13.5px] font-medium text-hero-muted truncate select-none border-l border-hero-border/80 pl-3 leading-none">
             {APP_FULL_NAME}
           </span>
           {isLocalMode && (
