@@ -38,7 +38,7 @@ export default function AddReportForm({
 
   const [category, setCategory] = useState<Category>("lubang");
   const [severity, setSeverity] = useState<Severity>(2);
-  const [roadType, setRoadType] = useState<RoadTypeChoice>("arteri");
+  const [roadType, setRoadType] = useState<RoadTypeChoice>("tidak_yakin");
   const [incident, setIncident] = useState<boolean>(false);
   const [reporterId, setReporterId] = useState<string>(() =>
     getNextUiReporterId(state.reports)
@@ -160,10 +160,6 @@ export default function AddReportForm({
           <div className="mt-1.5 rounded-[8px] bg-tint border border-border/60 p-2 text-[11px] text-ink-2 font-medium leading-tight">
             {SEVERITY_DESCRIPTION[severity]}
           </div>
-          {/* Catatan Kejujuran Metrik */}
-          <p className="text-[10.5px] text-muted leading-tight mt-1">
-            Ini penilaian Anda. Skor akhir juga ditentukan faktor lain dan jumlah pelapor unik.
-          </p>
         </div>
 
         {/* ── Jenis Jalan di Lokasi (Kelas Jalan) ── */}
