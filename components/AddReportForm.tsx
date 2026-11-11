@@ -38,7 +38,7 @@ export default function AddReportForm({
 
   const [category, setCategory] = useState<Category>("lubang");
   const [severity, setSeverity] = useState<Severity>(2);
-  const [roadType, setRoadType] = useState<RoadTypeChoice>("arteri");
+  const [roadType, setRoadType] = useState<RoadTypeChoice>("tidak_yakin");
   const [incident, setIncident] = useState<boolean>(false);
   const [reporterId, setReporterId] = useState<string>(() =>
     getNextUiReporterId(state.reports)
@@ -80,16 +80,11 @@ export default function AddReportForm({
       className="pointer-events-auto w-full max-w-[340px] sm:max-w-[360px] rounded-[16px] border border-border bg-surface/95 backdrop-blur-xs p-4 shadow-card text-ink font-sans transition-all duration-200 motion-reduce:transition-none"
     >
       {/* ── Header Form ── */}
-      <div className="flex items-center justify-between border-b border-border pb-3 mb-3">
+      <div className="flex items-center justify-between border-b border-border pb-2.5 mb-3">
         <div>
-          <div className="flex items-center gap-2">
-            <h2 id="add-report-title" className="text-sm font-bold text-ink leading-tight">
-              Tambah laporan baru
-            </h2>
-            <span className="rounded-[4px] bg-accent-soft px-1.5 py-0.5 text-[9px] font-semibold text-accent uppercase tracking-wider">
-              Simulasi
-            </span>
-          </div>
+          <h2 id="add-report-title" className="text-sm font-bold text-ink leading-tight">
+            Tambah laporan baru
+          </h2>
           <div className="flex items-center gap-1.5 mt-1 text-[11px] text-muted tabular-nums">
             <MapPin className="h-3 w-3 text-accent shrink-0" />
             <span>
@@ -107,10 +102,6 @@ export default function AddReportForm({
           <X className="h-4 w-4" />
         </button>
       </div>
-
-      <p className="text-[10px] text-muted bg-tint rounded-[6px] p-2 border border-border/60 leading-tight mb-3">
-        <strong>Mode simulator pengujian:</strong> Di sistem produksi publik, kelas jalan & ID pelapor divalidasi otomatis oleh sistem via GIS spasial dan akun terdaftar.
-      </p>
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-3">
         {/* ── Kategori Masalah ── */}
@@ -169,10 +160,6 @@ export default function AddReportForm({
           <div className="mt-1.5 rounded-[8px] bg-tint border border-border/60 p-2 text-[11px] text-ink-2 font-medium leading-tight">
             {SEVERITY_DESCRIPTION[severity]}
           </div>
-          {/* Catatan Kejujuran Metrik */}
-          <p className="text-[10.5px] text-muted leading-tight mt-1">
-            Ini penilaian Anda. Skor akhir juga ditentukan faktor lain dan jumlah pelapor unik.
-          </p>
         </div>
 
         {/* ── Jenis Jalan di Lokasi (Kelas Jalan) ── */}

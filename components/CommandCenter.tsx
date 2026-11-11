@@ -2,11 +2,8 @@
 
 import React, { useState } from "react";
 import dynamic from "next/dynamic";
-import { SEED_DISCLAIMER } from "../lib/infratriage";
-import { useLocalModeStatus } from "../lib/persistence";
 import Toast from "./Toast";
-import Sidebar, { type TabKey } from "./Sidebar";
-import KpiCards from "./KpiCards";
+import TopNav, { type TabKey } from "./TopNav";
 import RankingTab from "./panel/RankingTab";
 import InspectorTab from "./panel/InspectorTab";
 import BudgetTab from "./panel/BudgetTab";
@@ -15,7 +12,7 @@ import WeightsTab from "./panel/WeightsTab";
 const MapDashboard = dynamic(() => import("./MapDashboard"), {
   ssr: false,
   loading: () => (
-    <div className="h-full w-full bg-surface border border-border animate-pulse flex items-center justify-center rounded-[16px]">
+    <div className="h-full w-full bg-surface border border-border animate-pulse flex items-center justify-center rounded-[14px]">
       <span className="text-muted text-sm font-medium">
         Memuat modul geospasial...
       </span>
@@ -25,49 +22,20 @@ const MapDashboard = dynamic(() => import("./MapDashboard"), {
 
 export default function CommandCenter() {
   const [activeTab, setActiveTab] = useState<TabKey>("ranking");
-  const isLocalMode = useLocalModeStatus();
 
   return (
-    <div className="flex h-auto min-h-screen md:h-screen w-full overflow-y-auto md:overflow-hidden bg-bg text-ink font-sans pb-16 md:pb-0">
-      {/* ── Sidebar Kiri (Desktop / Tablet & Navigasi Bawah Mobile) ── */}
-      <Sidebar activeTab={activeTab} onSelectTab={setActiveTab} />
+    <div className="min-h-screen md:h-screen w-full overflow-y-auto md:overflow-hidden bg-bg text-ink font-sans flex flex-col">
+      {/* ── Header Full-Bleed (Membentang penuh dari tepi ke tepi viewport) ── */}
+      <TopNav activeTab={activeTab} onSelectTab={setActiveTab} />
 
-      {/* ── Area Konten Utama ── */}
-      <div className="flex flex-1 flex-col p-3 sm:p-4 gap-3 min-w-0 h-auto md:h-screen md:overflow-hidden">
-        {/* ── Bilah Atas (Top Bar) ── */}
-        <header className="flex flex-wrap items-center justify-between gap-2 flex-shrink-0">
-          <div>
-            <div className="flex items-center gap-2.5">
-              <h1 className="text-[20px] sm:text-[22px] font-bold text-ink leading-tight tracking-tight">
-                Prioritas perbaikan infrastruktur
-              </h1>
-              <span
-                title={SEED_DISCLAIMER}
-                className="cursor-help rounded-[8px] border border-[var(--disclaimer-border)] bg-[var(--disclaimer-bg)]/40 px-2 py-0.5 text-[11px] font-semibold text-[var(--disclaimer-ink)] whitespace-nowrap"
-              >
-                Data simulasi
-              </span>
-              {isLocalMode && (
-                <span className="text-[11px] font-medium text-muted whitespace-nowrap">
-                  Mode lokal: laporan tidak tersimpan
-                </span>
-              )}
-            </div>
-            <p className="text-[12px] font-medium text-muted mt-0.5">
-              Kota Yogyakarta
-            </p>
-          </div>
-        </header>
-
-        {/* ── Baris 3 Kartu KPI ── */}
-        <KpiCards />
-
-        {/* ── Ruang Kerja: Kartu Peta & Kartu Panel Kanan ── */}
+      {/* ── Area Konten di Bawah Header: Gutter 16px (px-4), Jarak dari Header 12px (pt-3 pb-2.5) ── */}
+      <div className="flex flex-1 flex-col px-4 pt-3 pb-2.5 gap-3 w-full min-w-0 h-auto md:flex-1 md:overflow-hidden">
+        {/* ── Ruang Kerja: Kartu Peta & Kartu Panel Kanan (Melebar sampai tepi padding) ── */}
         <main className="flex flex-1 flex-col md:flex-row gap-3 min-h-0 md:overflow-hidden w-full max-w-full">
-          {/* Kartu Peta */}
+          {/* Kartu Peta (Memanfaatkan ruang maksimal layar) */}
           <section
             aria-label="Peta Klaster Infrastruktur"
-            className="relative flex-1 min-w-0 h-[420px] md:h-full min-h-[420px] rounded-[16px] border border-border bg-surface shadow-card overflow-hidden"
+            className="relative flex-1 min-w-0 h-[420px] md:h-full min-h-[420px] rounded-[14px] border border-border bg-surface shadow-card overflow-hidden"
           >
             <MapDashboard />
           </section>
@@ -75,10 +43,10 @@ export default function CommandCenter() {
           {/* Kartu Panel Kanan */}
           <aside
             aria-label="Panel Analisis dan Kontrol"
-            className="flex w-full md:w-[clamp(380px,26vw,460px)] md:flex-shrink-0 flex-col rounded-[16px] border border-border bg-surface shadow-card overflow-hidden h-[480px] md:h-full z-10"
+            className="flex w-full md:w-[clamp(380px,26vw,460px)] md:flex-shrink-0 flex-col rounded-[14px] border border-border bg-surface shadow-card overflow-hidden h-[480px] md:h-full z-10"
           >
             {/* Konten Tab Aktif (Internal Scroll) */}
-            <div className="flex-1 overflow-y-auto bg-surface p-4">
+            <div className="flex-1 overflow-y-auto bg-surface p-3 sm:p-4">
               {activeTab === "ranking" && <RankingTab />}
               {activeTab === "inspector" && <InspectorTab />}
               {activeTab === "budget" && <BudgetTab />}
@@ -86,6 +54,18 @@ export default function CommandCenter() {
             </div>
           </aside>
         </main>
+
+        {/* ── Footer Tipis: Tinggi <= 28px, Satu Baris ── */}
+        <footer className="shrink-0 flex items-center justify-between gap-2 px-1 text-[11px] text-muted select-none h-6 sm:h-7 leading-none">
+          <p className="truncate text-muted">
+            Prototipe pendukung keputusan, bukan pengganti kanal laporan resmi. Data simulasi.
+          </p>
+          <div className="flex items-center gap-2.5 shrink-0 text-muted">
+            <span className="hidden sm:inline">&copy; OpenStreetMap contributors</span>
+            <span className="inline sm:hidden">&copy; OSM</span>
+            <span className="font-mono text-muted/70">v1.0.0</span>
+          </div>
+        </footer>
       </div>
 
       {/* ── Toast Mandiri ── */}

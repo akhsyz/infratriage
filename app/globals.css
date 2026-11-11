@@ -26,6 +26,24 @@
   --color-header-muted: var(--header-muted);
   --color-header-icon: var(--header-icon);
 
+  --color-hero-bg: var(--hero-bg);
+  --color-hero-accent: var(--hero-accent);
+  --color-hero-text: var(--hero-text);
+  --color-hero-muted: var(--hero-muted);
+  --color-hero-border: var(--hero-border);
+  --color-hero-card-bg: var(--hero-card-bg);
+  --color-hero-card-border: var(--hero-card-border);
+  --color-hero-chip-bg: var(--hero-chip-bg);
+  --color-hero-badge-bg: var(--hero-badge-bg);
+  --color-hero-badge-border: var(--hero-badge-border);
+  --color-hero-badge-text: var(--hero-badge-text);
+  --color-hero-nav-active: var(--hero-nav-active);
+  --color-hero-nav-inactive: var(--hero-nav-inactive);
+  --color-hero-nav-active-line: var(--hero-nav-active-line);
+  --color-hero-nav-hover-bg: var(--hero-nav-hover-bg);
+  --color-kritis-on-dark: var(--kritis-on-dark);
+  --color-kritis-chip-dark: var(--kritis-chip-dark);
+
   --color-footer-bg: var(--footer-bg);
   --color-footer-ink: var(--footer-ink);
 
@@ -83,6 +101,25 @@
   --header-icon: #5EEAD4;
   --footer-bg: #161D24;
   --footer-ink: #C5CEC9;
+
+  /* ── Hero Gelap Pita Atas (docs/DESIGN.md v3.1 / v3.3) ── */
+  --hero-bg: #0B2231;
+  --hero-accent: #2DD4BF;
+  --hero-text: #FFFFFF;
+  --hero-muted: #CBD5E1;
+  --hero-border: rgba(255, 255, 255, 0.12);
+  --hero-card-bg: rgba(255, 255, 255, 0.08);
+  --hero-card-border: rgba(255, 255, 255, 0.14);
+  --hero-chip-bg: rgba(45, 212, 191, 0.14);
+  --hero-badge-bg: rgba(251, 191, 36, 0.12);
+  --hero-badge-border: rgba(251, 191, 36, 0.40);
+  --hero-badge-text: #FBBF24;
+  --hero-nav-active: #FFFFFF;
+  --hero-nav-inactive: #CBD5E1;
+  --hero-nav-active-line: #2DD4BF;
+  --hero-nav-hover-bg: rgba(255, 255, 255, 0.08);
+  --kritis-on-dark: #FF7875;
+  --kritis-chip-dark: rgba(255, 120, 117, 0.16);
 
   /* ── Warna Prioritas Fungsional (docs/DESIGN.md) ── */
   --kritis: #D92D3A;

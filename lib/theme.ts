@@ -106,3 +106,29 @@ export const MAP_TILE = cartoKey
       url: "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
       attribution: "&copy; OpenStreetMap contributors",
     };
+
+/**
+ * Token warna Hero Gelap (Pita Atas Dashboard) sesuai docs/DESIGN.md v3.1.
+ */
+export const HERO_THEME = {
+  bg: "#0B2231",
+  accent: "#2DD4BF",
+  text: "#FFFFFF",
+  muted: "#CBD5E1",
+  border: "rgba(255, 255, 255, 0.12)",
+  cardBg: "rgba(255, 255, 255, 0.08)",
+  cardBorder: "rgba(255, 255, 255, 0.14)",
+  chipBg: "rgba(45, 212, 191, 0.14)",
+  badgeBg: "rgba(251, 191, 36, 0.12)",
+  badgeBorder: "rgba(251, 191, 36, 0.40)",
+  badgeText: "#FBBF24",
+  kritisOnDark: "#FF7875",
+  kritisChipDark: "rgba(255, 120, 117, 0.16)",
+  navActive: "#FFFFFF",
+  navInactive: "#CBD5E1",
+  navActiveLine: "#2DD4BF",
+  navHoverBg: "rgba(255, 255, 255, 0.08)",
+} as const;
+
+export const KRITIS_ON_DARK = HERO_THEME.kritisOnDark;
+
