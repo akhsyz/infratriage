@@ -97,7 +97,7 @@ Pembaruan header gelap menjadi **satu baris ramping** (tinggi <= 72 px pada leba
 
 ### Arsitektur Header Satu Baris (`components/TopNav.tsx`)
 1. **Lebar >= 1280 px (Satu Baris Sejajar, Tinggi ~56-58 px)**:
-   - Sisi Kiri: Chip brand "T" membulat (`#2DD4BF`), nama "TEPAT" putih tebal, subjudul "Prioritas perbaikan infrastruktur", badge amber "Data simulasi" (`title={SEED_DISCLAIMER}`), serta teks kecil "Kota Yogyakarta". Judul besar baris kedua dihapus demi efisiensi vertikal.
+   - Sisi Kiri: Nama "TEPAT" putih tebal, subjudul "Prioritas perbaikan infrastruktur", badge amber "Data simulasi" (`title={SEED_DISCLAIMER}`), serta teks kecil "Kota Yogyakarta". Judul besar baris kedua dan chip logo "T" dihapus demi kesederhanaan dan efisiensi ruang horizontal.
    - Sisi Tengah: Menu navigasi utama (`<nav aria-label="Navigasi utama">`) dengan 4 item lengkap (Peringkat, Detail, Anggaran, Bobot). Item aktif: teks putih tebal + garis bawah mint 2 px (`#2DD4BF`).
    - Sisi Kanan: Tiga chip KPI kompak kaca (`KpiCards`, tinggi <= 44 px, ~36-38 px): Laporan masuk, Klaster aktif, Prioritas kritis (angka teks merah terang `--kritis-on-dark`).
 2. **Lebar 1024 - 1279 px (Satu Baris Kompak)**:
@@ -120,7 +120,6 @@ Pembaruan header gelap menjadi **satu baris ramping** (tinggi <= 72 px pada leba
 | **Label kecil chip KPI** (`--hero-muted`) | `#CBD5E1` | Chip Kaca | **6,93:1** | Pass AA (>= 4,5:1) |
 | **Badge "Data simulasi"** (`--hero-badge-text`) | `#FBBF24` | Badge Pill Bg | **6,81:1 – 7,46:1** | Pass AA (>= 4,5:1) |
 | **Teks "Kota Yogyakarta"** (`--hero-muted`) | `#CBD5E1` | Hero Gradient | **8,43:1 – 11,40:1** | Pass AAA (>= 4,5:1) |
-| **Chip logo "T"** (`--hero-brand-chip-ink`) | `#06171E` | Chip Mint (`#2DD4BF`) | **9,09:1** | Pass AAA (>= 7:1) |
 
 ### Perhitungan Ketinggian Layar & Ruang Peta
 - **1920x1080**: Chrome total 128 px (Padding 24 px + Header 56 px + Gaps 24 px + Footer 24 px). Tinggi peta/panel mengisi sisa layar = **952 px** (tanpa scroll halaman).

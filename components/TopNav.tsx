@@ -40,10 +40,7 @@ export default function TopNav({ activeTab, onSelectTab }: TopNavProps) {
       {/* ── Baris 1: Brand & Navigasi (pada >= 1024px: Brand saja di kiri) ── */}
       <div className="relative z-10 flex items-center justify-between gap-2 sm:gap-3 w-full lg:w-auto min-w-0">
         {/* Kiri: Merek, Subjudul, Badge & Kota Yogyakarta */}
-        <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0 min-w-0">
-          <div className="flex h-7 w-7 sm:h-7.5 sm:w-7.5 shrink-0 items-center justify-center rounded-[8px] bg-hero-brand-chip-bg text-hero-brand-chip-ink font-extrabold text-xs sm:text-sm shadow-xs select-none">
-            T
-          </div>
+        <div className="flex items-center gap-2 sm:gap-2.5 shrink-0 min-w-0">
           <span className="text-[15px] sm:text-base font-bold tracking-tight text-hero-text leading-tight select-none">
             TEPAT
           </span>

@@ -129,8 +129,6 @@ export const HERO_THEME = {
   navInactive: "#CBD5E1",
   navActiveLine: "#2DD4BF",
   navHoverBg: "rgba(255, 255, 255, 0.08)",
-  brandChipBg: "#2DD4BF",
-  brandChipInk: "#06171E",
 } as const;
 
 export const KRITIS_ON_DARK = HERO_THEME.kritisOnDark;
