@@ -38,6 +38,12 @@
   --color-hero-badge-bg: var(--hero-badge-bg);
   --color-hero-badge-border: var(--hero-badge-border);
   --color-hero-badge-text: var(--hero-badge-text);
+  --color-hero-nav-active: var(--hero-nav-active);
+  --color-hero-nav-inactive: var(--hero-nav-inactive);
+  --color-hero-nav-active-line: var(--hero-nav-active-line);
+  --color-hero-nav-hover-bg: var(--hero-nav-hover-bg);
+  --color-hero-brand-chip-bg: var(--hero-brand-chip-bg);
+  --color-hero-brand-chip-ink: var(--hero-brand-chip-ink);
   --color-kritis-on-dark: var(--kritis-on-dark);
   --color-kritis-chip-dark: var(--kritis-chip-dark);
 
@@ -112,6 +118,12 @@
   --hero-badge-bg: rgba(251, 191, 36, 0.12);
   --hero-badge-border: rgba(251, 191, 36, 0.40);
   --hero-badge-text: #FBBF24;
+  --hero-nav-active: #FFFFFF;
+  --hero-nav-inactive: #CBD5E1;
+  --hero-nav-active-line: #2DD4BF;
+  --hero-nav-hover-bg: rgba(255, 255, 255, 0.08);
+  --hero-brand-chip-bg: #2DD4BF;
+  --hero-brand-chip-ink: #06171E;
   --kritis-on-dark: #FF7875;
   --kritis-chip-dark: rgba(255, 120, 117, 0.16);
 

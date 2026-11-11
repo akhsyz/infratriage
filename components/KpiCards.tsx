@@ -6,7 +6,11 @@ import { computeScore, priorityLevel, type ScoreContext } from "../lib/infratria
 import { vitals } from "../lib/vitals";
 import { AlertTriangle, FileText, Layers } from "lucide-react";
 
-export default function KpiCards() {
+interface KpiCardsProps {
+  className?: string;
+}
+
+export default function KpiCards({ className = "" }: KpiCardsProps) {
   const { state } = useApp();
 
   const totalReports = state.reports.length;
@@ -31,48 +35,48 @@ export default function KpiCards() {
   return (
     <section
       aria-label="Ringkasan Indikator Kinerja Utama"
-      className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3 w-full"
+      className={`grid grid-cols-1 sm:grid-cols-3 xl:flex xl:items-center gap-2 sm:gap-2.5 w-full ${className}`}
     >
       {/* ── Kartu 1: Laporan Masuk ── */}
-      <div className="flex items-center gap-3 rounded-[12px] sm:rounded-[14px] border border-hero-card-border bg-hero-card-bg px-3.5 py-2.5 backdrop-blur-xs shadow-xs">
-        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[10px] bg-hero-chip-bg text-hero-accent">
-          <FileText className="h-4.5 w-4.5" />
+      <div className="flex items-center gap-2.5 sm:gap-3 rounded-[12px] border border-hero-card-border bg-hero-card-bg px-3 py-2 sm:px-3.5 sm:py-2 backdrop-blur-xs shadow-xs xl:min-w-[150px]">
+        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[8px] bg-hero-chip-bg text-hero-accent">
+          <FileText className="h-4 w-4" />
         </div>
         <div>
-          <span className="block text-[11px] sm:text-[12px] font-medium text-hero-muted leading-tight">
+          <span className="block text-[11px] font-medium text-hero-muted leading-tight">
             Laporan masuk
           </span>
-          <span className="text-[24px] sm:text-[26px] font-bold text-hero-text tabular-nums leading-none tracking-tight">
+          <span className="text-[20px] sm:text-[22px] font-bold text-hero-text tabular-nums leading-none tracking-tight">
             {totalReports}
           </span>
         </div>
       </div>
 
       {/* ── Kartu 2: Klaster Aktif ── */}
-      <div className="flex items-center gap-3 rounded-[12px] sm:rounded-[14px] border border-hero-card-border bg-hero-card-bg px-3.5 py-2.5 backdrop-blur-xs shadow-xs">
-        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[10px] bg-hero-chip-bg text-hero-accent">
-          <Layers className="h-4.5 w-4.5" />
+      <div className="flex items-center gap-2.5 sm:gap-3 rounded-[12px] border border-hero-card-border bg-hero-card-bg px-3 py-2 sm:px-3.5 sm:py-2 backdrop-blur-xs shadow-xs xl:min-w-[150px]">
+        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[8px] bg-hero-chip-bg text-hero-accent">
+          <Layers className="h-4 w-4" />
         </div>
         <div>
-          <span className="block text-[11px] sm:text-[12px] font-medium text-hero-muted leading-tight">
+          <span className="block text-[11px] font-medium text-hero-muted leading-tight">
             Klaster aktif
           </span>
-          <span className="text-[24px] sm:text-[26px] font-bold text-hero-text tabular-nums leading-none tracking-tight">
+          <span className="text-[20px] sm:text-[22px] font-bold text-hero-text tabular-nums leading-none tracking-tight">
             {totalActiveClusters}
           </span>
         </div>
       </div>
 
       {/* ── Kartu 3: Prioritas Kritis ── */}
-      <div className="flex items-center gap-3 rounded-[12px] sm:rounded-[14px] border border-hero-card-border bg-hero-card-bg px-3.5 py-2.5 backdrop-blur-xs shadow-xs">
-        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[10px] bg-kritis-chip-dark text-kritis-on-dark">
-          <AlertTriangle className="h-4.5 w-4.5" />
+      <div className="flex items-center gap-2.5 sm:gap-3 rounded-[12px] border border-hero-card-border bg-hero-card-bg px-3 py-2 sm:px-3.5 sm:py-2 backdrop-blur-xs shadow-xs xl:min-w-[150px]">
+        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[8px] bg-kritis-chip-dark text-kritis-on-dark">
+          <AlertTriangle className="h-4 w-4" />
         </div>
         <div>
-          <span className="block text-[11px] sm:text-[12px] font-medium text-hero-muted leading-tight">
+          <span className="block text-[11px] font-medium text-hero-muted leading-tight">
             Prioritas kritis
           </span>
-          <span className="text-[24px] sm:text-[26px] font-bold text-kritis-on-dark tabular-nums leading-none tracking-tight">
+          <span className="text-[20px] sm:text-[22px] font-bold text-kritis-on-dark tabular-nums leading-none tracking-tight">
             {criticalCount}
           </span>
         </div>

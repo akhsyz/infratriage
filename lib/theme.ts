@@ -125,6 +125,12 @@ export const HERO_THEME = {
   badgeText: "#FBBF24",
   kritisOnDark: "#FF7875",
   kritisChipDark: "rgba(255, 120, 117, 0.16)",
+  navActive: "#FFFFFF",
+  navInactive: "#CBD5E1",
+  navActiveLine: "#2DD4BF",
+  navHoverBg: "rgba(255, 255, 255, 0.08)",
+  brandChipBg: "#2DD4BF",
+  brandChipInk: "#06171E",
 } as const;
 
 export const KRITIS_ON_DARK = HERO_THEME.kritisOnDark;

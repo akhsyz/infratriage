@@ -91,3 +91,34 @@ Pita atas dashboard (judul, subjudul, badge data simulasi, dan 3 kartu KPI) dipe
 | `--kritis-chip-dark` | `rgba(255,120,117,0.16)` | Latar chip ikon kritis pada kartu KPI | Tint merah halus |
 
 Pola grid latar di pita atas diimplementasikan secara murni dengan CSS (`repeating linear-gradient` 32x32 px) tanpa aset gambar eksternal. Ketinggian vertikal pita atas dikendalikan agar kenaikannya <= 16 px dari tata letak sebelumnya untuk memastikan peta dan panel tetap tampak penuh pada resolusi 1366x768.
+
+## Versi 3.2 — Integrasi TopNav & Layar Penuh (Pembaruan UI Header Menyeluruh)
+Menu navigasi utama (Peringkat, Detail, Anggaran, Bobot) dipindahkan dari sidebar vertikal ke dalam **Bar Navigasi Atas (TopNav)** yang menyatu langsung dengan blok hero gelap. Sidebar vertikal dihapus sehingga ruang kerja (peta Leaflet dan panel analisis samping) kini memanfaatkan lebar penuh layar dengan padding 24 px (`max-w-[1680px]` terpusat).
+
+### Arsitektur Blok Header Menyatu (`components/TopNav.tsx`)
+1. **Baris 1 (Brand & Menu Navigasi)**:
+   - Sisi Kiri: Chip brand "T" membulat (`#2DD4BF`), nama "TEPAT" putih tebal, serta subjudul "Prioritas perbaikan infrastruktur" (responsif disembunyikan di layar kecil).
+   - Sisi Kanan: Menu navigasi `<nav aria-label="Navigasi utama">` dengan 4 item lengkap beserta ikon Lucide.
+   - Item aktif: Teks putih tebal (`#FFFFFF`) dengan garis bawah mint (`#2DD4BF` 2 px) dan `aria-current="page"`.
+   - Item tidak aktif: Teks putih redup (`#CBD5E1`), hover lebih terang dengan latar putih halus (`rgba(255,255,255,0.08)`).
+   - Nomor versi "v1.0.0" ditampilkan redup di sisi kanan nav desktop serta di footer tipis halaman.
+2. **Baris 2 (Judul Halaman & KPI Kompak)**:
+   - Lebar >= 1280 px: Judul "Prioritas perbaikan infrastruktur" (kata "infrastruktur" mint) + badge amber "Data simulasi" + subjudul "Kota Yogyakarta" di sisi kiri, berjejer satu baris dengan 3 kartu KPI kompak kaca di sisi kanan untuk menghemat tinggi vertikal.
+   - Lebar < 1280 px: Tiga kartu KPI ditaruh di bawah baris judul secara fleksibel.
+3. **Responsif Mobile (< 640 px & 375 px)**:
+   - Navigasi menu menggunakan kontainer strip horizontal (`overflow-x-auto` dengan `scrollbar-none`) di dalam elemen header tanpa memicu scroll horizontal pada halaman keseluruhan.
+   - Area sentuh setiap item navigasi terjaga minimal 40 px.
+
+### Token Baru TopNav (`app/globals.css` & `lib/theme.ts`)
+| Token | Nilai | Peruntukan | Rasio Kontras |
+|---|---|---|---|
+| `--hero-nav-active` | `#FFFFFF` | Teks tab navigasi aktif | 12,53:1 – 16,94:1 di gradien hero (Pass AAA) |
+| `--hero-nav-inactive` | `#CBD5E1` | Teks tab navigasi non-aktif | 8,43:1 – 11,40:1 di gradien hero (Pass AAA, >= 4.5:1) |
+| `--hero-nav-active-line` | `#2DD4BF` | Garis bawah indikator tab aktif | Aksen mint 2 px |
+| `--hero-nav-hover-bg` | `rgba(255,255,255,0.08)` | Latar hover tab navigasi | Efek transisi halus |
+| `--hero-brand-chip-bg` | `#2DD4BF` | Latar chip logo "T" | Aksen mint |
+| `--hero-brand-chip-ink` | `#06171E` | Teks huruf "T" di chip brand | 9,09:1 (Pass AAA) |
+
+### Pengendalian Tinggi Vertikal
+- **Resolusi 1366 px (>= 1280 px)**: Tinggi total blok header terhitung **139 px**, memenuhi batasan ketat `<= 220 px`. Peta dan panel samping tetap terlihat utuh tanpa scroll pada layar laptop standar 1366x768.
+- **Resolusi 375 px (Mobile)**: Tinggi total blok header terhitung **~340 px**, dengan strip menu scrollable horizontal di dalam header dan halaman bergulir vertikal alami.
