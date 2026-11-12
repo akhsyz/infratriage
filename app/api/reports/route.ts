@@ -1,4 +1,3 @@
-import { NextRequest } from "next/server";
 import { getSupabaseServerClient } from "../../../lib/supabaseServer";
 import {
   isValidUuidV4,
@@ -7,6 +6,7 @@ import {
   validateReportInput,
 } from "../../../lib/reportValidation";
 import type { Category, Report, RoadClass, Severity } from "../../../lib/infratriage/types";
+import type { PersistedReport } from "../../../lib/photoUtils";
 
 // Next.js 16 dengan Cache Components: Route Handler dinamis secara otomatis saat membaca request.headers
 interface DatabaseReportRow {
@@ -23,9 +23,10 @@ interface DatabaseReportRow {
   created_at: string;
   inserted_at: string;
   note: string | null;
+  photo_path?: string | null;
 }
 
-function mapRowToReport(row: DatabaseReportRow): Report {
+function mapRowToReport(row: DatabaseReportRow): PersistedReport {
   return {
     id: row.report_id,
     reporterId: row.reporter_id,
@@ -36,6 +37,7 @@ function mapRowToReport(row: DatabaseReportRow): Report {
     lat: row.lat,
     lng: row.lng,
     createdAt: row.created_at,
+    hasPhoto: Boolean(row.photo_path && row.photo_path.trim().length > 0),
     ...(row.note ? { note: row.note } : {}),
   };
 }
@@ -207,6 +209,20 @@ export async function DELETE(request: Request) {
         { error: "Layanan database tidak tersedia" },
         { status: 503 }
       );
+    }
+
+    // Hapus seluruh foto milik pengunjung di Supabase Storage bucket 'report-photos'
+    try {
+      const { data: fileList } = await supabase.storage
+        .from("report-photos")
+        .list(visitorId);
+
+      if (fileList && fileList.length > 0) {
+        const filesToRemove = fileList.map((f) => `${visitorId}/${f.name}`);
+        await supabase.storage.from("report-photos").remove(filesToRemove);
+      }
+    } catch {
+      // Abaikan kegagalan storage agar penghapusan data baris tetap berlanjut
     }
 
     const { error } = await supabase

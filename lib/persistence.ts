@@ -1,6 +1,12 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import type { Report } from "./infratriage/types";
 import { isValidUuidV4 } from "./reportValidation";
+import { clearPhotoStore, setPhotoStatus } from "./photos";
+import type { PersistedReport } from "./photoUtils";
+
+export type { PersistedReport };
 
 const STORAGE_KEY = "infratriage_visitor_id";
 const REQUEST_TIMEOUT_MS = 4000;
@@ -107,9 +113,9 @@ async function fetchWithTimeout(
 
 /**
  * Memuat laporan tersimpan milik pengunjung dari server Supabase.
- * Mengembalikan array Report; aman gagal dan tidak melempar error.
+ * Mengembalikan array PersistedReport; aman gagal dan tidak melempar error.
  */
-export async function loadReports(): Promise<Report[]> {
+export async function loadReports(): Promise<PersistedReport[]> {
   try {
     const visitorId = getVisitorId();
     const res = await fetchWithTimeout("/api/reports", {
@@ -124,9 +130,18 @@ export async function loadReports(): Promise<Report[]> {
       return [];
     }
 
-    const json = (await res.json()) as { reports?: Report[] };
+    const json = (await res.json()) as { reports?: PersistedReport[] };
     notifyLocalMode(false);
-    return Array.isArray(json.reports) ? json.reports : [];
+    const reports = Array.isArray(json.reports) ? json.reports : [];
+
+    // Sinkronkan penanda foto ke photo status store
+    for (const r of reports) {
+      if (r.hasPhoto) {
+        setPhotoStatus(r.id, "done");
+      }
+    }
+
+    return reports;
   } catch {
     notifyLocalMode(true);
     return [];
@@ -191,6 +206,7 @@ export async function clearReports(): Promise<{ ok: boolean }> {
       return { ok: false };
     }
 
+    clearPhotoStore();
     return { ok: true };
   } catch {
     return { ok: false };

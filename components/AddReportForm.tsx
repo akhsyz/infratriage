@@ -1,8 +1,14 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import type { Category, LatLng, Severity } from "../lib/infratriage";
-import { saveReport } from "../lib/persistence";
+import { saveReport, useLocalModeStatus } from "../lib/persistence";
+import {
+  compressPhotoInBrowser,
+  setPhotoStatus,
+  uploadReportPhoto,
+  type SupportedPhotoExt,
+} from "../lib/photos";
 import { useApp } from "../lib/store";
 import {
   buildUiReport,
@@ -16,7 +22,7 @@ import {
   SEVERITY_LABEL,
   type ReportFormData,
 } from "./map/reportDraft";
-import { ChevronDown, MapPin, X } from "lucide-react";
+import { ChevronDown, Loader2, MapPin, Trash2, X } from "lucide-react";
 
 interface AddReportFormProps {
   point: LatLng;
@@ -47,6 +53,71 @@ export default function AddReportForm({
   const [note, setNote] = useState<string>("");
   const [localSubmitting, setLocalSubmitting] = useState<boolean>(false);
 
+  const isLocalMode = useLocalModeStatus();
+  const [selectedPhoto, setSelectedPhoto] = useState<{
+    blob: Blob;
+    ext: SupportedPhotoExt;
+    previewUrl: string;
+  } | null>(null);
+  const [compressing, setCompressing] = useState<boolean>(false);
+  const [photoError, setPhotoError] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    return () => {
+      if (selectedPhoto?.previewUrl) {
+        URL.revokeObjectURL(selectedPhoto.previewUrl);
+      }
+    };
+  }, [selectedPhoto]);
+
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setPhotoError(null);
+    setCompressing(true);
+
+    try {
+      const compressed = await compressPhotoInBrowser(file);
+      if (selectedPhoto?.previewUrl) {
+        URL.revokeObjectURL(selectedPhoto.previewUrl);
+      }
+      const previewUrl = URL.createObjectURL(compressed.blob);
+      setSelectedPhoto({
+        blob: compressed.blob,
+        ext: compressed.ext,
+        previewUrl,
+      });
+    } catch (err) {
+      if (selectedPhoto?.previewUrl) {
+        URL.revokeObjectURL(selectedPhoto.previewUrl);
+      }
+      setSelectedPhoto(null);
+      setPhotoError(
+        err instanceof Error
+          ? err.message
+          : "Gagal memproses foto. Silakan coba lagi."
+      );
+      if (fileInputRef.current) {
+        fileInputRef.current.value = "";
+      }
+    } finally {
+      setCompressing(false);
+    }
+  };
+
+  const handleRemovePhoto = () => {
+    if (selectedPhoto?.previewUrl) {
+      URL.revokeObjectURL(selectedPhoto.previewUrl);
+    }
+    setSelectedPhoto(null);
+    setPhotoError(null);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
+    }
+  };
+
   const disabled = isSubmitting || localSubmitting;
 
   const roadClass = mapRoadTypeToClass(roadType);
@@ -64,13 +135,40 @@ export default function AddReportForm({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!isValid || disabled) return;
+    if (!isValid || disabled || compressing) return;
 
     setLocalSubmitting(true);
     const report = buildUiReport(currentForm, point, state.now, state.reports);
+
+    // Laporan DISIMPAN DULU seperti sekarang (INGEST + saveReport)
     onSubmit(currentForm);
-    saveReport(report);
     setReporterId(getNextUiReporterId([...state.reports, report]));
+
+    const photoToUpload = selectedPhoto;
+
+    // Unggah foto di latar belakang, kegagalan unggah TIDAK PERNAH menggagalkan atau menunda laporan
+    void (async () => {
+      try {
+        const saveRes = await saveReport(report);
+        if (photoToUpload) {
+          if (!saveRes.ok) {
+            setPhotoStatus(report.id, "failed");
+            return;
+          }
+          setPhotoStatus(report.id, "uploading");
+          const uploadOk = await uploadReportPhoto(
+            report.id,
+            photoToUpload.blob,
+            photoToUpload.ext
+          );
+          setPhotoStatus(report.id, uploadOk ? "done" : "failed");
+        }
+      } catch {
+        if (photoToUpload) {
+          setPhotoStatus(report.id, "failed");
+        }
+      }
+    })();
   };
 
   return (
@@ -217,6 +315,86 @@ export default function AddReportForm({
           >
             Pernah menimbulkan insiden / kecelakaan
           </label>
+        </div>
+
+        {/* ── Foto Bukti (Opsional) ── */}
+        <div className="flex flex-col gap-1.5 pt-1">
+          <div className="flex items-center justify-between">
+            <label
+              htmlFor="report-photo"
+              className="block text-[12px] font-medium text-muted leading-tight"
+            >
+              Foto bukti (opsional)
+            </label>
+            {selectedPhoto && (
+              <button
+                type="button"
+                onClick={handleRemovePhoto}
+                disabled={disabled}
+                className="text-[11px] text-kritis hover:underline font-medium inline-flex items-center gap-1 cursor-pointer"
+              >
+                <Trash2 className="h-3 w-3" />
+                <span>Hapus foto</span>
+              </button>
+            )}
+          </div>
+
+          {selectedPhoto ? (
+            <div className="relative flex items-center gap-2.5 rounded-[10px] border border-border bg-tint p-2">
+              <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-[8px] border border-border-input bg-surface">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={selectedPhoto.previewUrl}
+                  alt="Pratinjau foto bukti"
+                  className="h-full w-full object-cover"
+                />
+              </div>
+              <div className="flex flex-col min-w-0 flex-1">
+                <span className="text-[11px] font-semibold text-ink truncate">
+                  Foto siap diunggah
+                </span>
+                <span className="text-[10.5px] text-muted tabular-nums">
+                  Format: {selectedPhoto.ext.toUpperCase()} (
+                  {(selectedPhoto.blob.size / 1024).toFixed(0)} KB)
+                </span>
+                <span className="text-[10px] text-muted italic mt-0.5">
+                  Metadata EXIF telah dibersihkan
+                </span>
+              </div>
+            </div>
+          ) : (
+            <div className="flex flex-col gap-1">
+              <input
+                ref={fileInputRef}
+                id="report-photo"
+                type="file"
+                accept="image/jpeg,image/png,image/webp"
+                onChange={handleFileChange}
+                disabled={disabled || isLocalMode || compressing}
+                className="block w-full text-[11px] text-muted file:mr-2.5 file:py-1.5 file:px-3 file:rounded-[8px] file:border file:border-border file:text-[11px] file:font-semibold file:bg-surface file:text-ink hover:file:bg-tint file:cursor-pointer cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+              />
+              <p className="text-[11px] text-muted leading-tight">
+                {isLocalMode ? (
+                  <span className="text-amber-700 font-medium">
+                    Foto membutuhkan koneksi server
+                  </span>
+                ) : (
+                  "Hindari wajah dan plat nomor kendaraan."
+                )}
+              </p>
+              {compressing && (
+                <div className="flex items-center gap-1.5 text-[11px] text-accent font-medium mt-0.5">
+                  <Loader2 className="h-3 w-3 animate-spin" />
+                  <span>Mengompresi foto...</span>
+                </div>
+              )}
+              {photoError && (
+                <p className="text-[11px] text-kritis font-medium leading-tight mt-0.5">
+                  {photoError}
+                </p>
+              )}
+            </div>
+          )}
         </div>
 
         {/* ── Bagian Lipat: Opsi Simulasi (Tertutup Bawaan) ── */}
