@@ -1,4 +1,4 @@
--- Skema database Supabase PostgreSQL untuk penyimpanan laporan per pengunjung (Fase 1)
+-- Skema database Supabase PostgreSQL untuk penyimpanan laporan per pengunjung (Fase 1 & Fitur Unggah Foto)
 -- Dijalankan secara manual oleh pemilik proyek melalui SQL Editor di Dashboard Supabase.
 
 CREATE TABLE IF NOT EXISTS public.reports (
@@ -15,6 +15,7 @@ CREATE TABLE IF NOT EXISTS public.reports (
   created_at timestamptz NOT NULL,
   inserted_at timestamptz NOT NULL DEFAULT now(),
   note text,
+  photo_path text,
 
   -- Batasan nilai yang diizinkan (integritas data)
   CONSTRAINT reports_category_check CHECK (category IN ('lubang', 'drainase', 'lampu_jalan', 'trotoar')),
@@ -22,6 +23,9 @@ CREATE TABLE IF NOT EXISTS public.reports (
   CONSTRAINT reports_road_class_check CHECK (road_class IN ('arteri', 'kolektor', 'lokal')),
   CONSTRAINT reports_visitor_report_unique UNIQUE (visitor_id, report_id)
 );
+
+-- Migrasi idempoten kolom photo_path jika tabel sudah dibuat sebelumnya
+ALTER TABLE public.reports ADD COLUMN IF NOT EXISTS photo_path text;
 
 -- Komentar dokumentasi per kolom sesuai spesifikasi types.ts
 COMMENT ON TABLE public.reports IS 'Penyimpanan laporan kiriman pengunjung per visitor_id';
@@ -38,6 +42,7 @@ COMMENT ON COLUMN public.reports.lng IS 'Koordinat longitude';
 COMMENT ON COLUMN public.reports.created_at IS 'Waktu laporan dibuat (ISO 8601 string dari createdAt)';
 COMMENT ON COLUMN public.reports.inserted_at IS 'Waktu pencatatan baris ke database Supabase';
 COMMENT ON COLUMN public.reports.note IS 'Catatan opsional dari pelapor';
+COMMENT ON COLUMN public.reports.photo_path IS 'Path objek foto bukti di storage bucket report-photos (opsional)';
 
 -- Indeks performa pencarian berdasarkan visitor_id
 CREATE INDEX IF NOT EXISTS idx_reports_visitor_id ON public.reports (visitor_id);
@@ -49,3 +54,13 @@ ALTER TABLE public.reports ENABLE ROW LEVEL SECURITY;
 -- Izin hanya untuk server (kunci rahasia). Pengunjung/anon tidak diberi akses langsung.
 GRANT USAGE ON SCHEMA public TO service_role;
 GRANT ALL ON TABLE public.reports TO service_role;
+
+-- ────────────────────────────────────────────────────────────
+-- Catatan Konfigurasi Storage Bucket "report-photos":
+-- Bucket privat "report-photos" dibuat secara manual melalui
+-- Dashboard Supabase > Storage:
+-- 1. Nama bucket: report-photos
+-- 2. Visibilitas: Private (hanya dapat diakses melalui signed URL server)
+-- 3. Batas ukuran upload: 2 MB
+-- 4. Tipe MIME yang diizinkan: image/jpeg, image/webp
+-- ────────────────────────────────────────────────────────────

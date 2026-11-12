@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useApp } from "../../lib/store";
 import {
   computeScore,
@@ -16,6 +16,8 @@ import {
 } from "../../lib/infratriage";
 import { vitals } from "../../lib/vitals";
 import { formatDistance, formatRupiah } from "../../lib/format";
+import type { PersistedReport } from "../../lib/persistence";
+import { fetchPhotoSignedUrl, usePhotoStatus } from "../../lib/photos";
 import {
   AlertTriangle,
   Building2,
@@ -23,9 +25,11 @@ import {
   CheckCircle2,
   Clock,
   Coins,
+  ExternalLink,
   FileText,
   Hospital,
   Info,
+  Loader2,
   MapPin,
   School,
   ShoppingBag,
@@ -125,7 +129,7 @@ export default function InspectorTab() {
       rem: b.points - floored[idx],
     }));
 
-    let shortfall = roundedUrgency - floored.reduce((a, b) => a + b, 0);
+    const shortfall = roundedUrgency - floored.reduce((a, b) => a + b, 0);
     remainders.sort((a, b) => b.rem - a.rem);
 
     const points = [...floored];
@@ -440,10 +444,121 @@ export default function InspectorTab() {
                   &ldquo;{r.note}&rdquo;
                 </p>
               )}
+
+              {/* Komponen Thumbnail Foto Bukti (Opsional, Belum Diverifikasi) */}
+              <ReportPhotoItem
+                reportId={r.id}
+                hasPhoto={(r as PersistedReport).hasPhoto}
+              />
             </div>
           ))}
         </div>
       </div>
+    </div>
+  );
+}
+
+function ReportPhotoItem({
+  reportId,
+  hasPhoto,
+}: {
+  reportId: string;
+  hasPhoto?: boolean;
+}) {
+  const status = usePhotoStatus(reportId);
+  const shouldFetch = hasPhoto || status === "done";
+
+  const [photoState, setPhotoState] = useState<{
+    id: string;
+    loading: boolean;
+    url: string | null;
+  }>({
+    id: reportId,
+    loading: Boolean(hasPhoto || status === "done"),
+    url: null,
+  });
+
+  useEffect(() => {
+    if (!shouldFetch) return;
+
+    let cancelled = false;
+
+    fetchPhotoSignedUrl(reportId)
+      .then((url) => {
+        if (!cancelled) {
+          setPhotoState({ id: reportId, loading: false, url });
+        }
+      })
+      .catch(() => {
+        if (!cancelled) {
+          setPhotoState({ id: reportId, loading: false, url: null });
+        }
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [reportId, shouldFetch]);
+
+  if (status === "uploading") {
+    return (
+      <div className="mt-1.5 flex items-center gap-1.5 rounded-[6px] bg-surface/80 border border-border/60 px-2 py-1 text-[11px] text-muted">
+        <Loader2 className="h-3 w-3 animate-spin text-accent shrink-0" />
+        <span>Foto sedang diunggah…</span>
+      </div>
+    );
+  }
+
+  if (status === "failed") {
+    return (
+      <div className="mt-1.5 flex items-center gap-1.5 rounded-[6px] bg-surface/80 border border-border/60 px-2 py-1 text-[11px] text-muted">
+        <Info className="h-3 w-3 text-muted shrink-0" />
+        <span>Foto belum terunggah</span>
+      </div>
+    );
+  }
+
+  if (!shouldFetch) {
+    return null;
+  }
+
+  if (photoState.loading && photoState.id === reportId) {
+    return (
+      <div className="mt-1.5 flex items-center gap-1.5 text-[11px] text-muted">
+        <Loader2 className="h-3 w-3 animate-spin text-muted shrink-0" />
+        <span>Memuat foto bukti…</span>
+      </div>
+    );
+  }
+
+  const signedUrl = photoState.id === reportId ? photoState.url : null;
+  if (!signedUrl) {
+    return null;
+  }
+
+  return (
+    <div className="mt-1.5 flex flex-col gap-1">
+      <a
+        href={signedUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        title="Klik untuk membuka foto di tab baru"
+        className="group relative inline-block max-w-[160px] overflow-hidden rounded-[8px] border border-border bg-surface transition-transform hover:scale-[1.02] cursor-pointer"
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={signedUrl}
+          alt="Foto dari pelapor"
+          className="max-h-[160px] max-w-[160px] w-auto h-auto object-cover rounded-[8px]"
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-ink/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+          <ExternalLink className="h-4 w-4 text-white drop-shadow-sm" />
+        </div>
+      </a>
+      <span className="text-[10.5px] text-muted leading-tight">
+        Foto dari pelapor, belum diverifikasi
+      </span>
     </div>
   );
 }
