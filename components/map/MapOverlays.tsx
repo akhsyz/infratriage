@@ -212,7 +212,7 @@ export function MapOverlays({
 
       {/* ── Form Tambah Laporan Mengambang (saat titik sementara ditaruh di peta) ── */}
       {tempPoint && (
-        <div className="pointer-events-auto absolute top-3 sm:top-14 right-2 sm:right-3 left-2 sm:left-auto z-30 max-h-[calc(100%-1.5rem)] sm:max-h-[calc(100%-4.25rem)] flex flex-col">
+        <div className="pointer-events-auto absolute top-3 sm:top-14 right-2 sm:right-3 left-2 sm:left-auto z-30 max-h-[calc(100%-2.75rem)] sm:max-h-[calc(100%-5.5rem)] flex flex-col">
           <AddReportForm
             point={tempPoint}
             onSubmit={onFormSubmit}
