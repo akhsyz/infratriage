@@ -1,5 +1,10 @@
 import {
   DEFAULT_WEIGHTS,
+  COST_TABLE,
+  cloneCostTable,
+  MIN_COST,
+  MAX_COST,
+  type CostTable,
   buildBudgetPlan,
   buildClusters,
   generateSeedReports,
@@ -10,6 +15,7 @@ import {
   type PriorityLevel,
   type Report,
   type ScoreContext,
+  type Severity,
   type StrategyKey,
   type Weights,
 } from "./infratriage";
@@ -47,6 +53,7 @@ export interface AppState {
   addMode: boolean;
   toast: AppToast | null;
   demo: DemoState;
+  costTable: CostTable;
 }
 
 export type AppAction =
@@ -59,6 +66,11 @@ export type AppAction =
   | { type: "SET_STATUS"; payload: { clusterId: string; status: ClusterStatus } }
   | { type: "SET_WEIGHT"; payload: { key: keyof Weights; value: number } }
   | { type: "RESET_WEIGHTS" }
+  | {
+    type: "SET_COST";
+    payload: { category: Category; severity: Severity; cost: number };
+  }
+  | { type: "RESET_COSTS" }
   | { type: "SELECT"; payload: string | null }
   | { type: "SET_FILTERS"; payload: Partial<AppFilters> }
   | { type: "TOGGLE_VITALS"; payload?: boolean }
@@ -106,6 +118,7 @@ export function createInitialState(customNow?: Date): AppState {
       step: 0,
       targetClusterId: null,
     },
+    costTable: cloneCostTable(COST_TABLE),
   };
 }
 
@@ -237,6 +250,30 @@ export function appReducer(state: AppState, action: AppAction): AppState {
       };
     }
 
+    case "SET_COST": {
+      const { category, severity, cost } = action.payload;
+      if (!Number.isInteger(cost) || cost < MIN_COST || cost > MAX_COST) {
+        return state;
+      }
+      return {
+        ...state,
+        costTable: {
+          ...state.costTable,
+          [category]: {
+            ...state.costTable[category],
+            [severity]: cost,
+          },
+        },
+      };
+    }
+
+    case "RESET_COSTS": {
+      return {
+        ...state,
+        costTable: cloneCostTable(COST_TABLE),
+      };
+    }
+
     case "SELECT": {
       return {
         ...state,
@@ -291,7 +328,9 @@ export function appReducer(state: AppState, action: AppAction): AppState {
       if (action.payload?.ids && action.payload.ids.length > 0) {
         targetIds = action.payload.ids;
       } else {
-        const plan = buildBudgetPlan(state.clusters, ctx, state.budget);
+        const plan = buildBudgetPlan(state.clusters, ctx, state.budget, {
+          costTable: state.costTable,
+        });
         const strategy =
           plan.results.find((r) => r.key === state.activeStrategy) ??
           plan.recommended;

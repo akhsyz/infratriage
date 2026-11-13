@@ -94,13 +94,16 @@ export function useBudgetPlan(): BudgetPlan | null {
       weights: state.weights,
       now: state.now,
     };
-    return buildBudgetPlan(state.clusters, ctx, state.budget);
+    return buildBudgetPlan(state.clusters, ctx, state.budget, {
+      costTable: state.costTable,
+    });
   }, [
     state.planRequested,
     state.clusters,
     state.weights,
     state.now,
     state.budget,
+    state.costTable,
   ]);
 }
 

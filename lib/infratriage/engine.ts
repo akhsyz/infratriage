@@ -1,4 +1,4 @@
-import { estimateCost } from "./config";
+import { estimateCost, type CostTable } from "./config";
 import { addReport, type IngestAction } from "./cluster";
 import { compareStrategies, type Item, type StrategyResult } from "./knapsack";
 import {
@@ -70,6 +70,23 @@ export interface BudgetPlan {
   results: StrategyResult[];
   /** hasil DP, dipakai untuk menyorot pin di peta */
   recommended: StrategyResult;
+  /** kandidat yang dievaluasi */
+  items?: Item[];
+}
+
+export function getBudgetCandidates(
+  clusters: Cluster[],
+  ctx: ScoreContext,
+  opts: { costTable?: CostTable } = {},
+): Item[] {
+  return clusters
+    .filter((c) => c.status === "pending")
+    .map((c) => ({
+      id: c.id,
+      value: computeScore(c, ctx).urgency,
+      cost: estimateCost(c.category, clusterSeverity(c), opts.costTable),
+      arrivedAt: firstReportAt(c),
+    }));
 }
 
 /** Kandidat = klaster berstatus "pending". "scheduled" dianggap sudah didanai. */
@@ -77,16 +94,9 @@ export function buildBudgetPlan(
   clusters: Cluster[],
   ctx: ScoreContext,
   budget: number,
-  opts: { costUnit?: number } = {},
+  opts: { costUnit?: number; costTable?: CostTable } = {},
 ): BudgetPlan {
-  const items: Item[] = clusters
-    .filter((c) => c.status === "pending")
-    .map((c) => ({
-      id: c.id,
-      value: computeScore(c, ctx).urgency,
-      cost: estimateCost(c.category, clusterSeverity(c)),
-      arrivedAt: firstReportAt(c),
-    }));
+  const items = getBudgetCandidates(clusters, ctx, opts);
   const results = compareStrategies(items, budget, { costUnit: opts.costUnit });
-  return { budget, candidates: items.length, results, recommended: results[0] };
+  return { budget, candidates: items.length, results, recommended: results[0], items };
 }

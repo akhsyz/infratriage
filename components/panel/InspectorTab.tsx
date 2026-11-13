@@ -173,7 +173,7 @@ export default function InspectorTab() {
 
   const roundedScore = Math.round(scoreDetail.urgency);
   const level = priorityLevel(roundedScore);
-  const cost = estimateCost(cluster.category, scoreDetail.severity);
+  const cost = estimateCost(cluster.category, scoreDetail.severity, state.costTable);
 
   // SVG circular gauge properties
   const radius = 30;

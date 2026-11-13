@@ -1,19 +1,37 @@
 "use client";
 
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useApp, useBudgetPlan } from "../../lib/store";
 import { formatRupiah, formatRupiahInput, parseRupiah } from "../../lib/format";
-import type { StrategyKey, StrategyResult } from "../../lib/infratriage";
+import {
+  isCostTableModified,
+  validateCostValue,
+  initRobustness,
+  stepRobustness,
+  finalizeRobustness,
+  getBudgetCandidates,
+  type Category,
+  type Severity,
+  type StrategyKey,
+  type StrategyResult,
+  type CostRobustnessResult,
+  type ScoreContext,
+} from "../../lib/infratriage";
+import { vitals } from "../../lib/vitals";
 import {
   AlertCircle,
   Calendar,
   CheckCircle2,
+  ChevronDown,
+  ChevronUp,
   Coins,
   FileCheck,
   Info,
   Layers,
   Play,
   RotateCcw,
+  ShieldCheck,
+  SlidersHorizontal,
   Sparkles,
   TrendingUp,
 } from "lucide-react";
@@ -55,6 +73,78 @@ const PRESET_BUDGETS = [
   { label: "250 Jt", value: 250_000_000 },
 ];
 
+const COST_CATEGORIES: { key: Category; label: string }[] = [
+  { key: "lubang", label: "Jalan berlubang" },
+  { key: "drainase", label: "Drainase tersumbat" },
+  { key: "lampu_jalan", label: "Lampu jalan mati" },
+  { key: "trotoar", label: "Trotoar rusak" },
+];
+
+const SEVERITY_LEVELS: { severity: Severity; label: string }[] = [
+  { severity: 1, label: "Ringan" },
+  { severity: 2, label: "Sedang" },
+  { severity: 3, label: "Berat" },
+];
+
+function CostInputCell({
+  category,
+  severity,
+  currentValue,
+  onCostChange,
+}: {
+  category: Category;
+  severity: Severity;
+  currentValue: number;
+  onCostChange: (category: Category, severity: Severity, cost: number) => void;
+}) {
+  const [localText, setLocalText] = useState(() => formatRupiahInput(currentValue));
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    setLocalText(formatRupiahInput(currentValue));
+    setError(null);
+  }, [currentValue]);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const raw = e.target.value;
+    const formatted = formatRupiahInput(raw);
+    setLocalText(formatted);
+
+    const parsed = parseRupiah(formatted);
+    const val = validateCostValue(parsed);
+    if (!val.valid) {
+      setError(val.error ?? "Nilai tidak valid");
+    } else {
+      setError(null);
+      onCostChange(category, severity, parsed);
+    }
+  };
+
+  return (
+    <div className="flex flex-col gap-0.5">
+      <div className="relative flex items-center">
+        <span className="absolute left-2 text-[10px] font-bold text-muted pointer-events-none">
+          Rp
+        </span>
+        <input
+          type="text"
+          inputMode="numeric"
+          value={localText}
+          onChange={handleChange}
+          className={`w-full rounded-[6px] border py-1 pl-6 pr-1 text-xs font-semibold tabular-nums bg-bg text-ink focus:bg-surface focus:outline-hidden transition-all ${
+            error
+              ? "border-kritis focus:border-kritis focus:ring-1 focus:ring-kritis/20"
+              : "border-border-input focus:border-accent focus:ring-1 focus:ring-accent/20"
+          }`}
+        />
+      </div>
+      {error && (
+        <span className="text-[10px] text-kritis leading-tight">{error}</span>
+      )}
+    </div>
+  );
+}
+
 export default function BudgetTab() {
   const { state, dispatch } = useApp();
   const plan = useBudgetPlan();
@@ -63,6 +153,31 @@ export default function BudgetTab() {
   const [inputValue, setInputValue] = useState<string>(() =>
     formatRupiahInput(state.budget)
   );
+
+  // State untuk collapsible "Atur asumsi biaya" (tertutup secara bawaan)
+  const [isCostEditorOpen, setIsCostEditorOpen] = useState<boolean>(false);
+
+  // State untuk Uji Ketahanan Biaya
+  const [isTesting, setIsTesting] = useState<boolean>(false);
+  const [progress, setProgress] = useState<number>(0);
+  const [robustnessResult, setRobustnessResult] = useState<CostRobustnessResult | null>(null);
+  const [testError, setTestError] = useState<string | null>(null);
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Bersihkan timer saat unmount
+  useEffect(() => {
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current);
+    };
+  }, []);
+
+  // Kosongkan hasil uji ketahanan jika anggaran atau asumsi biaya berubah
+  useEffect(() => {
+    setRobustnessResult(null);
+    setProgress(0);
+    setIsTesting(false);
+    if (timerRef.current) clearTimeout(timerRef.current);
+  }, [state.budget, state.costTable]);
 
   // Sinkronkan input lokal bila state.budget berubah dari luar
   useEffect(() => {
@@ -116,6 +231,58 @@ export default function BudgetTab() {
   };
 
   const isTooSmall = plan && plan.results.every((r) => r.ids.length === 0);
+  const isModifiedCost = isCostTableModified(state.costTable);
+
+  // Kandidat aktif untuk uji ketahanan
+  const candidates = useMemo(() => {
+    if (!state.clusters) return [];
+    const ctx: ScoreContext = { vitals, weights: state.weights, now: state.now };
+    return getBudgetCandidates(state.clusters, ctx, { costTable: state.costTable });
+  }, [state.clusters, state.weights, state.now, state.costTable]);
+
+  // Uji ketahanan dinonaktifkan bila belum ada simulasi atau hasil dasar kosong
+  const isRobustnessDisabled = !plan || plan.recommended.ids.length === 0 || isTesting;
+
+  // Handler menjalankan uji ketahanan dalam potongan (chunks)
+  const handleRunRobustness = () => {
+    if (!plan || plan.recommended.ids.length === 0) return;
+
+    setIsTesting(true);
+    setProgress(0);
+    setTestError(null);
+    setRobustnessResult(null);
+
+    try {
+      const itemsToTest = plan.items ?? candidates;
+      const acc = initRobustness(itemsToTest, state.budget, { trials: 100 });
+
+      const step = () => {
+        try {
+          const isDone = stepRobustness(acc, 10);
+          const currentPct = Math.round((acc.completedTrials / acc.trials) * 100);
+          setProgress(currentPct);
+
+          if (!isDone) {
+            timerRef.current = setTimeout(step, 16);
+          } else {
+            const finalResult = finalizeRobustness(acc);
+            setRobustnessResult(finalResult);
+            setIsTesting(false);
+          }
+        } catch (err: unknown) {
+          const msg = err instanceof Error ? err.message : "Terjadi kesalahan saat uji ketahanan.";
+          setTestError(msg);
+          setIsTesting(false);
+        }
+      };
+
+      timerRef.current = setTimeout(step, 16);
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : "Terjadi kesalahan saat memulai uji ketahanan.";
+      setTestError(msg);
+      setIsTesting(false);
+    }
+  };
 
   return (
     <div className="flex flex-col gap-4">
@@ -172,11 +339,98 @@ export default function BudgetTab() {
         <button
           type="button"
           onClick={handleRunPlan}
-          className="flex items-center justify-center gap-2 rounded-[10px] bg-accent py-2.5 text-xs font-bold text-white shadow-xs hover:bg-accent-hover transition-colors"
+          className="flex items-center justify-center gap-2 rounded-[10px] bg-accent py-2.5 text-xs font-bold text-white shadow-xs hover:bg-accent-hover transition-colors cursor-pointer"
         >
           <Sparkles className="h-4 w-4" />
           <span>Simulasikan 4 Strategi Rekomendasi</span>
         </button>
+      </div>
+
+      {/* ── FITUR A: Bagian Ringkas "Atur Asumsi Biaya" (Collapsible) ── */}
+      <div className="flex flex-col rounded-[12px] border border-border bg-surface shadow-xs overflow-hidden">
+        <button
+          type="button"
+          onClick={() => setIsCostEditorOpen((prev) => !prev)}
+          className="flex items-center justify-between p-3.5 hover:bg-tint transition-colors text-left cursor-pointer"
+        >
+          <div className="flex items-center gap-2">
+            <SlidersHorizontal className="h-4 w-4 text-accent" />
+            <span className="text-xs font-bold text-ink">Atur asumsi biaya</span>
+            {isModifiedCost && (
+              <span className="rounded-[6px] bg-tinggi-tint border border-tinggi/40 px-2 py-0.5 text-[10px] font-bold text-tinggi-ink">
+                Asumsi biaya diubah
+              </span>
+            )}
+          </div>
+          <div className="flex items-center gap-1.5 text-muted">
+            <span className="text-[11px] font-medium">
+              {isCostEditorOpen ? "Tutup" : "Buka"}
+            </span>
+            {isCostEditorOpen ? (
+              <ChevronUp className="h-4 w-4" />
+            ) : (
+              <ChevronDown className="h-4 w-4" />
+            )}
+          </div>
+        </button>
+
+        {isCostEditorOpen && (
+          <div className="border-t border-border p-3.5 flex flex-col gap-3 bg-tint/30">
+            <div className="flex items-center justify-between text-[11px]">
+              <span className="text-muted">Perubahan berlaku selama sesi ini.</span>
+              <button
+                type="button"
+                onClick={() => dispatch({ type: "RESET_COSTS" })}
+                disabled={!isModifiedCost}
+                className={`flex items-center gap-1 text-[11px] font-semibold transition-colors ${
+                  isModifiedCost
+                    ? "text-accent hover:text-accent-hover cursor-pointer"
+                    : "text-muted/50 cursor-not-allowed"
+                }`}
+              >
+                <RotateCcw className="h-3 w-3" />
+                <span>Kembalikan ke bawaan</span>
+              </button>
+            </div>
+
+            <div className="overflow-x-auto">
+              <table className="w-full text-left text-xs border-collapse">
+                <thead>
+                  <tr className="border-b border-border/80 text-[11px] font-bold text-muted">
+                    <th className="pb-1.5 font-bold text-ink">Kategori</th>
+                    <th className="pb-1.5 px-1 font-bold text-ink text-center">Ringan</th>
+                    <th className="pb-1.5 px-1 font-bold text-ink text-center">Sedang</th>
+                    <th className="pb-1.5 px-1 font-bold text-ink text-center">Berat</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-border/40">
+                  {COST_CATEGORIES.map((cat) => (
+                    <tr key={cat.key}>
+                      <td className="py-2 pr-2 font-medium text-ink text-xs whitespace-nowrap">
+                        {cat.label}
+                      </td>
+                      {SEVERITY_LEVELS.map((sev) => (
+                        <td key={sev.severity} className="py-2 px-1 min-w-[95px]">
+                          <CostInputCell
+                            category={cat.key}
+                            severity={sev.severity}
+                            currentValue={state.costTable[cat.key][sev.severity]}
+                            onCostChange={(c, s, v) =>
+                              dispatch({
+                                type: "SET_COST",
+                                payload: { category: c, severity: s, cost: v },
+                              })
+                            }
+                          />
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
       </div>
 
       {/* ── 2. Hasil Simulasi 4 Strategi ── */}
@@ -340,7 +594,7 @@ export default function BudgetTab() {
               <button
                 type="button"
                 onClick={handleScheduleAll}
-                className="flex items-center justify-center gap-2 rounded-[10px] bg-accent py-2.5 text-xs font-bold text-white shadow-xs hover:bg-accent-hover transition-colors"
+                className="flex items-center justify-center gap-2 rounded-[10px] bg-accent py-2.5 text-xs font-bold text-white shadow-xs hover:bg-accent-hover transition-colors cursor-pointer"
               >
                 <Calendar className="h-4 w-4" />
                 <span>
@@ -351,6 +605,152 @@ export default function BudgetTab() {
           )}
         </div>
       )}
+
+      {/* ── FITUR B: Kartu Uji Ketahanan Biaya ── */}
+      <div className="flex flex-col gap-3 rounded-[12px] border border-border bg-surface p-4 shadow-xs">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-1.5 text-xs font-bold text-ink uppercase tracking-wider">
+            <ShieldCheck className="h-4 w-4 text-accent" />
+            <span>Uji Ketahanan Biaya</span>
+          </div>
+          <span className="text-[11px] font-medium text-muted">100 Percobaan (±30%)</span>
+        </div>
+
+        <p className="text-[11px] text-muted leading-relaxed">
+          Menguji stabilitas rekomendasi DP terhadap fluktuasi biaya tiap titik secara acak independen (rentang 0,7–1,3).
+        </p>
+
+        {/* Notifikasi bila kartu dinonaktifkan */}
+        {isRobustnessDisabled && !isTesting && (
+          <div className="rounded-[8px] bg-tint/60 border border-border/80 p-2.5 text-[11px] text-muted">
+            Jalankan simulasi 4 strategi di atas terlebih dahulu untuk mengaktifkan uji ketahanan biaya.
+          </div>
+        )}
+
+        {/* Tombol Jalankan Uji */}
+        {!robustnessResult && !isTesting && (
+          <button
+            type="button"
+            onClick={handleRunRobustness}
+            disabled={isRobustnessDisabled}
+            className={`flex items-center justify-center gap-2 rounded-[10px] py-2.5 text-xs font-bold transition-colors ${
+              isRobustnessDisabled
+                ? "bg-track text-muted cursor-not-allowed border border-border"
+                : "bg-surface border-2 border-accent text-accent hover:bg-accent-soft shadow-2xs cursor-pointer"
+            }`}
+          >
+            <Play className="h-3.5 w-3.5" />
+            <span>Jalankan Uji Ketahanan Biaya</span>
+          </button>
+        )}
+
+        {/* Indikator Kemajuan Uji */}
+        {isTesting && (
+          <div className="flex flex-col gap-1.5 py-1">
+            <div className="flex items-center justify-between text-xs">
+              <span className="font-semibold text-ink">Menjalankan simulasi ketahanan...</span>
+              <span className="font-bold text-accent tabular-nums">{progress}%</span>
+            </div>
+            <div className="h-2 w-full overflow-hidden rounded-full bg-track">
+              <div
+                className="h-full rounded-full bg-accent transition-all duration-150"
+                style={{ width: `${progress}%` }}
+              />
+            </div>
+            <span className="text-[10.5px] text-muted">
+              Memproses variasi biaya per titik tanpa membekukan layar...
+            </span>
+          </div>
+        )}
+
+        {testError && (
+          <div className="rounded-[8px] bg-kritis-tint border border-kritis/40 p-2.5 text-xs text-kritis-ink">
+            {testError}
+          </div>
+        )}
+
+        {/* Hasil Uji Ketahanan */}
+        {robustnessResult && !isTesting && (
+          <div className="flex flex-col gap-3">
+            {/* 1. Satu Kalimat Otomatis Penjelas Hasil */}
+            <div className="rounded-[10px] bg-accent-soft/40 border border-accent/30 p-3 text-xs font-semibold text-ink leading-relaxed">
+              {robustnessResult.summarySentence}
+            </div>
+
+            {/* 2. Grid 4 Metrik Indikator */}
+            <div className="grid grid-cols-2 gap-2 text-center">
+              {/* (a) Tumpang Tindih Jaccard */}
+              <div className="flex flex-col rounded-[8px] bg-bg border border-border/60 p-2">
+                <span className="text-[10px] font-medium text-muted">
+                  Tumpang Tindih Titik (Jaccard)
+                </span>
+                <span className="text-sm font-bold text-ink tabular-nums mt-0.5">
+                  {robustnessResult.metrics.avgJaccardPct.toFixed(1)}%
+                </span>
+                <span className="text-[10px] text-muted">
+                  Terendah: {robustnessResult.metrics.minJaccardPct.toFixed(1)}%
+                </span>
+              </div>
+
+              {/* (b) Cakupan Skor */}
+              <div className="flex flex-col rounded-[8px] bg-bg border border-border/60 p-2">
+                <span className="text-[10px] font-medium text-muted">
+                  Cakupan Skor
+                </span>
+                <span className="text-sm font-bold text-accent tabular-nums mt-0.5">
+                  {robustnessResult.metrics.avgValueCoveragePct.toFixed(1)}%
+                </span>
+                <span className="text-[10px] text-muted">
+                  Dasar: {robustnessResult.metrics.baselineValueCoveragePct.toFixed(1)}%
+                </span>
+              </div>
+
+              {/* (c) Titik Inti */}
+              <div className="flex flex-col rounded-[8px] bg-bg border border-border/60 p-2">
+                <span className="text-[10px] font-medium text-muted">
+                  Titik Inti (≥90% Terpilih)
+                </span>
+                <span className="text-sm font-bold text-ink tabular-nums mt-0.5">
+                  {robustnessResult.metrics.corePointCount} / {robustnessResult.metrics.baselinePointCount}
+                </span>
+                <span className="text-[10px] text-muted">
+                  dari titik hasil dasar
+                </span>
+              </div>
+
+              {/* (d) Titik Kritis Terpilih */}
+              <div className="flex flex-col rounded-[8px] bg-bg border border-border/60 p-2">
+                <span className="text-[10px] font-medium text-muted">
+                  Titik Kritis Terpilih
+                </span>
+                <span className="text-sm font-bold text-kritis tabular-nums mt-0.5">
+                  {robustnessResult.metrics.avgCriticalCount.toFixed(1)}
+                </span>
+                <span className="text-[10px] text-muted">
+                  Dasar: {robustnessResult.metrics.baselineCriticalCount} titik
+                </span>
+              </div>
+            </div>
+
+            {/* Tombol Uji Ulang */}
+            <div className="flex items-center justify-end">
+              <button
+                type="button"
+                onClick={handleRunRobustness}
+                className="flex items-center gap-1.5 text-xs font-semibold text-accent hover:text-accent-hover transition-colors cursor-pointer"
+              >
+                <RotateCcw className="h-3.5 w-3.5" />
+                <span>Uji Ulang Ketahanan</span>
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* Catatan Wajib Uji Ketahanan */}
+        <p className="text-[10.5px] text-muted italic">
+          Simulasi gangguan biaya acak per titik, benih tetap. Bukan prediksi biaya nyata.
+        </p>
+      </div>
 
       {/* ── 4. Catatan Permanen Asumsi & Kejujuran (Wajib Tampil) ── */}
       <div className="flex items-start gap-2 rounded-[10px] border border-border/80 bg-tint/60 p-3 text-[11px] text-muted leading-relaxed">
