@@ -692,20 +692,7 @@ export default function BudgetTab() {
                 </span>
               </div>
 
-              {/* (b) Cakupan Skor */}
-              <div className="flex flex-col rounded-[8px] bg-bg border border-border/60 p-2">
-                <span className="text-[10px] font-medium text-muted">
-                  Cakupan Skor
-                </span>
-                <span className="text-sm font-bold text-accent tabular-nums mt-0.5">
-                  {robustnessResult.metrics.avgValueCoveragePct.toFixed(1)}%
-                </span>
-                <span className="text-[10px] text-muted">
-                  Dasar: {robustnessResult.metrics.baselineValueCoveragePct.toFixed(1)}%
-                </span>
-              </div>
-
-              {/* (c) Titik Inti */}
+              {/* (b) Titik Inti */}
               <div className="flex flex-col rounded-[8px] bg-bg border border-border/60 p-2">
                 <span className="text-[10px] font-medium text-muted">
                   Titik Inti (≥90% Terpilih)
@@ -718,16 +705,35 @@ export default function BudgetTab() {
                 </span>
               </div>
 
-              {/* (d) Titik Kritis Terpilih */}
+              {/* (c) Kelebihan Biaya Rencana Dasar */}
               <div className="flex flex-col rounded-[8px] bg-bg border border-border/60 p-2">
                 <span className="text-[10px] font-medium text-muted">
-                  Titik Kritis Terpilih
+                  Kelebihan Biaya Rencana Dasar
                 </span>
-                <span className="text-sm font-bold text-kritis tabular-nums mt-0.5">
-                  {robustnessResult.metrics.avgCriticalCount.toFixed(1)}
+                <span className={`text-sm font-bold tabular-nums mt-0.5 ${
+                  robustnessResult.metrics.p90CostOverrunPct > 0 ? "text-tinggi-ink" : "text-ink"
+                }`}>
+                  {robustnessResult.metrics.p90CostOverrunPct > 0 ? "+" : ""}
+                  {robustnessResult.metrics.p90CostOverrunPct.toFixed(1)}%
+                  <span className="text-[10px] font-normal text-muted ml-1">(P90)</span>
                 </span>
                 <span className="text-[10px] text-muted">
-                  Dasar: {robustnessResult.metrics.baselineCriticalCount} titik
+                  Rata-rata: {robustnessResult.metrics.avgCostOverrunPct > 0 ? "+" : ""}{robustnessResult.metrics.avgCostOverrunPct.toFixed(1)}% · Maks: {robustnessResult.metrics.maxCostOverrunPct > 0 ? "+" : ""}{robustnessResult.metrics.maxCostOverrunPct.toFixed(1)}%
+                </span>
+              </div>
+
+              {/* (d) Percobaan Melebihi Pagu */}
+              <div className="flex flex-col rounded-[8px] bg-bg border border-border/60 p-2">
+                <span className="text-[10px] font-medium text-muted">
+                  Percobaan Melebihi Pagu
+                </span>
+                <span className={`text-sm font-bold tabular-nums mt-0.5 ${
+                  robustnessResult.metrics.overBudgetPct > 0 ? "text-kritis" : "text-ink"
+                }`}>
+                  {robustnessResult.metrics.overBudgetPct.toFixed(0)}%
+                </span>
+                <span className="text-[10px] text-muted">
+                  dari {robustnessResult.trials} percobaan
                 </span>
               </div>
             </div>
@@ -748,7 +754,7 @@ export default function BudgetTab() {
 
         {/* Catatan Wajib Uji Ketahanan */}
         <p className="text-[10.5px] text-muted italic">
-          Simulasi gangguan biaya acak per titik, benih tetap. Bukan prediksi biaya nyata.
+          Simulasi gangguan biaya acak independen per titik, benih tetap. Bukan prediksi biaya nyata.
         </p>
       </div>
 

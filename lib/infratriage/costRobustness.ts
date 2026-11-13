@@ -36,29 +36,40 @@ export interface CostRobustnessResult {
     selectedIds: string[];
     totalCost: number;
     totalValue: number;
-    valueCoveragePct: number;
-    criticalCount: number;
   };
   metrics: {
     /** (a) Tumpang tindih rata-rata dengan hasil dasar (Jaccard, dalam %) */
     avgJaccardPct: number;
     /** (a) Tumpang tindih terendah dengan hasil dasar (Jaccard, dalam %) */
     minJaccardPct: number;
-    /** (b) Rata-rata cakupan skor seluruh percobaan (%) */
-    avgValueCoveragePct: number;
-    /** (b) Cakupan skor pada hasil dasar (%) */
-    baselineValueCoveragePct: number;
-    /** (c) Jumlah titik inti yang terpilih di >= 90% percobaan */
+    /** Jumlah titik inti yang terpilih di >= 90% percobaan */
     corePointCount: number;
-    /** (c) Total titik terpilih pada hasil dasar */
+    /** Total titik terpilih pada hasil dasar */
     baselinePointCount: number;
-    /** (d) Jumlah titik kritis terpilih rata-rata */
-    avgCriticalCount: number;
-    /** (d) Jumlah titik kritis terpilih pada hasil dasar */
-    baselineCriticalCount: number;
+    /** (b) Rata-rata kelebihan biaya rencana dasar terhadap pagu (%) */
+    avgCostOverrunPct: number;
+    /** (b) Persentil 90 kelebihan biaya rencana dasar terhadap pagu (%) */
+    p90CostOverrunPct: number;
+    /** (b) Maksimum kelebihan biaya rencana dasar terhadap pagu (%) */
+    maxCostOverrunPct: number;
+    /** (b) Persentase percobaan di mana total biaya rencana dasar melebihi pagu (%) */
+    overBudgetPct: number;
   };
-  /** Satu kalimat otomatis penjelas hasil */
+  /** Dua kalimat otomatis penjelas hasil */
   summarySentence: string;
+}
+
+/**
+ * Menghitung persentil dengan interpolasi linier standar.
+ */
+export function calculatePercentile(values: number[], p: number): number {
+  if (values.length === 0) return 0;
+  const sorted = [...values].sort((a, b) => a - b);
+  const index = (p / 100) * (sorted.length - 1);
+  const lower = Math.floor(index);
+  const upper = Math.ceil(index);
+  const weight = index - lower;
+  return sorted[lower] * (1 - weight) + sorted[upper] * weight;
 }
 
 /**
@@ -77,13 +88,14 @@ export function calculateJaccardPct(a: Set<string>, b: Set<string>): number {
 }
 
 /**
- * Menghasilkan SATU kalimat penjelas otomatis yang dihitung langsung dari angka.
+ * Menghasilkan DUA kalimat penjelas otomatis yang dihitung langsung dari angka.
  */
 export function generateRobustnessSummary(
   trials: number,
   perturbRange: [number, number],
   avgJaccardPct: number,
   baselineCount: number,
+  p90CostOverrunPct: number,
 ): string {
   if (baselineCount === 0) {
     return "Tidak ada titik rekomendasi pada hasil dasar untuk diuji.";
@@ -92,10 +104,22 @@ export function generateRobustnessSummary(
   const perturbPct = Math.round(delta * 100);
   const roundedJaccard = Math.round(avgJaccardPct);
 
-  if (perturbPct === 0) {
-    return `Dari ${trials} percobaan tanpa gangguan biaya (0%), rata-rata ${roundedJaccard}% titik terpilih tetap sama.`;
+  // Kalimat 1: stabilitas pilihan
+  const sentence1 =
+    perturbPct === 0
+      ? `Dari ${trials} percobaan tanpa gangguan biaya (0%), rata-rata ${roundedJaccard}% titik terpilih tetap sama.`
+      : `Dari ${trials} percobaan dengan biaya tiap titik meleset acak ±${perturbPct}%, rata-rata ${roundedJaccard}% titik terpilih tetap sama.`;
+
+  // Kalimat 2: risiko pembengkakan biaya rencana dasar
+  let sentence2: string;
+  if (p90CostOverrunPct > 0) {
+    const xPct = Math.round(p90CostOverrunPct);
+    sentence2 = `Bila biaya aktual tiap titik meleset acak ±${perturbPct}%, total biaya rencana dasar dapat melampaui pagu hingga ${xPct}% (persentil 90); cadangan sekitar ${xPct}% dari pagu mengurangi risiko itu.`;
+  } else {
+    sentence2 = "Total biaya rencana dasar tetap berada dalam pagu anggaran pada persentil 90 percobaan.";
   }
-  return `Dari ${trials} percobaan dengan biaya tiap titik meleset acak ±${perturbPct}%, rata-rata ${roundedJaccard}% titik terpilih tetap sama.`;
+
+  return `${sentence1} ${sentence2}`;
 }
 
 /**
@@ -116,14 +140,12 @@ export interface RobustnessAccumulator {
     selectedSet: Set<string>;
     totalCost: number;
     totalValue: number;
-    valueCoveragePct: number;
-    criticalCount: number;
   };
   totalCandidatesValue: number;
   candidateMap: Map<string, Item>;
   jaccardList: number[];
-  valueCoverageList: number[];
-  criticalCountList: number[];
+  costOverrunList: number[];
+  overBudgetCount: number;
   baselineItemFreq: Map<string, number>;
 }
 
@@ -153,16 +175,6 @@ export function initRobustness(
   // Hitung hasil dasar (baseline) dengan biaya asli
   const baselineSel = selectDP(candidates, budget, costUnit);
   const baselineSet = new Set(baselineSel.ids);
-  let baselineCriticalCount = 0;
-  for (const id of baselineSel.ids) {
-    const it = candidateMap.get(id);
-    if (it && Math.round(it.value) >= criticalThreshold) {
-      baselineCriticalCount++;
-    }
-  }
-
-  const baselineValueCoveragePct =
-    totalCandidatesValue > 0 ? (baselineSel.totalValue / totalCandidatesValue) * 100 : 0;
 
   const baselineItemFreq = new Map<string, number>();
   for (const id of baselineSel.ids) {
@@ -184,14 +196,12 @@ export function initRobustness(
       selectedSet: baselineSet,
       totalCost: baselineSel.totalCost,
       totalValue: baselineSel.totalValue,
-      valueCoveragePct: baselineValueCoveragePct,
-      criticalCount: baselineCriticalCount,
     },
     totalCandidatesValue,
     candidateMap,
     jaccardList: [],
-    valueCoverageList: [],
-    criticalCountList: [],
+    costOverrunList: [],
+    overBudgetCount: 0,
     baselineItemFreq,
   };
 }
@@ -207,10 +217,13 @@ export function stepRobustness(
   const target = Math.min(acc.trials, acc.completedTrials + chunkSize);
   const [minFactor, maxFactor] = acc.perturbRange;
   const factorSpan = maxFactor - minFactor;
+  const hasBaselineItems = acc.baseline.selectedIds.length > 0;
 
   while (acc.completedTrials < target) {
     // Siapkan kandidat dengan biaya terganggu untuk percobaan ini
     const perturbedItems: Item[] = new Array(acc.candidates.length);
+    const perturbedCostMap = new Map<string, number>();
+
     for (let i = 0; i < acc.candidates.length; i++) {
       const orig = acc.candidates[i];
       const factor = factorSpan === 0 ? minFactor : minFactor + acc.rng() * factorSpan;
@@ -219,32 +232,31 @@ export function stepRobustness(
         ...orig,
         cost: perturbedCost,
       };
+      perturbedCostMap.set(orig.id, perturbedCost);
     }
 
-    // Jalankan perencana DP yang sama
+    // 1. Hitung total biaya HIMPUNAN DASAR dengan biaya terganggu percobaan ini
+    if (hasBaselineItems && acc.budget > 0) {
+      let baselinePerturbedTotal = 0;
+      for (const id of acc.baseline.selectedIds) {
+        baselinePerturbedTotal += perturbedCostMap.get(id) ?? 0;
+      }
+      const overrunPct = ((baselinePerturbedTotal / acc.budget) - 1) * 100;
+      acc.costOverrunList.push(overrunPct);
+      if (baselinePerturbedTotal > acc.budget) {
+        acc.overBudgetCount++;
+      }
+    } else {
+      acc.costOverrunList.push(0);
+    }
+
+    // 2. Jalankan perencana DP untuk menguji stabilitas pemilihan (Jaccard & titik inti)
     const trialSel = selectDP(perturbedItems, acc.budget, acc.costUnit);
     const trialSet = new Set(trialSel.ids);
 
     // Hitung Jaccard terhadap baseline
     const jaccard = calculateJaccardPct(acc.baseline.selectedSet, trialSet);
     acc.jaccardList.push(jaccard);
-
-    // Hitung cakupan skor
-    const coverage =
-      acc.totalCandidatesValue > 0
-        ? (trialSel.totalValue / acc.totalCandidatesValue) * 100
-        : 0;
-    acc.valueCoverageList.push(coverage);
-
-    // Hitung titik kritis terpilih
-    let trialCritical = 0;
-    for (const id of trialSel.ids) {
-      const it = acc.candidateMap.get(id);
-      if (it && Math.round(it.value) >= acc.criticalThreshold) {
-        trialCritical++;
-      }
-    }
-    acc.criticalCountList.push(trialCritical);
 
     // Catat frekuensi titik baseline yang terpilih
     for (const id of acc.baseline.selectedIds) {
@@ -267,10 +279,13 @@ export function finalizeRobustness(acc: RobustnessAccumulator): CostRobustnessRe
 
   const avgJaccardPct = n > 0 ? acc.jaccardList.reduce((s, x) => s + x, 0) / n : 100;
   const minJaccardPct = n > 0 ? Math.min(...acc.jaccardList) : 100;
-  const avgValueCoveragePct =
-    n > 0 ? acc.valueCoverageList.reduce((s, x) => s + x, 0) / n : acc.baseline.valueCoveragePct;
-  const avgCriticalCount =
-    n > 0 ? acc.criticalCountList.reduce((s, x) => s + x, 0) / n : acc.baseline.criticalCount;
+
+  // Statistik kelebihan biaya rencana dasar
+  const avgCostOverrunPct =
+    n > 0 ? acc.costOverrunList.reduce((s, x) => s + x, 0) / n : 0;
+  const maxCostOverrunPct = n > 0 ? Math.max(...acc.costOverrunList) : 0;
+  const p90CostOverrunPct = n > 0 ? calculatePercentile(acc.costOverrunList, 90) : 0;
+  const overBudgetPct = n > 0 ? (acc.overBudgetCount / n) * 100 : 0;
 
   // Titik inti: titik dasar yang terpilih di >= 90% percobaan
   let corePointCount = 0;
@@ -287,6 +302,7 @@ export function finalizeRobustness(acc: RobustnessAccumulator): CostRobustnessRe
     acc.perturbRange,
     avgJaccardPct,
     baselinePointCount,
+    p90CostOverrunPct,
   );
 
   return {
@@ -297,18 +313,16 @@ export function finalizeRobustness(acc: RobustnessAccumulator): CostRobustnessRe
       selectedIds: acc.baseline.selectedIds,
       totalCost: acc.baseline.totalCost,
       totalValue: acc.baseline.totalValue,
-      valueCoveragePct: acc.baseline.valueCoveragePct,
-      criticalCount: acc.baseline.criticalCount,
     },
     metrics: {
       avgJaccardPct,
       minJaccardPct,
-      avgValueCoveragePct,
-      baselineValueCoveragePct: acc.baseline.valueCoveragePct,
       corePointCount,
       baselinePointCount,
-      avgCriticalCount,
-      baselineCriticalCount: acc.baseline.criticalCount,
+      avgCostOverrunPct,
+      p90CostOverrunPct,
+      maxCostOverrunPct,
+      overBudgetPct,
     },
     summarySentence,
   };
