@@ -1,12 +1,21 @@
 import * as turf from "@turf/turf";
 import type { Cluster, LatLng, Report, VitalPoint } from "./infratriage";
-import { distanceMeters } from "./infratriage";
+import {
+  buildClusters,
+  distanceMeters,
+  generateSeedReports,
+} from "./infratriage";
+import { vitals } from "./vitals";
 
 export interface DemoSiteResult {
   vital: VitalPoint;
   site: LatLng;
   distanceToVital: number;
 }
+
+// Data klaster seed dasar untuk kalkulasi titik demo deterministik
+const BASELINE_SEED_REPORTS = generateSeedReports({ seed: 42 });
+const BASELINE_SEED_CLUSTERS = buildClusters(BASELINE_SEED_REPORTS);
 
 /**
  * Memilih satu fasilitas vital NYATA dari lib/vitals.ts (diutamakan rumah sakit)
@@ -15,8 +24,8 @@ export interface DemoSiteResult {
  * Tanpa Math.random, deterministik pada setiap pemanggilan.
  */
 export function pickDemoSite(
-  vitalsList: VitalPoint[],
-  seedClusters: Cluster[]
+  vitalsList: VitalPoint[] = vitals,
+  seedClusters: Cluster[] = BASELINE_SEED_CLUSTERS
 ): DemoSiteResult {
   // 1. Prioritaskan rumah sakit terlebih dahulu
   const priorityVitals = [
@@ -24,6 +33,14 @@ export function pickDemoSite(
     ...vitalsList.filter((v) => v.type === "sekolah"),
     ...vitalsList.filter((v) => v.type === "pasar"),
   ];
+
+  // Pastikan klaster demo diabaikan agar tidak mendiskualifikasi titik jangkar demo itu sendiri
+  const nonDemoClusters = seedClusters.filter(
+    (c) =>
+      !c.reports.some(
+        (r) => r.reporterId?.startsWith("demo-") || r.id?.startsWith("demo-")
+      )
+  );
 
   // Jarak target 65 m (berada di rentang 50-80 m)
   const targetDistanceKm = 0.065;
@@ -45,8 +62,8 @@ export function pickDemoSite(
       const distToVital = distanceMeters(candidatePoint, vital);
       if (distToVital < 50 || distToVital > 80) continue;
 
-      // Pastikan minimal 100 m dari pusat SEMUA klaster seed
-      const tooCloseToSeed = seedClusters.some(
+      // Pastikan minimal 100 m dari pusat klaster non-demo
+      const tooCloseToSeed = nonDemoClusters.some(
         (c) => distanceMeters(candidatePoint, c) < 100
       );
       if (tooCloseToSeed) continue;
@@ -63,6 +80,16 @@ export function pickDemoSite(
 }
 
 /**
+ * Titik jangkar fasilitas vital dan lokasi demo deterministik tetap.
+ * Berdasarkan seed baseline (seed: 42) dan fasilitas vital nyata Yogya:
+ * Menghasilkan titik di dekat Klinik Adhiwarga PKBI DIY (jarak 65 m).
+ */
+export const DEMO_ANCHOR_SITE: DemoSiteResult = pickDemoSite(
+  vitals,
+  BASELINE_SEED_CLUSTERS
+);
+
+/**
  * Menghasilkan n laporan demo:
  * - kategori: lubang
  * - keparahan: 2
@@ -76,7 +103,7 @@ export function pickDemoSite(
 export function buildDemoReports(
   n: number,
   now: Date,
-  site: LatLng
+  site: LatLng = DEMO_ANCHOR_SITE.site
 ): Report[] {
   const reports: Report[] = [];
   const createdAt = now instanceof Date ? now.toISOString() : new Date(now).toISOString();

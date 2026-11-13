@@ -69,6 +69,7 @@ export type AppAction =
   | { type: "SET_ADD_MODE"; payload: boolean }
   | { type: "DEMO_START"; payload?: { targetClusterId?: string } }
   | { type: "DEMO_ADD_REPORTER"; payload: Report }
+  | { type: "DEMO_RESET" }
   | { type: "DISMISS_TOAST"; payload: { id: number } }
   | { type: "RESET" };
 
@@ -326,6 +327,10 @@ export function appReducer(state: AppState, action: AppAction): AppState {
     }
 
     case "DEMO_START": {
+      // Idempoten: jika demo sedang aktif dan belum selesai (step 1..9), abaikan
+      if (state.demo.active && state.demo.step >= 1 && state.demo.step < 10) {
+        return state;
+      }
       return {
         ...state,
         weights: { ...DEFAULT_WEIGHTS },
@@ -342,6 +347,10 @@ export function appReducer(state: AppState, action: AppAction): AppState {
 
     case "DEMO_ADD_REPORTER": {
       const res = ingestReport(state.clusters, action.payload, ctx);
+      // Jika laporan diabaikan (sudah tercatat), jangan mutasi dan jangan tambah step
+      if (res.action === "ignored") {
+        return state;
+      }
       const alreadyHas = state.reports.some((r) => r.id === action.payload.id);
       const nextReports = alreadyHas
         ? state.reports
@@ -355,8 +364,34 @@ export function appReducer(state: AppState, action: AppAction): AppState {
         selectedClusterId: res.clusterId,
         demo: {
           ...state.demo,
-          step: state.demo.step + 1,
+          step: Math.min(10, state.demo.step + 1),
           targetClusterId: res.clusterId,
+        },
+      };
+    }
+
+    case "DEMO_RESET": {
+      const nonDemoReports = state.reports.filter(
+        (r) => !r.reporterId?.startsWith("demo-") && !r.id?.startsWith("demo-")
+      );
+      const nonDemoClusters = buildClusters(nonDemoReports);
+      const isSelectedDemo =
+        state.selectedClusterId?.startsWith("c-demo-") ||
+        Boolean(
+          state.clusters
+            .find((c) => c.id === state.selectedClusterId)
+            ?.reports.some((r) => r.reporterId?.startsWith("demo-"))
+        );
+
+      return {
+        ...state,
+        reports: nonDemoReports,
+        clusters: nonDemoClusters,
+        selectedClusterId: isSelectedDemo ? null : state.selectedClusterId,
+        demo: {
+          active: false,
+          step: 0,
+          targetClusterId: null,
         },
       };
     }

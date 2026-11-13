@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { buildDemoReports, pickDemoSite } from "../lib/demo";
+import { buildDemoReports, DEMO_ANCHOR_SITE, pickDemoSite } from "../lib/demo";
 import { vitals } from "../lib/vitals";
 import {
   buildClusters,
@@ -7,7 +7,9 @@ import {
   DEFAULT_WEIGHTS,
   distanceMeters,
   generateSeedReports,
+  nearestVital,
   priorityLevel,
+  type Report,
   type ScoreContext,
 } from "../lib/infratriage";
 import { appReducer, createInitialState } from "../lib/reducer";
@@ -46,8 +48,18 @@ describe("demo (lib/demo.ts)", () => {
     }
   });
 
+  it("DEMO_ANCHOR_SITE adalah titik jangkar tetap di dekat Klinik Adhiwarga PKBI DIY (65 m)", () => {
+    expect(DEMO_ANCHOR_SITE.vital.name).toBe("Klinik Adhiwarga PKBI DIY");
+    expect(Math.round(DEMO_ANCHOR_SITE.distanceToVital)).toBe(65);
+
+    // Verifikasi bahwa nearestVital ke DEMO_ANCHOR_SITE.site adalah tepat faskes ini
+    const nv = nearestVital(DEMO_ANCHOR_SITE.site, vitals);
+    expect(nv?.vital.name).toBe("Klinik Adhiwarga PKBI DIY");
+    expect(Math.round(nv!.meters)).toBe(65);
+  });
+
   it("skenario demo: 1 laporan = skor 63 (tinggi), naik monoton, 9 pelapor = 79 (tinggi), 10 pelapor = 81 (kritis)", () => {
-    const demoSite = pickDemoSite(vitals, seedClusters);
+    const demoSite = DEMO_ANCHOR_SITE;
     const reports = buildDemoReports(10, baseNow, demoSite.site);
 
     expect(reports.length).toBe(10);
@@ -64,14 +76,16 @@ describe("demo (lib/demo.ts)", () => {
     };
 
     // Alur ingest bertahap
-    let clusters = seedClusters;
     const scores: number[] = [];
     const levels: string[] = [];
 
     for (let i = 0; i < 10; i++) {
-      // Buat klaster dari laporan demo pertama, atau gabung ke klaster demo
+      // Seluruh laporan demo menumpuk di klaster yang sama
       const demoReportsSoFar = reports.slice(0, i + 1);
-      const demoCluster = buildClusters(demoReportsSoFar)[0];
+      const demoClusters = buildClusters(demoReportsSoFar);
+      expect(demoClusters.length).toBe(1);
+
+      const demoCluster = demoClusters[0];
       expect(demoCluster).toBeDefined();
 
       const detail = computeScore(demoCluster, ctx);
@@ -104,11 +118,12 @@ describe("demo (lib/demo.ts)", () => {
     let state = createInitialState(baseNow);
     state = appReducer(state, { type: "INIT_SEED" });
 
-    const demoSite = pickDemoSite(vitals, state.clusters);
-    const demoReports = buildDemoReports(10, baseNow, demoSite.site);
+    const initialReportCount = state.reports.length; // 150
+    const initialClusterCount = state.clusters.length; // 36
+
+    const demoReports = buildDemoReports(10, baseNow, DEMO_ANCHOR_SITE.site);
 
     // Langkah 1: Mulai skenario demo dengan laporan pertama
-    // Ingest laporan 1
     state = appReducer(state, { type: "INGEST", payload: demoReports[0] });
     const demoClusterId = state.selectedClusterId;
     expect(demoClusterId).toBeDefined();
@@ -153,10 +168,132 @@ describe("demo (lib/demo.ts)", () => {
     expect(Math.round(computeScore(cluster10!, ctx).urgency)).toBe(81);
     expect(priorityLevel(computeScore(cluster10!, ctx).urgency)).toBe("kritis");
 
-    // Langkah 3: RESET mengembalikan keadaan awal
+    // Faskes terdekat pada klaster demo harus tetap Klinik Adhiwarga PKBI DIY pada jarak 65 m
+    const detail = computeScore(cluster10!, ctx);
+    expect(detail.nearestVital?.vital.name).toBe("Klinik Adhiwarga PKBI DIY");
+    expect(Math.round(detail.nearestVital!.meters)).toBe(65);
+
+    // KPI delta: tepat +10 laporan dan +1 klaster
+    expect(state.reports.length).toBe(initialReportCount + 10);
+    expect(state.clusters.length).toBe(initialClusterCount + 1);
+
+    // Langkah 3: RESET mengembalikan keadaan dasar persis (150 laporan, 36 klaster, 2 kritis)
     state = appReducer(state, { type: "RESET" });
     expect(state.demo.active).toBe(false);
     expect(state.demo.step).toBe(0);
+    expect(state.reports.length).toBe(150);
+    expect(state.clusters.length).toBe(36);
+    const criticalBaseline = state.clusters.filter(
+      (c) => priorityLevel(computeScore(c, ctx).urgency) === "kritis"
+    );
+    expect(criticalBaseline.length).toBe(2);
     expect(state.clusters.find((c) => c.id === demoClusterId)).toBeUndefined();
+  });
+
+  it("idempotensi Mulai dan DEMO_RESET: Mulai diabaikan saat berjalan, dan memulai ulang membersihkan laporan demo lama", () => {
+    let state = createInitialState(baseNow);
+    state = appReducer(state, { type: "INIT_SEED" });
+
+    const demoReports = buildDemoReports(10, baseNow, DEMO_ANCHOR_SITE.site);
+
+    // Ingest step 1
+    state = appReducer(state, { type: "INGEST", payload: demoReports[0] });
+    state = appReducer(state, { type: "DEMO_START" });
+    expect(state.demo.step).toBe(1);
+
+    // Tekan Mulai lagi saat berjalan (step 1..9): state demo tidak berubah / idempoten
+    const stateBefore = state;
+    state = appReducer(state, { type: "DEMO_START" });
+    expect(state.demo.step).toBe(1);
+    expect(state).toBe(stateBefore);
+
+    // Selesaikan sampai step 10
+    for (let step = 2; step <= 10; step++) {
+      state = appReducer(state, {
+        type: "DEMO_ADD_REPORTER",
+        payload: demoReports[step - 1],
+      });
+    }
+    expect(state.demo.step).toBe(10);
+    expect(state.reports.length).toBe(160);
+    expect(state.clusters.length).toBe(37);
+
+    // Memulai ulang setelah selesai dengan membersihkan laporan demo sebelumnya (DEMO_RESET)
+    state = appReducer(state, { type: "DEMO_RESET" });
+    expect(state.demo.active).toBe(false);
+    expect(state.demo.step).toBe(0);
+    expect(state.reports.length).toBe(150);
+    expect(state.clusters.length).toBe(36);
+
+    // Mulai skenario baru secara bersih
+    state = appReducer(state, { type: "INGEST", payload: demoReports[0] });
+    state = appReducer(state, { type: "DEMO_START" });
+    expect(state.demo.active).toBe(true);
+    expect(state.demo.step).toBe(1);
+    expect(state.reports.length).toBe(151);
+    expect(state.clusters.length).toBe(37);
+  });
+
+  it("skenario demo deterministik bersamaan dengan laporan pengguna dari database (HYDRATE_REPORTS)", () => {
+    let state = createInitialState(baseNow);
+    state = appReducer(state, { type: "INIT_SEED" });
+
+    // Simulasikan 2 laporan pengguna dari database (total 152 laporan, 38 klaster)
+    const userReport1: Report = {
+      id: "usr-rep-1",
+      reporterId: "user-1",
+      category: "trotoar",
+      severity: 1,
+      roadClass: "lokal",
+      lat: -7.795,
+      lng: 110.370,
+      createdAt: baseNow.toISOString(),
+    };
+    const userReport2: Report = {
+      id: "usr-rep-2",
+      reporterId: "user-2",
+      category: "lampu_jalan",
+      severity: 3,
+      roadClass: "kolektor",
+      lat: -7.810,
+      lng: 110.380,
+      createdAt: baseNow.toISOString(),
+    };
+    state = appReducer(state, {
+      type: "HYDRATE_REPORTS",
+      payload: { reports: [userReport1, userReport2] },
+    });
+    expect(state.reports.length).toBe(152);
+    expect(state.clusters.length).toBe(38);
+
+    // Jalankan 10 langkah demo
+    const demoReports = buildDemoReports(10, baseNow, DEMO_ANCHOR_SITE.site);
+    state = appReducer(state, { type: "INGEST", payload: demoReports[0] });
+    state = appReducer(state, { type: "DEMO_START" });
+
+    for (let step = 2; step <= 10; step++) {
+      state = appReducer(state, {
+        type: "DEMO_ADD_REPORTER",
+        payload: demoReports[step - 1],
+      });
+    }
+
+    // Delta tetap tepat +10 laporan dan +1 klaster (162 laporan, 39 klaster)
+    expect(state.reports.length).toBe(162);
+    expect(state.clusters.length).toBe(39);
+
+    const demoClusters = state.clusters.filter((c) =>
+      c.reports.some((r) => r.reporterId.startsWith("demo-"))
+    );
+    expect(demoClusters.length).toBe(1);
+    expect(demoClusters[0].reports.length).toBe(10);
+
+    const ctx: ScoreContext = {
+      vitals,
+      weights: state.weights,
+      now: state.now,
+    };
+    expect(Math.round(computeScore(demoClusters[0], ctx).urgency)).toBe(81);
+    expect(priorityLevel(computeScore(demoClusters[0], ctx).urgency)).toBe("kritis");
   });
 });

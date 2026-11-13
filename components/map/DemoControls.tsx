@@ -5,7 +5,7 @@ import { useApp } from "../../lib/store";
 import { computeScore, priorityLevel, type ScoreContext } from "../../lib/infratriage";
 import { vitals } from "../../lib/vitals";
 import { LEVEL_BADGE, LEVEL_COLOR } from "../../lib/theme";
-import { buildDemoReports, pickDemoSite } from "../../lib/demo";
+import { buildDemoReports, DEMO_ANCHOR_SITE } from "../../lib/demo";
 import { clearReports } from "../../lib/persistence";
 import { FastForward, Pause, Play, RotateCcw, Sparkles } from "lucide-react";
 
@@ -53,15 +53,13 @@ export default function DemoControls() {
     };
   }, [demoCluster, ctx]);
 
-  // Informasi lokasi fasilitas vital untuk demo
-  const demoSiteInfo = useMemo(() => {
-    return pickDemoSite(vitals, state.clusters);
-  }, [state.clusters]);
+  // Informasi lokasi fasilitas vital untuk demo (titik jangkar deterministik tetap)
+  const demoSiteInfo = DEMO_ANCHOR_SITE;
 
-  // Siapkan laporan demo deterministik untuk 10 pelapor
+  // Siapkan laporan demo deterministik untuk 10 pelapor di titik jangkar tetap
   const demoReports = useMemo(() => {
-    return buildDemoReports(10, state.now, demoSiteInfo.site);
-  }, [state.now, demoSiteInfo.site]);
+    return buildDemoReports(10, state.now, DEMO_ANCHOR_SITE.site);
+  }, [state.now]);
 
   // Hentikan timer saat komponen unmount atau saat demo selesai
   const stopTimer = useCallback(() => {
@@ -87,7 +85,19 @@ export default function DemoControls() {
 
   // Aksi: Mulai Skenario Demo
   const handleStartScenario = () => {
+    // Idempoten: abaikan jika sedang auto-running atau dalam proses (step 1..9)
+    if (isRunning) return;
+    if (state.demo.active && state.demo.step >= 1 && state.demo.step < 10) return;
+
     stopTimer();
+
+    // Jika skenario sebelumnya sudah selesai atau ada laporan demo yang tersisa, bersihkan dulu
+    const hasDemoReports = state.reports.some(
+      (r) => r.reporterId?.startsWith("demo-") || r.id?.startsWith("demo-")
+    );
+    if (hasDemoReports || state.demo.step >= 10) {
+      dispatch({ type: "DEMO_RESET" });
+    }
 
     // 1. Ingest laporan demo pertama
     dispatch({ type: "INGEST", payload: demoReports[0] });
@@ -274,7 +284,12 @@ export default function DemoControls() {
           <button
             type="button"
             onClick={handleStartScenario}
-            className="flex-1 flex items-center justify-center gap-1.5 rounded-[12px] bg-accent text-white px-2.5 py-2 text-[12px] font-semibold hover:bg-accent-hover transition-all shadow-xs min-h-[40px] cursor-pointer"
+            disabled={isRunning || (state.demo.active && state.demo.step < 10)}
+            className={`flex-1 flex items-center justify-center gap-1.5 rounded-[12px] px-2.5 py-2 text-[12px] font-semibold transition-all shadow-xs min-h-[40px] ${
+              isRunning || (state.demo.active && state.demo.step < 10)
+                ? "border border-border bg-tint text-muted cursor-not-allowed opacity-60"
+                : "bg-accent text-white hover:bg-accent-hover cursor-pointer"
+            }`}
           >
             <Play className="h-3.5 w-3.5 fill-current" />
             <span>Mulai</span>
