@@ -1,36 +1,337 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TEPAT — Triase Evaluasi Perbaikan dan Anggaran Terukur
 
-## Getting Started
+> Sistem Pendukung Keputusan Geospasial untuk Prioritas Perbaikan Infrastruktur Mikro Jalan dan Optimasi Alokasi Anggaran.
 
-First, run the development server:
+**Tautan Produksi:** [https://infratriage.vercel.app](https://infratriage.vercel.app)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## Daftar Isi
+
+1. [Tentang TEPAT](#1-tentang-tepat)
+2. [Fitur Utama](#2-fitur-utama)
+3. [Panduan Coba Cepat untuk Juri](#3-panduan-coba-cepat-untuk-juri)
+4. [Cara Menjalankan Secara Lokal](#4-cara-menjalankan-secara-lokal)
+5. [Arsitektur Sistem](#5-arsitektur-sistem)
+6. [Mesin Skor dan Klasterisasi](#6-mesin-skor-dan-klasterisasi)
+7. [Simulasi Anggaran dan Uji Ketahanan Biaya](#7-simulasi-anggaran-dan-uji-ketahanan-biaya)
+8. [Analisis Sensitivitas Bobot](#8-analisis-sensitivitas-bobot)
+9. [Pengujian Otomatis](#9-pengujian-otomatis)
+10. [Keterbatasan dan Asumsi](#10-keterbatasan-dan-asumsi)
+11. [Rencana Pengembangan (Roadmap)](#11-rencana-pengembangan-roadmap)
+12. [Atribusi Data dan Lisensi](#12-atribusi-data-dan-lisensi)
+
+---
+
+## 1. Tentang TEPAT
+
+Ketika laporan kerusakan infrastruktur jalan dari masyarakat masuk dalam jumlah besar, laporan ganda di titik yang sama sering kali terhitung terpisah dan pembagian dana perbaikan dapat berjalan tanpa simulasi optimasi biaya. TEPAT tidak menggantikan kanal pengaduan resmi; ia mengolah laporan menjadi daftar kerja yang terurut dan dapat dijelaskan. **TEPAT** hadir sebagai platform pendukung keputusan geospasial yang secara otomatis menggabungkan (*cluster*) laporan warga berbasis kedekatan spasial, menghitung skor urgensi multi-kriteria 0–100 yang transparan dan dapat dijelaskan, serta merekomendasikan alokasi anggaran optimal menggunakan pendekatan algoritma *Dynamic Programming* (Knapsack 0/1) yang dilengkapi simulasi ketahanan biaya terhadap ketidakpastian lapangan.
+
+---
+
+## 2. Fitur Utama
+
+- **Peta Interaktif dan Klasterisasi Spasial:** Visualisasi peta berbasis Leaflet dengan penggabungan otomatis titik kerusakan ganda berdasarkan radius toleransi spesifik per kategori masalah. Pin peta diwarnai otomatis sesuai tingkat urgensi (Kritis, Tinggi, Sedang) dan dapat menampilkan layer fasilitas vital di sekitarnya.
+- **Laporan Baru dengan Bukti Foto:** Warga atau petugas dapat menambahkan laporan langsung dengan mengklik koordinat di peta. Dilengkapi kompresi gambar otomatis di peramban dan penyimpanan foto privat di *cloud storage* yang hanya dapat diakses melalui tautan berbatas waktu (*signed URL*).
+- **Skor yang Dapat Dijelaskan (berbasis aturan, bukan model black-box):** Setiap klaster dinilai melalui 5 kriteria terukur dengan rincian kontribusi poin yang transparan.
+- **Simulasi 4 Strategi Alokasi Anggaran:** Membandingkan rekomendasi paket perbaikan antara *Dynamic Programming* (Knapsack 0/1), *Greedy Skor per Biaya*, *Skor Tertinggi Dulu*, dan *Urutan Masuk (FIFO)* terhadap pagu anggaran yang ditentukan pengguna.
+- **Uji Ketahanan Biaya (*Cost Robustness Test*):** Pengujian simulasi Monte Carlo 100 percobaan dengan variasi fluktuasi biaya acak independen $\pm 30\%$ per titik guna mengukur stabilitas paket rekomendasi dan risiko pembengkakan biaya (*cost overrun*).
+- **Tabel Asumsi Biaya yang Dapat Disesuaikan:** Pengguna dapat mengubah estimasi biaya perbaikan per kategori dan tingkat keparahan selama sesi analisis untuk menyesuaikan kondisi harga setempat.
+- **Bobot Interaktif dan Analisis Sensitivitas:** Slider penyesuaian bobot proporsional (total selalu 100%) dilengkapi kalkulasi kestabilan peringkat berbasis Korelasi Peringkat Spearman dan tumpang tindih 10 besar (*Top-10 Overlap*).
+- **Skenario Demo Interaktif:** Simulasi dinamis pembuktian validasi warga, mendemonstrasikan kenaikan skor urgensi titik dari 63 (Tinggi) menjadi 81 (Kritis) saat jumlah pelapor bertambah.
+- **Penyimpanan Data per Pengunjung:** Setiap pengunjung browser memiliki ruang data independen menggunakan pengenal UUID v4 di `localStorage` tanpa keharusan login atau pembuatan akun.
+- **Mode Lokal:** Apabila server atau basis data tidak terjangkau, aplikasi secara otomatis beralih ke Mode Lokal. Fitur analisis urgensi, penambahan laporan, pengelompokan spasial, pembobotan, dan simulasi anggaran tetap berjalan di memori peramban; sedangkan unggah foto dan penyimpanan lintas sesi tidak tersedia. Pada layar lebar, bilah navigasi atas menampilkan penanda `(Lokal)`.
+
+---
+
+## 3. Panduan Coba Cepat untuk Juri
+
+Untuk menguji seluruh kemampuan utama sistem dalam waktu singkat, ikuti 6 langkah terstruktur berikut:
+
+1. **Buka Aplikasi:**
+   Kunjungi tautan produksi [https://infratriage.vercel.app](https://infratriage.vercel.app) pada peramban web.
+2. **Periksa Transparansi Skor:**
+   Buka tab **Peringkat** pada panel kanan. Klik kartu laporan teratas untuk menyorot lokasinya di peta. Selanjutnya, klik tab **Detail** untuk melihat indikator lingkaran skor urgensi, estimasi biaya, dan rincian 5 lencana poin kontribusi kriteria.
+3. **Simulasikan Alokasi Anggaran:**
+   Buka tab **Anggaran**. Tentukan nominal pagu (misalnya gunakan preset **100 Jt**), lalu klik tombol **"Simulasikan 4 Strategi Rekomendasi"**. Amati perbandingan 4 kartu strategi: perhatikan bagaimana strategi *Dynamic Programming (DP)* memberikan cakupan skor tertinggi dibandingkan metode pembanding *Urutan Masuk (FIFO)*.
+4. **Jalankan Uji Ketahanan Biaya:**
+   Pada bagian bawah tab Anggaran, temukan kartu **Uji Ketahanan Biaya**. Klik tombol **"Jalankan Uji Ketahanan Biaya"**. Sistem akan memproses 100 percobaan fluktuasi biaya ($\pm 30\%$) secara bertahap dan menampilkan metrik tumpang tindih Jaccard, titik inti stabil ($\ge 90\%$), proyeksi kelebihan biaya rencana dasar persentil 90 (P90), serta kalimat evaluasi risiko otomatis.
+5. **Ubah Asumsi Biaya Perbaikan:**
+   Masih di tab Anggaran, klik tombol akordeon **"Atur asumsi biaya"**. Ubah salah satu nilai biaya (misalnya ubah *Jalan berlubang - Sedang* dari `Rp 7.500.000` menjadi `Rp 10.000.000`). Perhatikan kemunculan lencana *"Asumsi biaya diubah"*, lalu klik kembali tombol **"Simulasikan 4 Strategi Rekomendasi"** untuk mengamati pergeseran paket titik yang dipilih algoritma. Klik tombol *"Kembalikan ke bawaan"* untuk mereset.
+6. **Jalankan Skenario Demo:**
+   Perhatikan panel **Skenario demo** mengambang di atas peta (sudut kanan bawah area peta). Klik tombol **"Mulai"**; sistem akan menempatkan laporan kerusakan lubang jalan baru berstatus Tinggi (skor 63, pin oranye) di dekat fasilitas vital nyata. Selanjutnya, klik tombol **"Bertahap"**; saksikan penambahan laporan warga secara otomatis dari 1 hingga 10 pelapor, di mana skor urgensi bergerak naik secara *real-time* hingga menembus angka **81 (Kritis)** dan warna pin seketika berubah menjadi merah.
+
+---
+
+## 4. Cara Menjalankan Secara Lokal
+
+### Prasyarat
+- [Node.js](https://nodejs.org/) versi `>=20.9.0` (ditentukan oleh `engines.node` pada `node_modules/next/package.json`; berkas `package.json` proyek tidak menentukan batasan versi sendiri).
+- Pengelola paket `npm`.
+
+### Langkah Instalasi
+
+1. **Kloning Repositori:**
+   ```bash
+   git clone https://github.com/akhsyz/infratriage.git
+   cd infratriage
+   ```
+
+2. **Instal Dependensi:**
+   ```bash
+   npm install
+   ```
+
+3. **Konfigurasi Lingkungan (Opsional untuk Supabase):**
+   Secara *default*, sistem dapat langsung dijalankan tanpa konfigurasi tambahan dalam **Mode Lokal**. Apabila ingin mengaktifkan persistensi *cloud* dan fitur unggah foto bukti ke Supabase, buat berkas `.env.local` di direktori utama:
+   ```env
+   SUPABASE_URL=https://<project-id>.supabase.co
+   SUPABASE_SECRET_KEY=<service_role_secret_key>
+   ```
+   *Catatan: Pastikan skrip SQL pada `supabase/schema.sql` telah dieksekusi di Dashboard SQL Supabase dan bucket privat bernama `report-photos` telah dibuat.*
+
+4. **Jalankan Server Pengembangan:**
+   ```bash
+   npm run dev
+   ```
+   Buka peramban pada alamat `http://localhost:3000`.
+
+5. **Jalankan Rangkaian Pengujian:**
+   ```bash
+   npm test
+   ```
+
+6. **Kompilasi Produksi:**
+   ```bash
+   npm run build
+   ```
+
+### Mode Lokal dan Pemecahan Masalah
+Apabila variabel lingkungan `SUPABASE_URL` dan `SUPABASE_SECRET_KEY` tidak dikonfigurasi, atau jika server basis data tidak dapat dijangkau, TEPAT otomatis beralih ke Mode Lokal:
+- **Arti tanda "(Lokal)":** Penanda `(Lokal)` pada bilah navigasi atas menunjukkan bahwa server atau basis data tidak terjangkau (misalnya variabel lingkungan belum disetel atau layanan basis data sedang dalam mode jeda/tidur).
+- **Apa yang masih berfungsi:** Fitur analisis urgensi, penambahan laporan baru, pengelompokan spasial, penyesuaian bobot, dan simulasi 4 strategi anggaran tetap berjalan di memori peramban; sedangkan unggah foto dan penyimpanan lintas sesi tidak tersedia.
+- **Pemulihan koneksi:** Memuat ulang (*refresh*) halaman setelah beberapa saat dapat memulihkan koneksi secara otomatis jika server atau layanan basis data telah kembali aktif.
+
+---
+
+## 5. Arsitektur Sistem
+
+Aplikasi dibangun menggunakan arsitektur modern berbasis komponen pada ekosistem Next.js App Router, memadukan reaktivitas klien untuk kalkulasi geospasial cepat dengan penanganan sisi server untuk persistensi data yang aman.
+
+```
+[ Antarmuka Peramban (Browser Client) ]
+  ├── React 19 State (React Context & useReducer)
+  ├── Mesin Keputusan Geospasial (lib/infratriage)
+  ├── Peta Visual (react-leaflet & Leaflet)
+  └── Pengenal Pengunjung: localStorage ('infratriage_visitor_id')
+         │
+         │ (Permintaan HTTP Fetch dengan Header 'x-visitor-id')
+         ▼
+[ Server Next.js Route Handlers ]
+  ├── GET / POST / DELETE  /api/reports        (Validasi skema, kuota, & persistensi baris)
+  └── GET / POST           /api/reports/photo  (Upload foto 2MB & pembuatan Signed URL 10 mnt)
+         │
+         │ (Koneksi Server-to-Server via SUPABASE_SECRET_KEY)
+         ▼
+[ Infrastruktur Supabase ]
+  ├── PostgreSQL Database (Tabel 'public.reports' terisolasi per visitor_id)
+  └── Private Storage Bucket ('report-photos')
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Struktur Folder Utama
+```
+infratriage/
+├── app/                        # Next.js App Router
+│   ├── api/reports/            # Route Handler: CRUD data laporan
+│   │   └── photo/              # Route Handler: Unggah & signed URL foto
+│   ├── globals.css             # Desain token warna dan gaya global
+│   ├── layout.tsx              # Tata letak dasar aplikasi
+│   └── page.tsx                # Halaman utama aplikasi
+├── components/                 # Komponen antarmuka (UI)
+│   ├── map/                    # Komponen peta Leaflet, overlay, & demo controls
+│   ├── panel/                  # Tab Peringkat, Detail, Anggaran, & Bobot
+│   ├── AddReportForm.tsx       # Formulir input laporan dan kompresi foto
+│   ├── CommandCenter.tsx       # Tata letak ruang kerja utama (Split-screen)
+│   └── TopNav.tsx              # Header sistem dan navigasi tab
+├── data/                       # Data spasial fasilitas vital Yogyakarta (OSM)
+├── lib/
+│   ├── infratriage/            # MESIN KEPUTUSAN UTAMA (Murni fungsional, teruji)
+│   │   ├── cluster.ts          # Algoritma pengelompokan spasial per radius
+│   │   ├── config.ts           # Asumsi bobot, ambang batas, dan tabel biaya
+│   │   ├── costRobustness.ts   # Simulasi ketahanan biaya Monte Carlo (Mulberry32)
+│   │   ├── engine.ts           # Pipeline integrasi triase end-to-end
+│   │   ├── knapsack.ts         # Algoritma Knapsack DP, Greedy, TopScore, FIFO
+│   │   ├── scoring.ts          # Perhitungan skor 5 kriteria & lencana penjelasan
+│   │   ├── seed.ts             # Pembangkit data simulasi sintetis
+│   │   └── sensitivity.ts      # Analisis sensitivitas peringkat (Spearman & Top-k)
+│   ├── demo.ts                 # Logika skenario demo deterministik
+│   ├── persistence.ts          # Klien sinkronisasi data & deteksi Mode Lokal
+│   ├── photos.ts               # Utilitas kompresi foto di sisi klien
+│   ├── reducer.ts              # Pengelola status global (App Reducer)
+│   └── store.tsx               # Penyedia AppContext
+├── supabase/
+│   └── schema.sql              # Skema tabel database dan konfigurasi RLS
+└── tests/                      # 18 berkas pengujian otomatis (Vitest)
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 6. Mesin Skor dan Klasterisasi
 
-## Learn More
+### Pengelompokan Spasial (*Clustering*)
+Laporan kerusakan yang masuk dikelompokkan ke dalam satu klaster jika berada dalam radius toleransi kategori yang sama. Koordinat klaster diperbarui secara dinamis menggunakan titik pusat rata-rata (*centroid*) dari seluruh laporan di dalamnya:
+- **Jalan berlubang (`lubang`):** 20 meter
+- **Drainase tersumbat (`drainase`):** 35 meter
+- **Lampu jalan mati (`lampu_jalan`):** 15 meter
+- **Trotoar rusak (`trotoar`):** 25 meter
 
-To learn more about Next.js, take a look at the following resources:
+### Komponen Skor Urgensi Multi-Kriteria
+Skor urgensi klaster bernilai antara 0 hingga 100, dihitung menggunakan pembobotan linier terdistribusi dari 5 komponen:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+$$\text{Urgensi} = \sum_{i=1}^{5} (w_i \times c_i)$$
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Komponen Kriteria | Bobot Bawaan | Rentang Nilai | Formula dan Penjelasan Perhitungan |
+|---|:---:|:---:|---|
+| **Tingkat Kerusakan (`bahaya`)** | **0,3 (30%)** | 0 – 100 | Nilai dasar kategori $\times$ keparahan fisik.<br>• *Lubang:* Ringan = 45, Sedang = 70, Berat = 90<br>• *Drainase:* Ringan = 30, Sedang = 50, Berat = 65<br>• *Lampu Jalan:* Ringan = 20, Sedang = 35, Berat = 55<br>• *Trotoar:* Ringan = 10, Sedang = 20, Berat = 30<br>Ditambah **Penalti Insiden (+15)** jika ada kecelakaan (maksimal 100). |
+| **Klasifikasi Jalan (`kelas`)** | **0,2 (20%)** | 40 – 100 | Volume dan hirarki fungsi ruas jalan:<br>• Jalan Arteri: 100 poin<br>• Jalan Kolektor: 70 poin<br>• Jalan Lokal: 40 poin |
+| **Fasilitas Vital (`vital`)** | **0,2 (20%)** | 30 – 100 | Jarak lingkaran besar (*great-circle distance*) menggunakan formula Haversine via Turf.js (`@turf/distance`) ke fasilitas vital terdekat (rumah sakit, sekolah, pasar):<br>• Jarak $< 200\text{ m}$: 100 poin<br>• Jarak $200 - 500\text{ m}$: 75 poin<br>• Jarak $> 500\text{ m}$ (atau tidak ada data): 30 poin |
+| **Dukungan Kerumunan (`kerumunan`)** | **0,2 (20%)** | 0 – 100 | Jumlah pelapor independen unik ($n$) di dalam klaster:<br>• Dihitung $n \times 10\text{ poin}$ (maksimal 100 poin pada $\ge 10$ pelapor). |
+| **Usia Laporan (`usia`)** | **0,1 (10%)** | 0 – 100 | Durasi masalah belum tertangani sejak laporan pertama masuk:<br>• Dihitung $(\text{Hari} / 30) \times 100\text{ poin}$ (mencapai 100 poin penuh pada $\ge 30$ hari). |
 
-## Deploy on Vercel
+### Ambang Batas Tingkat Prioritas
+Tingkat prioritas ditentukan dari skor akhir yang dibulatkan:
+- **Kritis (`kritis`):** Skor $\ge 80$ (Penanda Pin Merah)
+- **Tinggi (`tinggi`):** Skor $50 - 79$ (Penanda Pin Oranye)
+- **Sedang (`sedang`):** Skor $< 50$ (Penanda Pin Kuning)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 7. Simulasi Anggaran dan Uji Ketahanan Biaya
+
+### 4 Strategi Rekomendasi
+Aplikasi menyediakan simulator alokasi anggaran dengan 4 pendekatan strategi matematis yang dapat dipilih langsung melalui antarmuka:
+
+| Nama Strategi di UI | Tag Penjelas | Algoritma dan Sasaran Optimasi |
+|---|---|---|
+| **Dynamic Programming (DP)** | *Rekomendasi Optimal* | Memaksimalkan total skor urgensi menggunakan algoritma Knapsack 0/1 dengan diskritisasi satuan biaya Rp 100.000. Memberikan kombinasi perbaikan paling bernilai tanpa pernah melampaui pagu anggaran. |
+| **Greedy Skor per Biaya** | *Efisiensi Biaya* | Mengurutkan kandidat berdasarkan rasio efisiensi tertinggi ($\frac{\text{Skor}}{\text{Biaya}}$) dan mengambil kandidat selama anggaran masih mencukupi. Cepat; tidak menjamin optimal. |
+| **Skor Tertinggi Dulu** | *Prioritas Terparah* | Mendahulukan titik dengan nilai skor urgensi mutlak tertinggi tanpa memperhitungkan efisiensi biaya. Sering kali menghabiskan anggaran pada sedikit titik berat. |
+| **Urutan Masuk (FIFO)** | *Baseline Tradisional* | Memilih laporan yang paling awal masuk sebagai pembanding dasar: urutan laporan masuk tanpa optimasi biaya. |
+
+Setiap kartu strategi menyajikan 4 metrik perbandingan:
+1. **Titik:** Jumlah titik kerusakan yang berhasil didanai.
+2. **Biaya:** Total nominal anggaran terpakai beserta persentase serapannya terhadap pagu.
+3. **Cakupan Skor:** Persentase total skor titik terpilih terhadap total skor seluruh kandidat yang menunggu perbaikan.
+4. **Kritis:** Rasio titik berstatus Kritis yang tertangani terhadap total seluruh titik kritis ($X/Y$).
+
+### Tabel Asumsi Biaya Perbaikan
+Biaya perbaikan tiap klaster dihitung berdasarkan kategori dan tingkat keparahannya.
+
+> **PENTING — ASUMSI ILUSTRATIF:** Angka biaya berikut merupakan nilai asumsi awal untuk keperluan simulasi sistem, bukan standar satuan harga resmi pemerintah daerah.
+
+| Kategori Masalah | Ringan (Tingkat 1) | Sedang (Tingkat 2) | Berat (Tingkat 3) |
+|---|:---:|:---:|:---:|
+| Jalan berlubang | Rp 3.000.000 | Rp 7.500.000 | Rp 15.000.000 |
+| Drainase tersumbat | Rp 4.000.000 | Rp 9.000.000 | Rp 20.000.000 |
+| Lampu jalan mati | Rp 3.000.000 | Rp 4.500.000 | Rp 7.000.000 |
+| Trotoar rusak | Rp 5.000.000 | Rp 12.000.000 | Rp 25.000.000 |
+
+*Catatan: Pengguna dapat mengedit seluruh nilai biaya ini melalui menu collapsible **"Atur asumsi biaya"** di antarmuka tab Anggaran (rentang validasi input Rp 100.000 s.d. Rp 1.000.000.000). Perubahan bersifat sementara selama sesi berlangsung dan tidak mengubah data baku basis data.*
+
+### Uji Ketahanan Biaya (*Cost Robustness Test*)
+Biaya pelaksanaan fisik di lapangan sering kali meleset dari estimasi perencana akibat kondisi tanah, cuaca, atau kenaikan material. Fitur ini melakukan simulasi Monte Carlo untuk menguji ketahanan rekomendasi DP:
+- **Metodologi:** 100 kali percobaan simulasi, di mana biaya setiap titik diganggu secara acak independen dengan faktor pengali antara **0,7 hingga 1,3** ($\pm 30\%$).
+- **PRNG Deterministik:** Menggunakan generator bilangan acak berbenih tetap (Mulberry32, `seed = 42`) sehingga hasil pengujian 100% konsisten dan dapat direproduksi oleh juri kapan saja.
+- **Hasil yang Dilaporkan:**
+  - *Tumpang Tindih Titik (Jaccard Index):* Rata-rata dan nilai terendah kemiripan titik terpilih dalam simulasi terhadap hasil rencana dasar.
+  - *Titik Inti:* Jumlah titik yang selalu terpilih pada $\ge 90\%$ percobaan (titik yang sangat kokoh untuk diprioritaskan).
+  - *Kelebihan Biaya Rencana Dasar (*Cost Overrun*):* Persentase potensi pembengkakan biaya jika paket pekerjaan dasar tetap dipaksakan berjalan saat harga aktual naik (dilaporkan dalam rata-rata, maksimum, dan persentil 90/P90).
+  - *Percobaan Melebihi Pagu:* Persentase skenario di mana total biaya melebihi anggaran yang tersedia.
+  - *Saran Kontingensi Otomatis:* Kalimat evaluasi yang merekomendasikan besaran cadangan kontingensi yang perlu dialokasikan untuk memitigasi risiko lonjakan biaya.
+
+---
+
+## 8. Analisis Sensitivitas Bobot
+
+Untuk menguji apakah urutan prioritas rentan terhadap perbedaan preferensi bobot antar pemangku kepentingan, TEPAT menyertakan fitur analisis sensitivitas pada tab **Bobot**:
+- **Simulasi Pergeseran:** Menguji dampak pergeseran relatif $\pm 20\%$ (`delta = 0.2`) pada masing-masing dari 5 kriteria secara independen (lalu menormalkan kembali total bobot ke 100%).
+- **Evaluasi Kestabilan:**
+  - **Korelasi Peringkat Spearman (*Spearman's Rank Correlation*):** Mengukur korelasi monotonik antara daftar peringkat dasar dan daftar peringkat setelah bobot diubah (skala $-1$ hingga $+1$).
+  - **Tumpang Tindih 10 Besar (*Top-10 Overlap*):** Menghitung persentase klaster 10 besar yang tetap bertahan di 10 besar saat bobot digeser.
+  - **Kriteria Paling Sensitif:** Mengidentifikasi secara eksplisit kriteria mana yang paling berpengaruh dalam mengubah susunan 10 besar klaster prioritas.
+
+*Catatan: Analisis ini menguji variasi bobot kriteria, bukan manipulasi data laporan dari warga (terkait potensi bias pada laporan warga, rujuk keterbatasan nomor 4).*
+
+---
+
+## 9. Pengujian Otomatis
+
+Rangkaian pengujian otomatis dijalankan menggunakan Vitest untuk memastikan keandalan mesin keputusan, integritas algoritma, dan validitas alur data.
+
+**Hasil Verifikasi Saat Ini:**
+```
+Test Files  18 passed (18)
+     Tests  201 passed (201)
+```
+
+| Berkas Pengujian | Jumlah Tes | Fokus Pengujian |
+|---|:---:|---|
+| `tests/cluster.test.ts` | 12 | Validasi koordinat, formula jarak haversine, titik centroid, dan pengelompokan spasial per radius kategori |
+| `tests/costRobustness.test.ts` | 12 | PRNG Mulberry32 deterministik, indeks Jaccard, persentil 90 *cost overrun*, dan eksekusi bertahap (*chunking*) |
+| `tests/costTable.test.ts` | 9 | Validasi batas biaya kustom (Rp 100rb–1M), deteksi modifikasi tabel biaya, dan aksi reset reducer |
+| `tests/demo.test.ts` | 7 | Penentuan titik demo deterministik dekat fasilitas vital riil dan transisi kenaikan skor dari 63 ke 81 |
+| `tests/engine.test.ts` | 12 | Pipeline triase: penerimaan laporan (*ingest*), klasterisasi, pemeringkatan urgensi, dan penalti insiden |
+| `tests/flow.test.ts` | 7 | Integrasi alur pengguna: penambahan laporan, pengelompokan otomatis, konsistensi KPI, dan penjadwalan |
+| `tests/format.test.ts` | 20 | Pemformatan dan parsing input mata uang Rupiah, konversi jarak meter/km, dan lokalisasi tanggal Indonesia |
+| `tests/hydrateReports.test.ts` | 3 | Hidrasi laporan tersimpan dari Supabase ke state awal dan deduplikasi dengan data seed |
+| `tests/knapsack.test.ts` | 12 | Algoritma Knapsack DP 0/1, batas anggaran, diskritisasi biaya, serta strategi Greedy, TopScore, dan FIFO |
+| `tests/markerStyle.test.ts` | 14 | Penentuan token warna pin (Kritis/Tinggi/Sedang), skala radius berbasis pelapor unik, dan gaya status |
+| `tests/persistence.test.ts` | 7 | Pengelolaan UUID pengunjung di localStorage, timeout permintaan jaringan, dan pengalihan ke Mode Lokal |
+| `tests/photos.test.ts` | 25 | Kompresi gambar peramban (WebP/JPEG), validasi batas 2 MB, status unggahan, dan pengambilan signed URL |
+| `tests/reducer.test.ts` | 7 | Inisialisasi data seed, penyaringan kategori/level, pengubahan pagu anggaran, dan penanganan aksi aplikasi |
+| `tests/reportDraft.test.ts` | 16 | Penomoran otomatis pelapor (ui-*), inferensi kelas jalan dari tipe jalan, dan validasi isian formulir |
+| `tests/reportValidation.test.ts` | 7 | Validasi payload JSON Route Handler, verifikasi format UUID v4, batas ukuran body, dan sanitasi data |
+| `tests/scoring.test.ts` | 17 | Perhitungan 5 komponen skor urgensi, penalti insiden, pembulatan poin lencana penjelasan, dan level prioritas |
+| `tests/vitals.test.ts` | 5 | Pemetaan kategori fasilitas vital OSM, sanitasi koordinat, dan penyaringan data fasilitas tidak valid |
+| `tests/weights.test.ts` | 9 | Normalisasi bobot proporsional (total selalu 1,0), batas nilai kriteria, dan validasi tipe numerik |
+| **Total** | **201** | **18 berkas pengujian lulus 100%** |
+
+---
+
+## 10. Keterbatasan dan Asumsi
+
+Sebagai bentuk kejujuran teknis dalam evaluasi sistem pendukung keputusan:
+
+1. **Data Laporan dan Nilai Biaya adalah Simulasi:** Seluruh data kerusakan infrastruktur dan nominal biaya perbaikan merupakan data sintetis yang dibangkitkan untuk demonstrasi, bukan data riil pemerintah daerah.
+2. **Bobot, Radius Klaster, dan Ambang Prioritas adalah Asumsi:** Nilai bobot kriteria, radius penggabungan spasial (15–35 m), dan batas skor kritis ($\ge 80$) merupakan asumsi perancangan awal yang perlu dikalibrasi lebih lanjut bersama dinas teknis terkait (misalnya Dinas Pekerjaan Umum).
+3. **Biaya Bukan Harga Satuan Resmi:** Tabel estimasi biaya perbaikan adalah nilai pendekatan tetap per kategori/keparahan, bukan hasil survei lapangan mendalam atau Harga Satuan Pokok Kegiatan (HSPK) resmi.
+4. **Agregasi Tingkat Bahaya Memakai Nilai Maksimum:** Tingkat keparahan klaster dihitung menggunakan nilai maksimum dari seluruh laporan di dalamnya (`Math.max`). Hal ini berarti satu laporan berstatus "berat" dapat mengangkat derajat bahaya klaster secara keseluruhan, yang berpotensi menimbulkan bias jika ada pelapor yang melebih-lebihkan kondisi.
+5. **Karakteristik Optimasi Knapsack (DP):** Algoritma *Dynamic Programming* berfokus memaksimalkan total skor urgensi gabungan. Dalam kondisi anggaran terbatas, algoritma dapat lebih memilih mendanai beberapa titik bernilai sedang berbiaya murah daripada satu titik kritis yang berbiaya sangat mahal. Oleh karena itu, indikator pemantauan titik kritis ($X/Y$) selalu ditampilkan pada kartu strategi sebagai bahan pertimbangan manusia (*human-in-the-loop*).
+6. **Foto Bukti Belum Memengaruhi Skor:** Foto yang diunggah pelapor saat ini hanya berfungsi sebagai dokumen bukti visual bagi verifikator dan belum dianalisis otomatis dengan kecerdasan buatan (*Computer Vision*) untuk memengaruhi skor urgensi.
+7. **Tanggal Referensi Simulasi Tetap (5 November 2026):** Untuk menjamin hasil pengujian dan demonstrasi yang deterministik bagi juri di mana pun dan kapan pun, sistem menggunakan tanggal acuan simulasi tetap yaitu `5 November 2026` (`2026-11-05T00:00:00.000Z`). Laporan baru yang dibuat selama sesi pengujian akan bertanggal hari simulasi tersebut sehingga komponen usia laporan bernilai 0 hari secara konsisten.
+8. **Batas Kuota Pengunjung:** Untuk melindungi infrastruktur *cloud*, setiap pengunjung dibatasi maksimal menyimpan 100 laporan dan mengunggah 10 foto bukti.
+
+---
+
+## 11. Rencana Pengembangan (Roadmap)
+
+Untuk pengembangan menuju sistem operasional skala penuh di masa mendatang:
+
+- [ ] **Kendala Wajib Titik Kritis (*Hard Constraint Budgeting*):** Menambahkan opsi pada algoritma alokasi anggaran agar seluruh titik berstatus Kritis wajib didanai terlebih dahulu sebelum sisa anggaran dialokasikan untuk optimasi titik lainnya.
+- [ ] **Modul Verifikasi Lapangan (*Field Inspector Workflow*):** Alur kerja validasi fisik di lapangan oleh petugas dinas sebelum status klaster dinaikkan dari *Menunggu* menjadi *Terjadwal*.
+- [ ] **Validasi Foto Otomatis Berbasis AI:** Pemanfaatan model *Computer Vision* untuk mendeteksi jenis kerusakan fisik dan mengonfirmasi tingkat keparahan jalan dari foto secara otomatis.
+- [ ] **Manajemen Akses Berbasis Peran (*Role-Based Access Control / RBAC*):** Pemisahan hak akses antara Pelapor Warga, Petugas Lapangan, Analis Perencana Anggaran, dan Kepala Dinas.
+- [ ] **Kalibrasi Biaya Terintegrasi HSPK/SSH Daerah:** Integrasi modul biaya dengan Standar Satuan Harga (SSH) dan Standar Biaya Masukan (SBM) resmi pemerintah kota/kabupaten.
+- [ ] **Integrasi Kanal Pengaduan Nasional:** Penyediaan antarmuka API dua arah untuk menerima tiket aduan dari platform nasional seperti SP4N-LAPOR!.
+
+---
+
+## 12. Atribusi Data dan Lisensi
+
+### Atribusi Sumber Data
+- **Data Fasilitas Vital:** Data sebaran fasilitas umum (rumah sakit/fasilitas kesehatan, sekolah/pendidikan, dan pasar) di Kota Yogyakarta diekstrak dari **OpenStreetMap**. Data ini tersedia di bawah lisensi *Open Database License* (ODbL).
+  - *Atribusi:* **&copy; OpenStreetMap contributors**.
+- **Peta Dasar (*Map Tiles*):** Menggunakan ubin peta dari **OpenStreetMap** (`https://tile.openstreetmap.org/{z}/{x}/{y}.png`) dengan atribusi `&copy; OpenStreetMap contributors` yang ditampilkan pada antarmuka peta dan footer aplikasi.
+
+### Lisensi
+Hak cipta karya ini dimiliki tim pengembang. Belum ada lisensi sumber terbuka yang ditetapkan.
