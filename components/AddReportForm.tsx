@@ -175,7 +175,7 @@ export default function AddReportForm({
     <div
       role="dialog"
       aria-labelledby="add-report-title"
-      className="pointer-events-auto flex flex-col w-full max-w-[340px] sm:max-w-[360px] max-h-full sm:max-h-[calc(100dvh-120px)] rounded-[16px] border border-border bg-surface shadow-card text-ink font-sans overflow-hidden transition-all duration-200 motion-reduce:transition-none"
+      className="pointer-events-auto flex flex-col w-full max-w-[340px] sm:max-w-[360px] max-h-full rounded-[16px] border border-border bg-surface shadow-card text-ink font-sans overflow-hidden transition-all duration-200 motion-reduce:transition-none"
     >
       {/* ── Header Form (Tetap di atas) ── */}
       <div className="shrink-0 flex items-center justify-between border-b border-border px-4 py-3 bg-surface">
