@@ -85,7 +85,7 @@ export function MapOverlays({
   };
 
   return (
-    <div className="pointer-events-none absolute inset-0 z-[500] p-3 flex flex-col justify-between overflow-hidden">
+    <div className="pointer-events-none absolute inset-0 h-full w-full z-[500] p-3 flex flex-col justify-between overflow-hidden">
       {/* ── Petunjuk Mode Tambah Laporan (Banner Tengah Atas) ── */}
       {state.addMode && !tempPoint && (
         <div className="pointer-events-auto absolute top-3 left-1/2 -translate-x-1/2 rounded-[12px] border border-accent bg-surface/95 backdrop-blur-xs px-3.5 py-2 shadow-card flex items-center gap-2 text-[12px] text-ink animate-in fade-in slide-in-from-top-2 z-20">
@@ -212,7 +212,7 @@ export function MapOverlays({
 
       {/* ── Form Tambah Laporan Mengambang (saat titik sementara ditaruh di peta) ── */}
       {tempPoint && (
-        <div className="pointer-events-auto absolute top-16 right-3 z-30 max-h-[calc(100vh-140px)] overflow-y-auto">
+        <div className="pointer-events-auto absolute top-3 sm:top-14 right-2 sm:right-3 left-2 sm:left-auto z-30 max-h-[calc(100%-2.75rem)] sm:max-h-[calc(100%-5.5rem)] flex flex-col">
           <AddReportForm
             point={tempPoint}
             onSubmit={onFormSubmit}

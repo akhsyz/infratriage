@@ -50,7 +50,7 @@ export default function AddReportForm({
     getNextUiReporterId(state.reports)
   );
   const [showSimOptions, setShowSimOptions] = useState<boolean>(false);
-  const [note, setNote] = useState<string>("");
+  const [note] = useState<string>("");
   const [localSubmitting, setLocalSubmitting] = useState<boolean>(false);
 
   const isLocalMode = useLocalModeStatus();
@@ -175,10 +175,10 @@ export default function AddReportForm({
     <div
       role="dialog"
       aria-labelledby="add-report-title"
-      className="pointer-events-auto w-full max-w-[340px] sm:max-w-[360px] rounded-[16px] border border-border bg-surface/95 backdrop-blur-xs p-4 shadow-card text-ink font-sans transition-all duration-200 motion-reduce:transition-none"
+      className="pointer-events-auto flex flex-col w-full max-w-[340px] sm:max-w-[360px] max-h-full rounded-[16px] border border-border bg-surface shadow-card text-ink font-sans overflow-hidden transition-all duration-200 motion-reduce:transition-none"
     >
-      {/* ── Header Form ── */}
-      <div className="flex items-center justify-between border-b border-border pb-2.5 mb-3">
+      {/* ── Header Form (Tetap di atas) ── */}
+      <div className="shrink-0 flex items-center justify-between border-b border-border px-4 py-3 bg-surface">
         <div>
           <h2 id="add-report-title" className="text-sm font-bold text-ink leading-tight">
             Tambah laporan baru
@@ -201,246 +201,246 @@ export default function AddReportForm({
         </button>
       </div>
 
-      <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-        {/* ── Kategori Masalah ── */}
-        <div>
-          <label className="block text-[12px] font-medium text-muted leading-tight mb-1.5">
-            Kategori masalah
-          </label>
-          <div className="grid grid-cols-2 gap-1.5">
-            {CATEGORIES.map((cat) => {
-              const active = category === cat;
-              return (
-                <button
-                  key={cat}
-                  type="button"
-                  onClick={() => setCategory(cat)}
-                  disabled={disabled}
-                  className={`rounded-[10px] px-2.5 py-2 text-[12px] transition-all duration-200 motion-reduce:transition-none text-left flex items-center justify-between min-h-[44px] cursor-pointer ${
-                    active
-                      ? "bg-accent-soft text-accent border border-accent font-semibold"
-                      : "bg-surface border border-border-input text-muted hover:text-ink hover:bg-tint font-medium"
-                  }`}
-                >
-                  <span>{CATEGORY_LABEL[cat]}</span>
-                </button>
-              );
-            })}
+      {/* ── Form: Wrapper Flex Mengisi Sisa Ruang ── */}
+      <form onSubmit={handleSubmit} className="flex flex-col flex-1 min-h-0 overflow-hidden">
+        {/* ── Isi Formulir (Tengah, Bisa Digulir) ── */}
+        <div className="flex-1 min-h-0 overflow-y-auto px-4 py-3 flex flex-col gap-3.5 overscroll-contain">
+          {/* ── Kategori Masalah ── */}
+          <div>
+            <label className="block text-[12px] font-medium text-muted leading-tight mb-1.5">
+              Kategori masalah
+            </label>
+            <div className="grid grid-cols-2 gap-1.5">
+              {CATEGORIES.map((cat) => {
+                const active = category === cat;
+                return (
+                  <button
+                    key={cat}
+                    type="button"
+                    onClick={() => setCategory(cat)}
+                    disabled={disabled}
+                    className={`rounded-[10px] px-2.5 py-2 text-[12px] transition-all duration-200 motion-reduce:transition-none text-left flex items-center justify-between min-h-[44px] cursor-pointer ${
+                      active
+                        ? "bg-accent-soft text-accent border border-accent font-semibold"
+                        : "bg-surface border border-border-input text-muted hover:text-ink hover:bg-tint font-medium"
+                    }`}
+                  >
+                    <span>{CATEGORY_LABEL[cat]}</span>
+                  </button>
+                );
+              })}
+            </div>
           </div>
-        </div>
 
-        {/* ── Tingkat Keparahan ── */}
-        <div>
-          <label className="block text-[12px] font-medium text-muted leading-tight mb-1.5">
-            Tingkat keparahan
-          </label>
-          <div className="flex rounded-[10px] bg-tint p-1 gap-1 border border-border">
-            {SEVERITIES.map((sev) => {
-              const active = severity === sev;
-              return (
-                <button
-                  key={sev}
-                  type="button"
-                  onClick={() => setSeverity(sev)}
-                  disabled={disabled}
-                  className={`flex-1 rounded-[8px] py-1.5 text-[12px] transition-all duration-200 motion-reduce:transition-none text-center min-h-[44px] cursor-pointer flex items-center justify-center ${
-                    active
-                      ? "bg-accent-soft text-accent border border-accent font-semibold"
-                      : "text-muted hover:text-ink font-medium"
-                  }`}
-                >
-                  {sev} · {SEVERITY_LABEL[sev]}
-                </button>
-              );
-            })}
+          {/* ── Tingkat Keparahan ── */}
+          <div>
+            <label className="block text-[12px] font-medium text-muted leading-tight mb-1.5">
+              Tingkat keparahan
+            </label>
+            <div className="flex rounded-[10px] bg-tint p-1 gap-1 border border-border">
+              {SEVERITIES.map((sev) => {
+                const active = severity === sev;
+                return (
+                  <button
+                    key={sev}
+                    type="button"
+                    onClick={() => setSeverity(sev)}
+                    disabled={disabled}
+                    className={`flex-1 rounded-[8px] py-1.5 text-[12px] transition-all duration-200 motion-reduce:transition-none text-center min-h-[44px] cursor-pointer flex items-center justify-center ${
+                      active
+                        ? "bg-accent-soft text-accent border border-accent font-semibold"
+                        : "text-muted hover:text-ink font-medium"
+                    }`}
+                  >
+                    {sev} · {SEVERITY_LABEL[sev]}
+                  </button>
+                );
+              })}
+            </div>
+            {/* Penjelas Bahasa Awam */}
+            <div className="mt-1.5 rounded-[8px] bg-tint border border-border/60 p-2 text-[11px] text-ink-2 font-medium leading-tight">
+              {SEVERITY_DESCRIPTION[severity]}
+            </div>
           </div>
-          {/* Penjelas Bahasa Awam */}
-          <div className="mt-1.5 rounded-[8px] bg-tint border border-border/60 p-2 text-[11px] text-ink-2 font-medium leading-tight">
-            {SEVERITY_DESCRIPTION[severity]}
-          </div>
-        </div>
 
-        {/* ── Jenis Jalan di Lokasi (Kelas Jalan) ── */}
-        <div>
-          <label className="block text-[12px] font-medium text-muted leading-tight mb-1.5">
-            Jenis jalan di lokasi
-          </label>
-          <div className="flex flex-col gap-1.5">
-            {ROAD_TYPE_OPTIONS.map((opt) => {
-              const active = roadType === opt.key;
-              return (
-                <button
-                  key={opt.key}
-                  type="button"
-                  onClick={() => setRoadType(opt.key)}
-                  disabled={disabled}
-                  className={`rounded-[10px] px-3 py-2 text-left transition-all duration-200 motion-reduce:transition-none min-h-[44px] cursor-pointer flex flex-col justify-center ${
-                    active
-                      ? "bg-accent-soft text-accent border border-accent font-semibold"
-                      : "bg-surface border border-border-input text-muted hover:text-ink hover:bg-tint font-medium"
-                  }`}
-                >
-                  <span className="text-[12px] leading-tight text-ink font-medium">
-                    {opt.title}{" "}
-                    {opt.key !== "tidak_yakin" && (
-                      <span className="text-muted font-normal">
-                        ({opt.example})
+          {/* ── Jenis Jalan di Lokasi (Kelas Jalan) ── */}
+          <div>
+            <label className="block text-[12px] font-medium text-muted leading-tight mb-1.5">
+              Jenis jalan di lokasi
+            </label>
+            <div className="flex flex-col gap-1.5">
+              {ROAD_TYPE_OPTIONS.map((opt) => {
+                const active = roadType === opt.key;
+                return (
+                  <button
+                    key={opt.key}
+                    type="button"
+                    onClick={() => setRoadType(opt.key)}
+                    disabled={disabled}
+                    className={`rounded-[10px] px-3 py-2 text-left transition-all duration-200 motion-reduce:transition-none min-h-[44px] cursor-pointer flex flex-col justify-center ${
+                      active
+                        ? "bg-accent-soft text-accent border border-accent font-semibold"
+                        : "bg-surface border border-border-input text-muted hover:text-ink hover:bg-tint font-medium"
+                    }`}
+                  >
+                    <span className="text-[12px] leading-tight text-ink font-medium">
+                      {opt.title}{" "}
+                      {opt.key !== "tidak_yakin" && (
+                        <span className="text-muted font-normal">
+                          ({opt.example})
+                        </span>
+                      )}
+                    </span>
+                    {opt.key === "tidak_yakin" && (
+                      <span className="text-[10.5px] text-muted font-normal mt-0.5">
+                        Dianggap jalan lingkungan (nilai konservatif)
                       </span>
                     )}
-                  </span>
-                  {opt.key === "tidak_yakin" && (
-                    <span className="text-[10.5px] text-muted font-normal mt-0.5">
-                      Dianggap jalan lingkungan (nilai konservatif)
-                    </span>
-                  )}
-                </button>
-              );
-            })}
+                  </button>
+                );
+              })}
+            </div>
           </div>
-        </div>
 
-        {/* ── Insiden / Kejadian ── */}
-        <div className="flex items-start gap-2.5 pt-1 min-h-[44px]">
-          <input
-            id="report-incident"
-            type="checkbox"
-            checked={incident}
-            onChange={(e) => setIncident(e.target.checked)}
-            disabled={disabled}
-            className="mt-1 h-4 w-4 rounded border-border-input text-accent accent-accent focus:ring-accent"
-          />
-          <label
-            htmlFor="report-incident"
-            className="text-[12px] text-ink font-medium leading-tight cursor-pointer select-none py-1"
-          >
-            Pernah menimbulkan insiden / kecelakaan
-          </label>
-        </div>
-
-        {/* ── Foto Bukti (Opsional) ── */}
-        <div className="flex flex-col gap-1.5 pt-1">
-          <div className="flex items-center justify-between">
+          {/* ── Insiden / Kejadian ── */}
+          <div className="flex items-start gap-2.5 pt-1 min-h-[44px]">
+            <input
+              id="report-incident"
+              type="checkbox"
+              checked={incident}
+              onChange={(e) => setIncident(e.target.checked)}
+              disabled={disabled}
+              className="mt-1 h-4 w-4 rounded border-border-input text-accent accent-accent focus:ring-accent"
+            />
             <label
-              htmlFor="report-photo"
-              className="block text-[12px] font-medium text-muted leading-tight"
+              htmlFor="report-incident"
+              className="text-[12px] text-ink font-medium leading-tight cursor-pointer select-none py-1"
             >
-              Foto bukti (opsional)
+              Pernah menimbulkan insiden / kecelakaan
             </label>
-            {selectedPhoto && (
-              <button
-                type="button"
-                onClick={handleRemovePhoto}
-                disabled={disabled}
-                className="text-[11px] text-kritis hover:underline font-medium inline-flex items-center gap-1 cursor-pointer"
+          </div>
+
+          {/* ── Foto Bukti (Opsional secara perilaku) ── */}
+          <div className="flex flex-col gap-1.5 pt-1">
+            <div className="flex items-center justify-between">
+              <label
+                htmlFor="report-photo"
+                className="block text-[12px] font-medium text-muted leading-tight"
               >
-                <Trash2 className="h-3 w-3" />
-                <span>Hapus foto</span>
-              </button>
+                Foto bukti
+              </label>
+              {selectedPhoto && (
+                <button
+                  type="button"
+                  onClick={handleRemovePhoto}
+                  disabled={disabled}
+                  className="text-[11px] text-kritis hover:underline font-medium inline-flex items-center gap-1 cursor-pointer"
+                >
+                  <Trash2 className="h-3 w-3" />
+                  <span>Hapus foto</span>
+                </button>
+              )}
+            </div>
+
+            {selectedPhoto ? (
+              <div className="relative flex items-center gap-2.5 rounded-[10px] border border-border bg-tint p-2">
+                <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-[8px] border border-border-input bg-surface">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={selectedPhoto.previewUrl}
+                    alt="Pratinjau foto bukti"
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                <div className="flex flex-col min-w-0 flex-1">
+                  <span className="text-[11px] font-semibold text-ink truncate">
+                    Foto siap diunggah
+                  </span>
+                  <span className="text-[10.5px] text-muted tabular-nums">
+                    Format: {selectedPhoto.ext.toUpperCase()} (
+                    {(selectedPhoto.blob.size / 1024).toFixed(0)} KB)
+                  </span>
+                  <span className="text-[10px] text-muted italic mt-0.5">
+                    Metadata EXIF telah dibersihkan
+                  </span>
+                </div>
+              </div>
+            ) : (
+              <div className="flex flex-col gap-1">
+                <input
+                  ref={fileInputRef}
+                  id="report-photo"
+                  type="file"
+                  accept="image/jpeg,image/png,image/webp"
+                  onChange={handleFileChange}
+                  disabled={disabled || isLocalMode || compressing}
+                  className="block w-full text-[11px] text-muted file:mr-2.5 file:py-1.5 file:px-3 file:rounded-[8px] file:border file:border-border file:text-[11px] file:font-semibold file:bg-surface file:text-ink hover:file:bg-tint file:cursor-pointer cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                />
+                {isLocalMode && (
+                  <p className="text-[11px] text-amber-700 font-medium leading-tight">
+                    Foto membutuhkan koneksi server
+                  </p>
+                )}
+                {compressing && (
+                  <div className="flex items-center gap-1.5 text-[11px] text-accent font-medium mt-0.5">
+                    <Loader2 className="h-3 w-3 animate-spin" />
+                    <span>Mengompresi foto...</span>
+                  </div>
+                )}
+                {photoError && (
+                  <p className="text-[11px] text-kritis font-medium leading-tight mt-0.5">
+                    {photoError}
+                  </p>
+                )}
+              </div>
             )}
           </div>
 
-          {selectedPhoto ? (
-            <div className="relative flex items-center gap-2.5 rounded-[10px] border border-border bg-tint p-2">
-              <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-[8px] border border-border-input bg-surface">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={selectedPhoto.previewUrl}
-                  alt="Pratinjau foto bukti"
-                  className="h-full w-full object-cover"
-                />
-              </div>
-              <div className="flex flex-col min-w-0 flex-1">
-                <span className="text-[11px] font-semibold text-ink truncate">
-                  Foto siap diunggah
-                </span>
-                <span className="text-[10.5px] text-muted tabular-nums">
-                  Format: {selectedPhoto.ext.toUpperCase()} (
-                  {(selectedPhoto.blob.size / 1024).toFixed(0)} KB)
-                </span>
-                <span className="text-[10px] text-muted italic mt-0.5">
-                  Metadata EXIF telah dibersihkan
-                </span>
-              </div>
-            </div>
-          ) : (
-            <div className="flex flex-col gap-1">
-              <input
-                ref={fileInputRef}
-                id="report-photo"
-                type="file"
-                accept="image/jpeg,image/png,image/webp"
-                onChange={handleFileChange}
-                disabled={disabled || isLocalMode || compressing}
-                className="block w-full text-[11px] text-muted file:mr-2.5 file:py-1.5 file:px-3 file:rounded-[8px] file:border file:border-border file:text-[11px] file:font-semibold file:bg-surface file:text-ink hover:file:bg-tint file:cursor-pointer cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+          {/* ── Bagian Lipat: Opsi Simulasi (Tertutup Bawaan) ── */}
+          <div className="border-t border-border/80 pt-1 pb-1">
+            <button
+              type="button"
+              onClick={() => setShowSimOptions((prev) => !prev)}
+              className="flex items-center justify-between w-full text-left py-2 px-1 text-[12px] font-semibold text-muted hover:text-ink transition-colors min-h-[44px] cursor-pointer"
+              aria-expanded={showSimOptions}
+            >
+              <span>Opsi simulasi</span>
+              <ChevronDown
+                className={`h-4 w-4 text-muted transition-transform duration-200 motion-reduce:transition-none ${
+                  showSimOptions ? "rotate-180" : ""
+                }`}
               />
-              <p className="text-[11px] text-muted leading-tight">
-                {isLocalMode ? (
-                  <span className="text-amber-700 font-medium">
-                    Foto membutuhkan koneksi server
-                  </span>
-                ) : (
-                  "Hindari wajah dan plat nomor kendaraan."
-                )}
-              </p>
-              {compressing && (
-                <div className="flex items-center gap-1.5 text-[11px] text-accent font-medium mt-0.5">
-                  <Loader2 className="h-3 w-3 animate-spin" />
-                  <span>Mengompresi foto...</span>
+            </button>
+
+            {showSimOptions && (
+              <div className="flex flex-col gap-2 pt-1 pb-1">
+                <div>
+                  <label
+                    htmlFor="report-reporterId"
+                    className="block text-[12px] font-medium text-muted leading-tight mb-1"
+                  >
+                    ID pelapor
+                  </label>
+                  <input
+                    id="report-reporterId"
+                    type="text"
+                    value={reporterId}
+                    onChange={(e) => setReporterId(e.target.value)}
+                    disabled={disabled}
+                    placeholder="pelapor-ui-1"
+                    className="w-full rounded-[10px] border border-border-input bg-surface px-3 py-2 text-[12px] text-ink placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-accent min-h-[44px]"
+                  />
+                  <p className="mt-1.5 text-[11px] text-muted leading-tight">
+                    Isi ID yang sama untuk mensimulasikan pelapor yang sama; laporan berulang dari pelapor yang sama tidak menaikkan jumlah pelapor unik.
+                  </p>
                 </div>
-              )}
-              {photoError && (
-                <p className="text-[11px] text-kritis font-medium leading-tight mt-0.5">
-                  {photoError}
-                </p>
-              )}
-            </div>
-          )}
-        </div>
-
-        {/* ── Bagian Lipat: Opsi Simulasi (Tertutup Bawaan) ── */}
-        <div className="border-t border-border/80 pt-1">
-          <button
-            type="button"
-            onClick={() => setShowSimOptions((prev) => !prev)}
-            className="flex items-center justify-between w-full text-left py-2 px-1 text-[12px] font-semibold text-muted hover:text-ink transition-colors min-h-[44px] cursor-pointer"
-            aria-expanded={showSimOptions}
-          >
-            <span>Opsi simulasi</span>
-            <ChevronDown
-              className={`h-4 w-4 text-muted transition-transform duration-200 motion-reduce:transition-none ${
-                showSimOptions ? "rotate-180" : ""
-              }`}
-            />
-          </button>
-
-          {showSimOptions && (
-            <div className="flex flex-col gap-2 pt-1 pb-1">
-              <div>
-                <label
-                  htmlFor="report-reporterId"
-                  className="block text-[12px] font-medium text-muted leading-tight mb-1"
-                >
-                  ID pelapor
-                </label>
-                <input
-                  id="report-reporterId"
-                  type="text"
-                  value={reporterId}
-                  onChange={(e) => setReporterId(e.target.value)}
-                  disabled={disabled}
-                  placeholder="pelapor-ui-1"
-                  className="w-full rounded-[10px] border border-border-input bg-surface px-3 py-2 text-[12px] text-ink placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-accent min-h-[44px]"
-                />
-                <p className="mt-1.5 text-[11px] text-muted leading-tight">
-                  Isi ID yang sama untuk mensimulasikan pelapor yang sama; laporan berulang dari pelapor yang sama tidak menaikkan jumlah pelapor unik.
-                </p>
               </div>
-            </div>
-          )}
+            )}
+          </div>
         </div>
 
-        {/* ── Tombol Aksi ── */}
-        <div className="flex items-center gap-2 pt-2 border-t border-border mt-1">
+        {/* ── Tombol Aksi (Sticky Footer di dasar panel) ── */}
+        <div className="shrink-0 flex items-center gap-2 p-3 sm:px-4 sm:py-3.5 border-t border-border bg-surface shadow-[0_-4px_12px_rgba(15,23,42,0.03)]">
           <button
             type="button"
             onClick={onCancel}
