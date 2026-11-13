@@ -6,4 +6,5 @@ export * from "./cluster";
 export * from "./knapsack";
 export * from "./sensitivity";
 export * from "./engine";
+export * from "./costRobustness";
 export * from "./seed";

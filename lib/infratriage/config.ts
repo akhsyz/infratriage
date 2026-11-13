@@ -64,12 +64,18 @@ export const PRIORITY_THRESHOLDS = { kritis: 80, tinggi: 50 } as const;
 /**
  * Tabel estimasi biaya (Rupiah). ASUMSI ILUSTRASI, bukan standar harga satuan dinas.
  */
-export const COST_TABLE: Record<Category, Record<Severity, number>> = {
+export type CostTable = Record<Category, Record<Severity, number>>;
+
+export const COST_TABLE: CostTable = {
   lubang: { 1: 3_000_000, 2: 7_500_000, 3: 15_000_000 },
   drainase: { 1: 4_000_000, 2: 9_000_000, 3: 20_000_000 },
   lampu_jalan: { 1: 3_000_000, 2: 4_500_000, 3: 7_000_000 },
   trotoar: { 1: 5_000_000, 2: 12_000_000, 3: 25_000_000 },
 };
+
+/** Batas validasi input biaya */
+export const MIN_COST = 100_000; // 1 unit knapsack
+export const MAX_COST = 1_000_000_000; // 1 Milyar
 
 /** Satuan DP knapsack. Biaya dibulatkan ke atas, anggaran ke bawah (konservatif). */
 export const KNAPSACK_COST_UNIT = 100_000;
@@ -86,6 +92,41 @@ export const SEVERITY_LABEL: Record<Severity, string> = {
   3: "berat",
 };
 
-export function estimateCost(category: Category, severity: Severity): number {
-  return COST_TABLE[category][severity];
+export function estimateCost(
+  category: Category,
+  severity: Severity,
+  costTable?: CostTable,
+): number {
+  return (costTable ?? COST_TABLE)[category][severity];
+}
+
+export function cloneCostTable(table: CostTable = COST_TABLE): CostTable {
+  return {
+    lubang: { ...table.lubang },
+    drainase: { ...table.drainase },
+    lampu_jalan: { ...table.lampu_jalan },
+    trotoar: { ...table.trotoar },
+  };
+}
+
+export function isCostTableModified(table: CostTable): boolean {
+  for (const cat of ["lubang", "drainase", "lampu_jalan", "trotoar"] as const) {
+    for (const sev of [1, 2, 3] as const) {
+      if (table[cat][sev] !== COST_TABLE[cat][sev]) return true;
+    }
+  }
+  return false;
+}
+
+export function validateCostValue(value: number): { valid: boolean; error?: string } {
+  if (!Number.isFinite(value) || !Number.isInteger(value)) {
+    return { valid: false, error: "Harus berupa bilangan bulat" };
+  }
+  if (value < MIN_COST) {
+    return { valid: false, error: `Minimum Rp 100.000` };
+  }
+  if (value > MAX_COST) {
+    return { valid: false, error: `Maksimum Rp 1.000.000.000` };
+  }
+  return { valid: true };
 }
