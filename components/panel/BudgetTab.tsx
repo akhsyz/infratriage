@@ -89,11 +89,15 @@ const SEVERITY_LEVELS: { severity: Severity; label: string }[] = [
 function CostInputCell({
   category,
   severity,
+  categoryLabel,
+  severityLabel,
   currentValue,
   onCostChange,
 }: {
   category: Category;
   severity: Severity;
+  categoryLabel: string;
+  severityLabel: string;
   currentValue: number;
   onCostChange: (category: Category, severity: Severity, cost: number) => void;
 }) {
@@ -121,25 +125,23 @@ function CostInputCell({
   };
 
   return (
-    <div className="flex flex-col gap-0.5">
-      <div className="relative flex items-center">
-        <span className="absolute left-2 text-[10px] font-bold text-muted pointer-events-none">
-          Rp
-        </span>
-        <input
-          type="text"
-          inputMode="numeric"
-          value={localText}
-          onChange={handleChange}
-          className={`w-full rounded-[6px] border py-1 pl-6 pr-1 text-xs font-semibold tabular-nums bg-bg text-ink focus:bg-surface focus:outline-hidden transition-all ${
-            error
-              ? "border-kritis focus:border-kritis focus:ring-1 focus:ring-kritis/20"
-              : "border-border-input focus:border-accent focus:ring-1 focus:ring-accent/20"
-          }`}
-        />
-      </div>
+    <div className="flex flex-col gap-0.5 min-w-0 w-full">
+      <input
+        type="text"
+        inputMode="numeric"
+        aria-label={`${categoryLabel}, ${severityLabel}`}
+        value={localText}
+        onChange={handleChange}
+        className={`w-full min-w-0 rounded-[6px] border py-1.5 px-1.5 sm:px-2 text-[11px] sm:text-xs font-semibold tabular-nums bg-bg text-ink focus:bg-surface focus:outline-hidden transition-all ${
+          error
+            ? "border-kritis focus:border-kritis focus:ring-1 focus:ring-kritis/20"
+            : "border-border-input focus:border-accent focus:ring-1 focus:ring-accent/20"
+        }`}
+      />
       {error && (
-        <span className="text-[10px] text-kritis leading-tight">{error}</span>
+        <span className="text-[10px] text-kritis leading-tight break-words">
+          {error}
+        </span>
       )}
     </div>
   );
@@ -353,16 +355,19 @@ export default function BudgetTab() {
           onClick={() => setIsCostEditorOpen((prev) => !prev)}
           className="flex items-center justify-between p-3.5 hover:bg-tint transition-colors text-left cursor-pointer"
         >
-          <div className="flex items-center gap-2">
-            <SlidersHorizontal className="h-4 w-4 text-accent" />
+          <div className="flex items-center gap-2 flex-wrap min-w-0">
+            <SlidersHorizontal className="h-4 w-4 text-accent shrink-0" />
             <span className="text-xs font-bold text-ink">Atur asumsi biaya</span>
+            <span className="text-[11px] font-medium text-muted">
+              (Rupiah per klaster)
+            </span>
             {isModifiedCost && (
-              <span className="rounded-[6px] bg-tinggi-tint border border-tinggi/40 px-2 py-0.5 text-[10px] font-bold text-tinggi-ink">
+              <span className="rounded-[6px] bg-tinggi-tint border border-tinggi/40 px-2 py-0.5 text-[10px] font-bold text-tinggi-ink shrink-0">
                 Asumsi biaya diubah
               </span>
             )}
           </div>
-          <div className="flex items-center gap-1.5 text-muted">
+          <div className="flex items-center gap-1.5 text-muted shrink-0 ml-2">
             <span className="text-[11px] font-medium">
               {isCostEditorOpen ? "Tutup" : "Buka"}
             </span>
@@ -375,8 +380,8 @@ export default function BudgetTab() {
         </button>
 
         {isCostEditorOpen && (
-          <div className="border-t border-border p-3.5 flex flex-col gap-3 bg-tint/30">
-            <div className="flex items-center justify-between text-[11px]">
+          <div className="border-t border-border p-3 sm:p-3.5 flex flex-col gap-3 bg-tint/30">
+            <div className="flex items-center justify-between text-[11px] flex-wrap gap-1.5">
               <span className="text-muted">Perubahan berlaku selama sesi ini.</span>
               <button
                 type="button"
@@ -393,41 +398,40 @@ export default function BudgetTab() {
               </button>
             </div>
 
-            <div className="overflow-x-auto">
-              <table className="w-full text-left text-xs border-collapse">
-                <thead>
-                  <tr className="border-b border-border/80 text-[11px] font-bold text-muted">
-                    <th className="pb-1.5 font-bold text-ink">Kategori</th>
-                    <th className="pb-1.5 px-1 font-bold text-ink text-center">Ringan</th>
-                    <th className="pb-1.5 px-1 font-bold text-ink text-center">Sedang</th>
-                    <th className="pb-1.5 px-1 font-bold text-ink text-center">Berat</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-border/40">
-                  {COST_CATEGORIES.map((cat) => (
-                    <tr key={cat.key}>
-                      <td className="py-2 pr-2 font-medium text-ink text-xs whitespace-nowrap">
-                        {cat.label}
-                      </td>
-                      {SEVERITY_LEVELS.map((sev) => (
-                        <td key={sev.severity} className="py-2 px-1 min-w-[95px]">
-                          <CostInputCell
-                            category={cat.key}
-                            severity={sev.severity}
-                            currentValue={state.costTable[cat.key][sev.severity]}
-                            onCostChange={(c, s, v) =>
-                              dispatch({
-                                type: "SET_COST",
-                                payload: { category: c, severity: s, cost: v },
-                              })
-                            }
-                          />
-                        </td>
-                      ))}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+            {/* Blok per kategori: baris atas nama kategori, baris bawah 3 kolom */}
+            <div className="flex flex-col gap-2.5">
+              {COST_CATEGORIES.map((cat) => (
+                <div
+                  key={cat.key}
+                  className="flex flex-col gap-1.5 rounded-[8px] bg-surface border border-border/80 p-2.5"
+                >
+                  <span className="text-xs font-bold text-ink text-left">
+                    {cat.label}
+                  </span>
+                  <div className="grid grid-cols-3 gap-2 min-w-0">
+                    {SEVERITY_LEVELS.map((sev) => (
+                      <div key={sev.severity} className="flex flex-col gap-1 min-w-0">
+                        <span className="text-[10.5px] font-medium text-muted">
+                          {sev.label}
+                        </span>
+                        <CostInputCell
+                          category={cat.key}
+                          severity={sev.severity}
+                          categoryLabel={cat.label}
+                          severityLabel={sev.label}
+                          currentValue={state.costTable[cat.key][sev.severity]}
+                          onCostChange={(c, s, v) =>
+                            dispatch({
+                              type: "SET_COST",
+                              payload: { category: c, severity: s, cost: v },
+                            })
+                          }
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         )}
@@ -533,43 +537,43 @@ export default function BudgetTab() {
                   </p>
 
                   {/* Grid 4 Metrik Indikator */}
-                  <div className="grid grid-cols-4 gap-2 pt-2 border-t border-border/60 text-center">
+                  <div className="grid grid-cols-4 gap-1.5 sm:gap-2 pt-2 border-t border-border/60 text-center min-w-0">
                     {/* 1. Titik */}
-                    <div className="flex flex-col rounded-[8px] bg-bg/80 border border-border/40 p-1.5">
-                      <span className="text-[10px] font-medium text-muted">
+                    <div className="flex flex-col rounded-[8px] bg-bg/80 border border-border/40 p-1.5 min-w-0">
+                      <span className="text-[10px] font-medium text-muted truncate">
                         Titik
                       </span>
-                      <span className="text-xs font-bold text-ink tabular-nums mt-0.5">
+                      <span className="text-xs font-bold text-ink tabular-nums mt-0.5 truncate">
                         {res.ids.length}
                       </span>
                     </div>
 
                     {/* 2. Biaya Terpakai */}
-                    <div className="flex flex-col rounded-[8px] bg-bg/80 border border-border/40 p-1.5">
-                      <span className="text-[10px] font-medium text-muted">
+                    <div className="flex flex-col rounded-[8px] bg-bg/80 border border-border/40 p-1.5 min-w-0">
+                      <span className="text-[10px] font-medium text-muted truncate" title={`Biaya (${res.budgetUsedPct.toFixed(0)}%)`}>
                         Biaya ({res.budgetUsedPct.toFixed(0)}%)
                       </span>
-                      <span className="text-xs font-bold text-ink tabular-nums mt-0.5">
+                      <span className="text-[10.5px] sm:text-xs font-bold text-ink tabular-nums mt-0.5 truncate" title={formatRupiah(res.totalCost)}>
                         {formatRupiah(res.totalCost)}
                       </span>
                     </div>
 
                     {/* 3. Cakupan Skor */}
-                    <div className="flex flex-col rounded-[8px] bg-bg/80 border border-border/40 p-1.5">
-                      <span className="text-[10px] font-medium text-muted">
+                    <div className="flex flex-col rounded-[8px] bg-bg/80 border border-border/40 p-1.5 min-w-0">
+                      <span className="text-[10px] font-medium text-muted truncate">
                         Cakupan Skor
                       </span>
-                      <span className="text-xs font-bold text-accent tabular-nums mt-0.5">
+                      <span className="text-xs font-bold text-accent tabular-nums mt-0.5 truncate">
                         {res.valueCoveragePct.toFixed(1)}%
                       </span>
                     </div>
 
                     {/* 4. Klaster Kritis */}
-                    <div className="flex flex-col rounded-[8px] bg-bg/80 border border-border/40 p-1.5">
-                      <span className="text-[10px] font-medium text-muted">
+                    <div className="flex flex-col rounded-[8px] bg-bg/80 border border-border/40 p-1.5 min-w-0">
+                      <span className="text-[10px] font-medium text-muted truncate">
                         Kritis
                       </span>
-                      <span className="text-xs font-bold text-kritis tabular-nums mt-0.5">
+                      <span className="text-xs font-bold text-kritis tabular-nums mt-0.5 truncate">
                         {res.criticalCount}/{res.criticalTotal}
                       </span>
                     </div>
