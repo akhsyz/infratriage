@@ -79,6 +79,7 @@ export default function DemoControls() {
   // Hentikan timer otomatis bila sudah mencapai 10 pelapor
   useEffect(() => {
     if (state.demo.step >= 10 && isRunning) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- Menghentikan interval timer dan status isRunning saat langkah demo mencapai batas 10 pelapor.
       stopTimer();
     }
   }, [state.demo.step, isRunning, stopTimer]);

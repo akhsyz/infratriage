@@ -10,7 +10,6 @@ import {
   CATEGORY_LABEL,
   SEVERITY_LABEL,
   type ClusterStatus,
-  type PriorityLevel,
   type ScoreContext,
   type Weights,
 } from "../../lib/infratriage";
@@ -21,8 +20,6 @@ import { fetchPhotoSignedUrl, usePhotoStatus } from "../../lib/photos";
 import {
   AlertTriangle,
   Building2,
-  Calendar,
-  CheckCircle2,
   Clock,
   Coins,
   ExternalLink,
@@ -33,8 +30,6 @@ import {
   MapPin,
   School,
   ShoppingBag,
-  Tag,
-  Users,
 } from "lucide-react";
 
 const VITAL_TYPE_LABEL: Record<string, string> = {

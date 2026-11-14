@@ -11,15 +11,11 @@ import {
 import { vitals } from "../../lib/vitals";
 import {
   Activity,
-  AlertTriangle,
   CheckCircle2,
   HelpCircle,
   Info,
   RotateCcw,
-  Scale,
-  ShieldAlert,
   Sliders,
-  TrendingUp,
 } from "lucide-react";
 
 const WEIGHT_CONFIG: {

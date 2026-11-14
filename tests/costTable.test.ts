@@ -125,7 +125,7 @@ describe("Tabel biaya yang dapat diedit (lib/infratriage/config.ts & reducer)", 
     });
 
     it("SET_COST yang tidak valid (< MIN_COST, > MAX_COST, atau non-integer) ditolak tanpa mengubah state", () => {
-      let state = createInitialState(baseNow);
+      const state = createInitialState(baseNow);
       const originalCost = state.costTable.lubang[1];
 
       // Kurang dari MIN_COST

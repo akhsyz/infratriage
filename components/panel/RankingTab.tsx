@@ -12,7 +12,6 @@ import { ALL_CATEGORIES, ALL_LEVELS } from "../../lib/reducer";
 import {
   AlertTriangle,
   Calendar,
-  CheckCircle2,
   Filter,
   RotateCcw,
   Sparkles,

@@ -25,15 +25,12 @@ import {
   ChevronDown,
   ChevronUp,
   Coins,
-  FileCheck,
   Info,
-  Layers,
   Play,
   RotateCcw,
   ShieldCheck,
   SlidersHorizontal,
   Sparkles,
-  TrendingUp,
 } from "lucide-react";
 
 const STRATEGY_DESCRIPTIONS: Record<
@@ -105,6 +102,7 @@ function CostInputCell({
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- Menyinkronkan nilai input teks lokal saat props currentValue direset dari luar.
     setLocalText(formatRupiahInput(currentValue));
     setError(null);
   }, [currentValue]);
@@ -175,6 +173,7 @@ export default function BudgetTab() {
 
   // Kosongkan hasil uji ketahanan jika anggaran atau asumsi biaya berubah
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- Mereset status dan hasil uji ketahanan biaya saat pagu anggaran atau tabel asumsi biaya berubah.
     setRobustnessResult(null);
     setProgress(0);
     setIsTesting(false);
@@ -183,6 +182,7 @@ export default function BudgetTab() {
 
   // Sinkronkan input lokal bila state.budget berubah dari luar
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- Menyinkronkan nilai string input lokal saat state.budget diperbarui melalui tombol preset.
     setInputValue(formatRupiahInput(state.budget));
   }, [state.budget]);
 

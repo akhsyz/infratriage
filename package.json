@@ -11,9 +11,9 @@
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.119.0",
+    "@turf/destination": "^7.4.0",
     "@turf/distance": "^7.4.0",
     "@turf/helpers": "^7.4.0",
-    "@turf/turf": "^7.4.0",
     "leaflet": "^1.9.4",
     "lucide-react": "^1.67.0",
     "next": "16.4.5",

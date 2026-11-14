@@ -8,7 +8,7 @@ import {
   type ReportFormData,
 } from "../components/map/reportDraft";
 import { appReducer, createInitialState } from "../lib/reducer";
-import { computeScore, uniqueReporters, type ScoreContext } from "../lib/infratriage";
+import { computeScore, uniqueReporters, type ScoreContext, type Severity } from "../lib/infratriage";
 import { vitals } from "../lib/vitals";
 
 describe("reportDraft (components/map/reportDraft.ts)", () => {
@@ -61,7 +61,7 @@ describe("reportDraft (components/map/reportDraft.ts)", () => {
     });
 
     it("menolak form jika severity tidak valid", () => {
-      expect(isReportFormValid({ ...sampleFormData, severity: 4 as any })).toBe(false);
+      expect(isReportFormValid({ ...sampleFormData, severity: 4 as unknown as Severity })).toBe(false);
     });
   });
 
