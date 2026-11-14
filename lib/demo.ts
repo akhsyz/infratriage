@@ -1,4 +1,5 @@
-import * as turf from "@turf/turf";
+import { destination } from "@turf/destination";
+import { point } from "@turf/helpers";
 import type { Cluster, LatLng, Report, VitalPoint } from "./infratriage";
 import {
   buildClusters,
@@ -49,8 +50,8 @@ export function pickDemoSite(
 
   for (const vital of priorityVitals) {
     for (const bearing of bearings) {
-      const dest = turf.destination(
-        turf.point([vital.lng, vital.lat]),
+      const dest = destination(
+        point([vital.lng, vital.lat]),
         targetDistanceKm,
         bearing,
         { units: "kilometers" }
