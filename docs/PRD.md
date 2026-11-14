@@ -27,8 +27,10 @@ Persona **Staf perencana pemeliharaan jalan** (hipotetis, dibuat untuk PRD ini, 
 4. Menunjukkan seberapa stabil peringkat bila bobot diubah.
 5. Demo 10 menit yang meyakinkan (skenario 63 menjadi 81).
 
-**Bukan-tujuan (jangan dikerjakan)**
-Login/registrasi, database, ORM, backend terpisah (Express/Fastify), upload foto, notifikasi, peta offline, multi-user, integrasi API pemerintah, penulisan ulang mesin.
+**Bukan-tujuan (awal perancangan)**
+Login/registrasi, ORM, backend terpisah (Express/Fastify), notifikasi, peta offline, multi-user, integrasi API pemerintah, penulisan ulang mesin.
+
+> *Catatan Pembaruan:* Fitur persistensi database per pengunjung (Supabase Fase 1) dan unggah foto bukti ke storage privat yang awalnya berada di luar lingkup, telah diimplementasikan pada fase pengembangan lanjutan dengan perlindungan kuota (100 laporan, 10 foto) serta fallback otomatis ke Mode Lokal (di memori) bila server atau database tidak terjangkau.
 
 ## 3. Prinsip kejujuran (wajib tampil di UI)
 
@@ -78,7 +80,7 @@ Login/registrasi, database, ORM, backend terpisah (Express/Fastify), upload foto
 ## 5. Kebutuhan non-fungsional
 - Lancar dengan ~150 laporan dan 294 fasilitas; interaksi < 100 ms terasa instan.
 - State di memori (React Context + useReducer); inisialisasi data seed hanya di sisi klien untuk menghindari hydration mismatch (data bergantung waktu).
-- TypeScript strict, `npm test` (53 tes mesin + tes baru) dan `npm run build` harus lulus.
+- TypeScript strict, `npm test` (18 file dan 201 tes lulus 100%) dan `npx tsc --noEmit` harus bersih.
 - Dependency baru seminimal mungkin; tanpa library chart (bar dengan Tailwind).
 - Bahasa UI: Indonesia, konsisten.
 - Aksesibilitas dasar: kontras cukup, warna level selalu disertai teks, fokus keyboard terlihat.

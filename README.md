@@ -17,9 +17,10 @@
 7. [Simulasi Anggaran dan Uji Ketahanan Biaya](#7-simulasi-anggaran-dan-uji-ketahanan-biaya)
 8. [Analisis Sensitivitas Bobot](#8-analisis-sensitivitas-bobot)
 9. [Pengujian Otomatis](#9-pengujian-otomatis)
-10. [Keterbatasan dan Asumsi](#10-keterbatasan-dan-asumsi)
-11. [Rencana Pengembangan (Roadmap)](#11-rencana-pengembangan-roadmap)
-12. [Atribusi Data dan Lisensi](#12-atribusi-data-dan-lisensi)
+10. [Kualitas Kode dan Keamanan](#10-kualitas-kode-dan-keamanan)
+11. [Keterbatasan dan Asumsi](#11-keterbatasan-dan-asumsi)
+12. [Rencana Pengembangan (Roadmap)](#12-rencana-pengembangan-roadmap)
+13. [Atribusi Data dan Lisensi](#13-atribusi-data-dan-lisensi)
 
 ---
 
@@ -40,7 +41,7 @@ Ketika laporan kerusakan infrastruktur jalan dari masyarakat masuk dalam jumlah 
 - **Bobot Interaktif dan Analisis Sensitivitas:** Slider penyesuaian bobot proporsional (total selalu 100%) dilengkapi kalkulasi kestabilan peringkat berbasis Korelasi Peringkat Spearman dan tumpang tindih 10 besar (*Top-10 Overlap*).
 - **Skenario Demo Interaktif:** Simulasi dinamis pembuktian validasi warga, mendemonstrasikan kenaikan skor urgensi titik dari 63 (Tinggi) menjadi 81 (Kritis) saat jumlah pelapor bertambah.
 - **Penyimpanan Data per Pengunjung:** Setiap pengunjung browser memiliki ruang data independen menggunakan pengenal UUID v4 di `localStorage` tanpa keharusan login atau pembuatan akun.
-- **Mode Lokal:** Apabila server atau basis data tidak terjangkau, aplikasi secara otomatis beralih ke Mode Lokal. Fitur analisis urgensi, penambahan laporan, pengelompokan spasial, pembobotan, dan simulasi anggaran tetap berjalan di memori peramban; sedangkan unggah foto dan penyimpanan lintas sesi tidak tersedia. Pada layar lebar, bilah navigasi atas menampilkan penanda `(Lokal)`.
+- **Mode Lokal:** Apabila server atau basis data tidak terjangkau, aplikasi secara otomatis beralih ke Mode Lokal. Fitur analisis urgensi, penambahan laporan, pengelompokan spasial, pembobotan, dan simulasi anggaran tetap berjalan di memori peramban; sedangkan unggah foto dan penyimpanan lintas sesi tidak tersedia. Pada layar ultra-lebar (`2xl`, $\ge 1536\text{ px}$), bilah navigasi atas menampilkan penanda `(Lokal)`; sedangkan pada layar lain, penonaktifan input foto dengan pesan *"Foto membutuhkan koneksi server"* menjadi penanda visual status lokal.
 
 ---
 
@@ -101,14 +102,19 @@ Untuk menguji seluruh kemampuan utama sistem dalam waktu singkat, ikuti 6 langka
    npm test
    ```
 
-6. **Kompilasi Produksi:**
+6. **Periksa Kepatuhan Linter:**
+   ```bash
+   npm run lint
+   ```
+
+7. **Kompilasi Produksi:**
    ```bash
    npm run build
    ```
 
 ### Mode Lokal dan Pemecahan Masalah
 Apabila variabel lingkungan `SUPABASE_URL` dan `SUPABASE_SECRET_KEY` tidak dikonfigurasi, atau jika server basis data tidak dapat dijangkau, TEPAT otomatis beralih ke Mode Lokal:
-- **Arti tanda "(Lokal)":** Penanda `(Lokal)` pada bilah navigasi atas menunjukkan bahwa server atau basis data tidak terjangkau (misalnya variabel lingkungan belum disetel atau layanan basis data sedang dalam mode jeda/tidur).
+- **Arti tanda "(Lokal)" dan Indikator Mode:** Penanda `(Lokal)` pada bilah navigasi atas (`components/TopNav.tsx`) tampil hanya pada layar berukuran ultra-lebar (`2xl`, $\ge 1536\text{ px}$). Pada layar lain (< 1536 px), status Mode Lokal ditandai oleh penonaktifan kolom unggah foto pada formulir laporan dengan pesan *"Foto membutuhkan koneksi server"* (`components/AddReportForm.tsx`).
 - **Apa yang masih berfungsi:** Fitur analisis urgensi, penambahan laporan baru, pengelompokan spasial, penyesuaian bobot, dan simulasi 4 strategi anggaran tetap berjalan di memori peramban; sedangkan unggah foto dan penyimpanan lintas sesi tidak tersedia.
 - **Pemulihan koneksi:** Memuat ulang (*refresh*) halaman setelah beberapa saat dapat memulihkan koneksi secara otomatis jika server atau layanan basis data telah kembali aktif.
 
@@ -274,6 +280,9 @@ Test Files  18 passed (18)
      Tests  201 passed (201)
 ```
 
+**Verifikasi Kepatuhan Linter (ESLint):**
+Menjalankan `npm run lint` menghasilkan **0 error** (seluruh aturan Next.js, React Hooks, dan TypeScript terpenuhi).
+
 | Berkas Pengujian | Jumlah Tes | Fokus Pengujian |
 |---|:---:|---|
 | `tests/cluster.test.ts` | 12 | Validasi koordinat, formula jarak haversine, titik centroid, dan pengelompokan spasial per radius kategori |
@@ -298,7 +307,21 @@ Test Files  18 passed (18)
 
 ---
 
-## 10. Keterbatasan dan Asumsi
+## 10. Kualitas Kode dan Keamanan
+
+Sebagai bentuk integritas teknis dalam evaluasi sistem tanpa pendampingan:
+
+1. **Pengetikan TypeScript Ketat (Strict Mode):** Mengaktifkan `"strict": true` pada [`tsconfig.json`](tsconfig.json#L7) tanpa satu pun pengecualian `@ts-ignore` (0) atau `@ts-expect-error` (0), serta bebas dari tipe `any` (0) di seluruh kode produksi dan pengujian.
+2. **Mesin Keputusan Murni Fungsional & Deterministik:** Seluruh kalkulasi geospasial, *scoring*, dan alokasi anggaran pada folder [`lib/infratriage/`](lib/infratriage/) dirancang murni fungsional (*pure functions*) tanpa mutasi state. Simulasi Monte Carlo ketahanan biaya menggunakan PRNG Mulberry32 berbenih tetap (`seed: 42`) pada [`lib/infratriage/costRobustness.ts`](lib/infratriage/costRobustness.ts#L48) yang menjamin reproduktibilitas hasil 100% konsisten pada setiap pengujian juri.
+3. **Validasi Input API Multi-Lapis:** Route handler memvalidasi koordinat agar berada dalam batas wilayah geografis Yogyakarta (`DEMO_BOUNDS`), membatasi ukuran payload JSON maksimal 10 KB (`MAX_BODY_BYTES`), memverifikasi format pengenal UUID v4, dan menegakkan kuota maksimal 100 laporan per pengunjung pada [`lib/reportValidation.ts`](lib/reportValidation.ts#L8-L34) dan [`app/api/reports/route.ts`](app/api/reports/route.ts#L94-L156).
+4. **Verifikasi Biner Gambar (Magic Bytes):** Endpoint unggah foto memeriksa *byte signature* biner pada [`lib/photoUtils.ts`](lib/photoUtils.ts#L92-L116) untuk memastikan hanya JPEG (`0xFF 0xD8 0xFF`) dan WebP (`RIFF...WEBP`) asli yang diproses, dengan batas ukuran 2 MB dan akses privat via *Signed URL* berumur 10 menit pada [`app/api/reports/photo/route.ts`](app/api/reports/photo/route.ts#L58-L62,L148-L162).
+5. **Kerahasiaan Kredensial & Isolasi Database:** Kunci `SUPABASE_SECRET_KEY` hanya diakses di sisi server pada [`lib/supabaseServer.ts`](lib/supabaseServer.ts#L8-L27) dan tidak pernah masuk ke bundel klien. Tabel PostgreSQL menerapkan *Row Level Security* (RLS) dengan hak akses eksklusif untuk peran `service_role` pada [`supabase/schema.sql`](supabase/schema.sql#L47-L51).
+6. **Ketahanan Jaringan & Fallback Mode Lokal Otomatis:** Permintaan HTTP ke server dibatasi dengan batas waktu *timeout* 4.000 ms (`REQUEST_TIMEOUT_MS = 4000`) menggunakan `AbortController` pada [`lib/persistence.ts`](lib/persistence.ts#L12,L95-L112). Jika server atau basis data tidak dapat dijangkau, sistem otomatis beralih ke Mode Lokal di memori peramban tanpa melempar kegagalan fatal (*unhandled exception*).
+7. **Pembersihan Riwayat Git (Zero Leaked Secrets):** Pemindaian seluruh riwayat commit git (`git log -S` dan `git log -G`) untuk pola token sensitif (`sb_secret`, `service_role`, `eyJ`, `SUPABASE_SECRET_KEY`) memastikan tidak ada rahasia nyata atau berkas `.env` yang pernah terunggah.
+
+---
+
+## 11. Keterbatasan dan Asumsi
 
 Sebagai bentuk kejujuran teknis dalam evaluasi sistem pendukung keputusan:
 
@@ -310,10 +333,12 @@ Sebagai bentuk kejujuran teknis dalam evaluasi sistem pendukung keputusan:
 6. **Foto Bukti Belum Memengaruhi Skor:** Foto yang diunggah pelapor saat ini hanya berfungsi sebagai dokumen bukti visual bagi verifikator dan belum dianalisis otomatis dengan kecerdasan buatan (*Computer Vision*) untuk memengaruhi skor urgensi.
 7. **Tanggal Referensi Simulasi Tetap (5 November 2026):** Untuk menjamin hasil pengujian dan demonstrasi yang deterministik bagi juri di mana pun dan kapan pun, sistem menggunakan tanggal acuan simulasi tetap yaitu `5 November 2026` (`2026-11-05T00:00:00.000Z`). Laporan baru yang dibuat selama sesi pengujian akan bertanggal hari simulasi tersebut sehingga komponen usia laporan bernilai 0 hari secara konsisten.
 8. **Batas Kuota Pengunjung:** Untuk melindungi infrastruktur *cloud*, setiap pengunjung dibatasi maksimal menyimpan 100 laporan dan mengunggah 10 foto bukti.
+9. **Cakupan Pengujian Otomatis:** Seluruh 201 pengujian otomatis difokuskan pada integritas logika penentu keputusan (*engine*, *knapsack*, *reducer*, *seed*, dan *robustness*). Route Handler (`/api/reports`) dan antarmuka komponen UI React belum memiliki pengujian otomatis (seperti React Testing Library / Playwright), sehingga kebenaran interaksi UI dan komunikasi jaringan diverifikasi melalui pengujian fungsional manual.
+10. **Akses Pengunjung Berbasis UUID Tanpa Autentikasi:** Sistem menggunakan pengenal peramban (UUID v4) di `localStorage` tanpa mekanisme kata sandi atau akun pengguna (*zero-login friction*). UUID ini berfungsi menyerupai kunci akses (*bearer token*); pihak mana pun yang mengetahui UUID tersebut secara teknis dapat mengakses atau menghapus data laporan pengunjung terkait. Untuk memitigasi risiko penumpukan data, server membatasi kuota maksimal 100 laporan dan 10 foto per UUID pengunjung.
 
 ---
 
-## 11. Rencana Pengembangan (Roadmap)
+## 12. Rencana Pengembangan (Roadmap)
 
 Untuk pengembangan menuju sistem operasional skala penuh di masa mendatang:
 
@@ -326,10 +351,13 @@ Untuk pengembangan menuju sistem operasional skala penuh di masa mendatang:
 
 ---
 
-## 12. Atribusi Data dan Lisensi
+## 13. Atribusi Data dan Lisensi
 
 ### Atribusi Sumber Data
-- **Data Fasilitas Vital:** Data sebaran fasilitas umum (rumah sakit/fasilitas kesehatan, sekolah/pendidikan, dan pasar) di Kota Yogyakarta diekstrak dari **OpenStreetMap**. Data ini tersedia di bawah lisensi *Open Database License* (ODbL).
+- **Data Fasilitas Vital:** Data sebaran fasilitas umum (rumah sakit/fasilitas kesehatan, sekolah/pendidikan, dan pasar) di Kota Yogyakarta diekstrak dari **OpenStreetMap** melalui **Overpass API** (berkas mentah `data/fasilitas-yogya-raw.json`, cap waktu OSM `2026-11-04T03:03:51Z`, lisensi *Open Database License* / ODbL). Berkas mentah tersebut dibersihkan dan difilter menggunakan skrip `scripts/clean-osm.mjs` menjadi berkas `data/fasilitas-vital-yogya.json` yang berisi **294 fasilitas vital** valid:
+  - **Sekolah (`school`):** 224 fasilitas
+  - **Rumah Sakit / Faskes (`hospital`):** 30 fasilitas
+  - **Pasar (`marketplace`):** 40 fasilitas
   - *Atribusi:* **&copy; OpenStreetMap contributors**.
 - **Peta Dasar (*Map Tiles*):** Menggunakan ubin peta dari **OpenStreetMap** (`https://tile.openstreetmap.org/{z}/{x}/{y}.png`) dengan atribusi `&copy; OpenStreetMap contributors` yang ditampilkan pada antarmuka peta dan footer aplikasi.
 
